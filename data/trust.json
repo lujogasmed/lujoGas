@@ -1,0 +1,34 @@
+{
+  "badges": [
+    {
+      "id": "certificados",
+      "title": "Técnicos Certificados",
+      "description": "Certificados por Gas Natural, EPM e Icontec"
+    },
+    {
+      "id": "experiencia",
+      "title": "+10 Años de Experiencia",
+      "description": "Servicio técnico especializado en Medellín"
+    },
+    {
+      "id": "garantia",
+      "title": "Garantía Escrita",
+      "description": "Respaldamos todos nuestros trabajos por escrito"
+    },
+    {
+      "id": "atencion",
+      "title": "Atención en 24 Horas",
+      "description": "Respuesta rápida para emergencias y revisiones"
+    },
+    {
+      "id": "materiales",
+      "title": "Materiales Certificados",
+      "description": "Solo usamos materiales con Norma Técnica Colombiana (NTC)"
+    }
+  ],
+  "stats": [
+    { "label": "Clientes atendidos", "value": 500, "suffix": "+" },
+    { "label": "Años de experiencia", "value": 10, "suffix": "+" },
+    { "label": "Municipios cubiertos", "value": 8, "suffix": "" }
+  ]
+}

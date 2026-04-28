@@ -1,0 +1,729 @@
+---
+import WhatsAppIcon from '../atoms/WhatsAppIcon.astro';
+import { WHATSAPP_URL } from '../../lib/constants';
+
+const ctaUrl = `${WHATSAPP_URL}&text=Hola%20LujoGas%2C%20quiero%20una%20cotizaci%C3%B3n`;
+
+const pills = ['Sin costo', 'Respuesta en minutos', 'Técnico certificado'];
+---
+
+<section
+  class="cta-section relative overflow-hidden"
+  id="contacto"
+  aria-labelledby="contacto-heading"
+>
+  <!-- Ambient lights follow mouse -->
+  <div
+    id="cta-light-outer"
+    class="cta-light cta-light--outer"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    id="cta-light-inner"
+    class="cta-light cta-light--inner"
+    aria-hidden="true"
+  >
+  </div>
+  <div id="cta-light-warm" class="cta-light cta-light--warm" aria-hidden="true">
+  </div>
+
+  <!-- Static gradient background -->
+  <div class="cta-bg" aria-hidden="true"></div>
+
+  <!-- Decorative glow orbs -->
+  <div class="cta-orb cta-orb--blue" aria-hidden="true"></div>
+  <div class="cta-orb cta-orb--orange" aria-hidden="true"></div>
+
+  <!-- Grid overlay -->
+  <div class="pipes-bg" aria-hidden="true"></div>
+
+  <div class="container-section relative z-10 reveal">
+    <!-- Eyebrow -->
+    <div class="flex items-center justify-center gap-3 mb-6">
+      <span class="block w-8 h-px bg-tertiary"></span>
+      <span
+        class="font-mono text-[11.5px] font-semibold tracking-[0.26em] uppercase text-tertiary"
+      >
+        Cotización · en minutos
+      </span>
+      <span class="block w-8 h-px bg-tertiary"></span>
+    </div>
+
+    <!-- Headline -->
+    <h2
+      id="contacto-heading"
+      class="font-display font-semibold leading-[1.0] tracking-[-0.01em] text-center mb-5 mx-auto text-background text-[clamp(42px,6vw,80px)] max-w-[16ch]"
+    >
+      ¿Listo para encender
+      <span class="text-tertiary inline">el fogón?</span>
+    </h2>
+
+    <!-- Body -->
+    <p
+      class="text-center mx-auto mb-8 leading-relaxed text-neutral/[0.85] text-[clamp(15px,1.4vw,18px)] max-w-[48ch]"
+    >
+      Escríbenos con la dirección de tu proyecto y recibe una cotización clara,
+      certificada y sin costo — directo con el técnico.
+    </p>
+
+    <!-- Feature pills -->
+    <div class="flex flex-wrap justify-center gap-3 mb-10">
+      {
+        pills.map((p) => (
+          <span class="cta-pill">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              class="text-tertiary"
+            >
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+            {p}
+          </span>
+        ))
+      }
+    </div>
+
+    <!-- CTA button -->
+    <div class="flex flex-col items-center gap-5">
+      <a
+        href={ctaUrl}
+        target="_blank"
+        rel="noopener"
+        class="cta-wa-btn wa-pulse"
+        aria-label="Hablar con un técnico por WhatsApp"
+      >
+        <WhatsAppIcon size={22} full={false} />
+        Hablar con un técnico
+      </a>
+
+      <!-- Phone + hours -->
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+        <!-- <a href="tel:+573197748313" class="cta-phone" aria-label="Llamar al 319 774 8313">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.45 5.45l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/>
+          </svg>
+          319 774 8313
+        </a> -->
+        <span class="cta-hours">Medellín · Lun–Sáb · 7am–7pm</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom accent line -->
+  <div class="cta-accent-line" aria-hidden="true"></div>
+</section>
+
+<style>
+  .cta-section {
+    padding: clamp(80px, 10vw, 140px) 0;
+    background: theme('colors.primary');
+    cursor: none;
+  }
+
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        ellipse 80% 60% at 50% 100%,
+        theme('colors.secondary / 18%') 0%,
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 50% 0%,
+        theme('colors.tertiary / 10%') 0%,
+        transparent 65%
+      );
+  }
+
+  .cta-orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+  .cta-orb--blue {
+    width: 480px;
+    height: 480px;
+    bottom: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: theme('colors.secondary / 22%');
+  }
+  .cta-orb--orange {
+    width: 260px;
+    height: 260px;
+    top: -60px;
+    right: 15%;
+    background: theme('colors.tertiary / 15%');
+  }
+
+  /* ── Ambient lights ── */
+  .cta-light {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    will-change: transform;
+  }
+  .cta-light.active {
+    opacity: 1;
+  }
+
+  .cta-light--outer {
+    z-index: 1;
+    background: radial-gradient(
+      600px circle at 50% 50%,
+      theme('colors.blue-base / 9%') 0%,
+      theme('colors.secondary / 4%') 50%,
+      transparent 70%
+    );
+  }
+  .cta-light--inner {
+    z-index: 2;
+    background: radial-gradient(
+      200px circle at 50% 50%,
+      theme('colors.blue-bright / 18%') 0%,
+      theme('colors.blue-base / 8%') 40%,
+      transparent 65%
+    );
+  }
+  /* warm orange glow around cursor base */
+  .cta-light--warm {
+    z-index: 2;
+    background: radial-gradient(
+      120px circle at 50% 50%,
+      rgba(255, 140, 42, 0.12) 0%,
+      rgba(255, 100, 20, 0.05) 45%,
+      transparent 70%
+    );
+  }
+
+  /* ── Flame cursor ── */
+  #cta-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 22px;
+    height: 36px;
+    pointer-events: none;
+    z-index: 9999;
+    transform-origin: 50% 95%;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  #cta-cursor.active {
+    opacity: 1;
+  }
+
+  /* Per-layer flicker animations — each layer independent */
+  .fl-outer {
+    transform-origin: 50% 100%;
+    animation: fl-outer 2.4s ease-in-out infinite alternate;
+  }
+  .fl-body {
+    transform-origin: 50% 100%;
+    animation: fl-body 1.7s ease-in-out infinite alternate;
+  }
+  .fl-inner {
+    transform-origin: 50% 100%;
+    animation: fl-inner 1.1s ease-in-out infinite alternate;
+  }
+  .fl-core {
+    animation: fl-core 0.85s ease-in-out infinite alternate;
+  }
+
+  @keyframes fl-outer {
+    0% {
+      transform: scaleX(1) scaleY(1) skewX(0deg);
+      opacity: 0.7;
+    }
+    20% {
+      transform: scaleX(1.07) scaleY(0.96) skewX(1.8deg);
+      opacity: 0.75;
+    }
+    45% {
+      transform: scaleX(0.94) scaleY(1.05) skewX(-1.4deg);
+      opacity: 0.65;
+    }
+    70% {
+      transform: scaleX(1.04) scaleY(0.98) skewX(1deg);
+      opacity: 0.72;
+    }
+    100% {
+      transform: scaleX(0.97) scaleY(1.03) skewX(-0.6deg);
+      opacity: 0.68;
+    }
+  }
+  @keyframes fl-body {
+    0% {
+      transform: scaleX(1) scaleY(1) skewX(0deg);
+    }
+    30% {
+      transform: scaleX(0.93) scaleY(1.06) skewX(-2deg);
+    }
+    60% {
+      transform: scaleX(1.08) scaleY(0.95) skewX(1.5deg);
+    }
+    100% {
+      transform: scaleX(0.97) scaleY(1.03) skewX(-0.8deg);
+    }
+  }
+  @keyframes fl-inner {
+    0% {
+      transform: scaleX(1) scaleY(1) translateY(0px);
+      opacity: 0.9;
+    }
+    40% {
+      transform: scaleX(0.9) scaleY(1.08) translateY(-2px);
+      opacity: 1;
+    }
+    100% {
+      transform: scaleX(1.06) scaleY(0.94) translateY(1px);
+      opacity: 0.85;
+    }
+  }
+  @keyframes fl-core {
+    0% {
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.12);
+    }
+    100% {
+      opacity: 0.75;
+      transform: scale(0.94);
+    }
+  }
+
+  /* Pills / buttons */
+  .cta-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 16px;
+    border-radius: 9999px;
+    border: 1px solid theme('colors.tertiary / 25%');
+    background: theme('colors.tertiary / 7%');
+    font-family: theme('fontFamily.mono');
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: theme('colors.neutral / 90%');
+  }
+
+  .cta-wa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 36px;
+    border-radius: 9999px;
+    background: linear-gradient(
+      135deg,
+      theme('colors.whatsapp') 0%,
+      theme('colors.whatsapp-dark') 100%
+    );
+    color: white;
+    font-family: theme('fontFamily.body');
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    box-shadow: 0 6px 32px theme('colors.whatsapp / 35%');
+    transition:
+      transform 0.18s ease,
+      box-shadow 0.18s ease;
+  }
+  .cta-wa-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 40px theme('colors.whatsapp / 45%');
+    cursor: pointer;
+  }
+
+  .cta-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: theme('fontFamily.mono');
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: theme('colors.background / 90%');
+    text-decoration: none;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+  .cta-phone:hover {
+    color: theme('colors.tertiary');
+  }
+
+  .cta-hours {
+    font-family: theme('fontFamily.mono');
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: theme('colors.neutral / 45%');
+  }
+
+  .cta-accent-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      theme('colors.secondary / 50%') 30%,
+      theme('colors.tertiary / 60%') 50%,
+      theme('colors.secondary / 50%') 70%,
+      transparent
+    );
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta-light,
+    .fl-outer,
+    .fl-body,
+    .fl-inner,
+    .fl-core {
+      animation: none;
+    }
+    .cta-section {
+      cursor: auto;
+    }
+    #cta-cursor {
+      display: none;
+    }
+  }
+</style>
+
+<!--
+  Flame cursor SVG — 4 layers + feTurbulence displacement filter.
+  Moved to <body> root by JS so `position:fixed` works correctly.
+-->
+<svg
+  id="cta-cursor"
+  viewBox="0 0 36 58"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <defs>
+    <!-- Organic displacement filter -->
+    <filter id="ff" x="-35%" y="-15%" width="170%" height="130%">
+      <feTurbulence
+        id="fturb"
+        type="turbulence"
+        baseFrequency="0.028 0.072"
+        numOctaves="4"
+        seed="3"
+        result="noise"></feTurbulence>
+      <feDisplacementMap
+        id="fdisp"
+        in="SourceGraphic"
+        in2="noise"
+        scale="5"
+        xChannelSelector="R"
+        yChannelSelector="G"
+        result="displaced"></feDisplacementMap>
+    </filter>
+
+    <!-- Outer halo gradient: transparent blue → deeper blue -->
+    <linearGradient
+      id="fg-outer"
+      x1="18"
+      y1="0"
+      x2="18"
+      y2="55"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop offset="0%" stop-color="#6aaaff" stop-opacity="0"></stop>
+      <stop offset="18%" stop-color="#6aaaff" stop-opacity="0.4"></stop>
+      <stop offset="55%" stop-color="#3d7fff" stop-opacity="0.7"></stop>
+      <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0.5"></stop>
+    </linearGradient>
+
+    <!-- Body gradient: bright blue body -->
+    <linearGradient
+      id="fg-body"
+      x1="18"
+      y1="8"
+      x2="18"
+      y2="54"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop offset="0%" stop-color="#93c5fd" stop-opacity="0"></stop>
+      <stop offset="22%" stop-color="#60a5fa" stop-opacity="0.75"></stop>
+      <stop offset="60%" stop-color="#3d7fff" stop-opacity="1"></stop>
+      <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0.9"></stop>
+    </linearGradient>
+
+    <!-- Inner cone: cyan/white bright -->
+    <linearGradient
+      id="fg-inner"
+      x1="18"
+      y1="20"
+      x2="18"
+      y2="54"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop offset="0%" stop-color="#e0f2fe" stop-opacity="0"></stop>
+      <stop offset="30%" stop-color="#bae6fd" stop-opacity="0.9"></stop>
+      <stop offset="70%" stop-color="#7dd3fc" stop-opacity="1"></stop>
+      <stop offset="100%" stop-color="white" stop-opacity="0.95"></stop>
+    </linearGradient>
+
+    <!-- Hot core: white → ice blue -->
+    <radialGradient
+      id="fg-core"
+      cx="50%"
+      cy="30%"
+      r="55%"
+      gradientUnits="objectBoundingBox"
+    >
+      <stop offset="0%" stop-color="white" stop-opacity="1"></stop>
+      <stop offset="55%" stop-color="#e0f2fe" stop-opacity="0.85"></stop>
+      <stop offset="100%" stop-color="#93c5fd" stop-opacity="0"></stop>
+    </radialGradient>
+
+    <!-- Warm base glow (orange/amber) -->
+    <radialGradient
+      id="fg-warm"
+      cx="50%"
+      cy="85%"
+      r="40%"
+      gradientUnits="objectBoundingBox"
+    >
+      <stop offset="0%" stop-color="#ff8c2a" stop-opacity="0.55"></stop>
+      <stop offset="60%" stop-color="#ff6b1a" stop-opacity="0.15"></stop>
+      <stop offset="100%" stop-color="#ff6b1a" stop-opacity="0"></stop>
+    </radialGradient>
+  </defs>
+
+  <!-- Layer 1: outer halo (wide, transparent, most affected by wind) -->
+  <path
+    class="fl-outer"
+    d="M18 1 C8 16 2 28 4 40 C6 50 12 56 18 56 C24 56 30 50 32 40 C34 28 28 16 18 1 Z"
+    fill="url(#fg-outer)"
+    filter="url(#ff)"></path>
+
+  <!-- Layer 2: main body -->
+  <path
+    class="fl-body"
+    d="M18 10 C11 22 8 32 9 41 C10 48 14 53 18 53 C22 53 26 48 27 41 C28 32 25 22 18 10 Z"
+    fill="url(#fg-body)"
+    filter="url(#ff)"></path>
+
+  <!-- Layer 3: inner bright cone -->
+  <path
+    class="fl-inner"
+    d="M18 22 C14 30 13 38 14 43 C15 48 17 52 18 52 C19 52 21 48 22 43 C23 38 22 30 18 22 Z"
+    fill="url(#fg-inner)"
+    filter="url(#ff)"></path>
+
+  <!-- Layer 4: hot core at base (no filter — stays sharp) -->
+  <ellipse class="fl-core" cx="18" cy="47" rx="5.5" ry="7" fill="url(#fg-core)"
+  ></ellipse>
+
+  <!-- Warm base ring (orange) — no filter -->
+  <ellipse cx="18" cy="52" rx="9" ry="4" fill="url(#fg-warm)" opacity="0.7"
+  ></ellipse>
+</svg>
+
+<script is:inline>
+  (function () {
+    var section = document.getElementById('contacto');
+    var lightOuter = document.getElementById('cta-light-outer');
+    var lightInner = document.getElementById('cta-light-inner');
+    var lightWarm = document.getElementById('cta-light-warm');
+    var cursor = document.getElementById('cta-cursor');
+    var fturb = document.getElementById('fturb');
+    var fdisp = document.getElementById('fdisp');
+    if (!section || !cursor) return;
+
+    document.body.appendChild(cursor);
+
+    /* ── State ── */
+    var mx = 0,
+      my = 0; // raw mouse
+    var bx = 0,
+      by = 0; // base position (lerp — no bounce ever)
+    var tx = 0,
+      ty = 0; // tip position (slower lerp — wind lag)
+    var ox = 0,
+      oy = 0; // outer light (very slow lerp)
+    var wx = 0,
+      wy = 0; // warm light
+    var prevBX = 0,
+      prevBY = 0; // previous base for velocity estimation
+    var smoothVX = 0,
+      smoothVY = 0;
+    var active = false;
+    var rafId = null;
+
+    /* ── Lerp factors (no spring = no bounce) ── */
+    var BASE_L = 0.1; // base follows mouse: smooth, no overshoot
+    var TIP_L = 0.045; // tip lags: glides naturally to stop
+    var OUTER_L = 0.03;
+    var WARM_L = 0.07;
+    var MAX_TILT = 24;
+
+    function lerp(a, b, t) {
+      return a + (b - a) * t;
+    }
+    function clamp(v, lo, hi) {
+      return v < lo ? lo : v > hi ? hi : v;
+    }
+
+    function tick() {
+      if (!active) return;
+
+      prevBX = bx;
+      prevBY = by;
+
+      /* Pure lerp — exponential ease, never overshoots */
+      bx = lerp(bx, mx, BASE_L);
+      by = lerp(by, my, BASE_L);
+
+      /* Tip lerps toward base with more lag */
+      tx = lerp(tx, bx, TIP_L);
+      ty = lerp(ty, by, TIP_L);
+
+      /* Velocity from frame delta (for tilt/scale) */
+      var vx = bx - prevBX;
+      var vy = by - prevBY;
+      smoothVX = lerp(smoothVX, vx, 0.14);
+      smoothVY = lerp(smoothVY, vy, 0.14);
+
+      /* Outer and warm lights */
+      ox = lerp(ox, mx, OUTER_L);
+      oy = lerp(oy, my, OUTER_L);
+      wx = lerp(wx, bx, WARM_L);
+      wy = lerp(wy, by, WARM_L);
+
+      var speed = Math.sqrt(smoothVX * smoothVX + smoothVY * smoothVY);
+
+      /*
+       * Tilt: derived from tip-to-base offset.
+       * When moving right, tip lags left → flame tilts left (blown right).
+       * That's the natural wind direction: tilt = -(tipX - baseX).
+       */
+      var tipOffsetX = tx - bx;
+      var tilt = clamp(-tipOffsetX * 2.2, -MAX_TILT, MAX_TILT);
+
+      /* Stretch: faster vertical movement = taller flame */
+      var scaleY = 1 + clamp(speed * 0.016, 0, 0.35);
+      /* Compress X when stretched */
+      var scaleX = 1 - clamp(speed * 0.005, 0, 0.12);
+
+      /* Position cursor: anchor point is the base (95% down) */
+      cursor.style.transform =
+        'translate(' +
+        bx +
+        'px,' +
+        by +
+        'px) ' +
+        'translate(-50%,-93%) ' +
+        'rotate(' +
+        tilt +
+        'deg) ' +
+        'scaleX(' +
+        scaleX +
+        ') scaleY(' +
+        scaleY +
+        ')';
+
+      /* Dynamic turbulence: more speed = more organic distortion */
+      if (fturb) {
+        var bfreq = 0.028 + speed * 0.003;
+        fturb.setAttribute(
+          'baseFrequency',
+          clamp(bfreq, 0.028, 0.07) +
+            ' ' +
+            clamp(0.072 + speed * 0.004, 0.07, 0.14),
+        );
+      }
+      if (fdisp) {
+        var dispScale = 5 + speed * 1.8;
+        fdisp.setAttribute('scale', clamp(dispScale, 4, 22).toString());
+      }
+
+      /* Move ambient lights */
+      var rect = section.getBoundingClientRect();
+      var cx = rect.left + rect.width / 2;
+      var cy = rect.top + rect.height / 2;
+
+      if (lightInner)
+        lightInner.style.transform =
+          'translate(' + (bx - cx) + 'px,' + (by - cy) + 'px)';
+      if (lightOuter)
+        lightOuter.style.transform =
+          'translate(' + (ox - cx) + 'px,' + (oy - cy) + 'px)';
+      if (lightWarm)
+        lightWarm.style.transform =
+          'translate(' + (wx - cx) + 'px,' + (wy - cy) + 'px)';
+
+      rafId = requestAnimationFrame(tick);
+    }
+
+    function onMove(e) {
+      mx = e.clientX;
+      my = e.clientY;
+    }
+
+    function onEnter(e) {
+      mx = e.clientX;
+      my = e.clientY;
+      bx = mx;
+      by = my;
+      tx = mx;
+      ty = my;
+      ox = mx;
+      oy = my;
+      wx = mx;
+      wy = my;
+      prevBX = mx;
+      prevBY = my;
+      smoothVX = 0;
+      smoothVY = 0;
+
+      active = true;
+      if (lightOuter) lightOuter.classList.add('active');
+      if (lightInner) lightInner.classList.add('active');
+      if (lightWarm) lightWarm.classList.add('active');
+      cursor.classList.add('active');
+      if (!rafId) rafId = requestAnimationFrame(tick);
+    }
+
+    function onLeave() {
+      active = false;
+      if (lightOuter) lightOuter.classList.remove('active');
+      if (lightInner) lightInner.classList.remove('active');
+      if (lightWarm) lightWarm.classList.remove('active');
+      cursor.classList.remove('active');
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+    }
+
+    section.addEventListener('mousemove', onMove, { passive: true });
+    section.addEventListener('mouseenter', onEnter);
+    section.addEventListener('mouseleave', onLeave);
+  })();
+</script>

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "instalacion-residencial",
+    "title": "Instalación Residencial",
+    "description": "Diseño e instalación de redes de gas para hogares con materiales certificados NTC.",
+    "icon": "home",
+    "cta": "Solicitar servicio"
+  },
+  {
+    "id": "instalacion-comercial",
+    "title": "Instalación Comercial",
+    "description": "Redes de gas para restaurantes, hoteles y establecimientos comerciales en Medellín.",
+    "icon": "building",
+    "cta": "Solicitar servicio"
+  },
+  {
+    "id": "mantenimiento",
+    "title": "Mantenimiento Preventivo",
+    "description": "Revisión y mantenimiento periódico para garantizar el funcionamiento seguro de tu red.",
+    "icon": "wrench",
+    "cta": "Solicitar servicio"
+  },
+  {
+    "id": "certificacion",
+    "title": "Certificación de Instalaciones",
+    "description": "Certificación oficial bajo norma técnica Icontec. Trámite completo incluido.",
+    "icon": "certificate",
+    "cta": "Solicitar certificación"
+  },
+  {
+    "id": "fugas",
+    "title": "Revisión de Fugas",
+    "description": "Diagnóstico y reparación de fugas con equipos especializados. Atención en 24 horas.",
+    "icon": "shield",
+    "cta": "Solicitar revisión"
+  },
+  {
+    "id": "electrodomesticos",
+    "title": "Conexión de Electrodomésticos",
+    "description": "Instalación segura de estufas, calentadores y secadoras a tu red de gas.",
+    "icon": "plug",
+    "cta": "Solicitar conexión"
+  }
+]

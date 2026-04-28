@@ -1,0 +1,34 @@
+---
+const comunas = [
+  'El Poblado',
+  'Laureles',
+  'Belén',
+  'Envigado',
+  'Itagüí',
+  'Sabaneta',
+  'La América',
+  'Robledo',
+  'Bello',
+  'Copacabana',
+];
+---
+
+<ul
+  class="grid grid-cols-2 gap-x-[22px] gap-y-2 mt-5 list-none p-0"
+  aria-label="Zonas de cobertura"
+>
+  {
+    comunas.map((c, i) => (
+      <li class="flex items-center gap-[10px] text-neutral/65 text-[14.5px] py-[6px] border-b border-neutral/15">
+        <span
+          class:list={[
+            'w-[6px] h-[6px] rounded-full shrink-0',
+            i % 3 === 2 ? 'bg-secondary' : 'bg-tertiary',
+          ]}
+          aria-hidden="true"
+        />
+        {c}
+      </li>
+    ))
+  }
+</ul>

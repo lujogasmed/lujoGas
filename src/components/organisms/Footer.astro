@@ -1,0 +1,88 @@
+---
+import Logo from '../atoms/Logo.astro';
+---
+
+<footer class="bg-primary text-background border-t border-neutral/[12%] pt-14 pb-10" aria-label="Pie de página">
+  <div class="container-section">
+
+    <!-- ── Logo row — full width, alone ── -->
+    <div class="mb-10">
+      <Logo />
+      <p class="text-neutral/60 mt-4 max-w-[38ch] text-[14px] leading-relaxed">
+        Instalación y certificación de redes de gas en Medellín y el Valle de Aburrá.
+        +15 años asegurando hogares y comercios.
+      </p>
+    </div>
+
+    <!-- Pipe separator -->
+    <div
+      class="h-3 mb-10 relative bg-[linear-gradient(180deg,transparent_4px,theme(colors.neutral/18%)_4px,theme(colors.neutral/18%)_8px,transparent_8px)]"
+      aria-hidden="true"
+    >
+      <span class="absolute top-[2px] left-0 w-[14px] h-2 bg-neutral/30 rounded-[2px]"></span>
+      <span class="absolute top-[2px] right-0 w-[14px] h-2 bg-neutral/30 rounded-[2px]"></span>
+    </div>
+
+    <!-- ── Link columns row — 3 equal cols ── -->
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-10">
+
+      <!-- Servicios -->
+      <div>
+        <h4 class="font-display text-[13px] tracking-[0.22em] uppercase text-background mb-4">Servicios</h4>
+        <ul class="flex flex-col gap-[9px] list-none p-0">
+          {['Redes residenciales','Redes comerciales','Certificación','Mantenimiento','Inspección de fugas'].map(item => (
+            <li>
+              <a href="#servicios" class="text-neutral/60 text-[13.5px] transition-all duration-200 hover:text-tertiary hover:translate-x-[3px] inline-block">
+                {item}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Cobertura -->
+      <div>
+        <h4 class="font-display text-[13px] tracking-[0.22em] uppercase text-background mb-4">Cobertura</h4>
+        <ul class="flex flex-col gap-[9px] list-none p-0">
+          {['El Poblado','Laureles · Belén','Envigado · Itagüí','Sabaneta · Bello','Valle de Aburrá'].map(item => (
+            <li class="text-neutral/60 text-[13.5px]">{item}</li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contacto — en mobile ocupa las 2 cols -->
+      <div class="col-span-2 md:col-span-1">
+        <h4 class="font-display text-[13px] tracking-[0.22em] uppercase text-background mb-4">Contacto</h4>
+        <address class="not-italic">
+          <ul class="flex flex-col gap-[9px] list-none p-0">
+            <li>
+              <a href="tel:+573197748313" class="text-neutral/60 text-[13.5px] transition-all duration-200 hover:text-tertiary hover:translate-x-[3px] inline-block">
+                319 774 8313
+              </a>
+            </li>
+            <li>
+              <a href="https://wa.me/573197748313" target="_blank" rel="noopener" class="text-neutral/60 text-[13.5px] transition-all duration-200 hover:text-tertiary hover:translate-x-[3px] inline-block">
+                WhatsApp directo
+              </a>
+            </li>
+            <li class="text-neutral/60 text-[13.5px]">Medellín, Antioquia</li>
+            <li class="text-neutral/60 text-[13.5px]">Lunes–Sábado · 7am–7pm</li>
+          </ul>
+        </address>
+      </div>
+    </div>
+
+    <!-- SEO text — hidden visually but indexable -->
+    <p class="mt-10 text-neutral/30 text-[11.5px] tracking-[0.05em] leading-[1.9]">
+      Instalación de gas Medellín · Certificación de redes de gas Antioquia ·
+      Gasodomésticos Medellín · Mantenimiento redes de gas · Inspección de fugas El Poblado
+    </p>
+
+    <!-- Legal -->
+    <div class="mt-6 pt-6 border-t border-neutral/10 flex flex-col sm:flex-row sm:justify-between gap-2 text-neutral/45 text-[12px]">
+      <span>© 2026 LujoGas — Todos los derechos reservados.</span>
+      <span>Diseñado en Medellín · Colombia</span>
+    </div>
+
+  </div>
+</footer>

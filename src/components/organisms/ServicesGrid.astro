@@ -1,0 +1,65 @@
+---
+import EyebrowLabel from '../atoms/EyebrowLabel.astro';
+import ServiceCard from '../molecules/ServiceCard.astro';
+
+const services = [
+  {
+    num: '01',
+    title: 'Instalación de redes',
+    description: 'Diseño e instalación de redes internas en cobre, polietileno o multicapa. Normativa NTC 2505.',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 12h6m6 0h6M9 6v12M15 6v12"/><circle cx="12" cy="12" r="2.2"/></svg>`,
+  },
+  {
+    num: '02',
+    title: 'Mantenimiento preventivo',
+    description: 'Revisión periódica de tuberías, reguladores y puntos de conexión. Reporte técnico incluido.',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M5 7l2.8 2.8M3 14h4M17 9.8L19 7M17 14h4M7 21h10l-1-6H8z"/></svg>`,
+  },
+  {
+    num: '03',
+    title: 'Certificación oficial',
+    description: 'Expedición de certificado vigente por organismo acreditado. Válido para empresas de gas en Antioquia.',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>`,
+  },
+  {
+    num: '04',
+    title: 'Gasodomésticos',
+    description: 'Instalación de estufas, calentadores, hornos y secadoras. Conexión y pruebas de estanqueidad.',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M4 13h16M8 9V6h8v3M9 17h2"/></svg>`,
+  },
+  {
+    num: '05',
+    title: 'Inspección de fugas',
+    description: 'Detección con equipo electrónico de última generación y ensayos de hermeticidad certificados.',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4-4"/></svg>`,
+  },
+  {
+    num: '06',
+    title: 'Conversión de redes',
+    description: 'Migración de sistemas eléctricos o de GLP a gas natural. Ahorro promedio del 40% en factura.',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10a3 3 0 010 6H6a3 3 0 000 6h14"/><path d="M17 4l3 3-3 3M20 16l-3 3 3 3"/></svg>`,
+  },
+];
+---
+
+<section class="section-pad bg-background" id="servicios" aria-labelledby="servicios-heading">
+  <div class="container-section">
+    <div class="flex items-end justify-between gap-6 mb-14 flex-wrap reveal">
+      <div>
+        <EyebrowLabel text="Servicios · 01" />
+        <h2 id="servicios-heading" class="font-display font-semibold tracking-[0.01em] leading-[1.02] mt-3 text-[clamp(34px,4.4vw,54px)] text-primary">
+          Redes de gas diseñadas para durar décadas.
+        </h2>
+      </div>
+      <p class="text-muted max-w-[46ch]">
+        Todo lo necesario para llevar gas natural o GLP a tu hogar, restaurante o edificio — desde el diseño hasta el sello de certificación.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[22px] reveal-stagger">
+      {services.map((s) => (
+        <ServiceCard num={s.num} title={s.title} description={s.description} icon={s.icon} />
+      ))}
+    </div>
+  </div>
+</section>

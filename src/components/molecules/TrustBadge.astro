@@ -1,0 +1,22 @@
+---
+interface Props {
+  seal: string;
+  title: string;
+  subtitle: string;
+}
+const { seal, title, subtitle } = Astro.props;
+---
+
+<!-- Gradient border via wrapper -->
+<div class="p-px rounded-xl bg-gradient-to-br from-neutral/50 via-neutral/5 to-tertiary/20">
+  <div class="bg-surface rounded-xl p-[22px] flex flex-col gap-[10px] min-h-[130px]">
+    <!-- Seal -->
+    <div class="w-10 h-10 rounded-full border border-dashed border-tertiary/55 grid place-items-center text-tertiary font-display font-bold text-[14px]">
+      {seal}
+    </div>
+    <!-- Title -->
+    <div class="font-display text-[17px] tracking-[0.02em] text-primary">{title}</div>
+    <!-- Subtitle -->
+    <div class="text-muted text-[12.5px] tracking-[0.04em]">{subtitle}</div>
+  </div>
+</div>

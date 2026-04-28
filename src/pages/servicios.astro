@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/organisms/Header.astro';
+import Footer from '../components/organisms/Footer.astro';
+import CTASection from '../components/organisms/CTASection.astro';
+import EyebrowLabel from '../components/atoms/EyebrowLabel.astro';
+import ServiceCard from '../components/molecules/ServiceCard.astro';
+
+const services = [
+  {
+    num: '01',
+    title: 'Instalación de redes',
+    description: 'Diseño e instalación de redes internas en cobre, polietileno o multicapa. Normativa NTC 2505.',
+    detail: 'Aplica para viviendas unifamiliares, apartamentos, edificios y locales comerciales. Incluye planos as-built y prueba hidrostática certificada.',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 12h6m6 0h6M9 6v12M15 6v12"/><circle cx="12" cy="12" r="2.2"/></svg>`,
+  },
+  {
+    num: '02',
+    title: 'Mantenimiento preventivo',
+    description: 'Revisión periódica de tuberías, reguladores y puntos de conexión. Reporte técnico incluido.',
+    detail: 'Revisión de presiones, detección de fugas, limpieza de quemadores y verificación de reguladores. Programable mensual, trimestral o anual.',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M5 7l2.8 2.8M3 14h4M17 9.8L19 7M17 14h4M7 21h10l-1-6H8z"/></svg>`,
+  },
+  {
+    num: '03',
+    title: 'Certificación oficial',
+    description: 'Expedición de certificado vigente por organismo acreditado. Válido para empresas de gas en Antioquia.',
+    detail: 'Requerida por Gas Natural y EPM para activar el servicio. Emitida por inspector certificado bajo RETIE y NTC 2505. Entrega en 24–48 h.',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>`,
+  },
+  {
+    num: '04',
+    title: 'Gasodomésticos',
+    description: 'Instalación de estufas, calentadores, hornos y secadoras. Conexión y pruebas de estanqueidad.',
+    detail: 'Instalamos cualquier marca. Incluye manguera certificada, válvula de seguridad y prueba de funcionamiento. Garantía de mano de obra.',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M4 13h16M8 9V6h8v3M9 17h2"/></svg>`,
+  },
+  {
+    num: '05',
+    title: 'Inspección de fugas',
+    description: 'Detección con equipo electrónico de última generación y ensayos de hermeticidad certificados.',
+    detail: 'Usamos detectores de gas portátiles de alta sensibilidad. Si se detecta fuga, emitimos reporte técnico y corregimos en la misma visita.',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4-4"/></svg>`,
+  },
+  {
+    num: '06',
+    title: 'Conversión de redes',
+    description: 'Migración de sistemas eléctricos o de GLP a gas natural. Ahorro promedio del 40% en factura.',
+    detail: 'Rediseño completo de la red, cambio de reguladores, adaptación de gasodomésticos y gestión del trámite ante la empresa prestadora.',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10a3 3 0 010 6H6a3 3 0 000 6h14"/><path d="M17 4l3 3-3 3M20 16l-3 3 3 3"/></svg>`,
+  },
+];
+
+const process = [
+  { n: '1', title: 'Cotización',    desc: 'Envianos tu dirección y tipo de proyecto. Respuesta en minutos.' },
+  { n: '2', title: 'Visita técnica', desc: 'Un técnico evalúa el espacio y entrega propuesta detallada sin costo.' },
+  { n: '3', title: 'Instalación',   desc: 'Ejecutamos el trabajo con materiales certificados NTC.' },
+  { n: '4', title: 'Certificado',   desc: 'Entregamos el certificado oficial para activar el servicio de gas.' },
+];
+---
+
+<BaseLayout
+  title="Servicios de Gas en Medellín — Instalación, Mantenimiento y Certificación | LujoGas"
+  description="Instalación de redes de gas, mantenimiento preventivo, certificación oficial y más. Técnicos certificados en Medellín y área metropolitana."
+  canonical="https://lujogas.com/servicios"
+>
+  <Header />
+
+  <main>
+    <!-- ── Page Hero ── -->
+    <section
+      class="relative overflow-hidden pt-[140px] pb-[80px]"
+      style="background-color: #333333;"
+      aria-labelledby="servicios-page-heading"
+    >
+      <div class="pipes-bg" aria-hidden="true"></div>
+      <!-- Gradient overlay -->
+      <div
+        class="absolute inset-0 pointer-events-none"
+        style="background: radial-gradient(ellipse 70% 80% at 10% 50%, rgba(37,99,235,0.12) 0%, transparent 65%);"
+        aria-hidden="true"
+      ></div>
+      <div class="container-section relative z-10">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="block w-8 h-px" style="background:#F97316;"></span>
+          <span class="font-mono text-[11px] font-semibold tracking-[0.26em] uppercase" style="color:#F97316;">
+            LujoGas · Servicios
+          </span>
+        </div>
+        <h1
+          id="servicios-page-heading"
+          class="font-display font-semibold leading-[0.97] tracking-[-0.01em] text-background mb-5"
+          style="font-size: clamp(44px,6.5vw,86px); max-width: 14ch;"
+        >
+          Todo lo que tu red de gas necesita
+        </h1>
+        <p class="text-neutral/70 max-w-[48ch]" style="font-size: clamp(15px,1.3vw,17px); line-height: 1.65;">
+          Desde el diseño inicial hasta la certificación oficial — un solo equipo, un solo proceso, garantía escrita.
+        </p>
+      </div>
+      <!-- Bottom fade -->
+      <div
+        class="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
+        style="background: linear-gradient(to bottom, transparent, #F8F7F4);"
+        aria-hidden="true"
+      ></div>
+    </section>
+
+    <!-- ── Services grid ── -->
+    <section class="section-pad bg-background" id="servicios" aria-label="Listado de servicios">
+      <div class="container-section">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((s) => (
+            <div class="group relative bg-surface border border-neutral/15 rounded-2xl p-7 flex flex-col gap-4 hover:border-secondary/35 hover:shadow-lg transition-all duration-300 overflow-hidden reveal">
+              <!-- Accent top line -->
+              <div class="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-secondary/30 to-transparent"></div>
+              <!-- Number + icon row -->
+              <div class="flex items-start justify-between">
+                <div class="w-12 h-12 rounded-xl bg-secondary/8 border border-secondary/15 text-secondary flex items-center justify-center group-hover:bg-secondary/14 group-hover:border-secondary/30 transition-all duration-300 flex-shrink-0">
+                  <span class="w-[22px] h-[22px] block" set:html={s.icon} />
+                </div>
+                <span class="font-mono text-[11px] font-bold tracking-[0.18em] text-muted/60">{s.num}</span>
+              </div>
+              <!-- Title -->
+              <h2 class="font-display font-semibold text-[20px] tracking-[0.01em] text-primary leading-snug">{s.title}</h2>
+              <!-- Description -->
+              <p class="text-muted text-[14.5px] leading-relaxed">{s.description}</p>
+              <!-- Detail -->
+              <p class="text-muted/70 text-[13px] leading-relaxed border-t border-neutral/12 pt-4 mt-auto">{s.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Cómo trabajamos ── -->
+    <section class="section-pad" style="background-color:#1A1A2E;" aria-label="Proceso de trabajo">
+      <div class="pipes-bg" aria-hidden="true"></div>
+      <div class="container-section relative z-10">
+        <div class="text-center mb-14 reveal">
+          <EyebrowLabel text="Proceso · Simple" />
+          <h2 class="font-display font-semibold text-background mt-3 leading-tight" style="font-size:clamp(32px,4vw,52px);">
+            De la cotización al certificado
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal-stagger">
+          {process.map((p) => (
+            <div class="relative flex flex-col gap-4 p-6 rounded-2xl border border-neutral/10 bg-background/[0.03]">
+              <span class="font-display text-[52px] font-bold leading-none" style="color:rgba(37,99,235,0.18);">{p.n}</span>
+              <h3 class="font-display font-semibold text-background text-[18px] tracking-[0.02em] -mt-2">{p.title}</h3>
+              <p class="text-neutral/55 text-[13.5px] leading-relaxed">{p.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTASection />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script is:inline>
+  const io = new IntersectionObserver(
+    (entries) => { entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); },
+    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => io.observe(el));
+</script>

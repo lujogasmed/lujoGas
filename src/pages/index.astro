@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/organisms/Header.astro';
+import HeroSection from '../components/organisms/HeroSection.astro';
+import TrustSection from '../components/organisms/TrustSection.astro';
+import CoverageSection from '../components/organisms/CoverageSection.astro';
+import CTASection from '../components/organisms/CTASection.astro';
+import Footer from '../components/organisms/Footer.astro';
+import WhatsAppFloat from '../components/react/WhatsAppFloat.tsx';
+import { WHATSAPP_URL } from '../lib/constants';
+---
+
+<BaseLayout>
+  <Header />
+
+  <main>
+    <HeroSection />
+
+    <!-- Degradado oscuro → blanco entre Hero y Trust -->
+    <div
+      class="h-44 sm:h-56 md:h-64 relative overflow-hidden"
+      aria-hidden="true"
+    >
+      <div
+        class="absolute inset-0 bg-[linear-gradient(180deg,theme(colors.hero-bg)_0%,theme(colors.hero-bg)_12%,theme(colors.hero-bg/82%)_26%,theme(colors.hero-bg/55%)_40%,theme(colors.hero-bg/30%)_52%,theme(colors.hero-bg/14%)_63%,theme(colors.hero-bg/5%)_75%,theme(colors.hero-bg/1%)_86%,white_100%)]"
+      >
+      </div>
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_50%_0%,theme(colors.hero-bg/18%)_0%,transparent_70%)]"
+      >
+      </div>
+    </div>
+
+    <TrustSection />
+
+    <!-- Degradado blanco → oscuro entre Trust y Coverage -->
+    <div
+      class="h-52 sm:h-64 md:h-80 relative overflow-hidden"
+      aria-hidden="true"
+    >
+      <div
+        class="absolute inset-0 bg-[linear-gradient(180deg,white_0%,white_0%,theme(colors.primary/1%)_14%,theme(colors.primary/2%)_19%,theme(colors.primary/4%)_24%,theme(colors.primary/8%)_30%,theme(colors.primary/13%)_36%,theme(colors.primary/20%)_42%,theme(colors.primary/30%)_48%,theme(colors.primary/40%)_54%,theme(colors.primary/52%)_60%,theme(colors.primary/65%)_67%,theme(colors.primary/78%)_74%,theme(colors.primary/88%)_81%,theme(colors.primary/95%)_89%,theme(colors.primary)_95%,theme(colors.primary)_100%)]"
+      >
+      </div>
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_140%_60%_at_50%_100%,theme(colors.primary/22%)_0%,transparent_60%)]"
+      >
+      </div>
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_30%_80%,theme(colors.primary/8%)_0%,transparent_50%)]"
+      >
+      </div>
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_70%_80%,theme(colors.primary/8%)_0%,transparent_50%)]"
+      >
+      </div>
+    </div>
+
+    <CoverageSection />
+    <CTASection />
+  </main>
+
+  <Footer />
+
+  <!-- Floating WhatsApp — client:load para interactividad inmediata -->
+  <!-- <WhatsAppFloat client:load href={WHATSAPP_URL} /> -->
+</BaseLayout>
+
+<script is:inline>
+  /* Reveal on scroll — IntersectionObserver global */
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.14, rootMargin: '0px 0px -40px 0px' },
+  );
+  document
+    .querySelectorAll('.reveal, .reveal-stagger')
+    .forEach((el) => io.observe(el));
+</script>

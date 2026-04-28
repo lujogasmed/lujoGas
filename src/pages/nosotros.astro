@@ -1,0 +1,210 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/organisms/Header.astro';
+import Footer from '../components/organisms/Footer.astro';
+import CTASection from '../components/organisms/CTASection.astro';
+import EyebrowLabel from '../components/atoms/EyebrowLabel.astro';
+import StatCounter from '../components/molecules/StatCounter.astro';
+
+const stats = [
+  { value: 500, suffix: '+', label: 'Instalaciones realizadas' },
+  { value: 15,  suffix: '+', label: 'Años de experiencia'      },
+  { value: 100, suffix: '%', label: 'Certificación ICONTEC'    },
+  { value: 10,  suffix: '',  label: 'Comunas cubiertas'        },
+];
+
+const values = [
+  {
+    title: 'Certificación real',
+    desc: 'Cada trabajo termina con certificado oficial emitido por organismo acreditado. No firmamos algo que no podamos respaldar.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.745 3.745 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.745 3.745 0 0 1 3.296-1.043A3.745 3.745 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.745 3.745 0 0 1 3.296 1.043 3.745 3.745 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"/></svg>`,
+  },
+  {
+    title: 'Materiales NTC',
+    desc: 'Solo usamos tuberías, válvulas y accesorios con certificación de Norma Técnica Colombiana. Sin atajos.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>`,
+  },
+  {
+    title: 'Técnicos certificados',
+    desc: 'Nuestro equipo tiene competencia laboral verificada. Formación continua y evaluación periódica de desempeño.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>`,
+  },
+  {
+    title: 'Garantía escrita',
+    desc: '12 meses de garantía sobre mano de obra en cada instalación. Si algo falla, volvemos sin costo adicional.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>`,
+  },
+];
+
+const certifications = [
+  { seal: 'ICO', title: 'ICONTEC',             sub: 'Organismo acreditado — vigente' },
+  { seal: 'NTC', title: 'NTC 2505',            sub: 'Norma técnica colombiana' },
+  { seal: 'EPM', title: 'Aval EPM / Gas Natural', sub: 'Instaladores autorizados' },
+  { seal: 'GAR', title: 'Garantía 12 meses',   sub: 'Escrita sobre mano de obra' },
+];
+---
+
+<BaseLayout
+  title="Nosotros — LujoGas | Técnicos Certificados en Gas, Medellín"
+  description="Más de 15 años instalando y certificando redes de gas en Medellín. Conoce nuestro equipo, valores y certificaciones oficiales."
+  canonical="https://lujogas.com/nosotros"
+>
+  <Header />
+
+  <main>
+    <!-- ── Page Hero ── -->
+    <section
+      class="relative overflow-hidden pt-[140px] pb-[80px]"
+      style="background-color: #333333;"
+      aria-labelledby="nosotros-heading"
+    >
+      <div class="pipes-bg" aria-hidden="true"></div>
+      <div
+        class="absolute inset-0 pointer-events-none"
+        style="background: radial-gradient(ellipse 60% 90% at 90% 50%, rgba(249,115,22,0.10) 0%, transparent 65%);"
+        aria-hidden="true"
+      ></div>
+      <div class="container-section relative z-10">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="block w-8 h-px" style="background:#F97316;"></span>
+          <span class="font-mono text-[11px] font-semibold tracking-[0.26em] uppercase" style="color:#F97316;">
+            LujoGas · Nosotros
+          </span>
+        </div>
+        <h1
+          id="nosotros-heading"
+          class="font-display font-semibold leading-[0.97] tracking-[-0.01em] text-background mb-5"
+          style="font-size: clamp(44px,6.5vw,86px); max-width: 14ch;"
+        >
+          15 años encendiendo hogares en Medellín
+        </h1>
+        <p class="text-neutral/70 max-w-[50ch]" style="font-size: clamp(15px,1.3vw,17px); line-height: 1.65;">
+          Somos una empresa antioqueña especializada en instalación, mantenimiento y certificación de redes de gas natural y GLP. Trabajamos con un solo estándar: que cada instalación pase la prueba, el inspector y el tiempo.
+        </p>
+      </div>
+      <div
+        class="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
+        style="background: linear-gradient(to bottom, transparent, #F8F7F4);"
+        aria-hidden="true"
+      ></div>
+    </section>
+
+    <!-- ── Stats ── -->
+    <section class="bg-background py-16" aria-label="Números">
+      <div class="container-section">
+        <div class="grid grid-cols-2 md:grid-cols-4 border border-neutral/15 rounded-2xl overflow-hidden reveal">
+          {stats.map((s, i) => (
+            <StatCounter value={s.value} suffix={s.suffix} label={s.label} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Quiénes somos ── -->
+    <section class="section-pad bg-background" aria-label="Historia">
+      <div class="container-section">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center reveal">
+          <!-- Text -->
+          <div>
+            <EyebrowLabel text="Nuestra historia" />
+            <h2 class="font-display font-semibold text-primary mt-3 mb-6 leading-tight" style="font-size:clamp(30px,3.5vw,46px);">
+              Nacimos para resolver lo que otros no certifican
+            </h2>
+            <div class="flex flex-col gap-4 text-muted text-[15.5px] leading-relaxed">
+              <p>
+                LujoGas nació en Medellín con una premisa clara: las instalaciones de gas no son un trámite, son una responsabilidad. Empezamos atendiendo clientes residenciales en el Valle de Aburrá y crecimos gracias a un principio simple — cada trabajo queda bien o no queda.
+              </p>
+              <p>
+                Hoy somos el equipo al que llaman cuando la instalación necesita pasar inspección de EPM o Gas Natural, cuando hay una fuga que otros no encontraron, o cuando un edificio entero necesita ser certificado bajo NTC 2505.
+              </p>
+              <p>
+                Más de 500 instalaciones certificadas en 15 años. Todos los trabajos con garantía escrita.
+              </p>
+            </div>
+          </div>
+          <!-- Accent panel -->
+          <div class="relative rounded-2xl overflow-hidden" style="background-color:#1A1A2E; min-height:340px;">
+            <div class="pipes-bg" aria-hidden="true"></div>
+            <div class="relative z-10 p-10 flex flex-col justify-between h-full gap-8">
+              <div>
+                <p class="font-display text-[clamp(28px,3vw,40px)] font-semibold text-background leading-tight">
+                  "Cada instalación queda bien<br/>
+                  <span style="color:#F97316;">o no queda."</span>
+                </p>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(249,115,22,0.15); border:1px solid rgba(249,115,22,0.25);">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/></svg>
+                </div>
+                <div>
+                  <p class="text-background font-semibold text-[14px]">Fundador LujoGas</p>
+                  <p class="text-neutral/45 text-[12px] font-mono tracking-wide">Medellín, Antioquia</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Valores ── -->
+    <section class="section-pad" style="background:#F8F7F4;" aria-labelledby="valores-heading">
+      <div class="container-section">
+        <div class="text-center mb-14 reveal">
+          <EyebrowLabel text="Cómo trabajamos" />
+          <h2 id="valores-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(30px,3.5vw,46px);">
+            Los principios que no negociamos
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 reveal-stagger">
+          {values.map((v) => (
+            <div class="group bg-surface border border-neutral/15 rounded-2xl p-7 flex gap-5 hover:border-tertiary/30 hover:shadow-md transition-all duration-300">
+              <div class="w-11 h-11 rounded-xl bg-tertiary/8 border border-tertiary/18 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/16 transition-all duration-300">
+                <span class="w-5 h-5 block" set:html={v.icon} />
+              </div>
+              <div>
+                <h3 class="font-display font-semibold text-primary text-[18px] tracking-[0.01em] mb-2">{v.title}</h3>
+                <p class="text-muted text-[14px] leading-relaxed">{v.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Certificaciones ── -->
+    <section class="section-pad" style="background-color:#1A1A2E;" aria-labelledby="certs-heading">
+      <div class="pipes-bg" aria-hidden="true"></div>
+      <div class="container-section relative z-10">
+        <div class="text-center mb-12 reveal">
+          <EyebrowLabel text="Certificaciones" />
+          <h2 id="certs-heading" class="font-display font-semibold text-background mt-3 leading-tight" style="font-size:clamp(30px,3.5vw,46px);">
+            Certificados, medibles, verificables
+          </h2>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 reveal-stagger">
+          {certifications.map((c) => (
+            <div class="group relative bg-background/[0.04] border border-neutral/12 rounded-2xl p-6 flex flex-col gap-3 hover:bg-background/[0.08] hover:border-tertiary/30 transition-all duration-300 overflow-hidden text-center items-center">
+              <div class="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-tertiary/40 to-transparent"></div>
+              <div class="font-display text-[28px] font-bold" style="color:rgba(249,115,22,0.35);">{c.seal}</div>
+              <div class="font-display text-[15px] tracking-[0.04em] text-background font-semibold">{c.title}</div>
+              <div class="text-neutral/50 text-[12px] tracking-[0.03em]">{c.sub}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTASection />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script is:inline>
+  const io = new IntersectionObserver(
+    (entries) => { entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); },
+    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => io.observe(el));
+</script>

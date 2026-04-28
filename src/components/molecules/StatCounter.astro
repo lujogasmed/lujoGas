@@ -1,0 +1,38 @@
+---
+interface Props {
+  value: number;
+  suffix: string;
+  label: string;
+  dark?: boolean;
+}
+const { value, suffix, label, dark = false } = Astro.props;
+---
+
+<div class:list={[
+  'stat px-[28px] py-[36px] flex flex-col gap-[8px]',
+  dark
+    ? 'border-r border-neutral/15 last:border-r-0'
+    : 'border-l border-neutral/70 first:border-l-0'
+]}>
+  <div
+    class="val flex items-baseline gap-[2px] font-mono font-bold text-[clamp(44px,5vw,64px)] text-tertiary leading-none"
+    data-count={value}
+    data-suffix={suffix}
+  >
+    <span class="n">0</span>
+    <span class:list={['text-[0.5em] ml-[2px]', dark ? 'text-neutral/40' : 'text-primary/50']}>{suffix}</span>
+  </div>
+  <div class:list={['text-[14px] tracking-[0.04em]', dark ? 'text-neutral/55' : 'text-muted']}>{label}</div>
+</div>
+
+<style>
+  /* nth-child(-n+2) no se puede expresar en Tailwind — requiere CSS */
+  @media (max-width: 767px) {
+    .stat {
+      border-right: none !important;
+      border-left: none !important;
+      border-top: 1px solid theme('colors.neutral / 12%');
+    }
+    .stat:nth-child(-n+2) { border-top: none; }
+  }
+</style>

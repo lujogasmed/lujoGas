@@ -1,0 +1,147 @@
+---
+import EyebrowLabel from '../atoms/EyebrowLabel.astro';
+import ComunaList from '../molecules/ComunaList.astro';
+---
+
+<section
+  class="section-pad bg-primary relative overflow-hidden"
+  id="cobertura"
+  aria-labelledby="cobertura-heading"
+>
+  <!-- Subtle grid bg -->
+  <div class="pipes-bg" aria-hidden="true"></div>
+
+  <div
+    class="container-section relative z-10 grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-[56px] items-center"
+  >
+    <!-- Copy + list -->
+    <div class="reveal">
+      <EyebrowLabel text="Cobertura · 03" />
+      <h2
+        id="cobertura-heading"
+        class="font-display font-semibold tracking-[0.01em] leading-[1.02] mt-3 text-[clamp(34px,4.4vw,54px)] text-background"
+      >
+        Atendemos todo el<br />Valle de Aburrá.
+      </h2>
+      <p class="text-neutral/60 mt-[18px] max-w-[44ch] leading-relaxed">
+        Cobertura completa en Medellín y municipios conurbados. Respuesta en
+        menos de 24 horas para visitas técnicas.
+      </p>
+      <ComunaList />
+    </div>
+
+    <!-- Map -->
+    <div
+      class="relative aspect-[1/1.05] rounded-[18px] overflow-hidden border border-neutral/20 shadow-[0_8px_60px_-8px_rgb(0_0_0/0.5)] bg-[linear-gradient(180deg,theme(colors.map-light),theme(colors.map-dark))] reveal"
+      aria-label="Mapa de cobertura Valle de Aburrá"
+      role="img"
+    >
+      <svg
+        class="w-full h-full block"
+        viewBox="0 0 500 525"
+        preserveAspectRatio="xMidYMid meet"
+      >
+        <defs>
+          <linearGradient id="valley" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0" class="[stop-color:theme(colors.map-light)]"></stop>
+            <stop offset="1" class="[stop-color:theme(colors.map-dark)]"></stop>
+          </linearGradient>
+          <radialGradient id="mapGlow" cx="50%" cy="50%" r="55%">
+            <stop offset="0%" class="[stop-color:theme(colors.secondary/8%)]"></stop>
+            <stop offset="100%" stop-color="transparent"></stop>
+          </radialGradient>
+          <filter id="glowDot"
+            ><feGaussianBlur stdDeviation="2.5"></feGaussianBlur></filter
+          >
+          <filter id="glowLine"
+            ><feGaussianBlur stdDeviation="1"></feGaussianBlur></filter
+          >
+        </defs>
+
+        <rect width="500" height="525" fill="url(#valley)"></rect>
+        <rect width="500" height="525" fill="url(#mapGlow)"></rect>
+
+        <!-- Region outline -->
+        <path
+          d="M110 60 C 80 140, 90 240, 130 330 C 170 420, 230 480, 300 470 C 360 460, 400 400, 420 320 C 440 240, 420 140, 370 80 C 320 30, 220 20, 160 40 Z"
+          class="fill-secondary/[0.06] stroke-neutral/[0.18]"
+          stroke-dasharray="4 5"></path>
+        <!-- River -->
+        <path
+          d="M230 40 C 220 160, 250 260, 240 370 C 235 430, 250 470, 260 500"
+          class="fill-none stroke-secondary/50"
+          stroke-width="1.5"
+          filter="url(#glowLine)"></path>
+        <!-- Grid lines -->
+        <g class="stroke-neutral/[0.06]" stroke-width="1">
+          <path d="M70 180 L 440 180"></path>
+          <path d="M60 260 L 450 260"></path>
+          <path d="M70 340 L 440 340"></path>
+          <path d="M170 40 L 170 500"></path>
+          <path d="M300 30 L 300 500"></path>
+        </g>
+
+        <!-- Zone labels -->
+        <g class="fill-neutral/60 font-mono text-[11px] tracking-[1.5px]">
+          <text x="280" y="140">BELLO</text>
+          <text x="178" y="222">LAURELES</text>
+          <text x="290" y="278">POBLADO</text>
+          <text x="130" y="310">BELÉN</text>
+          <text x="310" y="360">ENVIGADO</text>
+          <text x="180" y="395">ITAGÜÍ</text>
+          <text x="260" y="430">SABANETA</text>
+          <text x="125" y="180">ROBLEDO</text>
+        </g>
+
+        <!-- Pulse dots — active zones (orange / tertiary) -->
+        <g class="pulse-dot">
+          <circle class="p fill-tertiary" cx="260" cy="135" r="8"></circle>
+          <circle class="fill-tertiary" cx="260" cy="135" r="4.5"></circle>
+        </g>
+        <g class="pulse-dot d2">
+          <circle class="p fill-tertiary" cx="215" cy="215" r="8"></circle>
+          <circle class="fill-tertiary" cx="215" cy="215" r="4.5"></circle>
+        </g>
+        <g class="pulse-dot d4">
+          <circle class="p fill-tertiary" cx="170" cy="300" r="7"></circle>
+          <circle class="fill-tertiary" cx="170" cy="300" r="4"></circle>
+        </g>
+        <g class="pulse-dot d5">
+          <circle class="p fill-tertiary" cx="310" cy="352" r="7"></circle>
+          <circle class="fill-tertiary" cx="310" cy="352" r="4"></circle>
+        </g>
+        <g class="pulse-dot d2">
+          <circle class="p fill-tertiary" cx="275" cy="420" r="7"></circle>
+          <circle class="fill-tertiary" cx="275" cy="420" r="4"></circle>
+        </g>
+
+        <!-- New projects (blue / secondary) -->
+        <g class="pulse-dot d3">
+          <circle class="p fill-secondary" cx="305" cy="270" r="8"></circle>
+          <circle class="fill-secondary" cx="305" cy="270" r="4.5"></circle>
+        </g>
+        <g class="pulse-dot d6">
+          <circle class="p fill-secondary" cx="210" cy="390" r="7"></circle>
+          <circle class="fill-secondary" cx="210" cy="390" r="4"></circle>
+        </g>
+
+        <!-- Legend -->
+        <g class="fill-neutral/[0.55] font-mono text-[10px] tracking-[2px]">
+          <circle cx="40" cy="492" r="4" class="fill-tertiary"></circle>
+          <text x="52" y="496">ZONAS ACTIVAS</text>
+          <circle cx="200" cy="492" r="4" class="fill-secondary"></circle>
+          <text x="212" y="496">NUEVOS PROYECTOS</text>
+        </g>
+
+        <!-- Top border accent -->
+        <line
+          x1="0"
+          y1="0"
+          x2="500"
+          y2="0"
+          class="stroke-tertiary/30"
+          stroke-width="2"></line>
+      </svg>
+    </div>
+  </div>
+</section>

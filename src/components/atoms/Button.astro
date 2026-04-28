@@ -1,0 +1,46 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'whatsapp' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+  target?: string;
+  rel?: string;
+  ariaLabel?: string;
+}
+
+const {
+  href,
+  variant = 'whatsapp',
+  size = 'md',
+  class: className = '',
+  target,
+  rel,
+  ariaLabel,
+} = Astro.props;
+
+const base = 'inline-flex items-center gap-[10px] rounded-full font-display font-semibold tracking-[.12em] uppercase transition-all duration-300 min-h-[44px] cursor-pointer';
+
+const variantClasses: Record<string, string> = {
+  whatsapp: 'bg-gradient-to-br from-whatsapp to-whatsapp-dark text-white wa-pulse hover:-translate-y-0.5',
+  ghost:    'text-background border border-neutral/30 bg-background/[0.04] hover:border-secondary hover:text-secondary',
+};
+
+const sizeClasses: Record<string, string> = {
+  sm: 'px-[18px] py-[10px] text-[13px]',
+  md: 'px-[26px] py-[16px] text-[14px]',
+  lg: 'px-[42px] py-[20px] text-[16px]',
+};
+
+const classes = [base, variantClasses[variant], sizeClasses[size], className].filter(Boolean).join(' ');
+---
+
+{href ? (
+  <a href={href} class={classes} target={target} rel={rel} aria-label={ariaLabel}>
+    <slot />
+  </a>
+) : (
+  <button class={classes} aria-label={ariaLabel}>
+    <slot />
+  </button>
+)}

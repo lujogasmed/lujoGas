@@ -1,0 +1,355 @@
+---
+import Logo from '../atoms/Logo.astro';
+import { WHATSAPP_URL } from '../../lib/constants';
+
+const links = [
+  { href: '/servicios', label: 'Servicios' },
+  { href: '/nosotros', label: 'Nosotros' },
+  { href: '/#confianza', label: 'Confianza' },
+  { href: '/#cobertura', label: 'Cobertura' },
+  { href: '/#contacto', label: 'Contacto' },
+];
+
+const marqueeItems = [
+  { text: 'Medellín, Antioquia' },
+  { text: '+500', highlight: true, suffix: ' Instalaciones certificadas' },
+  { text: '15 años', highlight: true, suffix: ' de experiencia' },
+  { text: '100%', highlight: true, suffix: ' Certificación técnica' },
+  { text: 'Gas residencial y comercial' },
+  { text: 'Pruebas hidrostáticas' },
+  { text: 'Certificado oficial ICONTEC' },
+  { text: 'Técnicos certificados' },
+];
+
+const isInternal = Astro.url.pathname !== '/';
+
+const bar =
+  'block h-[1.5px] bg-current rounded-[2px] transition-all duration-[320ms] ease-[cubic-bezier(0.22,1,0.36,1)]';
+---
+
+<header class="relative flex flex-col w-full h-full">
+  <!-- ══ MARQUEE BAND ══ -->
+  <div
+    id="hdr-band"
+    class="fixed top-0 left-0 right-0 z-[501] h-[35px] bg-[rgba(10,13,20,0.96)] border-b border-white/[0.04] overflow-hidden flex items-center transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+    aria-hidden="true"
+  >
+    <div class="marquee-track" role="list">
+      {
+        marqueeItems.map((item) => (
+          <span
+            class="text-[10px] font-bold tracking-[2.5px] uppercase text-hero-muted px-7"
+            role="listitem"
+          >
+            {item.highlight ? (
+              <>
+                ·{' '}
+                <b class="text-blue-bright font-bold not-italic text-glow-blue">{item.text}</b>
+                {item.suffix}
+              </>
+            ) : (
+              <>· {item.text}</>
+            )}
+          </span>
+        ))
+      }
+      {/* Duplicate for seamless loop */}
+      {
+        marqueeItems.map((item) => (
+          <span
+            class="text-[10px] font-bold tracking-[2.5px] uppercase text-hero-muted px-7"
+            aria-hidden="true"
+          >
+            {item.highlight ? (
+              <>
+                ·{' '}
+                <b class="text-blue-bright font-bold not-italic text-glow-blue">{item.text}</b>
+                {item.suffix}
+              </>
+            ) : (
+              <>· {item.text}</>
+            )}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav
+    id="site-nav"
+    class="group/nav fixed top-[34px] left-0 right-0 z-[500] border-b border-b-transparent transition-all duration-[350ms] [&.scrolled]:top-0 [&.scrolled]:bg-hero-bg/[0.92] [&.scrolled]:backdrop-blur-[16px] [&.scrolled]:backdrop-saturate-[1.4] [&.scrolled]:border-b-neutral/10 py-2"
+    aria-label="Navegación principal"
+  >
+    <div class="container-section flex items-center justify-between h-[64px]">
+      <!-- Logo: link solo en internas -->
+      {isInternal ? (
+        <a
+          href="/"
+          class="inline-flex items-center h-[60px] transition-[filter] duration-700 group-[.scrolled]/nav:[filter:drop-shadow(0_0_8px_rgba(106,170,255,0.65))_drop-shadow(0_0_24px_rgba(61,127,255,0.4))_drop-shadow(0_0_48px_rgba(61,127,255,0.18))]"
+          aria-label="LujoGas — Ir al inicio"
+        >
+          <img
+            src="https://res.cloudinary.com/dx9vtev71/image/upload/e_background_removal/q_auto/f_auto/v1776525850/logo-lujoGas_hoc8ga.png"
+            alt="LujoGas"
+            height="60"
+            class="h-[60px] w-auto"
+            loading="eager"
+            decoding="async"
+          />
+        </a>
+      ) : (
+        <span class="inline-flex items-center h-[60px] transition-[filter] duration-700 group-[.scrolled]/nav:[filter:drop-shadow(0_0_8px_rgba(106,170,255,0.65))_drop-shadow(0_0_24px_rgba(61,127,255,0.4))_drop-shadow(0_0_48px_rgba(61,127,255,0.18))]" aria-label="LujoGas">
+          <img
+            src="https://res.cloudinary.com/dx9vtev71/image/upload/e_background_removal/q_auto/f_auto/v1776525850/logo-lujoGas_hoc8ga.png"
+            alt="LujoGas"
+            height="60"
+            class="h-[60px] w-auto"
+            loading="eager"
+            decoding="async"
+          />
+        </span>
+      )}
+
+      <!-- Desktop links — pill nav -->
+      <div
+        class="hidden md:flex items-center bg-white/[0.04] border border-white/[0.07] rounded-full px-1 gap-0 relative"
+        id="nav-wrap"
+      >
+        <div
+          id="nav-ind"
+          class="absolute top-1 bottom-1 rounded-full bg-blue-base/15 border border-blue-base/25 transition-[left,width,opacity] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] opacity-0 pointer-events-none"
+        >
+        </div>
+        {isInternal && (
+          <a
+            href="/"
+            data-nav
+            class="relative z-10 text-[11px] font-semibold tracking-[1.6px] uppercase text-blue-bright no-underline py-2 px-[18px] rounded-full transition-colors duration-200 hover:text-blue-bright/70 whitespace-nowrap"
+          >
+            ← Inicio
+          </a>
+        )}
+        {
+          links.map(({ href, label }) => (
+            <a
+              href={href}
+              data-nav
+              class="relative z-10 text-[11px] font-semibold tracking-[1.6px] uppercase text-hero-muted no-underline py-2 px-[18px] rounded-full transition-colors duration-200 hover:text-hero-text whitespace-nowrap"
+            >
+              {label}
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- Right: WhatsApp -->
+      <div class="hidden md:flex items-center gap-[14px]">
+        <a
+          href={`${WHATSAPP_URL}&text=Hola%20LujoGas%2C%20quiero%20cotizar`}
+          target="_blank"
+          rel="noopener"
+          class="flex items-center gap-2 bg-whatsapp text-white text-[12px] font-bold py-[10px] px-5 rounded-full no-underline tracking-[0.3px] transition-[transform,box-shadow] duration-[250ms] shadow-[0_4px_20px_rgba(37,211,102,0.2)] hover:-translate-y-0.5 hover:shadow-[0_10px_36px_rgba(37,211,102,0.4)]"
+          aria-label="Cotizar por WhatsApp"
+        >
+          <svg
+            class="w-[14px] h-[14px]"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+            ></path>
+          </svg>
+          WhatsApp
+        </a>
+      </div>
+
+      <!-- Hamburger — mobile only -->
+      <button
+        id="hamburger"
+        class="flex flex-col gap-[5px] p-2 bg-transparent border-none cursor-pointer text-hero-text/75 md:hidden"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="fullscreen-menu"
+      >
+        <span class={`${bar} w-6`}></span>
+        <span class={`${bar} w-6`}></span>
+        <span class={`${bar} w-4`}></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══ Full-screen mobile overlay ══ -->
+  <div
+    id="fullscreen-menu"
+    class="group/menu fixed inset-0 z-[600] bg-hero-bg/[0.98] backdrop-blur-[24px] backdrop-saturate-[1.3] flex flex-col -translate-y-full [&.open]:translate-y-0 transition-transform duration-[550ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform overflow-hidden after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-[linear-gradient(to_right,transparent,theme(colors.blue-base/30%)_30%,theme(colors.blue-bright/50%)_70%,transparent)]"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Menú principal"
+    aria-hidden="true"
+  >
+    <!-- Close button -->
+    <button
+      id="fs-close"
+      class="absolute top-5 right-5 flex items-center justify-center w-12 h-12 rounded-full bg-white/[0.07] border border-white/[0.22] text-hero-text cursor-pointer transition-[background,border-color,color] duration-200 z-10 hover:bg-blue-base/20 hover:border-blue-bright/60 hover:text-blue-bright"
+      aria-label="Cerrar menú"
+    >
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        aria-hidden="true"
+      >
+        <path d="M18 6 6 18M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <!-- Links -->
+    <nav class="flex-1 flex items-center px-7 py-4" aria-label="Menú mobile">
+      <ul class="list-none m-0 p-0 w-full" role="list">
+        {isInternal && (
+          <li
+            class="opacity-0 -translate-x-6 transition-[opacity,transform] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] [transition-delay:0s] border-b border-white/[0.06] group-[.open]/menu:opacity-100 group-[.open]/menu:translate-x-0"
+          >
+            <a
+              href="/"
+              class="flex items-baseline gap-4 py-[18px] font-display text-[clamp(26px,6vw,40px)] font-semibold tracking-[-0.01em] text-blue-bright no-underline transition-[color,padding-left] duration-200 hover:text-blue-bright/80 hover:pl-2"
+            >
+              <span class="font-mono text-[12px] font-semibold tracking-[0.14em] text-blue-bright opacity-70 shrink-0 mb-1">
+                ←
+              </span>
+              Inicio
+            </a>
+          </li>
+        )}
+        {
+          links.map(({ href, label }, i) => (
+            <li
+              class="opacity-0 -translate-x-6 transition-[opacity,transform] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] [transition-delay:calc(var(--i)*0.07s)] border-b border-white/[0.06] group-[.open]/menu:opacity-100 group-[.open]/menu:translate-x-0"
+              style={`--i: ${isInternal ? i + 1 : i}`}
+            >
+              <a
+                href={href}
+                class="flex items-baseline gap-4 py-[18px] font-display text-[clamp(26px,6vw,40px)] font-semibold tracking-[-0.01em] text-hero-text/[0.85] no-underline transition-[color,padding-left] duration-200 hover:text-blue-bright hover:pl-2"
+              >
+                <span class="font-mono text-[12px] font-semibold tracking-[0.14em] text-blue-bright opacity-70 shrink-0 mb-1">
+                  0{i + 1}
+                </span>
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <!-- Bottom CTA -->
+    <div
+      class="shrink-0 py-6 px-7 pb-8 border-t border-white/[0.08] flex items-center justify-between flex-wrap gap-4 opacity-0 translate-y-4 transition-[opacity,transform] duration-[400ms] [transition-delay:380ms] group-[.open]/menu:opacity-100 group-[.open]/menu:translate-y-0"
+    >
+      <a
+        href={`${WHATSAPP_URL}&text=Hola%20LujoGas`}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-[10px] py-[13px] px-7 rounded-full bg-gradient-to-br from-whatsapp to-whatsapp-dark text-white font-body text-[15px] font-bold no-underline shadow-[0_4px_24px_theme(colors.whatsapp/30%)] transition-transform duration-[180ms] hover:-translate-y-0.5"
+      >
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+          ></path>
+        </svg>
+        Cotizar ahora
+      </a>
+      <p
+        class="font-mono text-[12px] tracking-[0.14em] uppercase text-hero-muted m-0"
+      >
+        Medellín · Lunes–Sábado · 7am–7pm
+      </p>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  var nav = document.getElementById('site-nav');
+  var band = document.getElementById('hdr-band');
+  var burger = document.getElementById('hamburger');
+  var fsMenu = document.getElementById('fullscreen-menu');
+  var fsClose = document.getElementById('fs-close');
+  var floatWp = document.getElementById('floatWp');
+
+  // Pill nav sliding indicator
+  var navInd = document.getElementById('nav-ind');
+  var navWrap = document.getElementById('nav-wrap');
+  var navLinks = navWrap ? navWrap.querySelectorAll('[data-nav]') : [];
+
+  function moveIndicator(el) {
+    var wRect = navWrap.getBoundingClientRect();
+    var eRect = el.getBoundingClientRect();
+    navInd.style.opacity = '1';
+    navInd.style.left = eRect.left - wRect.left + 'px';
+    navInd.style.width = eRect.width + 'px';
+  }
+  navLinks.forEach(function (a) {
+    a.addEventListener('mouseenter', function () {
+      moveIndicator(a);
+    });
+  });
+  if (navWrap) {
+    navWrap.addEventListener('mouseleave', function () {
+      navInd.style.opacity = '0';
+    });
+  }
+
+  // Scroll: hide band, fix nav to top
+  function onScroll() {
+    var scrolled = window.scrollY > 60;
+    nav.classList.toggle('scrolled', scrolled);
+    if (band) {
+      band.style.transform = scrolled ? 'translateY(-100%)' : '';
+      band.style.opacity = scrolled ? '0' : '';
+      band.style.pointerEvents = scrolled ? 'none' : '';
+    }
+    if (floatWp) floatWp.classList.toggle('show', window.scrollY > 300);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  if (floatWp)
+    setTimeout(function () {
+      floatWp.classList.add('show');
+    }, 3000);
+
+  function openMenu() {
+    fsMenu.classList.add('open');
+    fsMenu.setAttribute('aria-hidden', 'false');
+    burger.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('overflow-hidden');
+  }
+  function closeMenu() {
+    fsMenu.classList.remove('open');
+    fsMenu.setAttribute('aria-hidden', 'true');
+    burger.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('overflow-hidden');
+  }
+
+  burger.addEventListener('click', openMenu);
+  fsClose.addEventListener('click', closeMenu);
+  fsMenu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', closeMenu);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && fsMenu.classList.contains('open')) closeMenu();
+  });
+</script>
