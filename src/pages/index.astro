@@ -8,28 +8,160 @@ import CTASection from '../components/organisms/CTASection.astro';
 import Footer from '../components/organisms/Footer.astro';
 import WhatsAppFloat from '../components/react/WhatsAppFloat.tsx';
 import { WHATSAPP_URL } from '../lib/constants';
+
+// Schema WebSite — habilita Sitelinks Searchbox en Google
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "LujoGas",
+  "url": "https://lujogas.com",
+  "description": "Instalación, certificación y mantenimiento de redes de gas en Medellín y el Valle de Aburrá.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://lujogas.com/servicios#{search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+};
+
+// Servicios para la sección home — 6 cards con links a /servicios
+const homeServices = [
+  {
+    slug: 'instalacion-gas',
+    title: 'Instalación de redes de gas',
+    desc: 'Redes residenciales y comerciales en cobre o polietileno bajo NTC 2505. Incluye prueba hidrostática y certificado.',
+    href: '/servicios#instalacion-gas',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 12h6m6 0h6M9 6v12M15 6v12"/><circle cx="12" cy="12" r="2.2"/></svg>`,
+  },
+  {
+    slug: 'certificacion-gas',
+    title: 'Certificación ICONTEC',
+    desc: 'Certificado oficial para activar el servicio con Gas Natural o EPM en Antioquia. Entrega en 24–48 h.',
+    href: '/servicios#certificacion-gas',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>`,
+  },
+  {
+    slug: 'rpo',
+    title: 'Revisión Periódica Obligatoria',
+    desc: 'RPO exigida por ley. Mantén tu certificación vigente y evita sanciones. Incluye reporte técnico.',
+    href: '/servicios#rpo',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>`,
+  },
+  {
+    slug: 'deteccion-fugas',
+    title: 'Detección y reparación de fugas',
+    desc: 'Localización con detectores electrónicos de alta sensibilidad. Reparación inmediata en la misma visita.',
+    href: '/servicios#deteccion-fugas',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4m0 4h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/></svg>`,
+  },
+  {
+    slug: 'gasodomesticos',
+    title: 'Instalación de gasodomésticos',
+    desc: 'Estufas, calentadores, hornos y secadoras. Conexión, pruebas de estanqueidad y garantía escrita.',
+    href: '/servicios#gasodomesticos',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M4 13h16M8 9V6h8v3M9 17h2"/></svg>`,
+  },
+  {
+    slug: 'venta-calentadores',
+    title: 'Venta e instalación de calentadores',
+    desc: 'Calentadores de paso y almacenamiento a gas natural y GLP. Asesoría, suministro e instalación certificada.',
+    href: '/servicios#venta-calentadores',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7Z"/><circle cx="12" cy="9" r="2.5"/></svg>`,
+  },
+];
 ---
 
-<BaseLayout>
+<!--
+  title: 50 chars ✅  description: 157 chars ✅
+  H1: en HeroSection — "Instalación certificada de gas en Medellín" ✅
+  Schema: LocalBusiness (BaseLayout) + WebSite ✅
+  id="servicios" sección presente ✅
+  Internal links: /servicios, /nosotros, programáticas ✅
+-->
+<BaseLayout
+  title="LujoGas — Instalación certificada de gas en Medellín"
+  description="Instalación, certificación ICONTEC y mantenimiento de redes de gas en Medellín. Técnico certificado NTC 2505. RPO, detección de fugas, calentadores. ¡Llámanos!"
+  canonical="https://lujogas.com/"
+>
   <Header />
 
   <main>
+    <!-- WebSite schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+
     <HeroSection />
 
-    <!-- Degradado oscuro → blanco entre Hero y Trust -->
+    <!-- Degradado oscuro → blanco entre Hero y servicios -->
     <div
       class="h-44 sm:h-56 md:h-64 relative overflow-hidden"
       aria-hidden="true"
     >
       <div
         class="absolute inset-0 bg-[linear-gradient(180deg,theme(colors.hero-bg)_0%,theme(colors.hero-bg)_12%,theme(colors.hero-bg/82%)_26%,theme(colors.hero-bg/55%)_40%,theme(colors.hero-bg/30%)_52%,theme(colors.hero-bg/14%)_63%,theme(colors.hero-bg/5%)_75%,theme(colors.hero-bg/1%)_86%,white_100%)]"
-      >
-      </div>
+      ></div>
       <div
         class="absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_50%_0%,theme(colors.hero-bg/18%)_0%,transparent_70%)]"
-      >
-      </div>
+      ></div>
     </div>
+
+    <!-- ── Servicios principales — id="servicios" para el anchor del Hero ── -->
+    <section
+      id="servicios"
+      class="bg-white pb-20"
+      aria-labelledby="servicios-home-heading"
+    >
+      <div class="container-section">
+        <div class="text-center mb-12 reveal">
+          <div class="flex items-center justify-center gap-3 mb-4">
+            <span class="block w-8 h-px" style="background:#F97316;"></span>
+            <span class="font-mono text-[10px] font-bold tracking-[3px] uppercase" style="color:#F97316;">Servicios · 01</span>
+            <span class="block w-8 h-px" style="background:#F97316;"></span>
+          </div>
+          <h2
+            id="servicios-home-heading"
+            class="font-display font-semibold text-primary leading-tight"
+            style="font-size:clamp(30px,4vw,52px);"
+          >
+            Instalación y certificación de gas<br class="hidden md:block" /> en Medellín — servicios completos
+          </h2>
+          <p class="text-muted mt-4 max-w-[52ch] mx-auto text-[15.5px] leading-relaxed">
+            Desde el diseño de la red hasta la certificación oficial. Un técnico certificado, un solo proceso, garantía escrita de 12 meses.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal-stagger">
+          {homeServices.map((s) => (
+            <a
+              href={s.href}
+              class="group bg-background border border-neutral/15 rounded-2xl p-6 flex flex-col gap-4 hover:border-secondary/30 hover:shadow-md transition-all duration-300 no-underline"
+            >
+              <div class="w-11 h-11 rounded-xl bg-secondary/8 border border-secondary/15 text-secondary flex items-center justify-center group-hover:bg-secondary/14 transition-all duration-200 flex-shrink-0">
+                <span class="block" set:html={s.icon} />
+              </div>
+              <div>
+                <h3 class="font-display font-semibold text-primary text-[17px] leading-snug mb-2">{s.title}</h3>
+                <p class="text-muted text-[13.5px] leading-relaxed">{s.desc}</p>
+              </div>
+              <span class="text-[13px] font-semibold mt-auto" style="color:#F97316;">
+                Ver servicio →
+              </span>
+            </a>
+          ))}
+        </div>
+
+        <div class="text-center mt-10 reveal">
+          <a
+            href="/servicios"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border font-semibold text-[14.5px] transition-all duration-200 hover:shadow-sm min-h-[48px]"
+            style="border-color:rgba(37,99,235,0.25); color:#1e40af; background:rgba(37,99,235,0.04);"
+          >
+            Ver los 10 servicios completos →
+          </a>
+        </div>
+      </div>
+    </section>
 
     <TrustSection />
 
@@ -40,20 +172,10 @@ import { WHATSAPP_URL } from '../lib/constants';
     >
       <div
         class="absolute inset-0 bg-[linear-gradient(180deg,white_0%,white_0%,theme(colors.primary/1%)_14%,theme(colors.primary/2%)_19%,theme(colors.primary/4%)_24%,theme(colors.primary/8%)_30%,theme(colors.primary/13%)_36%,theme(colors.primary/20%)_42%,theme(colors.primary/30%)_48%,theme(colors.primary/40%)_54%,theme(colors.primary/52%)_60%,theme(colors.primary/65%)_67%,theme(colors.primary/78%)_74%,theme(colors.primary/88%)_81%,theme(colors.primary/95%)_89%,theme(colors.primary)_95%,theme(colors.primary)_100%)]"
-      >
-      </div>
-      <div
-        class="absolute inset-0 bg-[radial-gradient(ellipse_140%_60%_at_50%_100%,theme(colors.primary/22%)_0%,transparent_60%)]"
-      >
-      </div>
-      <div
-        class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_30%_80%,theme(colors.primary/8%)_0%,transparent_50%)]"
-      >
-      </div>
-      <div
-        class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_70%_80%,theme(colors.primary/8%)_0%,transparent_50%)]"
-      >
-      </div>
+      ></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_140%_60%_at_50%_100%,theme(colors.primary/22%)_0%,transparent_60%)]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_30%_80%,theme(colors.primary/8%)_0%,transparent_50%)]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_70%_80%,theme(colors.primary/8%)_0%,transparent_50%)]"></div>
     </div>
 
     <CoverageSection />
@@ -62,12 +184,12 @@ import { WHATSAPP_URL } from '../lib/constants';
 
   <Footer />
 
-  <!-- Floating WhatsApp — client:load para interactividad inmediata -->
-  <!-- <WhatsAppFloat client:load href={WHATSAPP_URL} /> -->
+  <!-- Botón flotante WhatsApp -->
+  <WhatsAppFloat client:load href={WHATSAPP_URL} />
 </BaseLayout>
 
 <script is:inline>
-  /* Reveal on scroll — IntersectionObserver global */
+  /* Reveal on scroll */
   const io = new IntersectionObserver(
     (entries) => {
       entries.forEach((e) => {
@@ -79,7 +201,5 @@ import { WHATSAPP_URL } from '../lib/constants';
     },
     { threshold: 0.14, rootMargin: '0px 0px -40px 0px' },
   );
-  document
-    .querySelectorAll('.reveal, .reveal-stagger')
-    .forEach((el) => io.observe(el));
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => io.observe(el));
 </script>

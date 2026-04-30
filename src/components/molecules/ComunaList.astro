@@ -1,33 +1,41 @@
 ---
 const comunas = [
-  'El Poblado',
-  'Laureles',
-  'Belén',
-  'Envigado',
-  'Itagüí',
-  'Sabaneta',
-  'La América',
-  'Robledo',
-  'Bello',
-  'Copacabana',
+  { name: 'El Poblado',  href: '/instalacion-gas-el-poblado' },
+  { name: 'Laureles',    href: '/instalacion-gas-laureles'   },
+  { name: 'Belén',       href: '/instalacion-gas-belen'      },
+  { name: 'Envigado',    href: '/instalacion-gas-envigado'   },
+  { name: 'Itagüí',      href: '/instalacion-gas-itaguei'    },
+  { name: 'Sabaneta',    href: '/instalacion-gas-sabaneta'   },
+  { name: 'La América',  href: '/instalacion-gas-medellin'   },
+  { name: 'Robledo',     href: '/instalacion-gas-robledo'    },
+  { name: 'Bello',       href: '/instalacion-gas-bello'      },
+  { name: 'Copacabana',  href: '/instalacion-gas-copacabana' },
 ];
 ---
 
 <ul
   class="grid grid-cols-2 gap-x-[22px] gap-y-2 mt-5 list-none p-0"
-  aria-label="Zonas de cobertura"
+  aria-label="Zonas de cobertura en Medellín y Valle de Aburrá"
 >
   {
     comunas.map((c, i) => (
-      <li class="flex items-center gap-[10px] text-neutral/65 text-[14.5px] py-[6px] border-b border-neutral/15">
-        <span
+      <li class="border-b border-neutral/15 py-[5px]">
+        <a
+          href={c.href}
           class:list={[
-            'w-[6px] h-[6px] rounded-full shrink-0',
-            i % 3 === 2 ? 'bg-secondary' : 'bg-tertiary',
+            'flex items-center gap-[10px] text-[14.5px] transition-colors duration-150 hover:opacity-80',
+            'text-neutral/65',
           ]}
-          aria-hidden="true"
-        />
-        {c}
+        >
+          <span
+            class:list={[
+              'w-[6px] h-[6px] rounded-full shrink-0',
+              i % 3 === 2 ? 'bg-secondary' : 'bg-tertiary',
+            ]}
+            aria-hidden="true"
+          />
+          Gas en {c.name}
+        </a>
       </li>
     ))
   }

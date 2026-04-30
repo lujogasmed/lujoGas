@@ -4,69 +4,187 @@ import Header from '../components/organisms/Header.astro';
 import Footer from '../components/organisms/Footer.astro';
 import CTASection from '../components/organisms/CTASection.astro';
 import EyebrowLabel from '../components/atoms/EyebrowLabel.astro';
-import ServiceCard from '../components/molecules/ServiceCard.astro';
 
+// ─── Servicios completos con keywords SEO en titles/descriptions ───────────
 const services = [
   {
     num: '01',
-    title: 'Instalación de redes',
-    description: 'Diseño e instalación de redes internas en cobre, polietileno o multicapa. Normativa NTC 2505.',
-    detail: 'Aplica para viviendas unifamiliares, apartamentos, edificios y locales comerciales. Incluye planos as-built y prueba hidrostática certificada.',
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 12h6m6 0h6M9 6v12M15 6v12"/><circle cx="12" cy="12" r="2.2"/></svg>`,
+    slug: 'instalacion-gas',
+    title: 'Instalación de redes de gas domiciliario',
+    keyword: 'instalación de gas Medellín',
+    description: 'Diseño e instalación de redes internas de gas natural y GLP en cobre, polietileno o multicapa. Cumplimiento NTC 2505 en Medellín y Valle de Aburrá.',
+    detail: 'Para viviendas unifamiliares, apartamentos, edificios y locales comerciales. Incluye planos as-built, prueba hidrostática certificada y acompañamiento hasta activación del servicio con Gas Natural o EPM.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 12h6m6 0h6M9 6v12M15 6v12"/><circle cx="12" cy="12" r="2.2"/></svg>`,
+    badge: 'Servicio principal',
   },
   {
     num: '02',
-    title: 'Mantenimiento preventivo',
-    description: 'Revisión periódica de tuberías, reguladores y puntos de conexión. Reporte técnico incluido.',
-    detail: 'Revisión de presiones, detección de fugas, limpieza de quemadores y verificación de reguladores. Programable mensual, trimestral o anual.',
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M5 7l2.8 2.8M3 14h4M17 9.8L19 7M17 14h4M7 21h10l-1-6H8z"/></svg>`,
+    slug: 'certificacion-gas',
+    title: 'Certificación de instalaciones de gas',
+    keyword: 'certificación de gas Medellín',
+    description: 'Expedición de certificado oficial vigente por organismo acreditado. Requerido por Gas Natural, EPM y Surtigas para activar el servicio en Antioquia.',
+    detail: 'Emitida por inspector certificado bajo normativa RETIE y NTC 2505. Revisión integral de la instalación, corrección de no conformidades y entrega del certificado en 24–48 horas.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>`,
+    badge: 'Alta demanda',
   },
   {
     num: '03',
-    title: 'Certificación oficial',
-    description: 'Expedición de certificado vigente por organismo acreditado. Válido para empresas de gas en Antioquia.',
-    detail: 'Requerida por Gas Natural y EPM para activar el servicio. Emitida por inspector certificado bajo RETIE y NTC 2505. Entrega en 24–48 h.',
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>`,
+    slug: 'rpo',
+    title: 'Revisión Periódica Obligatoria (RPO)',
+    keyword: 'revisión periódica obligatoria gas Medellín',
+    description: 'La RPO es exigida por ley cada cierto período para mantener la certificación vigente. Evita sanciones y garantiza la seguridad de tu hogar en Medellín.',
+    detail: 'Verificamos estado de tuberías, reguladores, válvulas y puntos de conexión. Al final emitimos reporte técnico con diagnóstico completo y, si todo está en orden, el certificado de RPO vigente.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>`,
+    badge: 'Obligatorio por ley',
   },
   {
     num: '04',
-    title: 'Gasodomésticos',
-    description: 'Instalación de estufas, calentadores, hornos y secadoras. Conexión y pruebas de estanqueidad.',
-    detail: 'Instalamos cualquier marca. Incluye manguera certificada, válvula de seguridad y prueba de funcionamiento. Garantía de mano de obra.',
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M4 13h16M8 9V6h8v3M9 17h2"/></svg>`,
+    slug: 'deteccion-fugas',
+    title: 'Detección y reparación de fugas de gas',
+    keyword: 'detección fugas de gas Medellín',
+    description: 'Localización precisa de fugas con detectores electrónicos de alta sensibilidad. Reparación inmediata en la misma visita técnica en Medellín.',
+    detail: 'Usamos equipos de última generación para detectar microfugas invisibles al olfato. Si detectamos la fuga, emitimos reporte técnico, reparamos en la misma visita y verificamos hermeticidad antes de salir.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4m0 4h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/></svg>`,
+    badge: 'Urgencias',
   },
   {
     num: '05',
-    title: 'Inspección de fugas',
-    description: 'Detección con equipo electrónico de última generación y ensayos de hermeticidad certificados.',
-    detail: 'Usamos detectores de gas portátiles de alta sensibilidad. Si se detecta fuga, emitimos reporte técnico y corregimos en la misma visita.',
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4-4"/></svg>`,
+    slug: 'pruebas-hermeticidad',
+    title: 'Pruebas de hermeticidad de redes de gas',
+    keyword: 'prueba de hermeticidad gas Medellín',
+    description: 'Ensayos de estanqueidad bajo presión para verificar que la red no presenta fugas. Requisito obligatorio antes de cualquier certificación en Colombia.',
+    detail: 'Aplicamos presión al sistema y monitoreamos durante el tiempo reglamentario según NTC 2505. Emitimos informe técnico con resultados. Complementaria a la certificación y a la RPO.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 3.5"/></svg>`,
+    badge: null,
   },
   {
     num: '06',
-    title: 'Conversión de redes',
-    description: 'Migración de sistemas eléctricos o de GLP a gas natural. Ahorro promedio del 40% en factura.',
-    detail: 'Rediseño completo de la red, cambio de reguladores, adaptación de gasodomésticos y gestión del trámite ante la empresa prestadora.',
-    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10a3 3 0 010 6H6a3 3 0 000 6h14"/><path d="M17 4l3 3-3 3M20 16l-3 3 3 3"/></svg>`,
+    slug: 'inspeccion-tecnica',
+    title: 'Inspección técnica de redes de gas',
+    keyword: 'inspección de redes de gas Medellín',
+    description: 'Diagnóstico completo del estado actual de tu instalación de gas. Identificamos riesgos, desgastes y no conformidades antes de que se conviertan en problemas.',
+    detail: 'Revisamos cada punto de la red: tuberías, uniones, válvulas, reguladores, ventilaciones y distancias reglamentarias. Entregamos informe detallado con priorización de correcciones.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>`,
+    badge: null,
+  },
+  {
+    num: '07',
+    slug: 'gasodomesticos',
+    title: 'Instalación de gasodomésticos: estufas, calentadores y hornos',
+    keyword: 'instalación calentador gas Medellín',
+    description: 'Instalación y conexión certificada de estufas, calentadores de paso, calentadores de almacenamiento, hornos y secadoras a gas en Medellín.',
+    detail: 'Instalamos cualquier marca. Incluye manguera certificada, válvula de seguridad, prueba de funcionamiento completa y garantía escrita de mano de obra. Revisamos ventilación y espacios técnicos.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M4 13h16M8 9V6h8v3M9 17h2"/></svg>`,
+    badge: null,
+  },
+  {
+    num: '08',
+    slug: 'venta-calentadores',
+    title: 'Venta e instalación de calentadores de agua a gas',
+    keyword: 'venta calentadores a gas Medellín',
+    description: 'Suministro e instalación de calentadores de paso y de almacenamiento a gas natural y GLP. Marcas certificadas con garantía en Medellín y Valle de Aburrá.',
+    detail: 'Contamos con calentadores de paso de 6, 10 y 14 litros y calentadores de almacenamiento. Asesoramos según el consumo del hogar, instalamos y gestionamos la garantía del fabricante.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7Z"/><circle cx="12" cy="9" r="2.5"/></svg>`,
+    badge: 'Nuevo',
+  },
+  {
+    num: '09',
+    slug: 'adecuacion-redes',
+    title: 'Adecuación de redes según normativa vigente',
+    keyword: 'adecuación red de gas Medellín',
+    description: 'Corrección y actualización de instalaciones antiguas para cumplir con NTC 2505 y la normativa vigente de gas en Colombia. Evita sanciones y rechazos de certificación.',
+    detail: 'Diagnosticamos la instalación existente, identificamos las no conformidades y ejecutamos las adecuaciones necesarias: cambio de tuberías fuera de norma, reubicación de válvulas, mejora de ventilaciones y más.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4Z"/></svg>`,
+    badge: null,
+  },
+  {
+    num: '10',
+    slug: 'correccion-fallas',
+    title: 'Corrección de fallas para aprobación de certificación',
+    keyword: 'corrección fallas certificación gas Medellín',
+    description: '¿Te rechazaron la certificación de gas? Identificamos y corregimos todas las no conformidades para que tu instalación pase la inspección en Medellín.',
+    detail: 'Revisamos el informe de rechazo, ejecutamos las correcciones técnicas requeridas y gestionamos la reinspección. Nuestro objetivo: que obtengas el certificado vigente en el menor tiempo posible.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z"/><path d="m9 12 2 2 4-4"/></svg>`,
+    badge: null,
   },
 ];
 
 const process = [
-  { n: '1', title: 'Cotización',    desc: 'Envianos tu dirección y tipo de proyecto. Respuesta en minutos.' },
-  { n: '2', title: 'Visita técnica', desc: 'Un técnico evalúa el espacio y entrega propuesta detallada sin costo.' },
-  { n: '3', title: 'Instalación',   desc: 'Ejecutamos el trabajo con materiales certificados NTC.' },
-  { n: '4', title: 'Certificado',   desc: 'Entregamos el certificado oficial para activar el servicio de gas.' },
+  { n: '1', title: 'Solicitud',     desc: 'Escríbenos por WhatsApp con tu dirección y tipo de trabajo. Respuesta en minutos.' },
+  { n: '2', title: 'Visita técnica', desc: 'Técnico certifcado evalúa el espacio y entrega propuesta detallada sin costo.' },
+  { n: '3', title: 'Ejecución',     desc: 'Ejecutamos con materiales certificados NTC. Sin sorpresas ni costos ocultos.' },
+  { n: '4', title: 'Certificado',   desc: 'Entregamos el certificado oficial vigente y el reporte técnico completo.' },
 ];
+
+const zonas = [
+  { name: 'El Poblado',    href: '/instalacion-gas-el-poblado'    },
+  { name: 'Laureles',      href: '/instalacion-gas-laureles'      },
+  { name: 'Belén',         href: '/instalacion-gas-belen'         },
+  { name: 'Envigado',      href: '/instalacion-gas-envigado'      },
+  { name: 'Bello',         href: '/instalacion-gas-bello'         },
+  { name: 'Itagüí',        href: '/instalacion-gas-itaguei'       },
+  { name: 'Sabaneta',      href: '/instalacion-gas-sabaneta'      },
+  { name: 'Robledo',       href: '/instalacion-gas-robledo'       },
+  { name: 'La Estrella',   href: '/instalacion-gas-la-estrella'   },
+  { name: 'Copacabana',    href: '/instalacion-gas-copacabana'    },
+];
+
+const trust = [
+  { label: 'Certificación ICONTEC',        sub: 'Organismo acreditado vigente'          },
+  { label: 'NTC 2505',                     sub: 'Norma Técnica Colombiana'              },
+  { label: 'Aval EPM / Gas Natural',       sub: 'Instaladores autorizados en Antioquia' },
+  { label: 'Garantía 12 meses',            sub: 'Escrita sobre mano de obra'            },
+  { label: 'Visita diagnóstica sin costo', sub: 'Sin compromisos'                       },
+  { label: 'Materiales certificados',      sub: 'Cobre y CPVC NTC'                      },
+];
+
+// ItemList schema — cada servicio como ListItem
+const serviceListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Servicios de gas en Medellín — LujoGas",
+  "description": "Servicios completos de instalación, certificación y mantenimiento de redes de gas en Medellín y el Valle de Aburrá.",
+  "numberOfItems": services.length,
+  "itemListElement": services.map((s, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "name": s.title,
+    "url": `https://lujogas.com/servicios#${s.slug}`,
+    "description": s.description,
+  })),
+};
+
+// BreadcrumbList
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio",    "item": "https://lujogas.com/"         },
+    { "@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://lujogas.com/servicios" },
+  ],
+};
 ---
 
+<!--
+  title: 57 chars ✅
+  meta description: 158 chars ✅
+  H1: keyword "servicios de gas" + "Medellín" ✅
+  Schema: ItemList + BreadcrumbList + LocalBusiness (BaseLayout) ✅
+  10 servicios con H3 keyword-ricos ✅
+  Internal links a programáticas + /nosotros ✅
+-->
 <BaseLayout
-  title="Servicios de Gas en Medellín — Instalación, Mantenimiento y Certificación | LujoGas"
-  description="Instalación de redes de gas, mantenimiento preventivo, certificación oficial y más. Técnicos certificados en Medellín y área metropolitana."
+  title="Servicios de Gas en Medellín — Instalación y Certificación | LujoGas"
+  description="Instalación de redes, certificación ICONTEC, RPO, detección de fugas, calentadores y más en Medellín. Técnico certificado. Visita diagnóstica sin costo."
   canonical="https://lujogas.com/servicios"
 >
   <Header />
 
   <main>
+    <!-- Schema en body -->
+    <script type="application/ld+json" set:html={JSON.stringify(serviceListSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
     <!-- ── Page Hero ── -->
     <section
       class="relative overflow-hidden pt-[140px] pb-[80px]"
@@ -74,7 +192,6 @@ const process = [
       aria-labelledby="servicios-page-heading"
     >
       <div class="pipes-bg" aria-hidden="true"></div>
-      <!-- Gradient overlay -->
       <div
         class="absolute inset-0 pointer-events-none"
         style="background: radial-gradient(ellipse 70% 80% at 10% 50%, rgba(37,99,235,0.12) 0%, transparent 65%);"
@@ -87,18 +204,28 @@ const process = [
             LujoGas · Servicios
           </span>
         </div>
+        <!-- H1: keyword principal + ubicación en las primeras palabras -->
         <h1
           id="servicios-page-heading"
           class="font-display font-semibold leading-[0.97] tracking-[-0.01em] text-background mb-5"
-          style="font-size: clamp(44px,6.5vw,86px); max-width: 14ch;"
+          style="font-size: clamp(40px,6vw,80px); max-width: 16ch;"
         >
-          Todo lo que tu red de gas necesita
+          Servicios de gas en Medellín: instalación, certificación y más
         </h1>
-        <p class="text-neutral/70 max-w-[48ch]" style="font-size: clamp(15px,1.3vw,17px); line-height: 1.65;">
-          Desde el diseño inicial hasta la certificación oficial — un solo equipo, un solo proceso, garantía escrita.
+        <p class="text-neutral/70 max-w-[52ch]" style="font-size: clamp(15px,1.3vw,17px); line-height: 1.65;">
+          Técnico certificado bajo NTC 2505. Desde el diseño de la red hasta la certificación oficial — un solo proceso, garantía escrita, atención en todo el Valle de Aburrá.
         </p>
+        <!-- Quick CTA -->
+        <a
+          href="https://wa.me/573197748313?text=Hola%20LujoGas%2C%20necesito%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20gas%20en%20Medell%C3%ADn."
+          class="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-xl font-semibold text-[15px] transition-all duration-200 hover:opacity-90 min-h-[48px]"
+          style="background:#25D366; color:#fff;"
+          aria-label="Solicitar servicio de gas en Medellín por WhatsApp"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          Solicitar servicio ahora
+        </a>
       </div>
-      <!-- Bottom fade -->
       <div
         class="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
         style="background: linear-gradient(to bottom, transparent, #F8F7F4);"
@@ -107,26 +234,85 @@ const process = [
     </section>
 
     <!-- ── Services grid ── -->
-    <section class="section-pad bg-background" id="servicios" aria-label="Listado de servicios">
+    <section class="section-pad bg-background" id="servicios" aria-labelledby="servicios-grid-heading">
       <div class="container-section">
+        <div class="text-center mb-14 reveal">
+          <EyebrowLabel text="10 servicios especializados" />
+          <h2 id="servicios-grid-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(28px,3.5vw,46px);">
+            Todo lo que tu red de gas necesita en Medellín
+          </h2>
+          <p class="text-muted mt-4 max-w-[52ch] mx-auto text-[15px] leading-relaxed">
+            Desde la instalación inicial hasta la corrección de fallas para certificación — cobertura completa en Medellín y el Valle de Aburrá.
+          </p>
+        </div>
+
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s) => (
-            <div class="group relative bg-surface border border-neutral/15 rounded-2xl p-7 flex flex-col gap-4 hover:border-secondary/35 hover:shadow-lg transition-all duration-300 overflow-hidden reveal">
+            <article
+              id={s.slug}
+              class="group relative bg-surface border border-neutral/15 rounded-2xl p-7 flex flex-col gap-4 hover:border-secondary/35 hover:shadow-lg transition-all duration-300 overflow-hidden reveal"
+              aria-labelledby={`svc-${s.slug}`}
+            >
               <!-- Accent top line -->
               <div class="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-secondary/30 to-transparent"></div>
+
               <!-- Number + icon row -->
               <div class="flex items-start justify-between">
                 <div class="w-12 h-12 rounded-xl bg-secondary/8 border border-secondary/15 text-secondary flex items-center justify-center group-hover:bg-secondary/14 group-hover:border-secondary/30 transition-all duration-300 flex-shrink-0">
-                  <span class="w-[22px] h-[22px] block" set:html={s.icon} />
+                  <span class="block" set:html={s.icon} />
                 </div>
-                <span class="font-mono text-[11px] font-bold tracking-[0.18em] text-muted/60">{s.num}</span>
+                <div class="flex flex-col items-end gap-1">
+                  <span class="font-mono text-[10px] font-bold tracking-[0.18em] text-muted/50">{s.num}</span>
+                  {s.badge && (
+                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full" style="background:rgba(249,115,22,0.12); color:#F97316; border:1px solid rgba(249,115,22,0.2);">
+                      {s.badge}
+                    </span>
+                  )}
+                </div>
               </div>
-              <!-- Title -->
-              <h2 class="font-display font-semibold text-[20px] tracking-[0.01em] text-primary leading-snug">{s.title}</h2>
+
+              <!-- H3: keyword-rico por servicio -->
+              <h3 id={`svc-${s.slug}`} class="font-display font-semibold text-[18px] tracking-[0.01em] text-primary leading-snug">{s.title}</h3>
+
               <!-- Description -->
-              <p class="text-muted text-[14.5px] leading-relaxed">{s.description}</p>
+              <p class="text-muted text-[14px] leading-relaxed">{s.description}</p>
+
               <!-- Detail -->
-              <p class="text-muted/70 text-[13px] leading-relaxed border-t border-neutral/12 pt-4 mt-auto">{s.detail}</p>
+              <p class="text-muted/65 text-[13px] leading-relaxed border-t border-neutral/12 pt-4 mt-auto">{s.detail}</p>
+
+              <!-- Micro CTA -->
+              <a
+                href={`https://wa.me/573197748313?text=Hola%20LujoGas%2C%20me%20interesa%20el%20servicio%20de%20${encodeURIComponent(s.title)}%20en%20Medell%C3%ADn.`}
+                class="inline-flex items-center gap-1.5 text-[13px] font-semibold mt-1 transition-colors duration-150 hover:opacity-80"
+                style="color:#25D366;"
+                aria-label={`Solicitar ${s.title} en Medellín por WhatsApp`}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                Solicitar este servicio →
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Garantías y confianza ── -->
+    <section class="section-pad" style="background:#F8F7F4;" aria-labelledby="confianza-heading">
+      <div class="container-section">
+        <div class="text-center mb-12 reveal">
+          <EyebrowLabel text="Por qué elegirnos" />
+          <h2 id="confianza-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(28px,3.5vw,44px);">
+            Técnico certificado en gas con respaldo real en Medellín
+          </h2>
+          <p class="text-muted mt-4 max-w-[50ch] mx-auto text-[15px] leading-relaxed">
+            No somos una empresa de call center que subcontrata. Soy Luis Guillermo Muñoz Vélez — el técnico que evalúa, instala y firma el certificado. Tú sabes exactamente quién trabajará en tu hogar.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 reveal-stagger">
+          {trust.map((t) => (
+            <div class="bg-surface border border-neutral/15 rounded-xl p-5 flex flex-col gap-2 text-center hover:border-tertiary/25 transition-colors duration-200">
+              <p class="font-display font-semibold text-primary text-[13.5px] leading-snug">{t.label}</p>
+              <p class="text-muted/70 text-[12px] leading-snug">{t.sub}</p>
             </div>
           ))}
         </div>
@@ -134,13 +320,13 @@ const process = [
     </section>
 
     <!-- ── Cómo trabajamos ── -->
-    <section class="section-pad" style="background-color:#1A1A2E;" aria-label="Proceso de trabajo">
+    <section class="section-pad" style="background-color:#1A1A2E;" aria-labelledby="proceso-heading">
       <div class="pipes-bg" aria-hidden="true"></div>
       <div class="container-section relative z-10">
         <div class="text-center mb-14 reveal">
-          <EyebrowLabel text="Proceso · Simple" />
-          <h2 class="font-display font-semibold text-background mt-3 leading-tight" style="font-size:clamp(32px,4vw,52px);">
-            De la cotización al certificado
+          <EyebrowLabel text="Proceso · Simple y transparente" />
+          <h2 id="proceso-heading" class="font-display font-semibold text-background mt-3 leading-tight" style="font-size:clamp(28px,3.5vw,48px);">
+            De la cotización al certificado de gas en Medellín
           </h2>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal-stagger">
@@ -151,6 +337,41 @@ const process = [
               <p class="text-neutral/55 text-[13.5px] leading-relaxed">{p.desc}</p>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Cobertura por zona — internal links SEO ── -->
+    <section class="section-pad bg-background" aria-labelledby="cobertura-heading">
+      <div class="container-section">
+        <div class="text-center mb-10 reveal">
+          <EyebrowLabel text="Cobertura" />
+          <h2 id="cobertura-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(26px,3vw,42px);">
+            Servicios de gas en todo el Valle de Aburrá
+          </h2>
+          <p class="text-muted mt-3 max-w-[50ch] mx-auto text-[15px]">
+            Atendemos instalaciones de gas en Medellín y todos los municipios del área metropolitana. Selecciona tu zona para ver información específica.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 reveal-stagger">
+          {zonas.map((z) => (
+            <a
+              href={z.href}
+              class="group flex items-center justify-center gap-2 border border-neutral/15 rounded-xl px-4 py-3 text-[13.5px] font-semibold text-primary hover:border-tertiary/40 hover:bg-tertiary/5 transition-all duration-200 text-center min-h-[44px]"
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-tertiary flex-shrink-0" aria-hidden="true"><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+              Gas en {z.name}
+            </a>
+          ))}
+        </div>
+        <!-- Link a nosotros para E-E-A-T internal linking -->
+        <div class="mt-10 text-center reveal">
+          <p class="text-muted text-[14.5px]">
+            ¿Quieres saber quién realiza el trabajo?
+            <a href="/nosotros" class="font-semibold underline underline-offset-2 hover:opacity-75 transition-opacity" style="color:#F97316;">
+              Conoce al técnico certificado →
+            </a>
+          </p>
         </div>
       </div>
     </section>

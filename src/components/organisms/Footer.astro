@@ -1,16 +1,31 @@
 ---
 import Logo from '../atoms/Logo.astro';
+
+const serviceLinks = [
+  { label: 'Instalación de redes de gas',   href: '/servicios#instalacion-gas'    },
+  { label: 'Certificación de gas',           href: '/servicios#certificacion-gas'  },
+  { label: 'Revisión Periódica (RPO)',       href: '/servicios#rpo'                },
+  { label: 'Detección de fugas',             href: '/servicios#deteccion-fugas'    },
+  { label: 'Calentadores a gas',             href: '/servicios#venta-calentadores' },
+];
+
+const zonaLinks = [
+  { label: 'Gas en El Poblado',  href: '/instalacion-gas-el-poblado' },
+  { label: 'Gas en Laureles',    href: '/instalacion-gas-laureles'   },
+  { label: 'Gas en Envigado',    href: '/instalacion-gas-envigado'   },
+  { label: 'Gas en Itagüí',      href: '/instalacion-gas-itaguei'    },
+  { label: 'Gas en Sabaneta',    href: '/instalacion-gas-sabaneta'   },
+];
 ---
 
 <footer class="bg-primary text-background border-t border-neutral/[12%] pt-14 pb-10" aria-label="Pie de página">
   <div class="container-section">
 
-    <!-- ── Logo row — full width, alone ── -->
+    <!-- ── Logo + descripción ── -->
     <div class="mb-10">
       <Logo />
       <p class="text-neutral/60 mt-4 max-w-[38ch] text-[14px] leading-relaxed">
-        Instalación y certificación de redes de gas en Medellín y el Valle de Aburrá.
-        +15 años asegurando hogares y comercios.
+        Técnico certificado en instalación y certificación de redes de gas en Medellín y el Valle de Aburrá. NTC 2505 · ICONTEC.
       </p>
     </div>
 
@@ -23,34 +38,66 @@ import Logo from '../atoms/Logo.astro';
       <span class="absolute top-[2px] right-0 w-[14px] h-2 bg-neutral/30 rounded-[2px]"></span>
     </div>
 
-    <!-- ── Link columns row — 3 equal cols ── -->
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-10">
+    <!-- ── Link columns ── -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10">
 
-      <!-- Servicios -->
+      <!-- Servicios — links reales a /servicios#slug -->
       <div>
         <h4 class="font-display text-[13px] tracking-[0.22em] uppercase text-background mb-4">Servicios</h4>
         <ul class="flex flex-col gap-[9px] list-none p-0">
-          {['Redes residenciales','Redes comerciales','Certificación','Mantenimiento','Inspección de fugas'].map(item => (
+          {serviceLinks.map(item => (
             <li>
-              <a href="#servicios" class="text-neutral/60 text-[13.5px] transition-all duration-200 hover:text-tertiary hover:translate-x-[3px] inline-block">
-                {item}
+              <a
+                href={item.href}
+                class="text-neutral/60 text-[13.5px] transition-all duration-200 hover:text-tertiary hover:translate-x-[3px] inline-block"
+              >
+                {item.label}
               </a>
             </li>
           ))}
         </ul>
       </div>
 
-      <!-- Cobertura -->
+      <!-- Cobertura — links a páginas programáticas (internal linking SEO) -->
       <div>
         <h4 class="font-display text-[13px] tracking-[0.22em] uppercase text-background mb-4">Cobertura</h4>
         <ul class="flex flex-col gap-[9px] list-none p-0">
-          {['El Poblado','Laureles · Belén','Envigado · Itagüí','Sabaneta · Bello','Valle de Aburrá'].map(item => (
-            <li class="text-neutral/60 text-[13.5px]">{item}</li>
+          {zonaLinks.map(item => (
+            <li>
+              <a
+                href={item.href}
+                class="text-neutral/60 text-[13.5px] transition-all duration-200 hover:text-tertiary hover:translate-x-[3px] inline-block"
+              >
+                {item.label}
+              </a>
+            </li>
           ))}
         </ul>
       </div>
 
-      <!-- Contacto — en mobile ocupa las 2 cols -->
+      <!-- Empresa -->
+      <div>
+        <h4 class="font-display text-[13px] tracking-[0.22em] uppercase text-background mb-4">Empresa</h4>
+        <ul class="flex flex-col gap-[9px] list-none p-0">
+          <li>
+            <a href="/" class="text-neutral/60 text-[13.5px] transition-all duration-200 hover:text-tertiary hover:translate-x-[3px] inline-block">
+              Inicio
+            </a>
+          </li>
+          <li>
+            <a href="/nosotros" class="text-neutral/60 text-[13.5px] transition-all duration-200 hover:text-tertiary hover:translate-x-[3px] inline-block">
+              Nosotros
+            </a>
+          </li>
+          <li>
+            <a href="/servicios" class="text-neutral/60 text-[13.5px] transition-all duration-200 hover:text-tertiary hover:translate-x-[3px] inline-block">
+              Servicios
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contacto — NAP (Name, Address, Phone) — crítico para SEO local -->
       <div class="col-span-2 md:col-span-1">
         <h4 class="font-display text-[13px] tracking-[0.22em] uppercase text-background mb-4">Contacto</h4>
         <address class="not-italic">
@@ -65,23 +112,17 @@ import Logo from '../atoms/Logo.astro';
                 WhatsApp directo
               </a>
             </li>
-            <li class="text-neutral/60 text-[13.5px]">Medellín, Antioquia</li>
+            <li class="text-neutral/60 text-[13.5px]">Medellín, Antioquia, Colombia</li>
             <li class="text-neutral/60 text-[13.5px]">Lunes–Sábado · 7am–7pm</li>
           </ul>
         </address>
       </div>
     </div>
 
-    <!-- SEO text — hidden visually but indexable -->
-    <p class="mt-10 text-neutral/30 text-[11.5px] tracking-[0.05em] leading-[1.9]">
-      Instalación de gas Medellín · Certificación de redes de gas Antioquia ·
-      Gasodomésticos Medellín · Mantenimiento redes de gas · Inspección de fugas El Poblado
-    </p>
-
     <!-- Legal -->
-    <div class="mt-6 pt-6 border-t border-neutral/10 flex flex-col sm:flex-row sm:justify-between gap-2 text-neutral/45 text-[12px]">
+    <div class="mt-10 pt-6 border-t border-neutral/10 flex flex-col sm:flex-row sm:justify-between gap-2 text-neutral/45 text-[12px]">
       <span>© 2026 LujoGas — Todos los derechos reservados.</span>
-      <span>Diseñado en Medellín · Colombia</span>
+      <span>Medellín, Antioquia · Colombia</span>
     </div>
 
   </div>
