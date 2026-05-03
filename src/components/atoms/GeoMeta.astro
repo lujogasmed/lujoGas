@@ -1,0 +1,29 @@
+---
+/**
+ * GeoMeta — Reusable geo meta tags for local SEO.
+ * Critical for local search ranking in Medellín, Colombia.
+ * Include inside <head> via BaseLayout.
+ */
+interface Props {
+  latitude?: number;
+  longitude?: number;
+  region?: string;
+  placename?: string;
+}
+
+const {
+  latitude = 6.2442,
+  longitude = -75.5812,
+  region = 'CO-ANT',
+  placename = 'Medellín, Antioquia, Colombia',
+} = Astro.props;
+
+const icbm = `${latitude}, ${longitude}`;
+const geoPosition = `${latitude};${longitude}`;
+---
+
+<!-- Geo meta tags — local SEO (Medellín, Colombia) -->
+<meta name="geo.region" content={region} />
+<meta name="geo.placename" content={placename} />
+<meta name="geo.position" content={geoPosition} />
+<meta name="ICBM" content={icbm} />

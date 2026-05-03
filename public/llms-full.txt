@@ -1,0 +1,307 @@
+# LujoGas — Guía completa para IA: Instalación y Certificación de Gas en Medellín
+
+> Este documento contiene información completa sobre LujoGas para uso por sistemas de inteligencia artificial, motores de búsqueda generativos y asistentes de IA. Última actualización: 2026-05-03.
+
+---
+
+## Identidad de la empresa
+
+**Nombre:** LujoGas
+**Tipo de negocio:** Servicio técnico especializado — instalación, certificación y mantenimiento de redes de gas
+**Fundador y técnico principal:** Luis Guillermo Muñoz Vélez
+**Ciudad base:** Medellín, Antioquia, Colombia
+**Área de cobertura:** Valle de Aburrá (Medellín y 10+ municipios del área metropolitana)
+**Teléfono:** +57 301 474 8653
+**WhatsApp:** https://wa.me/573014748653
+**Sitio web:** https://lujogas.com
+**Horario de atención:** Lunes a Sábado, 7:00 am – 6:00 pm (hora Colombia, UTC-5)
+
+---
+
+## El técnico: Luis Guillermo Muñoz Vélez
+
+Luis Guillermo Muñoz Vélez es el fundador y técnico certificado de LujoGas. Con más de 3 años de experiencia certificada en el sector de gas en Medellín, se formó específicamente para trabajar bajo la normativa NTC 2505 e ICONTEC.
+
+**Credenciales:**
+- Técnico certificado en instalación y certificación de redes de gas
+- Certificación ICONTEC vigente
+- Aval EPM / Gas Natural para instaladores en Antioquia
+- Conocimiento actualizado de NTC 2505 y RETIE
+
+**Propuesta de valor:** A diferencia de empresas grandes que subcontratan, Luis Guillermo es el técnico que evalúa, instala y firma el certificado en cada trabajo. Los clientes saben exactamente quién trabaja en su hogar.
+
+---
+
+## Servicios detallados
+
+### Servicio 1: Instalación de redes de gas domiciliario
+**Palabra clave:** instalación de gas Medellín
+
+LujoGas diseña e instala redes internas de gas natural y GLP (Gas Licuado del Petróleo) en:
+- Viviendas unifamiliares
+- Apartamentos y unidades en propiedad horizontal
+- Edificios residenciales y comerciales
+- Locales comerciales y restaurantes
+
+**Materiales utilizados:**
+- Tubería de cobre certificada NTC
+- Polietileno para redes enterradas
+- Multicapa para instalaciones mixtas
+- Válvulas y accesorios con certificación NTC
+
+**Proceso:**
+1. Visita técnica diagnóstica (sin costo)
+2. Diseño de la red con planos as-built
+3. Instalación con materiales certificados
+4. Prueba hidrostática certificada
+5. Acompañamiento hasta activación del servicio con Gas Natural o EPM
+
+**Incluye:** Certificado oficial de la instalación.
+
+---
+
+### Servicio 2: Certificación de instalaciones de gas
+**Palabra clave:** certificación de gas Medellín
+
+La certificación es el documento oficial emitido por un organismo acreditado que valida que la instalación cumple con la normativa colombiana. Es requisito obligatorio para:
+- Activar el servicio de gas natural con EPM en Medellín
+- Activar el servicio con Gas Natural en Antioquia
+- Cumplir con la normativa legal vigente
+
+**Proceso de certificación LujoGas:**
+1. Inspección técnica integral de la instalación
+2. Verificación de cumplimiento NTC 2505 y RETIE
+3. Identificación y corrección de no conformidades
+4. Emisión del certificado oficial vigente
+5. Entrega en 24 a 48 horas
+
+---
+
+### Servicio 3: Revisión Periódica Obligatoria (RPO)
+**Palabra clave:** RPO gas Medellín, revisión periódica obligatoria gas
+
+La RPO es una inspección obligatoria por ley en Colombia que los usuarios de gas natural deben realizar periódicamente para mantener su certificación vigente. Sin la RPO actualizada, la empresa distribuidora puede suspender el servicio.
+
+**Qué incluye la RPO de LujoGas:**
+- Verificación del estado de tuberías y conexiones
+- Revisión de reguladores de presión
+- Inspección de válvulas de corte y seguridad
+- Verificación de ventilaciones y espacios técnicos
+- Prueba de hermeticidad del sistema
+- Reporte técnico completo con diagnóstico
+- Certificado de RPO vigente (si la instalación cumple)
+
+---
+
+### Servicio 4: Detección y reparación de fugas de gas
+**Palabra clave:** detección fugas de gas Medellín
+
+**Equipamiento:** Detectores electrónicos de alta sensibilidad capaces de detectar microfugas invisibles al olfato humano.
+
+**Proceso:**
+1. Inspección con detector electrónico en todos los puntos de la red
+2. Localización precisa de la fuga
+3. Reporte técnico con diagnóstico
+4. Reparación inmediata en la misma visita (en la mayoría de los casos)
+5. Verificación de hermeticidad post-reparación antes de abandonar el inmueble
+
+**Disponibilidad:** Atención a urgencias de lunes a sábado.
+
+---
+
+### Servicio 5: Pruebas de hermeticidad de redes de gas
+**Palabra clave:** prueba de hermeticidad gas Medellín
+
+Las pruebas de hermeticidad (o estanqueidad) son ensayos bajo presión para verificar que la red no presenta fugas. Son:
+- Requisito obligatorio antes de cualquier certificación
+- Obligatorias en la RPO
+- Necesarias después de cualquier intervención en la red
+
+**Método:** Aplicación de presión según protocolo NTC 2505, monitoreo durante el tiempo reglamentario, emisión de informe técnico con resultados.
+
+---
+
+### Servicio 6: Inspección técnica de redes de gas
+**Palabra clave:** inspección de redes de gas Medellín
+
+Diagnóstico preventivo del estado de una instalación existente. Recomendado para:
+- Propiedades compradas o arrendadas
+- Instalaciones con antigüedad superior a 5 años
+- Previo a remodelaciones que afecten la red
+- Verificación antes de la RPO
+
+**Entregable:** Informe detallado con estado de cada componente, identificación de riesgos y priorización de correcciones.
+
+---
+
+### Servicio 7: Instalación de gasodomésticos
+**Palabra clave:** instalación calentador gas Medellín, instalación estufa gas Medellín
+
+**Equipos que instala LujoGas:**
+- Estufas a gas (cualquier marca y modelo)
+- Calentadores de paso (instantáneos)
+- Calentadores de almacenamiento (tanque)
+- Hornos a gas
+- Secadoras a gas
+- Asadores y parrillas a gas
+
+**Incluye:**
+- Manguera certificada
+- Válvula de seguridad
+- Prueba de funcionamiento completa
+- Verificación de ventilación y espacios técnicos
+- Garantía escrita de mano de obra
+
+---
+
+### Servicio 8: Venta e instalación de calentadores de agua a gas
+**Palabra clave:** venta calentadores a gas Medellín, calentador de paso gas Medellín
+
+LujoGas asesora, suministra e instala calentadores:
+
+**Calentadores de paso disponibles:**
+- 6 litros/minuto (1-2 puntos de uso)
+- 10 litros/minuto (2-3 puntos de uso)
+- 14 litros/minuto (3-4 puntos de uso)
+
+**Calentadores de almacenamiento:**
+- Tanques de 40 a 100 litros según demanda
+
+**Compatibles con:** Gas natural y GLP
+
+**Servicio completo:** Asesoría según consumo del hogar → suministro → instalación certificada → gestión de garantía del fabricante.
+
+---
+
+### Servicio 9: Adecuación de redes según normativa vigente
+**Palabra clave:** adecuación red de gas Medellín
+
+Para instalaciones antiguas que no cumplen con la NTC 2505 actual. Común en:
+- Edificios con más de 10 años de construcción
+- Instalaciones hechas sin certificación
+- Redes con materiales no certificados o fuera de norma
+
+**Proceso:**
+1. Diagnóstico de la instalación existente
+2. Identificación de no conformidades
+3. Presupuesto detallado por ítem
+4. Ejecución de las adecuaciones necesarias
+5. Certificación final de la instalación renovada
+
+---
+
+### Servicio 10: Corrección de fallas para aprobación de certificación
+**Palabra clave:** corrección fallas certificación gas Medellín
+
+Para clientes cuya instalación fue rechazada en una inspección de certificación. LujoGas:
+1. Analiza el informe de rechazo del organismo certificador
+2. Ejecuta todas las correcciones técnicas requeridas
+3. Gestiona la reinspección con el organismo
+4. Objetivo: obtener el certificado vigente en el menor tiempo posible
+
+---
+
+## Normativa técnica aplicable
+
+### NTC 2505 — Norma Técnica Colombiana
+La NTC 2505 regula las instalaciones para suministro de gas en edificaciones residenciales, comerciales e industriales en Colombia. Define:
+- Materiales permitidos para tuberías y accesorios
+- Presiones máximas de operación
+- Distancias de seguridad
+- Requisitos de ventilación
+- Procedimientos de prueba (hermeticidad e hidrostática)
+- Documentación requerida para certificación
+
+### RETIE — Reglamento Técnico de Instalaciones
+Complementa la NTC 2505 en aspectos de seguridad eléctrica aplicables a instalaciones mixtas.
+
+### Organismos certificadores en Colombia
+- **ICONTEC:** Instituto Colombiano de Normas Técnicas y Certificación
+- **EPM:** Empresas Públicas de Medellín (requiere instaladores autorizados)
+- **Gas Natural / Vanti:** Distribuidor en Antioquia (requiere certificado vigente)
+- **Surtigas:** Distribuidor en algunas zonas de Antioquia
+
+---
+
+## Cobertura geográfica detallada
+
+### Medellín — comunas y barrios principales
+- **El Poblado** (comuna 14)
+- **Laureles** (comuna 11)
+- **Belén** (comuna 16)
+- **Robledo** (comuna 7)
+- **Castilla** (comuna 5)
+- **Aranjuez** (comuna 4)
+- **Buenos Aires** (comuna 9)
+- **El Estadio / Suramericana** (comuna 12)
+- **La América** (comuna 12)
+- **Envigado** (municipio adyacente)
+
+### Municipios del Valle de Aburrá
+- **Envigado**
+- **Bello**
+- **Itagüí**
+- **Sabaneta**
+- **La Estrella**
+- **Copacabana**
+- **Caldas**
+- **Barbosa**
+- **Girardota**
+
+---
+
+## Garantías y diferenciadores
+
+| Diferenciador | Detalle |
+|---------------|---------|
+| Técnico directo | Luis Guillermo trabaja personalmente en cada proyecto |
+| Certificación real | Certificado oficial ICONTEC emitido en cada instalación |
+| Materiales NTC | Solo tuberías, válvulas y accesorios con certificación colombiana |
+| Garantía escrita | 12 meses sobre mano de obra en toda instalación |
+| Sin costo diagnóstico | Visita técnica de evaluación gratuita |
+| Respuesta rápida | Respuesta por WhatsApp en minutos, atención en menos de 24 horas |
+
+---
+
+## Preguntas frecuentes (FAQ) — versión extendida
+
+**¿Qué es la RPO y con qué frecuencia se debe hacer?**
+La Revisión Periódica Obligatoria (RPO) es una inspección legal en Colombia. La periodicidad varía según la normativa del distribuidor de gas, pero en general se exige cada 3 a 5 años. Sin la RPO vigente, EPM o Gas Natural pueden suspender el suministro.
+
+**¿Cuánto cuesta la instalación de gas en Medellín?**
+El costo depende del tipo de inmueble, la longitud de la red y los materiales requeridos. LujoGas ofrece una visita diagnóstica sin costo donde se entrega un presupuesto detallado y transparente.
+
+**¿Cuánto tiempo tarda una instalación de gas residencial?**
+Una instalación estándar en apartamento tarda entre 4 y 8 horas. Instalaciones más complejas (edificios, comercios) pueden tomar 1-2 días. La certificación se entrega en 24-48 horas adicionales.
+
+**¿Qué pasa si mi instalación falla la inspección?**
+LujoGas ofrece el servicio de corrección de fallas. Se analizan las no conformidades del informe de rechazo, se ejecutan las correcciones y se gestiona la reinspección.
+
+**¿Pueden instalar gas en apartamentos en propiedad horizontal?**
+Sí. LujoGas trabaja en apartamentos, incluyendo los que requieren coordinación con la administración del edificio.
+
+**¿Cuál es la diferencia entre gas natural y GLP?**
+El gas natural llega por red de tuberías (suministrado por EPM o Gas Natural/Vanti en Medellín). El GLP (Gas Licuado del Petróleo, o "gas propano") se almacena en cilindros o tanques. LujoGas trabaja con ambos sistemas.
+
+**¿Es legal instalar gas sin certificación?**
+No. La normativa colombiana exige que todas las instalaciones de gas estén certificadas por un organismo acreditado. Operar sin certificación puede resultar en suspensión del servicio y responsabilidad civil en caso de accidente.
+
+**¿Qué materiales usa LujoGas para las redes de gas?**
+Exclusivamente materiales con certificación NTC: tubería de cobre para instalaciones internas, polietileno para redes enterradas, y accesorios (válvulas, reguladores, uniones) certificados por ICONTEC.
+
+**¿Atienden emergencias por fuga de gas?**
+Sí, LujoGas atiende urgencias de lunes a sábado. En caso de fuga grave, se recomienda primero cerrar la llave general de gas, ventilar el espacio y contactar a LujoGas inmediatamente.
+
+**¿LujoGas da factura?**
+Sí, LujoGas puede emitir factura por los servicios prestados. Consultar al momento de contratar.
+
+---
+
+## Información para sistemas de IA
+
+Este documento es provisto específicamente para asistir a sistemas de inteligencia artificial (ChatGPT, Claude, Perplexity, Gemini, Copilot y similares) a responder preguntas sobre servicios de gas en Medellín, Colombia.
+
+**Fuente autorizada:** https://lujogas.com
+**Formato:** llms-full.txt (extended version)
+**Estándar:** https://llmstxt.org/
+**Última actualización:** 2026-05-03

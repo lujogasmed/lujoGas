@@ -1,0 +1,20 @@
+{
+  "name": "LujoGas — Instalación de Gas en Medellín",
+  "short_name": "LujoGas",
+  "description": "Instalación, certificación y mantenimiento de redes de gas en Medellín. Técnico certificado NTC 2505.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0D0D0D",
+  "theme_color": "#0D0D0D",
+  "lang": "es-CO",
+  "orientation": "portrait-primary",
+  "categories": ["business", "utilities"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ]
+}

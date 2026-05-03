@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { SITE } from '../lib/constants';
 import { localBusinessSchema } from '../lib/schema';
+import GeoMeta from '../components/atoms/GeoMeta.astro';
 
 interface Props {
   title?: string;
@@ -16,6 +17,8 @@ const {
   canonical = Astro.site?.toString() ?? 'https://lujogas.com/',
   ogImage = '/og-image.jpg',
 } = Astro.props;
+
+const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://lujogas.com${ogImage}`;
 ---
 
 <!doctype html>
@@ -25,29 +28,56 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- SEO -->
+    <!-- SEO primary -->
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#0D0D0D" />
+
+    <!-- hreflang — es-CO -->
+    <link rel="alternate" hreflang="es-CO" href={canonical} />
+    <link rel="alternate" hreflang="es" href={canonical} />
+    <link rel="alternate" hreflang="x-default" href={canonical} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="LujoGas" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={ogImageAbsolute} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="LujoGas — Instalación certificada de gas en Medellín" />
     <meta property="og:locale" content="es_CO" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={ogImageAbsolute} />
+    <meta name="twitter:image:alt" content="LujoGas — Instalación certificada de gas en Medellín" />
 
-    <!-- Fonts -->
+    <!-- Geo meta tags — local SEO crítico -->
+    <GeoMeta />
+
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- GTM preconnect — TODO: uncomment when GTM ID is set -->
+    <!-- <link rel="preconnect" href="https://www.googletagmanager.com" /> -->
+    <!-- <link rel="dns-prefetch" href="https://www.googletagmanager.com" /> -->
+    <!-- <link rel="dns-prefetch" href="https://www.google-analytics.com" /> -->
+
+    <!-- Google Fonts — preload critical weights -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap"
+    />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap"
@@ -55,15 +85,18 @@ const {
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
 
-    <!-- JSON-LD Schema -->
+    <!-- JSON-LD LocalBusiness Schema -->
     <script
       type="application/ld+json"
       set:html={JSON.stringify(localBusinessSchema)}
     />
 
     <!-- GTM Head — TODO: reemplazar GTM-XXXXXXX con ID real -->
-    <!-- <script>(function(w,d,s,l,i){...})(window,document,'script','dataLayer','GTM-XXXXXXX');</script> -->
+    <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script> -->
   </head>
 
   <body>

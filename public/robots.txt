@@ -1,4 +1,27 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_astro/
+Disallow: /cdn-cgi/
 
-Sitemap: https://lujogas.com/sitemap-index.xml
+# Allow AI crawlers for GEO (Generative Engine Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap
+Sitemap: https://lujogas.com/sitemap.xml

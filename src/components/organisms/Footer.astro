@@ -1,5 +1,6 @@
 ---
 import Logo from '../atoms/Logo.astro';
+import { SITE, WHATSAPP_NUMBER } from '../../lib/constants';
 
 const serviceLinks = [
   { label: 'Instalación de redes de gas',   href: '/servicios#instalacion-gas'    },
@@ -103,12 +104,12 @@ const zonaLinks = [
         <address class="not-italic">
           <ul class="flex flex-col gap-[9px] list-none p-0">
             <li>
-              <a href="tel:+573014748653" class="text-neutral/60 text-[13.5px] transition-all duration-200 hover:text-tertiary hover:translate-x-[3px] inline-block">
-                301 474 8653
+              <a href={`tel:${SITE.phone}`} class="text-neutral/60 text-[13.5px] transition-all duration-200 hover:text-tertiary hover:translate-x-[3px] inline-block">
+                {SITE.phone.replace('+57', '').replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3')}
               </a>
             </li>
             <li>
-              <a href="https://wa.me/573014748653" target="_blank" rel="noopener" class="text-neutral/60 text-[13.5px] transition-all duration-200 hover:text-tertiary hover:translate-x-[3px] inline-block">
+              <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener" class="text-neutral/60 text-[13.5px] transition-all duration-200 hover:text-tertiary hover:translate-x-[3px] inline-block">
                 WhatsApp directo
               </a>
             </li>
