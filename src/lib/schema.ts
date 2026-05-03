@@ -38,7 +38,7 @@ export const localBusinessSchema = {
   hasMap: 'https://maps.google.com/?q=Medellín,Antioquia,Colombia',
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+573197748313',
+    telephone: '+573014748653',
     contactType: 'customer service',
     availableLanguage: 'Spanish',
     contactOption: 'TollFree',

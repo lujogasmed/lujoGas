@@ -4,6 +4,7 @@ import Header from '../components/organisms/Header.astro';
 import Footer from '../components/organisms/Footer.astro';
 import CTASection from '../components/organisms/CTASection.astro';
 import EyebrowLabel from '../components/atoms/EyebrowLabel.astro';
+import { WHATSAPP_NUMBER } from '../lib/constants';
 
 // ─── Servicios completos con keywords SEO en titles/descriptions ───────────
 const services = [
@@ -217,7 +218,7 @@ const breadcrumbSchema = {
         </p>
         <!-- Quick CTA -->
         <a
-          href="https://wa.me/573197748313?text=Hola%20LujoGas%2C%20necesito%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20gas%20en%20Medell%C3%ADn."
+          href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20LujoGas%2C%20necesito%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20gas%20en%20Medell%C3%ADn.`}
           class="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-xl font-semibold text-[15px] transition-all duration-200 hover:opacity-90 min-h-[48px]"
           style="background:#25D366; color:#fff;"
           aria-label="Solicitar servicio de gas en Medellín por WhatsApp"
@@ -282,7 +283,7 @@ const breadcrumbSchema = {
 
               <!-- Micro CTA -->
               <a
-                href={`https://wa.me/573197748313?text=Hola%20LujoGas%2C%20me%20interesa%20el%20servicio%20de%20${encodeURIComponent(s.title)}%20en%20Medell%C3%ADn.`}
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20LujoGas%2C%20me%20interesa%20el%20servicio%20de%20${encodeURIComponent(s.title)}%20en%20Medell%C3%ADn.`}
                 class="inline-flex items-center gap-1.5 text-[13px] font-semibold mt-1 transition-colors duration-150 hover:opacity-80"
                 style="color:#25D366;"
                 aria-label={`Solicitar ${s.title} en Medellín por WhatsApp`}

@@ -5,6 +5,7 @@ import Footer from '../components/organisms/Footer.astro';
 import CTASection from '../components/organisms/CTASection.astro';
 import EyebrowLabel from '../components/atoms/EyebrowLabel.astro';
 import StatCounter from '../components/molecules/StatCounter.astro';
+import { SITE } from '../lib/constants';
 
 const stats = [
   { value: 3,   suffix: '+', label: 'Años en instalación de gas' },
@@ -75,7 +76,7 @@ const founderSchema = {
     "@type": "LocalBusiness",
     "name": "LujoGas",
     "url": "https://lujogas.com",
-    "telephone": "+573197748313"
+    "telephone": SITE.phone
   },
   "knowsAbout": [
     "Instalación de redes de gas natural en Medellín",
@@ -90,7 +91,7 @@ const founderSchema = {
     "addressRegion": "Antioquia",
     "addressCountry": "CO"
   },
-  "telephone": "+573197748313",
+  "telephone": SITE.phone,
   "url": "https://lujogas.com/nosotros"
 };
 
