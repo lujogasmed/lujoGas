@@ -11,19 +11,20 @@ import { WHATSAPP_URL } from '../lib/constants';
 
 // Schema WebSite — habilita Sitelinks Searchbox en Google
 const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "LujoGas",
-  "url": "https://lujogas.com",
-  "description": "Instalación, certificación y mantenimiento de redes de gas en Medellín y el Valle de Aburrá.",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": "https://lujogas.com/servicios#{search_term_string}"
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'LujoGas',
+  url: 'https://lujogas.com',
+  description:
+    'Instalación, certificación y mantenimiento de redes de gas en Medellín y el Valle de Aburrá.',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: 'https://lujogas.com/servicios#{search_term_string}',
     },
-    "query-input": "required name=search_term_string"
-  }
+    'query-input': 'required name=search_term_string',
+  },
 };
 
 // Servicios para la sección home — 6 cards con links a /servicios
@@ -59,7 +60,7 @@ const homeServices = [
   {
     slug: 'gasodomesticos',
     title: 'Instalación de gasodomésticos',
-    desc: 'Estufas, calentadores, hornos y secadoras. Conexión, pruebas de estanqueidad y garantía escrita.',
+    desc: 'Estufas, calentadores, hornos y secadoras. Conexión certificada y pruebas de estanqueidad.',
     href: '/servicios#gasodomesticos',
     icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M4 13h16M8 9V6h8v3M9 17h2"/></svg>`,
   },
@@ -73,13 +74,6 @@ const homeServices = [
 ];
 ---
 
-<!--
-  title: 50 chars ✅  description: 157 chars ✅
-  H1: en HeroSection — "Instalación certificada de gas en Medellín" ✅
-  Schema: LocalBusiness (BaseLayout) + WebSite ✅
-  id="servicios" sección presente ✅
-  Internal links: /servicios, /nosotros, programáticas ✅
--->
 <BaseLayout
   title="LujoGas — Instalación certificada de gas en Medellín"
   description="Instalación, certificación ICONTEC y mantenimiento de redes de gas en Medellín. Técnico certificado NTC 2505. RPO, detección de fugas, calentadores. ¡Llámanos!"
@@ -89,7 +83,10 @@ const homeServices = [
 
   <main>
     <!-- WebSite schema -->
-    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(websiteSchema)}
+    />
 
     <HeroSection />
 
@@ -100,10 +97,12 @@ const homeServices = [
     >
       <div
         class="absolute inset-0 bg-[linear-gradient(180deg,theme(colors.hero-bg)_0%,theme(colors.hero-bg)_12%,theme(colors.hero-bg/82%)_26%,theme(colors.hero-bg/55%)_40%,theme(colors.hero-bg/30%)_52%,theme(colors.hero-bg/14%)_63%,theme(colors.hero-bg/5%)_75%,theme(colors.hero-bg/1%)_86%,white_100%)]"
-      ></div>
+      >
+      </div>
       <div
         class="absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_50%_0%,theme(colors.hero-bg/18%)_0%,transparent_70%)]"
-      ></div>
+      >
+      </div>
     </div>
 
     <!-- ── Servicios principales — id="servicios" para el anchor del Hero ── -->
@@ -116,7 +115,10 @@ const homeServices = [
         <div class="text-center mb-12 reveal">
           <div class="flex items-center justify-center gap-3 mb-4">
             <span class="block w-8 h-px" style="background:#F97316;"></span>
-            <span class="font-mono text-[10px] font-bold tracking-[3px] uppercase" style="color:#F97316;">Servicios · 01</span>
+            <span
+              class="font-mono text-[10px] font-bold tracking-[3px] uppercase"
+              style="color:#F97316;">Servicios · 01</span
+            >
             <span class="block w-8 h-px" style="background:#F97316;"></span>
           </div>
           <h2
@@ -124,31 +126,46 @@ const homeServices = [
             class="font-display font-semibold text-primary leading-tight"
             style="font-size:clamp(30px,4vw,52px);"
           >
-            Instalación y certificación de gas<br class="hidden md:block" /> en Medellín — servicios completos
+            Instalación y certificación de gas<br class="hidden md:block" /> en Medellín
+            — servicios completos
           </h2>
-          <p class="text-muted mt-4 max-w-[52ch] mx-auto text-[15.5px] leading-relaxed">
-            Desde el diseño de la red hasta la certificación oficial. Un técnico certificado, un solo proceso, garantía escrita de 12 meses.
+          <p
+            class="text-muted mt-4 max-w-[52ch] mx-auto text-[15.5px] leading-relaxed"
+          >
+            Desde el diseño de la red hasta la certificación oficial. Un técnico
+            certificado, un solo proceso, atención en todo el Valle de Aburrá.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal-stagger">
-          {homeServices.map((s) => (
-            <a
-              href={s.href}
-              class="group bg-background border border-neutral/15 rounded-2xl p-6 flex flex-col gap-4 hover:border-secondary/30 hover:shadow-md transition-all duration-300 no-underline"
-            >
-              <div class="w-11 h-11 rounded-xl bg-secondary/8 border border-secondary/15 text-secondary flex items-center justify-center group-hover:bg-secondary/14 transition-all duration-200 flex-shrink-0">
-                <span class="block" set:html={s.icon} />
-              </div>
-              <div>
-                <h3 class="font-display font-semibold text-primary text-[17px] leading-snug mb-2">{s.title}</h3>
-                <p class="text-muted text-[13.5px] leading-relaxed">{s.desc}</p>
-              </div>
-              <span class="text-[13px] font-semibold mt-auto" style="color:#F97316;">
-                Ver servicio →
-              </span>
-            </a>
-          ))}
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal-stagger"
+        >
+          {
+            homeServices.map((s) => (
+              <a
+                href={s.href}
+                class="group bg-background border border-neutral/15 rounded-2xl p-6 flex flex-col gap-4 hover:border-secondary/30 hover:shadow-md transition-all duration-300 no-underline"
+              >
+                <div class="w-11 h-11 rounded-xl bg-secondary/8 border border-secondary/15 text-secondary flex items-center justify-center group-hover:bg-secondary/14 transition-all duration-200 flex-shrink-0">
+                  <span class="block" set:html={s.icon} />
+                </div>
+                <div>
+                  <h3 class="font-display font-semibold text-primary text-[17px] leading-snug mb-2">
+                    {s.title}
+                  </h3>
+                  <p class="text-muted text-[13.5px] leading-relaxed">
+                    {s.desc}
+                  </p>
+                </div>
+                <span
+                  class="text-[13px] font-semibold mt-auto"
+                  style="color:#F97316;"
+                >
+                  Ver servicio →
+                </span>
+              </a>
+            ))
+          }
         </div>
 
         <div class="text-center mt-10 reveal">
@@ -172,11 +189,153 @@ const homeServices = [
     >
       <div
         class="absolute inset-0 bg-[linear-gradient(180deg,white_0%,white_0%,theme(colors.primary/1%)_14%,theme(colors.primary/2%)_19%,theme(colors.primary/4%)_24%,theme(colors.primary/8%)_30%,theme(colors.primary/13%)_36%,theme(colors.primary/20%)_42%,theme(colors.primary/30%)_48%,theme(colors.primary/40%)_54%,theme(colors.primary/52%)_60%,theme(colors.primary/65%)_67%,theme(colors.primary/78%)_74%,theme(colors.primary/88%)_81%,theme(colors.primary/95%)_89%,theme(colors.primary)_95%,theme(colors.primary)_100%)]"
-      ></div>
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_140%_60%_at_50%_100%,theme(colors.primary/22%)_0%,transparent_60%)]"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_30%_80%,theme(colors.primary/8%)_0%,transparent_50%)]"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_70%_80%,theme(colors.primary/8%)_0%,transparent_50%)]"></div>
+      >
+      </div>
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_140%_60%_at_50%_100%,theme(colors.primary/22%)_0%,transparent_60%)]"
+      >
+      </div>
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_30%_80%,theme(colors.primary/8%)_0%,transparent_50%)]"
+      >
+      </div>
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_70%_80%,theme(colors.primary/8%)_0%,transparent_50%)]"
+      >
+      </div>
     </div>
+
+    <!-- ── FAQ ── -->
+    <section class="section-pad bg-white" aria-labelledby="faq-home-heading">
+      <div class="container-section max-w-3xl">
+        <div class="text-center mb-10 reveal">
+          <span
+            class="font-mono text-[10px] font-bold tracking-[3px] uppercase text-tertiary"
+            >Preguntas frecuentes</span
+          >
+          <h2
+            id="faq-home-heading"
+            class="font-display font-semibold text-primary mt-3 leading-tight"
+            style="font-size:clamp(26px,3vw,42px);"
+          >
+            Lo que más nos preguntan sobre instalación de gas en Medellín
+          </h2>
+        </div>
+        <div class="flex flex-col gap-3 reveal-stagger">
+          {
+            [
+              {
+                q: '¿Cuánto cuesta la visita de diagnóstico?',
+                a: 'La visita diagnóstica tiene un costo de $50.000. Si contratas el servicio, ese valor se descuenta del total de la obra.',
+              },
+              {
+                q: '¿Los técnicos de LujoGas están certificados?',
+                a: 'Sí. Todos nuestros técnicos cuentan con certificación ICONTEC bajo la norma NTC 2505, que es el estándar nacional obligatorio para instalaciones de gas en Colombia.',
+              },
+              {
+                q: '¿En cuánto tiempo entregan el certificado de gas?',
+                a: 'El certificado oficial se emite entre 24 y 48 horas después de completar la instalación o revisión, una vez aprobadas las pruebas hidrostáticas.',
+              },
+              {
+                q: '¿Qué es la norma NTC 2505?',
+                a: 'Es la Norma Técnica Colombiana que regula el diseño, instalación y mantenimiento de redes de gas combustible en edificaciones residenciales y comerciales. Su cumplimiento es obligatorio para operar legalmente.',
+              },
+              {
+                q: '¿En qué zonas de Medellín trabajan?',
+                a: 'Cubrimos todo el Valle de Aburrá: Medellín (El Poblado, Laureles, Robledo, Belén y más), Envigado, Bello, Itagüí, Sabaneta, La Estrella, Copacabana y corregimientos cercanos.',
+              },
+              {
+                q: '¿Cómo puedo solicitar una cotización?',
+                a: 'La forma más rápida es por WhatsApp. Escríbenos con la dirección y el tipo de servicio que necesitas y te respondemos el mismo día en horario laboral.',
+              },
+              {
+                q: '¿Los materiales que usan son certificados?',
+                a: 'Sí. Usamos únicamente tuberías, accesorios y reguladores que cumplen con la Norma Técnica Colombiana (NTC), garantizando seguridad y durabilidad en cada instalación.',
+              },
+            ].map(({ q, a }) => (
+              <details class="group border border-neutral/15 rounded-xl overflow-hidden bg-surface">
+                <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none font-display font-semibold text-primary text-[15px] leading-snug select-none hover:bg-neutral/5 transition-colors duration-150">
+                  {q}
+                  <span class="flex-shrink-0 w-5 h-5 rounded-full border border-neutral/25 flex items-center justify-center text-muted group-open:rotate-45 transition-transform duration-200 text-[18px] leading-none">
+                    +
+                  </span>
+                </summary>
+                <p class="px-5 pb-5 text-muted text-[14px] leading-relaxed border-t border-neutral/10 pt-3">
+                  {a}
+                </p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+
+      <script
+        type="application/ld+json"
+        is:inline
+        set:html={JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: [
+            {
+              '@type': 'Question',
+              name: '¿Cuánto cuesta la visita de diagnóstico?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'La visita diagnóstica tiene un costo de $50.000. Si contratas el servicio, ese valor se descuenta del total de la obra.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: '¿Los técnicos de LujoGas están certificados?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Sí. Todos nuestros técnicos cuentan con certificación ICONTEC bajo la norma NTC 2505, que es el estándar nacional obligatorio para instalaciones de gas en Colombia.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: '¿En cuánto tiempo entregan el certificado de gas?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'El certificado oficial se emite entre 24 y 48 horas después de completar la instalación o revisión, una vez aprobadas las pruebas hidrostáticas.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: '¿Qué es la norma NTC 2505?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Es la Norma Técnica Colombiana que regula el diseño, instalación y mantenimiento de redes de gas combustible en edificaciones residenciales y comerciales. Su cumplimiento es obligatorio para operar legalmente.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: '¿En qué zonas de Medellín trabajan?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Cubrimos todo el Valle de Aburrá: Medellín (El Poblado, Laureles, Robledo, Belén y más), Envigado, Bello, Itagüí, Sabaneta, La Estrella, Copacabana y corregimientos cercanos.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: '¿Cómo puedo solicitar una cotización?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'La forma más rápida es por WhatsApp. Escríbenos con la dirección y el tipo de servicio que necesitas y te respondemos el mismo día en horario laboral.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: '¿Los materiales que usan son certificados?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Sí. Usamos únicamente tuberías, accesorios y reguladores que cumplen con la Norma Técnica Colombiana (NTC), garantizando seguridad y durabilidad en cada instalación.',
+              },
+            },
+          ],
+        })}
+      />
+    </section>
 
     <CoverageSection />
     <CTASection />
@@ -201,5 +360,7 @@ const homeServices = [
     },
     { threshold: 0.14, rootMargin: '0px 0px -40px 0px' },
   );
-  document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => io.observe(el));
+  document
+    .querySelectorAll('.reveal, .reveal-stagger')
+    .forEach((el) => io.observe(el));
 </script>

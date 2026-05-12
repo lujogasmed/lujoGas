@@ -99,7 +99,7 @@ export const localBusinessSchema = {
         itemOffered: {
           '@type': 'Service',
           name: 'Instalación de gasodomésticos',
-          description: 'Instalación certificada de estufas, calentadores, hornos y secadoras a gas con garantía escrita.',
+          description: 'Instalación certificada de estufas, calentadores, hornos y secadoras a gas en Medellín.',
         },
       },
       {

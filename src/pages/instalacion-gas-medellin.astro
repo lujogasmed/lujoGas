@@ -1,0 +1,448 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/organisms/Header.astro';
+import Footer from '../components/organisms/Footer.astro';
+import CTASection from '../components/organisms/CTASection.astro';
+import EyebrowLabel from '../components/atoms/EyebrowLabel.astro';
+import { zonas } from '../data/zonas';
+import { WHATSAPP_NUMBER } from '../lib/constants';
+
+const waText = encodeURIComponent('Hola LujoGas, necesito información sobre instalación de gas en Medellín.');
+const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`;
+
+// ── Schemas ──────────────────────────────────────────────────────────────────
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio",    "item": "https://lujogas.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://lujogas.com/servicios" },
+    { "@type": "ListItem", "position": 3, "name": "Instalación de gas en Medellín", "item": "https://lujogas.com/instalacion-gas-medellin" },
+  ],
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta instalar gas en Medellín?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La visita diagnóstica tiene un costo de $50.000. El valor total depende del metraje de tubería, número de puntos de gas y tipo de instalación (residencial o comercial). Entregamos presupuesto detallado tras la visita.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué incluye la instalación de gas en Medellín?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Incluye diseño de la red, suministro e instalación de tubería certificada (cobre o CPVC NTC), válvulas, regulador, prueba hidrostática, planos as-built y certificado ICONTEC oficial al final del proceso.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tarda una instalación de gas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Una instalación residencial estándar en Medellín tarda entre 1 y 2 días según la complejidad. El certificado ICONTEC se entrega en 24 a 48 horas hábiles tras completar la instalación.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué norma técnica rige las instalaciones de gas en Colombia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La NTC 2505 (Norma Técnica Colombiana) es la norma que regula las instalaciones de gas domiciliario en Colombia. Todos los trabajos de LujoGas cumplen con esta normativa.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito certificación de gas para activar el servicio en Medellín?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Gas Natural EPM y Surtigas en Antioquia exigen certificado vigente emitido por un inspector acreditado para activar o reactivar el servicio de gas en cualquier inmueble en Medellín.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuál es la diferencia entre instalación nueva y adecuación de red?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La instalación nueva parte de cero — sin tubería existente. La adecuación corrige o actualiza una red ya instalada para que cumpla NTC 2505 y pueda ser certificada. LujoGas realiza ambos tipos de trabajo.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "¿Trabajan con gas natural y con GLP (gas propano)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, instalamos redes para gas natural (red urbana) y para GLP (cilindro o tanque). Cada tipo tiene especificaciones técnicas distintas en cuanto a presiones y accesorios, y cumplimos ambas bajo NTC 2505.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cubren instalaciones en edificios y proyectos nuevos en Medellín?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, atendemos instalaciones de gas en edificios, conjuntos residenciales y proyectos de nueva construcción en Medellín y todo el Valle de Aburrá, con diseño de red, ejecución y certificación final.",
+      },
+    },
+  ],
+};
+
+// ── Tipos de instalación ──────────────────────────────────────────────────────
+const tiposInstalacion = [
+  {
+    title: 'Residencial',
+    desc: 'Casas, apartamentos y conjuntos. Diseño de red según el plano del inmueble, instalación de todos los puntos de gas (cocina, calentador, secadora) y prueba hidrostática final.',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/><path d="M9 22V12h6v10"/></svg>`,
+  },
+  {
+    title: 'Comercial',
+    desc: 'Restaurantes, panaderías, hoteles y locales. Diseño de mayor capacidad, reguladores industriales, puntos múltiples y cumplimiento de normas adicionales para uso comercial.',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M12 12v3m-3-1.5h6"/></svg>`,
+  },
+  {
+    title: 'Nueva construcción',
+    desc: 'Acompañamos desde la etapa de obra: coordinar trazado con el maestro, instalación durante la construcción, pruebas y certificación al finalizar para entrega al propietario.',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20V10l8-6 8 6v10"/><path d="M9 20v-6h6v6"/></svg>`,
+  },
+  {
+    title: 'Ampliación de red',
+    desc: 'Cuando agregas un punto de gas nuevo (calentador adicional, cocina, terraza BBQ) sobre una red existente. Verificamos compatibilidad de presión y extendemos la red sin afectar la instalación actual.',
+    icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>`,
+  },
+];
+
+// ── Materiales ────────────────────────────────────────────────────────────────
+const materiales = [
+  {
+    title: 'Tubería de cobre tipo L',
+    desc: 'Estándar para redes de gas domiciliario en Colombia. Alta durabilidad, resistencia a la corrosión y apta para las presiones de trabajo exigidas por NTC 2505.',
+  },
+  {
+    title: 'Tubería CPVC certificada NTC',
+    desc: 'Alternativa aprobada para redes internas de gas natural. Menor costo que el cobre, fácil instalación en sitios de difícil acceso, sin riesgo de corrosión.',
+  },
+  {
+    title: 'Válvulas de corte certificadas',
+    desc: 'Instalamos válvulas de bola y de esfera en cada punto de consumo y en la acometida general, con materiales aprobados para contacto con gas natural y GLP.',
+  },
+  {
+    title: 'Reguladores de presión',
+    desc: 'Reducen la presión de la red al nivel de uso de cada gasodoméstico. Seleccionamos el regulador según el consumo total de la instalación.',
+  },
+];
+
+// ── Proceso detallado ──────────────────────────────────────────────────────────
+const procesoPasos = [
+  { n: '1', title: 'Solicitud y agenda',    desc: 'Contáctanos por WhatsApp con tu dirección en Medellín y descripción del trabajo. Coordinamos la visita según tu disponibilidad.' },
+  { n: '2', title: 'Visita de diagnóstico', desc: 'El técnico evalúa el espacio, mide trazados, identifica puntos de gas y diseña la red. Costo de visita: $50.000. Entregamos presupuesto detallado en el acto.' },
+  { n: '3', title: 'Aprobación y materiales', desc: 'Una vez aprobado el presupuesto, adquirimos los materiales certificados NTC necesarios para tu instalación específica.' },
+  { n: '4', title: 'Ejecución técnica',     desc: 'Instalamos la red de gas con tubería certificada, soldaduras y accesorios NTC. Cuidamos los acabados y mantenemos el orden durante la obra.' },
+  { n: '5', title: 'Certificado oficial',   desc: 'Realizamos la prueba hidrostática, verificamos todos los parámetros NTC 2505 y emitimos el certificado ICONTEC oficial. Entrega en 24–48 horas.' },
+];
+---
+
+<BaseLayout
+  title="Instalación de Gas en Medellín — Técnico Certificado NTC 2505 | LujoGas"
+  description="Instalación de gas en Medellín con técnico certificado NTC 2505. Redes residenciales, comerciales y nueva construcción. Certificación ICONTEC incluida. +57 301 474 8653."
+  canonical="https://lujogas.com/instalacion-gas-medellin"
+>
+  <Header />
+
+  <main>
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+    <!-- ── Hero ─────────────────────────────────────────────────────────── -->
+    <section
+      class="relative overflow-hidden pt-[140px] pb-[80px]"
+      style="background-color: #333333;"
+      aria-labelledby="inst-medellin-heading"
+    >
+      <div class="pipes-bg" aria-hidden="true"></div>
+      <div
+        class="absolute inset-0 pointer-events-none"
+        style="background: radial-gradient(ellipse 70% 80% at 10% 50%, rgba(37,99,235,0.12) 0%, transparent 65%);"
+        aria-hidden="true"
+      ></div>
+
+      <div class="container-section relative z-10">
+        <nav aria-label="Ruta de navegación" class="mb-6">
+          <ol class="flex items-center gap-2 text-[12px] text-neutral/50 font-mono tracking-wide">
+            <li><a href="/" class="hover:text-neutral/80 transition-colors">Inicio</a></li>
+            <li aria-hidden="true" class="text-neutral/30">/</li>
+            <li><a href="/servicios" class="hover:text-neutral/80 transition-colors">Servicios</a></li>
+            <li aria-hidden="true" class="text-neutral/30">/</li>
+            <li class="text-neutral/70">Instalación en Medellín</li>
+          </ol>
+        </nav>
+
+        <div class="max-w-[800px]">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="block w-8 h-px" style="background:#F97316;"></span>
+            <span class="font-mono text-[11px] font-semibold tracking-[0.26em] uppercase" style="color:#F97316;">
+              LujoGas · Instalación de Gas · Medellín
+            </span>
+          </div>
+
+          <h1
+            id="inst-medellin-heading"
+            class="font-display font-semibold leading-[0.97] tracking-[-0.01em] text-background mb-5"
+            style="font-size: clamp(36px,5vw,72px); max-width: 20ch;"
+          >
+            Instalación de gas en Medellín — Técnico certificado NTC 2505
+          </h1>
+
+          <p class="text-neutral/70 max-w-[64ch] mb-3" style="font-size: clamp(15px,1.3vw,17px); line-height: 1.65;">
+            Diseño e instalación de redes de gas natural y GLP en Medellín y todo el Valle de Aburrá. Técnico certificado ICONTEC con aval EPM y Gas Natural. Desde el primer punto de gas hasta la certificación oficial.
+          </p>
+          <p class="text-neutral/60 max-w-[64ch] mb-8" style="font-size: clamp(13px,1.1vw,15px); line-height: 1.65;">
+            Más de 500 instalaciones realizadas en Medellín. Materiales certificados NTC — cobre tipo L y CPVC. Sin subcontratistas: el mismo técnico que evalúa es quien ejecuta y firma el certificado.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a
+              href={waUrl}
+              class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-[15px] transition-all duration-200 hover:opacity-90 min-h-[48px]"
+              style="background:#25D366; color:#fff;"
+              aria-label="Solicitar instalación de gas en Medellín por WhatsApp"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+              Solicitar instalación ahora
+            </a>
+            <a
+              href="tel:+573014748653"
+              class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-[15px] border transition-all duration-200 hover:border-neutral/40 min-h-[48px]"
+              style="border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.85);"
+            >
+              +57 301 474 8653
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
+        style="background: linear-gradient(to bottom, transparent, #F8F7F4);"
+        aria-hidden="true"
+      ></div>
+    </section>
+
+    <!-- ── Stats bar ─────────────────────────────────────────────────────── -->
+    <section class="py-10" style="background:#F8F7F4;" aria-label="Estadísticas LujoGas">
+      <div class="container-section">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 reveal">
+          {[
+            { value: '3+',     label: 'Años de experiencia en Medellín' },
+            { value: '3.000+', label: 'Certificaciones realizadas'       },
+            { value: '500+',   label: 'Instalaciones en Valle de Aburrá' },
+            { value: 'NTC 2505', label: 'Norma técnica colombiana'       },
+          ].map((stat) => (
+            <div class="text-center">
+              <p class="font-display font-bold text-primary leading-none mb-1" style="font-size: clamp(26px, 3.5vw, 44px);">
+                {stat.value}
+              </p>
+              <p class="text-muted text-[13px] leading-snug">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Qué incluye la instalación ───────────────────────────────────── -->
+    <section class="section-pad bg-background" aria-labelledby="incluye-heading">
+      <div class="container-section">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          <div class="reveal">
+            <EyebrowLabel text="¿Qué incluye?" />
+            <h2 id="incluye-heading" class="font-display font-semibold text-primary mt-3 leading-tight mb-6" style="font-size:clamp(28px,3.5vw,46px);">
+              ¿Qué incluye una instalación de gas en Medellín?
+            </h2>
+            <p class="text-muted text-[15px] leading-relaxed mb-4">
+              Una instalación completa de gas en Medellín con LujoGas no es solo poner tubería. Es un proceso técnico controlado desde el diseño hasta el certificado oficial, con todos los componentes necesarios para que Gas Natural o EPM active el servicio.
+            </p>
+            <p class="text-muted text-[15px] leading-relaxed mb-6">
+              Trabajamos con técnico certificado NTC 2505 — no subcontratamos. La misma persona que hace la visita inicial diseña la red, la instala y firma el certificado. Así garantizamos coherencia técnica en todo el proceso.
+            </p>
+            <a
+              href={waUrl}
+              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-[14px] transition-all hover:opacity-90 min-h-[44px]"
+              style="background:#25D366; color:#fff;"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+              Solicitar cotización gratis
+            </a>
+          </div>
+          <div class="reveal-stagger">
+            {[
+              { item: 'Diseño de la red interna de gas', detail: 'Plano de trazado con ubicación de cada punto de consumo y dimensionamiento de la tubería.' },
+              { item: 'Suministro de materiales certificados NTC', detail: 'Tubería de cobre tipo L o CPVC, válvulas, regulador y accesorios con certificación colombiana.' },
+              { item: 'Instalación por técnico certificado', detail: 'Ejecución por Luis Guillermo Muñoz Vélez, técnico certificado NTC 2505 con aval ICONTEC.' },
+              { item: 'Prueba hidrostática', detail: 'Ensayo de estanqueidad bajo presión reglamentaria para verificar que no hay fugas en ningún punto.' },
+              { item: 'Planos as-built', detail: 'Planos definitivos de la red tal como quedó instalada, requeridos para el expediente técnico.' },
+              { item: 'Certificado ICONTEC oficial', detail: 'Certificado vigente emitido por inspector acreditado, listo para activar el servicio con Gas Natural o EPM.' },
+            ].map((row) => (
+              <div class="flex gap-4 py-4 border-b border-neutral/10 last:border-0">
+                <div class="w-5 h-5 rounded-full flex-shrink-0 mt-0.5 flex items-center justify-center" style="background:rgba(249,115,22,0.15);">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-9"/></svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-primary text-[14.5px] mb-0.5">{row.item}</p>
+                  <p class="text-muted text-[13px] leading-relaxed">{row.detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Tipos de instalación ──────────────────────────────────────────── -->
+    <section class="section-pad" style="background:#F8F7F4;" aria-labelledby="tipos-heading">
+      <div class="container-section">
+        <div class="text-center mb-14 reveal">
+          <EyebrowLabel text="Tipos de instalación" />
+          <h2 id="tipos-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(28px,3.5vw,46px);">
+            Instalación de gas residencial, comercial y nueva construcción en Medellín
+          </h2>
+          <p class="text-muted mt-4 max-w-[54ch] mx-auto text-[15px] leading-relaxed">
+            Atendemos cualquier tipo de instalación de gas en Medellín y el Valle de Aburrá, con el mismo estándar técnico NTC 2505.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 reveal-stagger">
+          {tiposInstalacion.map((tipo) => (
+            <div class="bg-surface border border-neutral/15 rounded-2xl p-7 flex flex-col gap-4 hover:border-secondary/25 hover:shadow-md transition-all duration-300">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(249,115,22,0.10); color:#F97316;">
+                <span set:html={tipo.icon} />
+              </div>
+              <h3 class="font-display font-semibold text-primary text-[20px] leading-snug">{tipo.title}</h3>
+              <p class="text-muted text-[14px] leading-relaxed">{tipo.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Proceso detallado ─────────────────────────────────────────────── -->
+    <section class="section-pad relative" style="background-color:#1A1A2E;" aria-labelledby="proceso-medellin-heading">
+      <div class="pipes-bg" aria-hidden="true"></div>
+      <div class="container-section relative z-10">
+        <div class="text-center mb-14 reveal">
+          <EyebrowLabel text="Proceso detallado" />
+          <h2 id="proceso-medellin-heading" class="font-display font-semibold text-background mt-3 leading-tight" style="font-size:clamp(28px,3.5vw,48px);">
+            Cómo instalamos gas en Medellín: del diagnóstico al certificado
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger">
+          {procesoPasos.map((p) => (
+            <div class="relative flex flex-col gap-4 p-6 rounded-2xl border border-neutral/10 bg-background/[0.03]">
+              <span class="font-display text-[52px] font-bold leading-none" style="color:rgba(37,99,235,0.18);">{p.n}</span>
+              <h3 class="font-display font-semibold text-background text-[18px] tracking-[0.02em] -mt-2">{p.title}</h3>
+              <p class="text-neutral/55 text-[13.5px] leading-relaxed">{p.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Materiales ─────────────────────────────────────────────────────── -->
+    <section class="section-pad bg-background" aria-labelledby="materiales-heading">
+      <div class="container-section">
+        <div class="text-center mb-12 reveal">
+          <EyebrowLabel text="Materiales certificados" />
+          <h2 id="materiales-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(28px,3.5vw,44px);">
+            Materiales que usamos para instalación de gas en Medellín
+          </h2>
+          <p class="text-muted mt-4 max-w-[52ch] mx-auto text-[15px] leading-relaxed">
+            Usamos exclusivamente materiales con certificación NTC — cobre y CPVC. Sin materiales genéricos ni sustitutos no aprobados.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 reveal-stagger">
+          {materiales.map((m) => (
+            <div class="flex gap-5 p-6 bg-surface border border-neutral/15 rounded-2xl hover:border-tertiary/25 transition-colors duration-200">
+              <div class="w-10 h-10 rounded-lg flex-shrink-0 flex items-center justify-center mt-0.5" style="background:rgba(37,99,235,0.08); color:#2563EB;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 12h6m6 0h6M9 6v12M15 6v12"/><circle cx="12" cy="12" r="2.2"/></svg>
+              </div>
+              <div>
+                <h3 class="font-display font-semibold text-primary text-[16px] mb-2 leading-snug">{m.title}</h3>
+                <p class="text-muted text-[13.5px] leading-relaxed">{m.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Zonas de cobertura ─────────────────────────────────────────────── -->
+    <section class="section-pad" style="background:#F8F7F4;" aria-labelledby="cobertura-medellin-heading">
+      <div class="container-section">
+        <div class="text-center mb-10 reveal">
+          <EyebrowLabel text="Cobertura" />
+          <h2 id="cobertura-medellin-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(26px,3vw,42px);">
+            Instalación de gas en toda el área metropolitana de Medellín
+          </h2>
+          <p class="text-muted mt-3 max-w-[52ch] mx-auto text-[15px]">
+            Atendemos instalaciones de gas en Medellín y todos los municipios del Valle de Aburrá. Selecciona tu zona para información específica.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 reveal-stagger">
+          {zonas.map((z) => (
+            <a
+              href={`/instalacion-gas-${z.slug}`}
+              class="group flex items-center justify-center gap-2 border border-neutral/15 rounded-xl px-4 py-3 text-[13.5px] font-semibold text-primary hover:border-tertiary/40 hover:bg-tertiary/5 transition-all duration-200 text-center min-h-[44px]"
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" aria-hidden="true"><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+              Gas en {z.name}
+            </a>
+          ))}
+        </div>
+        <div class="mt-6 text-center reveal">
+          <a href="/certificacion-gas-medellin" class="text-[14px] font-semibold underline underline-offset-2 hover:opacity-75 transition-opacity" style="color:#2563EB;">
+            Ver servicio de certificación de gas en Medellín →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ─────────────────────────────────────────────────────────── -->
+    <section class="section-pad bg-background" aria-labelledby="faq-medellin-heading">
+      <div class="container-section">
+        <div class="text-center mb-12 reveal">
+          <EyebrowLabel text="Preguntas frecuentes" />
+          <h2 id="faq-medellin-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(28px,3.5vw,44px);">
+            Preguntas sobre instalación de gas en Medellín
+          </h2>
+        </div>
+        <div class="max-w-[720px] mx-auto flex flex-col gap-4 reveal-stagger">
+          {faqSchema.mainEntity.map((faq) => (
+            <details class="group border border-neutral/15 rounded-2xl overflow-hidden bg-surface">
+              <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer font-display font-semibold text-primary text-[16px] leading-snug list-none">
+                {faq.name}
+                <svg class="flex-shrink-0 transition-transform duration-200 group-open:rotate-180" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="px-6 pb-5 text-muted text-[14.5px] leading-relaxed border-t border-neutral/10 pt-4">
+                {faq.acceptedAnswer.text}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTASection />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script is:inline>
+  const io = new IntersectionObserver(
+    (entries) => { entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); },
+    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => io.observe(el));
+</script>

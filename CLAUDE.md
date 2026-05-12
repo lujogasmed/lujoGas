@@ -8,9 +8,35 @@
 
 **LujoGas** es una landing page profesional para una empresa de instalación, mantenimiento y certificación de redes de gas en Medellín, Colombia.
 
-**Objetivo primario:** Convertir visitas orgánicas locales en contactos vía WhatsApp.  
-**Objetivo secundario:** Posicionarse en búsquedas locales de Medellín y el área metropolitana (SEO local).  
+**Objetivo primario:** Convertir visitas orgánicas locales en contactos vía WhatsApp (leads directos).
+**Objetivo secundario — CRÍTICO:** Posicionarse en búsquedas locales de Medellín y el área metropolitana. **SEO local y GEO (Generative Engine Optimization) son prioridad absoluta** — cada cambio de contenido debe reforzar la visibilidad en Google, Google Maps, ChatGPT, Perplexity y otros motores de IA.
 **Tono de marca:** Confianza técnica, profesionalismo certificado, cercanía local.
+
+### Meta SEO/GEO — Norte del proyecto
+
+**El único KPI que importa: aparecer primero cuando alguien en Medellín busca "instalación gas", "certificación gas", "técnico gas" — en Google Y en IA.**
+
+#### Reglas SEO obligatorias en cada tarea de desarrollo
+1. **Toda página tiene H1 único** con keyword principal + "Medellín" en las primeras palabras.
+2. **Títulos `<title>` ≤ 60 chars**, keyword primaria al inicio.
+3. **Meta descriptions 140–160 chars**, incluir keyword + CTA + "Medellín".
+4. **Schema JSON-LD obligatorio** en toda página: `LocalBusiness` en layout, `BreadcrumbList` y schema específico por página.
+5. **Alt text en todas las imágenes** — descriptivo + keyword cuando sea natural.
+6. **Internal linking intencional** — cada página debe tener ≥ 3 links a otras páginas del sitio.
+7. **NAP consistente** (Name, Address, Phone) en footer, schema y toda mención pública. Usar siempre datos de `data/site.json`.
+8. **Keywords locales en el contenido** — mencionar barrios (El Poblado, Laureles, Envigado...) y "Valle de Aburrá" en cada sección clave.
+9. **No crear contenido genérico** — cada párrafo debe tener intención de búsqueda clara.
+10. **`llms.txt` en raíz** — mantener actualizado para citabilidad en IA (GEO).
+
+#### Intención de búsqueda por página
+| Página | Keyword principal | Intención |
+|--------|-------------------|-----------|
+| `/` | instalación gas Medellín | Comercial/transaccional |
+| `/servicios` | servicios gas Medellín | Comercial |
+| `/nosotros` | técnico certificado gas Medellín | Informacional/E-E-A-T |
+| `/instalacion-gas-medellin` | instalación gas Medellín | Transaccional |
+| `/certificacion-gas-medellin` | certificación gas Medellín | Transaccional |
+| `/mantenimiento-gas-medellin` | mantenimiento gas Medellín | Transaccional |
 
 ---
 

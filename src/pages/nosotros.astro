@@ -8,10 +8,10 @@ import StatCounter from '../components/molecules/StatCounter.astro';
 import { SITE } from '../lib/constants';
 
 const stats = [
-  { value: 3,   suffix: '+', label: 'Años en instalación de gas' },
-  { value: 100, suffix: '%', label: 'Certificación ICONTEC'      },
-  { value: 10,  suffix: '',  label: 'Comunas cubiertas'          },
-  { value: 12,  suffix: '',  label: 'Meses de garantía escrita'  },
+  { value: 3, suffix: '+', label: 'Años en instalación de gas' },
+  { value: 3000, suffix: '+', label: 'Certificaciones realizadas' },
+  { value: 10, suffix: '+', label: 'Municipios cubiertos' },
+  { value: 500, suffix: '+', label: 'Instalaciones realizadas' },
 ];
 
 const timeline = [
@@ -24,7 +24,7 @@ const timeline = [
   {
     eyebrow: 'Certificación',
     title: 'Técnico certificado en gas en Medellín',
-    body: 'Hace tres años tomé una decisión que marcó un antes y un después: certificarme en el área de gas. No fue un camino fácil, pero con esfuerzo, disciplina y dedicación logré formarme como técnico certificado, adquiriendo conocimientos que hoy me permiten desempeñarme con seguridad y profesionalismo en cada instalación en Medellín y el Valle de Aburrá. Para mí, la certificación no es solo un requisito — es el respaldo de un trabajo bien hecho y seguro.',
+    body: 'Hace dos años tomé una decisión que marcó un antes y un después: certificarme en el área de gas. No fue un camino fácil, pero con esfuerzo, disciplina y dedicación logré formarme como técnico certificado, adquiriendo conocimientos que hoy me permiten desempeñarme con seguridad y profesionalismo en cada instalación en Medellín y el Valle de Aburrá. Para mí, la certificación no es solo un requisito — es el respaldo de un trabajo bien hecho y seguro.',
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.745 3.745 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.745 3.745 0 0 1 3.296-1.043A3.745 3.745 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.745 3.745 0 0 1 3.296 1.043 3.745 3.745 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"/></svg>`,
   },
   {
@@ -52,67 +52,72 @@ const values = [
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>`,
   },
   {
-    title: 'Garantía escrita',
-    desc: '12 meses de garantía sobre mano de obra en cada instalación. Si algo falla, volvemos sin costo adicional.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg>`,
+    title: 'Atención oportuna',
+    desc: 'Respuesta rápida a cada solicitud. Coordinamos la visita según tu disponibilidad y cumplimos el horario acordado.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>`,
   },
 ];
 
 const certifications = [
-  { seal: 'ICO', title: 'ICONTEC',              sub: 'Organismo acreditado — vigente' },
-  { seal: 'NTC', title: 'NTC 2505',             sub: 'Norma técnica colombiana'       },
-  { seal: 'EPM', title: 'Aval EPM / Gas Natural', sub: 'Instaladores autorizados'    },
-  { seal: 'GAR', title: 'Garantía 12 meses',    sub: 'Escrita sobre mano de obra'    },
+  { seal: 'ICO', title: 'ICONTEC', sub: 'Organismo acreditado — vigente' },
+  { seal: 'NTC', title: 'NTC 2505', sub: 'Norma técnica colombiana' },
+  {
+    seal: 'EPM',
+    title: 'Aval EPM / Gas Natural',
+    sub: 'Instaladores autorizados',
+  },
+  { seal: 'ATN', title: 'Atención rápida', sub: 'Visita coordinada contigo' },
 ];
 
 // Schema Person — E-E-A-T signal para Google
 const founderSchema = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Luis Guillermo Muñoz Vélez",
-  "jobTitle": "Técnico Certificado en Redes de Gas",
-  "description": "Técnico certificado en instalación, mantenimiento y certificación de redes de gas natural y GLP en Medellín y el Valle de Aburrá, Colombia.",
-  "worksFor": {
-    "@type": "LocalBusiness",
-    "name": "LujoGas",
-    "url": "https://lujogas.com",
-    "telephone": SITE.phone
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Luis Guillermo Muñoz Vélez',
+  jobTitle: 'Técnico Certificado en Redes de Gas',
+  description:
+    'Técnico certificado en instalación, mantenimiento y certificación de redes de gas natural y GLP en Medellín y el Valle de Aburrá, Colombia.',
+  worksFor: {
+    '@type': 'LocalBusiness',
+    name: 'LujoGas',
+    url: 'https://lujogas.com',
+    telephone: SITE.phone,
   },
-  "knowsAbout": [
-    "Instalación de redes de gas natural en Medellín",
-    "Certificación de redes de gas residencial NTC 2505",
-    "Mantenimiento de redes de gas GLP",
-    "Inspección de redes de gas Medellín",
-    "Conversión a gas natural Valle de Aburrá"
+  knowsAbout: [
+    'Instalación de redes de gas natural en Medellín',
+    'Certificación de redes de gas residencial NTC 2505',
+    'Mantenimiento de redes de gas GLP',
+    'Inspección de redes de gas Medellín',
+    'Conversión a gas natural Valle de Aburrá',
   ],
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Medellín",
-    "addressRegion": "Antioquia",
-    "addressCountry": "CO"
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Medellín',
+    addressRegion: 'Antioquia',
+    addressCountry: 'CO',
   },
-  "telephone": SITE.phone,
-  "url": "https://lujogas.com/nosotros"
+  telephone: SITE.phone,
+  url: 'https://lujogas.com/nosotros',
 };
 
 // BreadcrumbList schema
 const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Inicio",
-      "item": "https://lujogas.com/"
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Inicio',
+      item: 'https://lujogas.com/',
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Nosotros — Técnico certificado en gas Medellín",
-      "item": "https://lujogas.com/nosotros"
-    }
-  ]
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Nosotros — Técnico certificado en gas Medellín',
+      item: 'https://lujogas.com/nosotros',
+    },
+  ],
 };
 ---
 
@@ -123,67 +128,116 @@ const breadcrumbSchema = {
 -->
 <BaseLayout
   title="Técnico Certificado en Gas en Medellín | LujoGas"
-  description="Luis Guillermo Muñoz Vélez, técnico certificado en instalación de gas en Medellín. Certificación ICONTEC, materiales NTC 2505 y garantía escrita de 12 meses."
+  description="Luis Guillermo Muñoz Vélez, técnico certificado en instalación de gas en Medellín. Certificación ICONTEC, materiales NTC 2505, atención oportuna en todo el Valle de Aburrá."
   canonical="https://lujogas.com/nosotros"
 >
   <Header />
 
   <main>
     <!-- Schema JSON-LD en body — Google lo acepta fuera de <head> -->
-    <script type="application/ld+json" set:html={JSON.stringify(founderSchema)} />
-    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(founderSchema)}
+    />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(breadcrumbSchema)}
+    />
 
     <!-- ── Page Hero ── -->
     <section
-      class="relative overflow-hidden pt-[140px] pb-[80px]"
+      class="relative overflow-hidden pt-[140px]"
       style="background-color: #333333;"
       aria-labelledby="nosotros-heading"
     >
       <div class="pipes-bg" aria-hidden="true"></div>
       <div
         class="absolute inset-0 pointer-events-none"
-        style="background: radial-gradient(ellipse 60% 90% at 90% 50%, rgba(249,115,22,0.10) 0%, transparent 65%);"
+        style="background: radial-gradient(ellipse 60% 90% at 90% 50%, rgba(249,115,22,0.12) 0%, transparent 65%);"
         aria-hidden="true"
-      ></div>
-      <div class="container-section relative z-10">
-        <div class="flex items-center gap-3 mb-5">
-          <span class="block w-8 h-px" style="background:#F97316;"></span>
-          <span class="font-mono text-[11px] font-semibold tracking-[0.26em] uppercase" style="color:#F97316;">
-            LujoGas · Nosotros
-          </span>
-        </div>
-        <!-- H1: keyword "técnico certificado en gas" + "Medellín" en primeras palabras -->
-        <h1
-          id="nosotros-heading"
-          class="font-display font-semibold leading-[0.97] tracking-[-0.01em] text-background mb-5"
-          style="font-size: clamp(44px,6.5vw,86px); max-width: 16ch;"
-        >
-          Técnico certificado en gas en Medellín, al servicio de tu hogar
-        </h1>
-        <p class="text-neutral/70 max-w-[52ch]" style="font-size: clamp(15px,1.3vw,17px); line-height: 1.65;">
-          Soy Luis Guillermo Muñoz Vélez, técnico certificado en instalación y certificación de redes de gas en Medellín y el Valle de Aburrá. Cada trabajo lo realizo con compromiso, responsabilidad y pensando en la seguridad de cada hogar.
-        </p>
+      >
       </div>
+
+      <div class="container-section relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-end">
+          <!-- ── Text column ── -->
+          <div class="md:pb-[80px]">
+            <div class="flex items-center gap-3 mb-5">
+              <span class="block w-8 h-px" style="background:#F97316;"></span>
+              <span
+                class="font-mono text-[11px] font-semibold tracking-[0.26em] uppercase"
+                style="color:#F97316;"
+              >
+                LujoGas · Nosotros
+              </span>
+            </div>
+            <!-- H1: keyword "técnico certificado en gas" + "Medellín" en primeras palabras -->
+            <h1
+              id="nosotros-heading"
+              class="font-display font-semibold leading-[0.97] tracking-[-0.01em] text-background mb-5"
+              style="font-size: clamp(40px,5.5vw,78px); max-width: 16ch;"
+            >
+              Técnico certificado en gas en Medellín, al servicio de tu hogar
+            </h1>
+            <p
+              class="text-neutral/70 max-w-[52ch]"
+              style="font-size: clamp(15px,1.3vw,17px); line-height: 1.65;"
+            >
+              Soy Luis Guillermo Muñoz Vélez, técnico certificado en instalación
+              y certificación de redes de gas en Medellín y el Valle de Aburrá.
+              Cada trabajo lo realizo con compromiso, responsabilidad y pensando
+              en la seguridad de cada hogar.
+            </p>
+          </div>
+
+          <!-- ── Photo column ── -->
+          <div
+            class="relative flex justify-center lg:justify-end items-end hero-photo-enter"
+          >
+            <div class="hero-photo-glow" aria-hidden="true"></div>
+            <img
+              src="https://res.cloudinary.com/dxcbyed7d/image/upload/v1778608461/bg-removed4f4ce71a-1537-406c-9597-404d1e608233_rnrdrz_574559.webp"
+              alt="Luis Guillermo Muñoz Vélez — técnico certificado en instalación de gas en Medellín"
+              class="relative z-10 w-auto max-w-full object-contain"
+              style="max-height: clamp(550px, 50vw, 600px);"
+              width="480"
+              height="600"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </div>
+        </div>
+      </div>
+
       <div
         class="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
         style="background: linear-gradient(to bottom, transparent, #F8F7F4);"
         aria-hidden="true"
-      ></div>
+      >
+      </div>
     </section>
 
     <!-- ── Stats ── -->
     <section class="bg-background py-16" aria-label="Números LujoGas">
       <div class="container-section">
-        <div class="grid grid-cols-2 md:grid-cols-4 border border-neutral/15 rounded-2xl overflow-hidden reveal">
-          {stats.map((s) => (
-            <StatCounter value={s.value} suffix={s.suffix} label={s.label} />
-          ))}
+        <div
+          class="grid grid-cols-2 md:grid-cols-4 border border-neutral/15 rounded-2xl overflow-hidden reveal"
+        >
+          {
+            stats.map((s) => (
+              <StatCounter value={s.value} suffix={s.suffix} label={s.label} />
+            ))
+          }
         </div>
       </div>
     </section>
 
     <!-- ── Presentación del fundador ── -->
-    <section class="section-pad bg-background" aria-labelledby="fundador-heading">
+    <section
+      class="section-pad bg-background"
+      aria-labelledby="fundador-heading"
+    >
       <div class="container-section">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center reveal">
           <!-- Text -->
@@ -197,35 +251,78 @@ const breadcrumbSchema = {
             >
               Luis Guillermo Muñoz Vélez — técnico certificado en gas, Medellín
             </h2>
-            <div class="flex flex-col gap-4 text-muted text-[15.5px] leading-relaxed">
+            <div
+              class="flex flex-col gap-4 text-muted text-[15.5px] leading-relaxed"
+            >
               <p>
-                Soy un hombre casado y padre de dos hijos maravillosos, Samuel y Laura, quienes son mi mayor motivación para salir adelante cada día. Esa motivación es la misma que pongo en cada instalación de gas que realizo en Medellín.
+                Soy un hombre casado y padre de dos hijos maravillosos, Samuel y
+                Laura, quienes son mi mayor motivación para salir adelante cada
+                día. Esa motivación es la misma que pongo en cada instalación de
+                gas que realizo en Medellín.
               </p>
               <p>
-                Hace tres años tomé una decisión que marcó un antes y un después en mi vida: certificarme como técnico en el área de gas. No fue un camino fácil, pero con esfuerzo, disciplina y dedicación logré la formación que hoy me permite desempeñarme con seguridad y profesionalismo en cada red de gas que instalo o certifico en Medellín y el Valle de Aburrá.
+                Hace dos años tomé una decisión que marcó un antes y un después
+                en mi vida: certificarme como técnico en el área de gas. No fue
+                un camino fácil, pero con esfuerzo, disciplina y dedicación
+                logré la formación que hoy me permite desempeñarme con seguridad
+                y profesionalismo en cada red de gas que instalo o certifico en
+                Medellín, el Valle de Aburrá y corregimientos cercanos.
               </p>
               <p>
-                Hoy me siento orgulloso de lo que he logrado. Cada trabajo que realizo lo hago con compromiso, responsabilidad y pensando siempre en la seguridad de cada hogar.
+                Hoy me siento orgulloso de lo que he logrado. Cada trabajo que
+                realizo lo hago con compromiso, responsabilidad y pensando
+                siempre en la seguridad de cada hogar.
               </p>
             </div>
           </div>
           <!-- Accent panel -->
-          <div class="relative rounded-2xl overflow-hidden" style="background-color:#1A1A2E; min-height:340px;">
+          <div
+            class="relative rounded-2xl overflow-hidden"
+            style="background-color:#1A1A2E; min-height:340px;"
+          >
             <div class="pipes-bg" aria-hidden="true"></div>
-            <div class="relative z-10 p-10 flex flex-col justify-between h-full gap-8">
+            <div
+              class="relative z-10 p-10 flex flex-col justify-between h-full gap-8"
+            >
               <div>
-                <p class="font-display text-[clamp(24px,2.6vw,36px)] font-semibold text-background leading-tight">
-                  "Cada instalación la hago<br/>
-                  <span style="color:#F97316;">pensando en la seguridad<br/>de tu hogar."</span>
+                <p
+                  class="font-display text-[clamp(24px,2.6vw,36px)] font-semibold text-background leading-tight"
+                >
+                  "Cada instalación la hago<br />
+                  <span style="color:#F97316;"
+                    >pensando en la seguridad<br />de tu hogar."</span
+                  >
                 </p>
               </div>
               <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(249,115,22,0.15); border:1px solid rgba(249,115,22,0.25);">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"/></svg>
+                <div
+                  class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+                  style="background:rgba(249,115,22,0.15); border:1px solid rgba(249,115,22,0.25);"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#F97316"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    ><path
+                      d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0"
+                    ></path></svg
+                  >
                 </div>
                 <div>
-                  <p class="text-background font-semibold text-[14px]">Luis Guillermo Muñoz Vélez</p>
-                  <p class="text-neutral/45 text-[12px] font-mono tracking-wide">Técnico certificado — LujoGas, Medellín</p>
+                  <p class="text-background font-semibold text-[14px]">
+                    Luis Guillermo Muñoz Vélez
+                  </p>
+                  <p
+                    class="text-neutral/45 text-[12px] font-mono tracking-wide"
+                  >
+                    Técnico certificado — LujoGas, Medellín
+                  </p>
                 </div>
               </div>
             </div>
@@ -235,127 +332,293 @@ const breadcrumbSchema = {
     </section>
 
     <!-- ── Historia / Certificación / Metas ── -->
-    <section class="section-pad" style="background:#F8F7F4;" aria-labelledby="trayectoria-heading">
+    <section
+      class="section-pad"
+      style="background:#F8F7F4;"
+      aria-labelledby="trayectoria-heading"
+    >
       <div class="container-section">
         <div class="text-center mb-14 reveal">
           <EyebrowLabel text="Trayectoria" />
-          <h2 id="trayectoria-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(30px,3.5vw,46px);">
+          <h2
+            id="trayectoria-heading"
+            class="font-display font-semibold text-primary mt-3 leading-tight"
+            style="font-size:clamp(30px,3.5vw,46px);"
+          >
             De dónde vengo y hacia dónde voy
           </h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal-stagger">
-          {timeline.map((item) => (
-            <div class="group bg-surface border border-neutral/15 rounded-2xl p-8 flex flex-col gap-5 hover:border-tertiary/30 hover:shadow-md transition-all duration-300">
-              <div class="w-11 h-11 rounded-xl bg-tertiary/8 border border-tertiary/18 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/16 transition-all duration-300">
-                <span class="w-5 h-5 block" set:html={item.icon} />
+          {
+            timeline.map((item) => (
+              <div class="group bg-surface border border-neutral/15 rounded-2xl p-8 flex flex-col gap-5 hover:border-tertiary/30 hover:shadow-md transition-all duration-300">
+                <div class="w-11 h-11 rounded-xl bg-tertiary/8 border border-tertiary/18 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/16 transition-all duration-300">
+                  <span class="w-5 h-5 block" set:html={item.icon} />
+                </div>
+                <div>
+                  <p
+                    class="font-mono text-[11px] font-semibold tracking-[0.22em] uppercase mb-2"
+                    style="color:#F97316;"
+                  >
+                    {item.eyebrow}
+                  </p>
+                  <h3 class="font-display font-semibold text-primary text-[18px] leading-snug mb-3">
+                    {item.title}
+                  </h3>
+                  <p class="text-muted text-[14.5px] leading-relaxed">
+                    {item.body}
+                  </p>
+                </div>
               </div>
-              <div>
-                <p class="font-mono text-[11px] font-semibold tracking-[0.22em] uppercase mb-2" style="color:#F97316;">{item.eyebrow}</p>
-                <h3 class="font-display font-semibold text-primary text-[18px] leading-snug mb-3">{item.title}</h3>
-                <p class="text-muted text-[14.5px] leading-relaxed">{item.body}</p>
-              </div>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
     </section>
 
     <!-- ── Valores ── -->
-    <section class="section-pad bg-background" aria-labelledby="valores-heading">
+    <section
+      class="section-pad bg-background"
+      aria-labelledby="valores-heading"
+    >
       <div class="container-section">
         <div class="text-center mb-14 reveal">
           <EyebrowLabel text="Cómo trabajo" />
-          <h2 id="valores-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(30px,3.5vw,46px);">
+          <h2
+            id="valores-heading"
+            class="font-display font-semibold text-primary mt-3 leading-tight"
+            style="font-size:clamp(30px,3.5vw,46px);"
+          >
             Los principios que no negocio
           </h2>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 reveal-stagger">
-          {values.map((v) => (
-            <div class="group bg-surface border border-neutral/15 rounded-2xl p-7 flex gap-5 hover:border-tertiary/30 hover:shadow-md transition-all duration-300">
-              <div class="w-11 h-11 rounded-xl bg-tertiary/8 border border-tertiary/18 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/16 transition-all duration-300">
-                <span class="w-5 h-5 block" set:html={v.icon} />
+          {
+            values.map((v) => (
+              <div class="group bg-surface border border-neutral/15 rounded-2xl p-7 flex gap-5 hover:border-tertiary/30 hover:shadow-md transition-all duration-300">
+                <div class="w-11 h-11 rounded-xl bg-tertiary/8 border border-tertiary/18 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/16 transition-all duration-300">
+                  <span class="w-5 h-5 block" set:html={v.icon} />
+                </div>
+                <div>
+                  <h3 class="font-display font-semibold text-primary text-[18px] tracking-[0.01em] mb-2">
+                    {v.title}
+                  </h3>
+                  <p class="text-muted text-[14px] leading-relaxed">{v.desc}</p>
+                </div>
               </div>
-              <div>
-                <h3 class="font-display font-semibold text-primary text-[18px] tracking-[0.01em] mb-2">{v.title}</h3>
-                <p class="text-muted text-[14px] leading-relaxed">{v.desc}</p>
-              </div>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
     </section>
 
     <!-- ── Certificaciones ── -->
-    <section class="section-pad" style="background-color:#1A1A2E;" aria-labelledby="certs-heading">
+    <section
+      class="section-pad"
+      style="background-color:#1A1A2E;"
+      aria-labelledby="certs-heading"
+    >
       <div class="pipes-bg" aria-hidden="true"></div>
       <div class="container-section relative z-10">
         <div class="text-center mb-12 reveal">
           <EyebrowLabel text="Certificaciones" />
-          <h2 id="certs-heading" class="font-display font-semibold text-background mt-3 leading-tight" style="font-size:clamp(30px,3.5vw,46px);">
+          <h2
+            id="certs-heading"
+            class="font-display font-semibold text-background mt-3 leading-tight"
+            style="font-size:clamp(30px,3.5vw,46px);"
+          >
             Certificado, medible, verificable
           </h2>
           <p class="text-neutral/55 mt-4 max-w-[48ch] mx-auto text-[15px]">
-            Mi certificación como técnico en gas en Medellín no es solo un papel — es el respaldo de que cada instalación cumple la normativa colombiana vigente.
+            Mi certificación como técnico en gas en Medellín no es solo un papel
+            — es el respaldo de que cada instalación cumple la normativa
+            colombiana vigente.
           </p>
         </div>
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 reveal-stagger">
-          {certifications.map((c) => (
-            <div class="group relative bg-background/[0.04] border border-neutral/12 rounded-2xl p-6 flex flex-col gap-3 hover:bg-background/[0.08] hover:border-tertiary/30 transition-all duration-300 overflow-hidden text-center items-center">
-              <div class="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-tertiary/40 to-transparent"></div>
-              <div class="font-display text-[28px] font-bold" style="color:rgba(249,115,22,0.35);">{c.seal}</div>
-              <div class="font-display text-[15px] tracking-[0.04em] text-background font-semibold">{c.title}</div>
-              <div class="text-neutral/50 text-[12px] tracking-[0.03em]">{c.sub}</div>
-            </div>
-          ))}
+          {
+            certifications.map((c) => (
+              <div class="group relative bg-background/[0.04] border border-neutral/12 rounded-2xl p-6 flex flex-col gap-3 hover:bg-background/[0.08] hover:border-tertiary/30 transition-all duration-300 overflow-hidden text-center items-center">
+                <div class="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-tertiary/40 to-transparent" />
+                <div
+                  class="font-display text-[28px] font-bold"
+                  style="color:rgba(249,115,22,0.35);"
+                >
+                  {c.seal}
+                </div>
+                <div class="font-display text-[15px] tracking-[0.04em] text-background font-semibold">
+                  {c.title}
+                </div>
+                <div class="text-neutral/50 text-[12px] tracking-[0.03em]">
+                  {c.sub}
+                </div>
+              </div>
+            ))
+          }
         </div>
       </div>
     </section>
 
     <!-- ── Internal links — link equity a páginas programáticas clave ── -->
-    <section class="section-pad bg-background" aria-labelledby="servicios-link-heading">
+    <section
+      class="section-pad bg-background"
+      aria-labelledby="servicios-link-heading"
+    >
       <div class="container-section">
         <div class="text-center mb-10 reveal">
           <EyebrowLabel text="Servicios en Medellín" />
-          <h2 id="servicios-link-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(26px,3vw,40px);">
+          <h2
+            id="servicios-link-heading"
+            class="font-display font-semibold text-primary mt-3 leading-tight"
+            style="font-size:clamp(26px,3vw,40px);"
+          >
             ¿Qué servicio de gas necesitas en Medellín?
           </h2>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4 reveal-stagger">
-          <a href="/instalacion-gas-medellin" class="group bg-surface border border-neutral/15 rounded-xl p-5 flex items-center gap-3 hover:border-tertiary/40 hover:shadow-sm transition-all duration-200">
-            <span class="w-8 h-8 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/20 transition-colors">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v1m0 16v1M3 12h1m16 0h1m-3.07-7.07.707.707M5.363 18.637l.707-.707m0-12.728.707.707M18.637 18.637l-.707-.707"/></svg>
+          <a
+            href="/instalacion-gas-medellin"
+            class="group bg-surface border border-neutral/15 rounded-xl p-5 flex items-center gap-3 hover:border-tertiary/40 hover:shadow-sm transition-all duration-200"
+          >
+            <span
+              class="w-8 h-8 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/20 transition-colors"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+                ><path
+                  d="M12 3v1m0 16v1M3 12h1m16 0h1m-3.07-7.07.707.707M5.363 18.637l.707-.707m0-12.728.707.707M18.637 18.637l-.707-.707"
+                ></path></svg
+              >
             </span>
-            <span class="font-semibold text-primary text-[14px] leading-snug">Instalación de gas en Medellín</span>
+            <span class="font-semibold text-primary text-[14px] leading-snug"
+              >Instalación de gas en Medellín</span
+            >
           </a>
-          <a href="/certificacion-gas-medellin" class="group bg-surface border border-neutral/15 rounded-xl p-5 flex items-center gap-3 hover:border-tertiary/40 hover:shadow-sm transition-all duration-200">
-            <span class="w-8 h-8 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/20 transition-colors">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+          <a
+            href="/certificacion-gas-medellin"
+            class="group bg-surface border border-neutral/15 rounded-xl p-5 flex items-center gap-3 hover:border-tertiary/40 hover:shadow-sm transition-all duration-200"
+          >
+            <span
+              class="w-8 h-8 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/20 transition-colors"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+                ><path
+                  d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                ></path></svg
+              >
             </span>
-            <span class="font-semibold text-primary text-[14px] leading-snug">Certificación de gas en Medellín</span>
+            <span class="font-semibold text-primary text-[14px] leading-snug"
+              >Certificación de gas en Medellín</span
+            >
           </a>
-          <a href="/mantenimiento-gas-medellin" class="group bg-surface border border-neutral/15 rounded-xl p-5 flex items-center gap-3 hover:border-tertiary/40 hover:shadow-sm transition-all duration-200">
-            <span class="w-8 h-8 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/20 transition-colors">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z"/></svg>
+          <a
+            href="/mantenimiento-gas-medellin"
+            class="group bg-surface border border-neutral/15 rounded-xl p-5 flex items-center gap-3 hover:border-tertiary/40 hover:shadow-sm transition-all duration-200"
+          >
+            <span
+              class="w-8 h-8 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/20 transition-colors"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+                ><path
+                  d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z"
+                ></path></svg
+              >
             </span>
-            <span class="font-semibold text-primary text-[14px] leading-snug">Mantenimiento de gas en Medellín</span>
+            <span class="font-semibold text-primary text-[14px] leading-snug"
+              >Mantenimiento de gas en Medellín</span
+            >
           </a>
-          <a href="/instalacion-gas-el-poblado" class="group bg-surface border border-neutral/15 rounded-xl p-5 flex items-center gap-3 hover:border-tertiary/40 hover:shadow-sm transition-all duration-200">
-            <span class="w-8 h-8 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/20 transition-colors">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+          <a
+            href="/instalacion-gas-el-poblado"
+            class="group bg-surface border border-neutral/15 rounded-xl p-5 flex items-center gap-3 hover:border-tertiary/40 hover:shadow-sm transition-all duration-200"
+          >
+            <span
+              class="w-8 h-8 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/20 transition-colors"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+                ><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path><path
+                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                ></path></svg
+              >
             </span>
-            <span class="font-semibold text-primary text-[14px] leading-snug">Gas en El Poblado</span>
+            <span class="font-semibold text-primary text-[14px] leading-snug"
+              >Gas en El Poblado</span
+            >
           </a>
-          <a href="/instalacion-gas-laureles" class="group bg-surface border border-neutral/15 rounded-xl p-5 flex items-center gap-3 hover:border-tertiary/40 hover:shadow-sm transition-all duration-200">
-            <span class="w-8 h-8 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/20 transition-colors">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+          <a
+            href="/instalacion-gas-laureles"
+            class="group bg-surface border border-neutral/15 rounded-xl p-5 flex items-center gap-3 hover:border-tertiary/40 hover:shadow-sm transition-all duration-200"
+          >
+            <span
+              class="w-8 h-8 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/20 transition-colors"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+                ><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path><path
+                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                ></path></svg
+              >
             </span>
-            <span class="font-semibold text-primary text-[14px] leading-snug">Gas en Laureles</span>
+            <span class="font-semibold text-primary text-[14px] leading-snug"
+              >Gas en Laureles</span
+            >
           </a>
-          <a href="/instalacion-gas-envigado" class="group bg-surface border border-neutral/15 rounded-xl p-5 flex items-center gap-3 hover:border-tertiary/40 hover:shadow-sm transition-all duration-200">
-            <span class="w-8 h-8 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/20 transition-colors">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+          <a
+            href="/instalacion-gas-envigado"
+            class="group bg-surface border border-neutral/15 rounded-xl p-5 flex items-center gap-3 hover:border-tertiary/40 hover:shadow-sm transition-all duration-200"
+          >
+            <span
+              class="w-8 h-8 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/20 transition-colors"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+                ><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path><path
+                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                ></path></svg
+              >
             </span>
-            <span class="font-semibold text-primary text-[14px] leading-snug">Gas en Envigado</span>
+            <span class="font-semibold text-primary text-[14px] leading-snug"
+              >Gas en Envigado</span
+            >
           </a>
         </div>
       </div>
@@ -369,8 +632,43 @@ const breadcrumbSchema = {
 
 <script is:inline>
   const io = new IntersectionObserver(
-    (entries) => { entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); },
-    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' },
   );
-  document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => io.observe(el));
+  document
+    .querySelectorAll('.reveal, .reveal-stagger')
+    .forEach((el) => io.observe(el));
+
+  // ── Counter animation ──
+  const counterIo = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = +el.dataset.count;
+        const nEl = el.querySelector('.n');
+        const dur = 1500;
+        const start = performance.now();
+        const tick = (t) => {
+          const p = Math.min(1, (t - start) / dur);
+          const eased = 1 - Math.pow(1 - p, 3);
+          nEl.textContent = Math.round(target * eased);
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+        counterIo.unobserve(el);
+      });
+    },
+    { threshold: 0.4 },
+  );
+  document
+    .querySelectorAll('.stat .val')
+    .forEach((el) => counterIo.observe(el));
 </script>

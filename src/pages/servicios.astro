@@ -74,7 +74,7 @@ const services = [
     title: 'Instalación de gasodomésticos: estufas, calentadores y hornos',
     keyword: 'instalación calentador gas Medellín',
     description: 'Instalación y conexión certificada de estufas, calentadores de paso, calentadores de almacenamiento, hornos y secadoras a gas en Medellín.',
-    detail: 'Instalamos cualquier marca. Incluye manguera certificada, válvula de seguridad, prueba de funcionamiento completa y garantía escrita de mano de obra. Revisamos ventilación y espacios técnicos.',
+    detail: 'Instalamos cualquier marca. Incluye manguera certificada, válvula de seguridad y prueba de funcionamiento completa. Revisamos ventilación y espacios técnicos.',
     icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M4 13h16M8 9V6h8v3M9 17h2"/></svg>`,
     badge: null,
   },
@@ -83,8 +83,8 @@ const services = [
     slug: 'venta-calentadores',
     title: 'Venta e instalación de calentadores de agua a gas',
     keyword: 'venta calentadores a gas Medellín',
-    description: 'Suministro e instalación de calentadores de paso y de almacenamiento a gas natural y GLP. Marcas certificadas con garantía en Medellín y Valle de Aburrá.',
-    detail: 'Contamos con calentadores de paso de 6, 10 y 14 litros y calentadores de almacenamiento. Asesoramos según el consumo del hogar, instalamos y gestionamos la garantía del fabricante.',
+    description: 'Suministro e instalación de calentadores de paso y de almacenamiento a gas natural y GLP. Marcas certificadas en Medellín y Valle de Aburrá.',
+    detail: 'Contamos con calentadores de paso de 6, 10 y 14 litros y calentadores de almacenamiento. Asesoramos según el consumo del hogar e instalamos con materiales certificados NTC.',
     icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7Z"/><circle cx="12" cy="9" r="2.5"/></svg>`,
     badge: 'Nuevo',
   },
@@ -112,7 +112,7 @@ const services = [
 
 const process = [
   { n: '1', title: 'Solicitud',     desc: 'Escríbenos por WhatsApp con tu dirección y tipo de trabajo. Respuesta en minutos.' },
-  { n: '2', title: 'Visita técnica', desc: 'Técnico certifcado evalúa el espacio y entrega propuesta detallada sin costo.' },
+  { n: '2', title: 'Visita técnica', desc: 'Técnico certificado evalúa el espacio y entrega propuesta detallada. Costo de visita: $50.000.' },
   { n: '3', title: 'Ejecución',     desc: 'Ejecutamos con materiales certificados NTC. Sin sorpresas ni costos ocultos.' },
   { n: '4', title: 'Certificado',   desc: 'Entregamos el certificado oficial vigente y el reporte técnico completo.' },
 ];
@@ -123,7 +123,7 @@ const zonas = [
   { name: 'Belén',         href: '/instalacion-gas-belen'         },
   { name: 'Envigado',      href: '/instalacion-gas-envigado'      },
   { name: 'Bello',         href: '/instalacion-gas-bello'         },
-  { name: 'Itagüí',        href: '/instalacion-gas-itaguei'       },
+  { name: 'Itagüí',        href: '/instalacion-gas-itagui'       },
   { name: 'Sabaneta',      href: '/instalacion-gas-sabaneta'      },
   { name: 'Robledo',       href: '/instalacion-gas-robledo'       },
   { name: 'La Estrella',   href: '/instalacion-gas-la-estrella'   },
@@ -134,8 +134,8 @@ const trust = [
   { label: 'Certificación ICONTEC',        sub: 'Organismo acreditado vigente'          },
   { label: 'NTC 2505',                     sub: 'Norma Técnica Colombiana'              },
   { label: 'Aval EPM / Gas Natural',       sub: 'Instaladores autorizados en Antioquia' },
-  { label: 'Garantía 12 meses',            sub: 'Escrita sobre mano de obra'            },
-  { label: 'Visita diagnóstica sin costo', sub: 'Sin compromisos'                       },
+  { label: 'Atención rápida',               sub: 'Visita coordinada contigo'             },
+  { label: 'Visita diagnóstica',           sub: 'Costo de visita $50.000'               },
   { label: 'Materiales certificados',      sub: 'Cobre y CPVC NTC'                      },
 ];
 
@@ -176,7 +176,7 @@ const breadcrumbSchema = {
 -->
 <BaseLayout
   title="Servicios de Gas en Medellín — Instalación y Certificación | LujoGas"
-  description="Instalación de redes, certificación ICONTEC, RPO, detección de fugas, calentadores y más en Medellín. Técnico certificado. Visita diagnóstica sin costo."
+  description="Instalación de redes, certificación ICONTEC, RPO, detección de fugas, calentadores y más en Medellín. Técnico certificado en todo el Valle de Aburrá."
   canonical="https://lujogas.com/servicios"
 >
   <Header />
@@ -188,7 +188,7 @@ const breadcrumbSchema = {
 
     <!-- ── Page Hero ── -->
     <section
-      class="relative overflow-hidden pt-[140px] pb-[80px]"
+      class="relative overflow-hidden pt-[140px]"
       style="background-color: #333333;"
       aria-labelledby="servicios-page-heading"
     >
@@ -198,35 +198,62 @@ const breadcrumbSchema = {
         style="background: radial-gradient(ellipse 70% 80% at 10% 50%, rgba(37,99,235,0.12) 0%, transparent 65%);"
         aria-hidden="true"
       ></div>
+
       <div class="container-section relative z-10">
-        <div class="flex items-center gap-3 mb-5">
-          <span class="block w-8 h-px" style="background:#F97316;"></span>
-          <span class="font-mono text-[11px] font-semibold tracking-[0.26em] uppercase" style="color:#F97316;">
-            LujoGas · Servicios
-          </span>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-end">
+
+          <!-- ── Text column ── -->
+          <div class="pb-[80px]">
+            <div class="flex items-center gap-3 mb-5">
+              <span class="block w-8 h-px" style="background:#F97316;"></span>
+              <span class="font-mono text-[11px] font-semibold tracking-[0.26em] uppercase" style="color:#F97316;">
+                LujoGas · Servicios
+              </span>
+            </div>
+            <h1
+              id="servicios-page-heading"
+              class="font-display font-semibold leading-[0.97] tracking-[-0.01em] text-background mb-5"
+              style="font-size: clamp(40px,5.5vw,78px); max-width: 16ch;"
+            >
+              Servicios de gas en Medellín: instalación, certificación y más
+            </h1>
+            <p class="text-neutral/70 max-w-[52ch]" style="font-size: clamp(15px,1.3vw,17px); line-height: 1.65;">
+              Técnico certificado bajo NTC 2505. Desde el diseño de la red hasta la certificación oficial — un solo proceso, atención en todo el Valle de Aburrá.
+            </p>
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20LujoGas%2C%20necesito%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20gas%20en%20Medell%C3%ADn.`}
+              class="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-xl font-semibold text-[15px] transition-all duration-200 hover:opacity-90 min-h-[48px]"
+              style="background:#25D366; color:#fff;"
+              aria-label="Solicitar servicio de gas en Medellín por WhatsApp"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+              Solicitar servicio ahora
+            </a>
+          </div>
+
+          <!-- ── Photo column ── -->
+          <div class="relative flex justify-center lg:justify-end items-end hero-photo-enter">
+            <div
+              class="hero-photo-glow"
+              style="background: radial-gradient(ellipse at 50% 100%, rgba(37,99,235,0.20) 0%, transparent 70%);"
+              aria-hidden="true"
+            ></div>
+            <img
+              src="https://res.cloudinary.com/dxcbyed7d/image/upload/v1778610253/remove-bgf2fc1984-f66c-4646-84c9-c035fdefbd69_gpswah_dad3e8.webp"
+              alt="Técnico certificado en instalación de gas en Medellín — LujoGas"
+              class="relative z-10 w-auto max-w-full object-contain"
+              style="max-height: clamp(340px, 50vw, 560px);"
+              width="420"
+              height="560"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </div>
+
         </div>
-        <!-- H1: keyword principal + ubicación en las primeras palabras -->
-        <h1
-          id="servicios-page-heading"
-          class="font-display font-semibold leading-[0.97] tracking-[-0.01em] text-background mb-5"
-          style="font-size: clamp(40px,6vw,80px); max-width: 16ch;"
-        >
-          Servicios de gas en Medellín: instalación, certificación y más
-        </h1>
-        <p class="text-neutral/70 max-w-[52ch]" style="font-size: clamp(15px,1.3vw,17px); line-height: 1.65;">
-          Técnico certificado bajo NTC 2505. Desde el diseño de la red hasta la certificación oficial — un solo proceso, garantía escrita, atención en todo el Valle de Aburrá.
-        </p>
-        <!-- Quick CTA -->
-        <a
-          href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20LujoGas%2C%20necesito%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20gas%20en%20Medell%C3%ADn.`}
-          class="inline-flex items-center gap-2 mt-8 px-6 py-3 rounded-xl font-semibold text-[15px] transition-all duration-200 hover:opacity-90 min-h-[48px]"
-          style="background:#25D366; color:#fff;"
-          aria-label="Solicitar servicio de gas en Medellín por WhatsApp"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-          Solicitar servicio ahora
-        </a>
       </div>
+
       <div
         class="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
         style="background: linear-gradient(to bottom, transparent, #F8F7F4);"
@@ -375,6 +402,51 @@ const breadcrumbSchema = {
           </p>
         </div>
       </div>
+    </section>
+
+    <!-- ── FAQ Servicios ── -->
+    <section class="section-pad bg-white" aria-labelledby="faq-servicios-heading">
+      <div class="container-section max-w-3xl">
+        <div class="text-center mb-10 reveal">
+          <span class="font-mono text-[10px] font-bold tracking-[3px] uppercase text-tertiary">Preguntas frecuentes</span>
+          <h2 id="faq-servicios-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(26px,3vw,42px);">
+            Preguntas sobre nuestros servicios de gas en Medellín
+          </h2>
+        </div>
+        <div class="flex flex-col gap-3 reveal-stagger">
+          {[
+            { q: '¿Cuánto cuesta la visita de diagnóstico?', a: 'La visita diagnóstica tiene un costo de $50.000. Si contratas el servicio, ese valor se descuenta del total de la obra.' },
+            { q: '¿Los técnicos están certificados bajo NTC 2505?', a: 'Sí. Todos nuestros técnicos cuentan con certificación ICONTEC bajo la norma NTC 2505, el estándar nacional obligatorio para instalaciones de gas en Colombia.' },
+            { q: '¿En cuánto tiempo entregan el certificado de gas?', a: 'El certificado oficial se emite entre 24 y 48 horas después de completar la instalación o revisión, una vez aprobadas las pruebas hidrostáticas.' },
+            { q: '¿Realizan instalaciones comerciales e industriales?', a: 'Sí. Atendemos redes residenciales, locales comerciales, restaurantes y edificios. Cada proyecto inicia con un diagnóstico técnico y diseño de red conforme a normativa.' },
+            { q: '¿En qué zonas del Valle de Aburrá trabajan?', a: 'Cubrimos Medellín (El Poblado, Laureles, Robledo, Belén y más), Envigado, Bello, Itagüí, Sabaneta, La Estrella, Copacabana y corregimientos cercanos.' },
+            { q: '¿Qué incluye el mantenimiento preventivo?', a: 'Incluye inspección de tuberías, revisión de conexiones, prueba de estanqueidad, revisión de reguladores y reporte técnico con recomendaciones de seguridad.' },
+            { q: '¿Los materiales que usan son certificados?', a: 'Sí. Usamos únicamente tuberías, accesorios y reguladores que cumplen con la Norma Técnica Colombiana (NTC), garantizando seguridad y durabilidad.' },
+          ].map(({ q, a }) => (
+            <details class="group border border-neutral/15 rounded-xl overflow-hidden bg-surface">
+              <summary class="flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none font-display font-semibold text-primary text-[15px] leading-snug select-none hover:bg-neutral/5 transition-colors duration-150">
+                {q}
+                <span class="flex-shrink-0 w-5 h-5 rounded-full border border-neutral/25 flex items-center justify-center text-muted group-open:rotate-45 transition-transform duration-200 text-[18px] leading-none">+</span>
+              </summary>
+              <p class="px-5 pb-5 text-muted text-[14px] leading-relaxed border-t border-neutral/10 pt-3">{a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+
+      <script type="application/ld+json" is:inline set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "¿Cuánto cuesta la visita de diagnóstico?", "acceptedAnswer": { "@type": "Answer", "text": "La visita diagnóstica tiene un costo de $50.000. Si contratas el servicio, ese valor se descuenta del total de la obra." } },
+          { "@type": "Question", "name": "¿Los técnicos están certificados bajo NTC 2505?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Todos nuestros técnicos cuentan con certificación ICONTEC bajo la norma NTC 2505, el estándar nacional obligatorio para instalaciones de gas en Colombia." } },
+          { "@type": "Question", "name": "¿En cuánto tiempo entregan el certificado de gas?", "acceptedAnswer": { "@type": "Answer", "text": "El certificado oficial se emite entre 24 y 48 horas después de completar la instalación o revisión, una vez aprobadas las pruebas hidrostáticas." } },
+          { "@type": "Question", "name": "¿Realizan instalaciones comerciales e industriales?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Atendemos redes residenciales, locales comerciales, restaurantes y edificios. Cada proyecto inicia con un diagnóstico técnico y diseño de red conforme a normativa." } },
+          { "@type": "Question", "name": "¿En qué zonas del Valle de Aburrá trabajan?", "acceptedAnswer": { "@type": "Answer", "text": "Cubrimos Medellín (El Poblado, Laureles, Robledo, Belén y más), Envigado, Bello, Itagüí, Sabaneta, La Estrella, Copacabana y corregimientos cercanos." } },
+          { "@type": "Question", "name": "¿Qué incluye el mantenimiento preventivo?", "acceptedAnswer": { "@type": "Answer", "text": "Incluye inspección de tuberías, revisión de conexiones, prueba de estanqueidad, revisión de reguladores y reporte técnico con recomendaciones de seguridad." } },
+          { "@type": "Question", "name": "¿Los materiales que usan son certificados?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Usamos únicamente tuberías, accesorios y reguladores que cumplen con la Norma Técnica Colombiana (NTC), garantizando seguridad y durabilidad." } },
+        ]
+      })} />
     </section>
 
     <CTASection />

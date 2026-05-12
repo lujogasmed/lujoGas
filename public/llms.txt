@@ -1,88 +1,91 @@
-# LujoGas — Instalación y Certificación de Redes de Gas en Medellín
+# LujoGas — Instalación y Certificación de Gas en Medellín
 
-> LujoGas es una empresa de instalación, certificación y mantenimiento de redes de gas en Medellín y el Valle de Aburrá, Colombia. Fundada y operada por Luis Guillermo Muñoz Vélez, técnico certificado bajo la norma NTC 2505 e ICONTEC.
+> Técnico certificado en instalación, mantenimiento y certificación de redes de gas natural y GLP en Medellín y el Valle de Aburrá, Colombia.
 
-## Información de contacto
+## Quiénes somos
 
-- **Empresa:** LujoGas
-- **Fundador y técnico:** Luis Guillermo Muñoz Vélez
-- **Teléfono:** +57 301 474 8653
-- **WhatsApp:** https://wa.me/573014748653
-- **Ciudad:** Medellín, Antioquia, Colombia
-- **Horario:** Lunes a Sábado, 7:00 am – 6:00 pm
-- **Sitio web:** https://lujogas.com
+LujoGas es una empresa de servicios técnicos de gas con sede en Medellín, Antioquia, Colombia. Fundada y operada por Luis Guillermo Muñoz Vélez, técnico certificado en redes de gas con 3 años de experiencia y más de 3.000 certificaciones realizadas. Atendemos todo el Valle de Aburrá y corregimientos cercanos.
 
-## Servicios
+**Propietario:** Luis Guillermo Muñoz Vélez
+**Cargo:** Técnico Certificado en Redes de Gas — NTC 2505
+**Certificación:** ICONTEC · Aval EPM / Gas Natural
+**Dirección:** Calle 57 Sur # 65-94 (9708), Medellín, Antioquia, Colombia
+**Teléfono / WhatsApp:** +57 301 474 8653
+**Horario:** Lunes–Viernes 8am–5pm · Sábado 8am–12pm
+**Sitio web:** https://lujogas.com
 
-### 1. Instalación de redes de gas domiciliario
-Diseño e instalación de redes internas de gas natural y GLP en cobre, polietileno o multicapa. Cumplimiento NTC 2505. Para viviendas unifamiliares, apartamentos, edificios y locales comerciales. Incluye prueba hidrostática y certificado oficial.
+## Servicios que ofrecemos
+
+### 1. Instalación de redes de gas residencial y comercial
+Diseño e instalación de redes internas de gas natural y GLP en cobre, polietileno o multicapa. Cumplimiento NTC 2505. Incluye prueba hidrostática y certificado oficial.
 
 ### 2. Certificación de instalaciones de gas (ICONTEC)
-Expedición de certificado oficial vigente por organismo acreditado. Requerido por Gas Natural, EPM y Surtigas para activar el servicio en Antioquia. Entrega en 24–48 horas.
+Certificado oficial para activar el servicio con Gas Natural o EPM en Antioquia. Requerido por ley. Entrega en 24–48 horas.
 
 ### 3. Revisión Periódica Obligatoria (RPO)
-La RPO es exigida por ley en Colombia. LujoGas realiza la revisión completa y emite el certificado de RPO vigente con reporte técnico.
+Revisión exigida por ley cada cierto período. Mantén tu certificación vigente y evita sanciones. Incluye reporte técnico completo.
 
 ### 4. Detección y reparación de fugas de gas
-Localización con detectores electrónicos de alta sensibilidad. Reparación inmediata en la misma visita técnica.
+Localización con detectores electrónicos de alta sensibilidad. Reparación inmediata en la misma visita cuando es posible.
 
-### 5. Pruebas de hermeticidad de redes de gas
-Ensayos de estanqueidad bajo presión según NTC 2505. Obligatorios antes de cualquier certificación en Colombia.
+### 5. Mantenimiento preventivo y correctivo de redes de gas
+Inspección, limpieza y corrección de fallas en redes existentes. Materiales certificados NTC.
 
-### 6. Inspección técnica de redes de gas
-Diagnóstico completo del estado de la instalación. Informe detallado con priorización de correcciones.
+### 6. Conversión de red a gas natural
+Adaptación de instalaciones existentes de GLP a gas natural. Incluye cambio de accesorios y nueva certificación.
 
 ### 7. Instalación de gasodomésticos
-Instalación certificada de estufas, calentadores de paso, calentadores de almacenamiento, hornos y secadoras a gas. Garantía escrita de mano de obra.
+Estufas, calentadores de paso, calentadores de almacenamiento, hornos y secadoras a gas. Conexión certificada y pruebas de estanqueidad.
 
 ### 8. Venta e instalación de calentadores de agua a gas
-Suministro e instalación de calentadores de paso (6, 10 y 14 litros) y almacenamiento. Gas natural y GLP. Marcas certificadas con garantía.
+Calentadores de paso (6, 10, 14 litros) y almacenamiento. Asesoría según consumo del hogar e instalación certificada.
 
-### 9. Adecuación de redes según normativa vigente
-Corrección y actualización de instalaciones antiguas para cumplir NTC 2505. Evita sanciones y rechazos de certificación.
+### 9. Adecuación y ampliación de redes existentes
+Modificación de redes para nuevos puntos de consumo o cambio de capacidad. Recertificación incluida.
 
-### 10. Corrección de fallas para aprobación de certificación
-Identificación y corrección de no conformidades en instalaciones rechazadas. Gestión de reinspección.
+### 10. Inspección y diagnóstico técnico
+Evaluación del estado de una instalación existente. Costo de visita: $50.000. Entrega de informe técnico detallado.
 
-## Cobertura geográfica
+## Zonas de cobertura
 
-LujoGas atiende Medellín y todo el Valle de Aburrá:
-- **Medellín:** El Poblado, Laureles, Belén, Robledo, Castilla, Aranjuez, Buenos Aires, El Estadio
-- **Municipios:** Envigado, Bello, Itagüí, Sabaneta, La Estrella, Copacabana, Caldas, Barbosa, Girardota
+**Medellín:** El Poblado, Laureles, Belén, Robledo, La América, Estadio, Aranjuez, Manrique, Villa Hermosa, El Centro y todas las comunas.
 
-## Certificaciones y estándares
+**Valle de Aburrá:** Envigado, Itagüí, Sabaneta, La Estrella, Bello, Copacabana, Girardota, Barbosa, Caldas.
 
-- **ICONTEC:** Certificación emitida por organismo acreditado
-- **NTC 2505:** Norma Técnica Colombiana para instalaciones de gas
-- **RETIE:** Reglamento Técnico de Instalaciones Eléctricas (aplicable a inspecciones)
-- **Aval EPM / Gas Natural:** Instaladores autorizados en Antioquia
-- **Garantía:** 12 meses escrita sobre mano de obra
+**Corregimientos cercanos:** Altavista, San Antonio de Prado, San Cristóbal, Santa Elena.
 
-## Por qué elegir LujoGas
+## Preguntas frecuentes (FAQ)
 
-- Técnico certificado único — Luis Guillermo Muñoz Vélez trabaja directamente, sin subcontratistas
-- Materiales con certificación NTC (tuberías de cobre y CPVC certificadas)
-- Certificado oficial incluido en cada instalación
-- Visita diagnóstica sin costo
-- Respuesta por WhatsApp en minutos
-- Atención en menos de 24 horas
+**¿Cuánto cuesta la visita técnica?**
+La visita diagnóstica tiene un costo de $50.000. Este valor se descuenta si contratas el servicio.
 
-## Preguntas frecuentes
+**¿Qué certificación tiene el técnico?**
+Luis Guillermo Muñoz Vélez está certificado bajo NTC 2505 y cuenta con aval de EPM y Gas Natural para instalaciones en Antioquia.
 
-**¿Qué es la RPO (Revisión Periódica Obligatoria)?**
-La RPO es una inspección obligatoria por ley en Colombia que debe realizarse periódicamente para mantener la certificación de la red de gas vigente. Sin ella, la empresa de gas puede suspender el servicio.
+**¿Cuánto tarda la certificación de gas?**
+La certificación ICONTEC se entrega en 24 a 48 horas tras la inspección y aprobación de la instalación.
 
-**¿Cuánto tiempo tarda una certificación de gas?**
-LujoGas entrega el certificado oficial en 24 a 48 horas después de la inspección.
+**¿Qué norma rige las instalaciones de gas en Colombia?**
+La Norma Técnica Colombiana NTC 2505 regula el diseño, instalación y certificación de redes de gas domiciliario.
 
-**¿Qué norma regula las instalaciones de gas en Colombia?**
-La NTC 2505 (Norma Técnica Colombiana) y la normativa RETIE regulan las instalaciones de gas residencial y comercial en Colombia.
+**¿Atienden en Envigado, Bello e Itagüí?**
+Sí. Cubrimos todos los municipios del Valle de Aburrá y corregimientos aledaños a Medellín.
 
-**¿LujoGas trabaja en toda el área metropolitana de Medellín?**
-Sí, LujoGas atiende Medellín y todos los municipios del Valle de Aburrá: Envigado, Bello, Itagüí, Sabaneta, La Estrella, Copacabana, entre otros.
+**¿Puedo solicitar servicio por WhatsApp?**
+Sí. Escribe al +57 301 474 8653 con tu dirección y tipo de trabajo. Respuesta en minutos.
 
-**¿Tienen garantía los trabajos de instalación?**
-Sí, todos los trabajos incluyen garantía escrita de 12 meses sobre mano de obra.
+**¿Usan materiales certificados?**
+Todos los materiales (tuberías, válvulas, accesorios) cumplen Norma Técnica Colombiana. Sin atajos.
 
-**¿Cuál es el costo de la visita diagnóstica?**
-La visita diagnóstica es sin costo y sin compromisos.
+## Datos de contacto
+
+- **WhatsApp:** https://wa.me/573014748653
+- **Sitio web:** https://lujogas.com
+- **Dirección:** Calle 57 Sur # 65-94 (9708), Medellín, Antioquia
+- **Horario de atención:** Lunes–Viernes 8am–5pm · Sábado 8am–12pm
+
+## Páginas del sitio
+
+- https://lujogas.com/ — Página principal
+- https://lujogas.com/servicios — Todos los servicios de gas en Medellín
+- https://lujogas.com/nosotros — Quiénes somos, técnico y certificaciones

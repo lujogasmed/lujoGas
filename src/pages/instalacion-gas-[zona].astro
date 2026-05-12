@@ -1,0 +1,424 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/organisms/Header.astro';
+import Footer from '../components/organisms/Footer.astro';
+import CTASection from '../components/organisms/CTASection.astro';
+import EyebrowLabel from '../components/atoms/EyebrowLabel.astro';
+import { zonas } from '../data/zonas';
+import { WHATSAPP_NUMBER } from '../lib/constants';
+
+export async function getStaticPaths() {
+  return zonas.map((zona) => ({
+    params: { zona: zona.slug },
+    props: { zona },
+  }));
+}
+
+const { zona } = Astro.props;
+
+// Neighboring zones (all other zones, up to 5)
+const neighborZones = zonas.filter((z) => z.slug !== zona.slug).slice(0, 5);
+
+const waText = encodeURIComponent(
+  `Hola LujoGas, necesito información sobre instalación de gas en ${zona.name}.`
+);
+const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`;
+
+// Title: ≤60 chars
+const pageTitle = `Instalación de Gas en ${zona.name} — Técnico Certificado | LujoGas`;
+// Meta description: 140-160 chars
+const pageDesc = `Instalación de gas en ${zona.name}, ${zona.municipio}. Técnico certificado NTC 2505. Certificación ICONTEC, RPO y mantenimiento. LujoGas — +57 301 474 8653.`;
+const canonical = `https://lujogas.com/instalacion-gas-${zona.slug}`;
+
+// ── Schemas ─────────────────────────────────────────────────────────────────
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio",    "item": "https://lujogas.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://lujogas.com/servicios" },
+    { "@type": "ListItem", "position": 3, "name": `Instalación de gas en ${zona.name}`, "item": canonical },
+  ],
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": `¿Cuánto cuesta la instalación de gas en ${zona.name}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `La visita diagnóstica tiene un costo de $50.000. Tras la evaluación técnica en ${zona.name}, entregamos un presupuesto detallado con el valor exacto de la instalación, sin costos ocultos.`,
+      },
+    },
+    {
+      "@type": "Question",
+      "name": `¿LujoGas atiende en ${zona.name}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Sí, atendemos con cobertura completa en ${zona.name}, ${zona.municipio} y todo el Valle de Aburrá. Contáctanos por WhatsApp al +57 301 474 8653 para coordinar la visita.`,
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué certificación tiene el técnico de LujoGas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El técnico Luis Guillermo Muñoz Vélez está certificado bajo la NTC 2505, con aval ICONTEC y reconocimiento de EPM / Gas Natural en Antioquia.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tarda la certificación de gas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Una vez aprobada la instalación o revisión, el certificado oficial ICONTEC se entrega en 24 a 48 horas hábiles.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué norma técnica aplica para instalaciones de gas en Colombia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En Colombia, las instalaciones de gas domiciliario se rigen por la NTC 2505 (Norma Técnica Colombiana). Todos los trabajos de LujoGas cumplen esta normativa.",
+      },
+    },
+  ],
+};
+
+// ── Services data ────────────────────────────────────────────────────────────
+const services = [
+  {
+    title: 'Instalación de redes de gas',
+    description: `Diseño e instalación de redes internas de gas natural en ${zona.name} con materiales certificados NTC — cobre y CPVC — cumplimiento NTC 2505.`,
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 12h6m6 0h6M9 6v12M15 6v12"/><circle cx="12" cy="12" r="2.2"/></svg>`,
+  },
+  {
+    title: 'Certificación ICONTEC',
+    description: `Expedición de certificado oficial vigente requerido por Gas Natural y EPM para activar el servicio en ${zona.name}. Entrega en 24–48 horas.`,
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>`,
+  },
+  {
+    title: 'Revisión Periódica Obligatoria (RPO)',
+    description: `La RPO es exigida por ley para mantener la certificación vigente en ${zona.name}. Evita sanciones y garantiza la seguridad de tu hogar.`,
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>`,
+  },
+  {
+    title: 'Detección de fugas de gas',
+    description: `Localización precisa de fugas con detectores electrónicos de alta sensibilidad. Reparación inmediata en la misma visita en ${zona.name}.`,
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4m0 4h.01"/></svg>`,
+  },
+  {
+    title: 'Mantenimiento preventivo',
+    description: `Revisión integral de tuberías, válvulas y reguladores. Identificamos desgastes antes de que se conviertan en problemas en ${zona.name}.`,
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg>`,
+  },
+  {
+    title: 'Instalación de calentadores y gasodomésticos',
+    description: `Conexión certificada de estufas, calentadores de paso, hornos y secadoras a gas en ${zona.name} con manguera certificada y válvula de seguridad.`,
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M4 13h16M8 9V6h8v3M9 17h2"/></svg>`,
+  },
+];
+
+const trustBadges = [
+  { label: 'Certificación ICONTEC',  sub: 'Organismo acreditado vigente' },
+  { label: 'NTC 2505',               sub: 'Norma Técnica Colombiana' },
+  { label: 'Técnico certificado',     sub: 'Luis Guillermo Muñoz Vélez' },
+  { label: 'Atención rápida',         sub: 'Coordina tu visita hoy' },
+];
+
+const procesoPasos = [
+  { n: '1', title: 'Solicitud',      desc: `Escríbenos por WhatsApp con tu dirección en ${zona.name} y tipo de trabajo. Respuesta en minutos.` },
+  { n: '2', title: 'Visita técnica', desc: `El técnico certificado evalúa el espacio en ${zona.name} y entrega propuesta. Costo de visita: $50.000.` },
+  { n: '3', title: 'Ejecución',      desc: 'Instalamos con materiales certificados NTC — cobre y CPVC. Sin sorpresas ni costos ocultos.' },
+  { n: '4', title: 'Certificado',    desc: 'Entregamos el certificado oficial ICONTEC vigente y el reporte técnico completo en 24–48 horas.' },
+];
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDesc}
+  canonical={canonical}
+>
+  <Header />
+
+  <main>
+    <!-- Schemas -->
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+    <!-- ── Hero ─────────────────────────────────────────────────────────── -->
+    <section
+      class="relative overflow-hidden pt-[140px] pb-[80px]"
+      style="background-color: #333333;"
+      aria-labelledby="zona-hero-heading"
+    >
+      <div class="pipes-bg" aria-hidden="true"></div>
+      <div
+        class="absolute inset-0 pointer-events-none"
+        style="background: radial-gradient(ellipse 70% 80% at 10% 50%, rgba(37,99,235,0.12) 0%, transparent 65%);"
+        aria-hidden="true"
+      ></div>
+
+      <div class="container-section relative z-10">
+        <!-- Breadcrumb -->
+        <nav aria-label="Ruta de navegación" class="mb-6">
+          <ol class="flex items-center gap-2 text-[12px] text-neutral/50 font-mono tracking-wide">
+            <li><a href="/" class="hover:text-neutral/80 transition-colors">Inicio</a></li>
+            <li aria-hidden="true" class="text-neutral/30">/</li>
+            <li><a href="/servicios" class="hover:text-neutral/80 transition-colors">Servicios</a></li>
+            <li aria-hidden="true" class="text-neutral/30">/</li>
+            <li class="text-neutral/70">{zona.name}</li>
+          </ol>
+        </nav>
+
+        <div class="max-w-[760px]">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="block w-8 h-px" style="background:#F97316;"></span>
+            <span class="font-mono text-[11px] font-semibold tracking-[0.26em] uppercase" style="color:#F97316;">
+              LujoGas · {zona.tipo === 'barrio' ? zona.municipio : zona.municipio} · Gas certificado
+            </span>
+          </div>
+
+          <h1
+            id="zona-hero-heading"
+            class="font-display font-semibold leading-[0.97] tracking-[-0.01em] text-background mb-5"
+            style="font-size: clamp(36px,5vw,72px); max-width: 18ch;"
+          >
+            Instalación de gas en {zona.name} con técnico certificado
+          </h1>
+
+          <p class="text-neutral/70 max-w-[58ch] mb-8" style="font-size: clamp(15px,1.3vw,17px); line-height: 1.65;">
+            {zona.descripcionLarga} Técnico certificado NTC 2505 con aval ICONTEC, EPM y Gas Natural. Más de 3.000 certificaciones realizadas en el Valle de Aburrá.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a
+              href={waUrl}
+              class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-[15px] transition-all duration-200 hover:opacity-90 min-h-[48px]"
+              style="background:#25D366; color:#fff;"
+              aria-label={`Solicitar instalación de gas en ${zona.name} por WhatsApp`}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+              Solicitar en {zona.name}
+            </a>
+            <a
+              href="tel:+573014748653"
+              class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-[15px] border transition-all duration-200 hover:border-neutral/40 min-h-[48px]"
+              style="border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.85);"
+            >
+              +57 301 474 8653
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
+        style="background: linear-gradient(to bottom, transparent, #F8F7F4);"
+        aria-hidden="true"
+      ></div>
+    </section>
+
+    <!-- ── Stats bar ─────────────────────────────────────────────────────── -->
+    <section class="py-10" style="background:#F8F7F4;" aria-label="Estadísticas LujoGas">
+      <div class="container-section">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 reveal">
+          {[
+            { value: '3+',    label: 'Años de experiencia',      suffix: '' },
+            { value: '3.000+', label: 'Certificaciones realizadas', suffix: '' },
+            { value: '500+',  label: 'Instalaciones ejecutadas', suffix: '' },
+            { value: 'Valle de Aburrá', label: 'Cobertura completa', suffix: '' },
+          ].map((stat) => (
+            <div class="text-center">
+              <p
+                class="font-display font-bold text-primary leading-none mb-1"
+                style="font-size: clamp(28px, 4vw, 48px);"
+                data-counter={stat.value}
+              >
+                {stat.value}
+              </p>
+              <p class="text-muted text-[13px] leading-snug">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Servicios ─────────────────────────────────────────────────────── -->
+    <section class="section-pad bg-background" aria-labelledby="servicios-zona-heading">
+      <div class="container-section">
+        <div class="text-center mb-14 reveal">
+          <EyebrowLabel text={`Servicios en ${zona.name}`} />
+          <h2 id="servicios-zona-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(28px,3.5vw,46px);">
+            Servicios de gas en {zona.name}
+          </h2>
+          <p class="text-muted mt-4 max-w-[54ch] mx-auto text-[15px] leading-relaxed">
+            Desde la instalación inicial hasta la certificación oficial — cobertura completa en {zona.name} y todo {zona.tipo === 'barrio' ? `el barrio ${zona.name}` : `el municipio de ${zona.municipio}`}.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger">
+          {services.map((s) => (
+            <article class="group relative bg-surface border border-neutral/15 rounded-2xl p-7 flex flex-col gap-4 hover:border-secondary/35 hover:shadow-lg transition-all duration-300 overflow-hidden">
+              <div class="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-secondary/30 to-transparent"></div>
+              <div class="w-12 h-12 rounded-xl bg-secondary/8 border border-secondary/15 text-secondary flex items-center justify-center group-hover:bg-secondary/14 transition-all duration-300 flex-shrink-0">
+                <span class="block" set:html={s.icon} />
+              </div>
+              <h3 class="font-display font-semibold text-[18px] tracking-[0.01em] text-primary leading-snug">{s.title}</h3>
+              <p class="text-muted text-[14px] leading-relaxed">{s.description}</p>
+              <a
+                href={waUrl}
+                class="inline-flex items-center gap-1.5 text-[13px] font-semibold mt-auto transition-colors duration-150 hover:opacity-80"
+                style="color:#25D366;"
+                aria-label={`Solicitar ${s.title} en ${zona.name} por WhatsApp`}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                Solicitar este servicio →
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Por qué LujoGas ───────────────────────────────────────────────── -->
+    <section class="section-pad" style="background:#F8F7F4;" aria-labelledby="confianza-zona-heading">
+      <div class="container-section">
+        <div class="text-center mb-12 reveal">
+          <EyebrowLabel text="Por qué LujoGas" />
+          <h2 id="confianza-zona-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(28px,3.5vw,44px);">
+            Técnico certificado en {zona.name} con respaldo real
+          </h2>
+          <p class="text-muted mt-4 max-w-[52ch] mx-auto text-[15px] leading-relaxed">
+            Soy Luis Guillermo Muñoz Vélez — el técnico que evalúa, instala y firma el certificado en {zona.name}. Más de 3.000 certificaciones y 500 instalaciones en el Valle de Aburrá.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal-stagger">
+          {trustBadges.map((t) => (
+            <div class="bg-surface border border-neutral/15 rounded-xl p-5 flex flex-col gap-2 text-center hover:border-tertiary/25 transition-colors duration-200">
+              <div class="w-10 h-10 rounded-lg mx-auto mb-2 flex items-center justify-center" style="background:rgba(249,115,22,0.1);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+              </div>
+              <p class="font-display font-semibold text-primary text-[13.5px] leading-snug">{t.label}</p>
+              <p class="text-muted/70 text-[12px] leading-snug">{t.sub}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Proceso ──────────────────────────────────────────────────────── -->
+    <section class="section-pad relative" style="background-color:#1A1A2E;" aria-labelledby="proceso-zona-heading">
+      <div class="pipes-bg" aria-hidden="true"></div>
+      <div class="container-section relative z-10">
+        <div class="text-center mb-14 reveal">
+          <EyebrowLabel text="Proceso · Simple y transparente" />
+          <h2 id="proceso-zona-heading" class="font-display font-semibold text-background mt-3 leading-tight" style="font-size:clamp(28px,3.5vw,48px);">
+            Cómo funciona la instalación de gas en {zona.name}
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal-stagger">
+          {procesoPasos.map((p) => (
+            <div class="relative flex flex-col gap-4 p-6 rounded-2xl border border-neutral/10 bg-background/[0.03]">
+              <span class="font-display text-[52px] font-bold leading-none" style="color:rgba(37,99,235,0.18);">{p.n}</span>
+              <h3 class="font-display font-semibold text-background text-[18px] tracking-[0.02em] -mt-2">{p.title}</h3>
+              <p class="text-neutral/55 text-[13.5px] leading-relaxed">{p.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ─────────────────────────────────────────────────────────── -->
+    <section class="section-pad bg-background" aria-labelledby="faq-zona-heading">
+      <div class="container-section">
+        <div class="text-center mb-12 reveal">
+          <EyebrowLabel text="Preguntas frecuentes" />
+          <h2 id="faq-zona-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(28px,3.5vw,44px);">
+            Preguntas sobre instalación de gas en {zona.name}
+          </h2>
+        </div>
+        <div class="max-w-[720px] mx-auto flex flex-col gap-4 reveal-stagger">
+          {faqSchema.mainEntity.map((faq) => (
+            <details class="group border border-neutral/15 rounded-2xl overflow-hidden bg-surface">
+              <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer font-display font-semibold text-primary text-[16px] leading-snug list-none">
+                {faq.name}
+                <svg class="flex-shrink-0 transition-transform duration-200 group-open:rotate-180" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="px-6 pb-5 text-muted text-[14.5px] leading-relaxed border-t border-neutral/10 pt-4">
+                {faq.acceptedAnswer.text}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Zonas cercanas ────────────────────────────────────────────────── -->
+    <section class="section-pad" style="background:#F8F7F4;" aria-labelledby="zonas-cercanas-heading">
+      <div class="container-section">
+        <div class="text-center mb-10 reveal">
+          <EyebrowLabel text="También atendemos en" />
+          <h2 id="zonas-cercanas-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(26px,3vw,42px);">
+            Cobertura en todo el Valle de Aburrá
+          </h2>
+          <p class="text-muted mt-3 max-w-[50ch] mx-auto text-[15px]">
+            Además de {zona.name}, atendemos instalaciones de gas en todos los municipios y barrios del área metropolitana de Medellín.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 reveal-stagger">
+          {neighborZones.map((z) => (
+            <a
+              href={`/instalacion-gas-${z.slug}`}
+              class="group flex items-center justify-center gap-2 border border-neutral/15 rounded-xl px-4 py-3 text-[13.5px] font-semibold text-primary hover:border-tertiary/40 hover:bg-tertiary/5 transition-all duration-200 text-center min-h-[44px]"
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-tertiary flex-shrink-0" style="color:#F97316;" aria-hidden="true"><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+              Gas en {z.name}
+            </a>
+          ))}
+          <a
+            href="/servicios"
+            class="group flex items-center justify-center gap-2 border border-neutral/15 rounded-xl px-4 py-3 text-[13.5px] font-semibold text-primary hover:border-secondary/40 hover:bg-secondary/5 transition-all duration-200 text-center min-h-[44px]"
+          >
+            Ver todos los servicios →
+          </a>
+        </div>
+        <div class="mt-10 text-center reveal">
+          <p class="text-muted text-[14.5px]">
+            ¿Quieres saber quién realiza el trabajo?
+            <a href="/nosotros" class="font-semibold underline underline-offset-2 hover:opacity-75 transition-opacity" style="color:#F97316;">
+              Conoce al técnico certificado →
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA Final ─────────────────────────────────────────────────────── -->
+    <CTASection />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script is:inline>
+  // Scroll reveal
+  const io = new IntersectionObserver(
+    (entries) => { entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); },
+    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => io.observe(el));
+
+  // FAQ accordion keyboard accessibility
+  document.querySelectorAll('details summary').forEach((summary) => {
+    summary.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        summary.closest('details').toggleAttribute('open');
+      }
+    });
+  });
+</script>

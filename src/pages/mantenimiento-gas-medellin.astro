@@ -1,0 +1,444 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/organisms/Header.astro';
+import Footer from '../components/organisms/Footer.astro';
+import CTASection from '../components/organisms/CTASection.astro';
+import EyebrowLabel from '../components/atoms/EyebrowLabel.astro';
+import { zonas } from '../data/zonas';
+import { WHATSAPP_NUMBER } from '../lib/constants';
+
+const waText = encodeURIComponent('Hola LujoGas, necesito información sobre mantenimiento de gas en Medellín.');
+const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`;
+const waRpo = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola LujoGas, necesito la Revisión Periódica Obligatoria (RPO) de gas en Medellín.')}`;
+
+// ── Schemas ──────────────────────────────────────────────────────────────────
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio",    "item": "https://lujogas.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://lujogas.com/servicios" },
+    { "@type": "ListItem", "position": 3, "name": "Mantenimiento de gas en Medellín", "item": "https://lujogas.com/mantenimiento-gas-medellin" },
+  ],
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué es la Revisión Periódica Obligatoria (RPO) de gas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La RPO es una revisión técnica obligatoria por ley que debe realizarse periódicamente para mantener vigente la certificación de la instalación de gas. Verifica el estado de la red, los gasodomésticos y las condiciones de seguridad.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cada cuánto tiempo debo hacer la RPO de gas en Medellín?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La periodicidad varía según la normativa y el tipo de instalación. La distribuidora de gas (Gas Natural EPM) notifica cuando la RPO está próxima a vencer. Si vence sin renovarse, la distribuidora puede suspender el servicio.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué incluye el mantenimiento preventivo de gas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Incluye revisión visual de tubería, verificación de presiones, inspección de válvulas y reguladores, revisión de mangueras y gasodomésticos, prueba de hermeticidad parcial y entrega de reporte técnico con el estado de la instalación.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo hacer mantenimiento de gas antes de que venza la RPO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, se recomienda hacer mantenimiento preventivo antes del vencimiento para detectar problemas tempranamente y garantizar que la instalación pasará la RPO sin inconvenientes.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo sé si hay una fuga de gas en mi casa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El gas natural comercial tiene un aditivo de olor característico (mercaptano). Si percibes olor a gas, presión baja en los gasodomésticos o el medidor marca consumo sin usar los aparatos, es posible que haya una fuga. Contacta a LujoGas para una inspección con detector electrónico.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "¿LujoGas realiza mantenimiento correctivo de gas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Cuando hay una falla activa — fuga, baja presión, gasodoméstico sin funcionamiento correcto — realizamos diagnóstico y corrección en la misma visita técnica en Medellín y todo el Valle de Aburrá.",
+      },
+    },
+  ],
+};
+
+// ── Tipos de mantenimiento ────────────────────────────────────────────────────
+const tiposMantenimiento = [
+  {
+    title: 'Mantenimiento preventivo',
+    desc: 'Revisión periódica programada de la instalación de gas: tubería, válvulas, reguladores, mangueras y gasodomésticos. Detecta problemas antes de que se conviertan en fallas o riesgos de seguridad.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>`,
+    badge: 'Recomendado',
+  },
+  {
+    title: 'Mantenimiento correctivo',
+    desc: 'Cuando hay una falla activa: fuga detectada, baja presión, gasodoméstico sin encendido o daño en la red. Realizamos diagnóstico preciso y reparación en la misma visita técnica.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg>`,
+    badge: 'Urgencias',
+  },
+  {
+    title: 'Revisión Periódica Obligatoria (RPO)',
+    desc: 'Revisión técnica exigida por ley para mantener vigente el certificado de gas. Realizada por técnico certificado con aval ICONTEC. Al cumplir los requisitos, se emite el certificado de RPO vigente.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>`,
+    badge: 'Obligatorio por ley',
+  },
+  {
+    title: 'Detección de fugas de gas',
+    desc: 'Localización precisa de fugas con detectores electrónicos de alta sensibilidad. Identifica microfugas invisibles al olfato. Reparación inmediata en la misma visita y verificación de hermeticidad antes de salir.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4m0 4h.01"/></svg>`,
+    badge: null,
+  },
+];
+
+// ── Señales que necesitas mantenimiento ──────────────────────────────────────
+const senales = [
+  { label: 'Olor a gas perceptible', detail: 'El gas natural tiene un odorizante añadido. Si percibes un olor característico, puede indicar una fuga activa en algún punto de la red.' },
+  { label: 'Presión baja en quemadores', detail: 'Si las llamas de la cocina o calentador son más pequeñas de lo habitual o de color naranja/rojo en vez de azul, puede haber una fuga o un regulador deteriorado.' },
+  { label: 'Consumo elevado sin explicación', detail: 'Si el medidor de gas registra consumo superior al habitual sin cambios en el uso, puede indicar una fuga invisible en algún tramo de la tubería.' },
+  { label: 'Instalación antigua (más de 5 años sin revisión)', detail: 'Las instalaciones de gas sin revisión periódica pueden presentar deterioro acumulado invisible: corrosión en tuberías de cobre, desgaste en sellos y mangueras.' },
+  { label: 'RPO próxima a vencer', detail: 'Si recibes notificación de la distribuidora sobre vencimiento de la RPO, es el momento de agendar la revisión para evitar suspensión del servicio.' },
+  { label: 'Calentador o estufa que no enciende', detail: 'Puede indicar baja presión, fallo en la válvula de seguridad o daño en la manguera de conexión. El técnico diagnostica y corrige en la misma visita.' },
+];
+
+// ── Proceso de RPO ────────────────────────────────────────────────────────────
+const procesoRpo = [
+  { n: '1', title: 'Solicitud',         desc: 'Escríbenos por WhatsApp con tu dirección en Medellín. Coordinamos la visita según tu disponibilidad.' },
+  { n: '2', title: 'Inspección RPO',     desc: 'Revisamos toda la instalación: tubería, válvulas, reguladores, ventilaciones, mangueras y gasodomésticos contra los criterios NTC 2505.' },
+  { n: '3', title: 'Correcciones (si aplica)', desc: 'Si se detectan no conformidades, las corregimos antes de emitir el certificado. Así el proceso es en una sola etapa.' },
+  { n: '4', title: 'Certificado RPO',   desc: 'Emitimos el certificado oficial de RPO vigente en 24 a 48 horas hábiles. Válido ante Gas Natural EPM y distribuidoras en Antioquia.' },
+];
+---
+
+<BaseLayout
+  title="Mantenimiento de Gas en Medellín — RPO y Revisión | LujoGas"
+  description="Mantenimiento de gas en Medellín: preventivo, correctivo, RPO y detección de fugas. Técnico certificado NTC 2505. Cobertura Valle de Aburrá. LujoGas +57 301 474 8653."
+  canonical="https://lujogas.com/mantenimiento-gas-medellin"
+>
+  <Header />
+
+  <main>
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+    <!-- ── Hero ─────────────────────────────────────────────────────────── -->
+    <section
+      class="relative overflow-hidden pt-[140px] pb-[80px]"
+      style="background-color: #333333;"
+      aria-labelledby="mant-medellin-heading"
+    >
+      <div class="pipes-bg" aria-hidden="true"></div>
+      <div
+        class="absolute inset-0 pointer-events-none"
+        style="background: radial-gradient(ellipse 70% 80% at 10% 50%, rgba(37,99,235,0.12) 0%, transparent 65%);"
+        aria-hidden="true"
+      ></div>
+
+      <div class="container-section relative z-10">
+        <nav aria-label="Ruta de navegación" class="mb-6">
+          <ol class="flex items-center gap-2 text-[12px] text-neutral/50 font-mono tracking-wide">
+            <li><a href="/" class="hover:text-neutral/80 transition-colors">Inicio</a></li>
+            <li aria-hidden="true" class="text-neutral/30">/</li>
+            <li><a href="/servicios" class="hover:text-neutral/80 transition-colors">Servicios</a></li>
+            <li aria-hidden="true" class="text-neutral/30">/</li>
+            <li class="text-neutral/70">Mantenimiento en Medellín</li>
+          </ol>
+        </nav>
+
+        <div class="max-w-[800px]">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="block w-8 h-px" style="background:#F97316;"></span>
+            <span class="font-mono text-[11px] font-semibold tracking-[0.26em] uppercase" style="color:#F97316;">
+              LujoGas · Mantenimiento · Medellín
+            </span>
+          </div>
+
+          <h1
+            id="mant-medellin-heading"
+            class="font-display font-semibold leading-[0.97] tracking-[-0.01em] text-background mb-5"
+            style="font-size: clamp(36px,5vw,72px); max-width: 20ch;"
+          >
+            Mantenimiento de gas en Medellín — RPO, revisión y detección de fugas
+          </h1>
+
+          <p class="text-neutral/70 max-w-[62ch] mb-3" style="font-size: clamp(15px,1.3vw,17px); line-height: 1.65;">
+            Mantenimiento preventivo, correctivo, Revisión Periódica Obligatoria y detección de fugas de gas en Medellín y el Valle de Aburrá. Técnico certificado NTC 2505 con aval ICONTEC y EPM.
+          </p>
+          <p class="text-neutral/60 max-w-[62ch] mb-8" style="font-size: clamp(13px,1.1vw,15px); line-height: 1.65;">
+            Un mantenimiento oportuno evita fugas, previene suspensión del servicio por RPO vencida y alarga la vida útil de tu instalación de gas. Atención en todo el área metropolitana de Medellín.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a
+              href={waUrl}
+              class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-[15px] transition-all duration-200 hover:opacity-90 min-h-[48px]"
+              style="background:#25D366; color:#fff;"
+              aria-label="Solicitar mantenimiento de gas en Medellín por WhatsApp"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+              Solicitar mantenimiento
+            </a>
+            <a
+              href={waRpo}
+              class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-[15px] border transition-all duration-200 min-h-[48px]"
+              style="border-color: rgba(249,115,22,0.5); color: rgba(249,115,22,0.9); background: rgba(249,115,22,0.08);"
+            >
+              Solicitar RPO
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
+        style="background: linear-gradient(to bottom, transparent, #F8F7F4);"
+        aria-hidden="true"
+      ></div>
+    </section>
+
+    <!-- ── Stats bar ─────────────────────────────────────────────────────── -->
+    <section class="py-10" style="background:#F8F7F4;" aria-label="Estadísticas LujoGas">
+      <div class="container-section">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 reveal">
+          {[
+            { value: '3+',     label: 'Años de experiencia en Medellín' },
+            { value: '3.000+', label: 'Certificaciones y revisiones realizadas' },
+            { value: '500+',   label: 'Instalaciones en Valle de Aburrá' },
+            { value: 'ICONTEC', label: 'Organismo acreditado vigente' },
+          ].map((stat) => (
+            <div class="text-center">
+              <p class="font-display font-bold text-primary leading-none mb-1" style="font-size: clamp(26px, 3.5vw, 44px);">
+                {stat.value}
+              </p>
+              <p class="text-muted text-[13px] leading-snug">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Por qué hacer mantenimiento ──────────────────────────────────── -->
+    <section class="section-pad bg-background" aria-labelledby="por-que-mant-heading">
+      <div class="container-section">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          <div class="reveal">
+            <EyebrowLabel text="Importancia del mantenimiento" />
+            <h2 id="por-que-mant-heading" class="font-display font-semibold text-primary mt-3 leading-tight mb-6" style="font-size:clamp(28px,3.5vw,46px);">
+              ¿Por qué hacer mantenimiento a tu red de gas en Medellín?
+            </h2>
+            <p class="text-muted text-[15px] leading-relaxed mb-4">
+              Las instalaciones de gas en Medellín están expuestas a desgaste continuo: las variaciones de temperatura afectan las tuberías de cobre y CPVC, las mangueras de los gasodomésticos se degradan con el tiempo, y los reguladores de presión tienen una vida útil limitada.
+            </p>
+            <p class="text-muted text-[15px] leading-relaxed mb-4">
+              Un mantenimiento preventivo anual permite detectar a tiempo microfugas invisibles al olfato, válvulas con desgaste prematuro o tramos de tubería que requieren reposición antes de generar un riesgo real. El costo de un mantenimiento preventivo es significativamente menor que una reparación de emergencia.
+            </p>
+            <p class="text-muted text-[15px] leading-relaxed mb-6">
+              La Revisión Periódica Obligatoria (RPO) no es solo una formalidad legal — es la verificación técnica que garantiza que tu hogar o negocio en Medellín cuenta con una instalación de gas segura y en cumplimiento de la NTC 2505.
+            </p>
+            <a
+              href={waUrl}
+              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-[14px] transition-all hover:opacity-90 min-h-[44px]"
+              style="background:#25D366; color:#fff;"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+              Agendar mantenimiento
+            </a>
+          </div>
+
+          <!-- Señales de alerta -->
+          <div class="reveal-stagger">
+            <h3 class="font-display font-semibold text-primary text-[20px] leading-snug mb-5">Señales de que necesitas mantenimiento de gas</h3>
+            <div class="flex flex-col gap-3">
+              {senales.map((s) => (
+                <div class="flex gap-4 p-4 bg-surface border border-neutral/15 rounded-xl hover:border-tertiary/25 transition-colors">
+                  <div class="w-7 h-7 rounded-full flex-shrink-0 mt-0.5 flex items-center justify-center" style="background:rgba(249,115,22,0.12);">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4m0 4h.01"/></svg>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-primary text-[13.5px] mb-0.5">{s.label}</p>
+                    <p class="text-muted text-[12.5px] leading-relaxed">{s.detail}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Tipos de mantenimiento ─────────────────────────────────────────── -->
+    <section class="section-pad" style="background:#F8F7F4;" aria-labelledby="tipos-mant-heading">
+      <div class="container-section">
+        <div class="text-center mb-14 reveal">
+          <EyebrowLabel text="Tipos de mantenimiento" />
+          <h2 id="tipos-mant-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(28px,3.5vw,46px);">
+            Servicios de mantenimiento de gas en Medellín
+          </h2>
+          <p class="text-muted mt-4 max-w-[54ch] mx-auto text-[15px] leading-relaxed">
+            Desde la revisión preventiva programada hasta la atención de urgencias — cobertura completa en Medellín y el Valle de Aburrá.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 reveal-stagger">
+          {tiposMantenimiento.map((tipo) => (
+            <div class="group bg-surface border border-neutral/15 rounded-2xl p-7 flex flex-col gap-4 hover:border-secondary/25 hover:shadow-md transition-all duration-300 relative overflow-hidden">
+              <div class="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-secondary/25 to-transparent"></div>
+              <div class="flex items-start justify-between">
+                <div class="w-12 h-12 rounded-xl bg-secondary/8 border border-secondary/15 text-secondary flex items-center justify-center flex-shrink-0">
+                  <span set:html={tipo.icon} />
+                </div>
+                {tipo.badge && (
+                  <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full" style="background:rgba(249,115,22,0.12); color:#F97316; border:1px solid rgba(249,115,22,0.2);">
+                    {tipo.badge}
+                  </span>
+                )}
+              </div>
+              <h3 class="font-display font-semibold text-primary text-[18px] leading-snug">{tipo.title}</h3>
+              <p class="text-muted text-[14px] leading-relaxed">{tipo.desc}</p>
+              <a
+                href={tipo.title.includes('RPO') ? waRpo : waUrl}
+                class="inline-flex items-center gap-1.5 text-[13px] font-semibold mt-auto transition-colors hover:opacity-80"
+                style="color:#25D366;"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                Solicitar ahora →
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── RPO: Revisión Periódica Obligatoria ───────────────────────────── -->
+    <section class="section-pad relative" style="background-color:#1A1A2E;" aria-labelledby="rpo-heading">
+      <div class="pipes-bg" aria-hidden="true"></div>
+      <div class="container-section relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          <!-- RPO info -->
+          <div class="reveal">
+            <EyebrowLabel text="RPO — Obligatorio por ley" />
+            <h2 id="rpo-heading" class="font-display font-semibold text-background mt-3 leading-tight mb-6" style="font-size:clamp(28px,3.5vw,46px);">
+              Revisión Periódica Obligatoria de gas en Medellín
+            </h2>
+            <p class="text-neutral/65 text-[15px] leading-relaxed mb-4">
+              La RPO (Revisión Periódica Obligatoria) es la revisión técnica que la ley colombiana exige para mantener vigente la certificación de la instalación de gas. En Medellín, Gas Natural EPM y Surtigas requieren que los inmuebles cuenten con RPO vigente para mantener activo el servicio.
+            </p>
+            <p class="text-neutral/65 text-[15px] leading-relaxed mb-4">
+              Cuando la RPO vence, la distribuidora puede notificar la suspensión del servicio hasta que se presente un nuevo certificado de revisión vigente. Para evitar inconvenientes, es importante renovar la RPO antes de su vencimiento.
+            </p>
+            <p class="text-neutral/65 text-[15px] leading-relaxed mb-6">
+              Luis Guillermo Muñoz Vélez realiza la RPO con certificación ICONTEC y aval de EPM / Gas Natural — el certificado emitido es reconocido por las distribuidoras de gas en toda Antioquia.
+            </p>
+            <a
+              href={waRpo}
+              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-[14px] transition-all hover:opacity-90 min-h-[44px]"
+              style="background:#F97316; color:#fff;"
+            >
+              Solicitar RPO ahora
+            </a>
+          </div>
+
+          <!-- Proceso RPO -->
+          <div class="reveal-stagger flex flex-col gap-5">
+            <h3 class="font-display font-semibold text-background text-[20px] leading-snug">Proceso de la RPO en Medellín</h3>
+            {procesoRpo.map((p) => (
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-display font-bold text-[14px]" style="background:rgba(37,99,235,0.20); color:rgba(37,99,235,0.8);">
+                  {p.n}
+                </div>
+                <div class="pt-0.5">
+                  <p class="font-semibold text-background text-[14.5px] mb-1">{p.title}</p>
+                  <p class="text-neutral/55 text-[13.5px] leading-relaxed">{p.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Cobertura ───────────────────────────────────────────────────────── -->
+    <section class="section-pad bg-background" aria-labelledby="cobertura-mant-heading">
+      <div class="container-section">
+        <div class="text-center mb-10 reveal">
+          <EyebrowLabel text="Cobertura" />
+          <h2 id="cobertura-mant-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(26px,3vw,42px);">
+            Mantenimiento de gas en todo el Valle de Aburrá
+          </h2>
+          <p class="text-muted mt-3 max-w-[50ch] mx-auto text-[15px]">
+            Atendemos mantenimiento y RPO en Medellín y todos los municipios del área metropolitana.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 reveal-stagger">
+          {zonas.map((z) => (
+            <a
+              href={`/instalacion-gas-${z.slug}`}
+              class="group flex items-center justify-center gap-2 border border-neutral/15 rounded-xl px-4 py-3 text-[13.5px] font-semibold text-primary hover:border-tertiary/40 hover:bg-tertiary/5 transition-all duration-200 text-center min-h-[44px]"
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" aria-hidden="true"><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+              Gas en {z.name}
+            </a>
+          ))}
+        </div>
+        <div class="mt-6 text-center reveal">
+          <a href="/instalacion-gas-medellin" class="text-[14px] font-semibold underline underline-offset-2 hover:opacity-75 transition-opacity mr-6" style="color:#2563EB;">
+            Ver instalación de gas en Medellín →
+          </a>
+          <a href="/certificacion-gas-medellin" class="text-[14px] font-semibold underline underline-offset-2 hover:opacity-75 transition-opacity" style="color:#F97316;">
+            Ver certificación ICONTEC →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ─────────────────────────────────────────────────────────── -->
+    <section class="section-pad" style="background:#F8F7F4;" aria-labelledby="faq-mant-heading">
+      <div class="container-section">
+        <div class="text-center mb-12 reveal">
+          <EyebrowLabel text="Preguntas frecuentes" />
+          <h2 id="faq-mant-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(28px,3.5vw,44px);">
+            Preguntas sobre mantenimiento de gas en Medellín
+          </h2>
+        </div>
+        <div class="max-w-[720px] mx-auto flex flex-col gap-4 reveal-stagger">
+          {faqSchema.mainEntity.map((faq) => (
+            <details class="group border border-neutral/15 rounded-2xl overflow-hidden bg-surface">
+              <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer font-display font-semibold text-primary text-[16px] leading-snug list-none">
+                {faq.name}
+                <svg class="flex-shrink-0 transition-transform duration-200 group-open:rotate-180" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="px-6 pb-5 text-muted text-[14.5px] leading-relaxed border-t border-neutral/10 pt-4">
+                {faq.acceptedAnswer.text}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTASection />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script is:inline>
+  const io = new IntersectionObserver(
+    (entries) => { entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); },
+    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => io.observe(el));
+</script>
