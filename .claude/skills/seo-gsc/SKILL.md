@@ -1,38 +1,38 @@
 ---
 name: seo-gsc
 description: >
-  Google Search Console real-data analysis for Comfort Design (comfortdesign.com.co).
+  Google Search Console real-data analysis for Lujo Gas (lujogas.com.co).
   Connects live to GSC API via service account to fetch clicks, impressions, CTR and
   position data. Use when user says "/seo-gsc", "keywords de oportunidad", "datos de
   Search Console", "qué páginas optimizo", "brief con datos reales", "cómo va el sitio
   en Google", "qué buscan los usuarios", or "rendimiento en buscadores".
 metadata:
-  author: comfort-design-local
+  author: lujo-gas-local
   type: local
-  site: comfortdesign.com.co
-  property: sc-domain:comfortdesign.com.co
+  site: lujogas.com.co
+  property: sc-domain:lujogas.com.co
 ---
 
-# seo-gsc — Google Search Console para Comfort Design
+# seo-gsc — Google Search Console para Lujo Gas
 
-Skill que extrae datos reales de Google Search Console para `comfortdesign.com.co`
+Skill que extrae datos reales de Google Search Console para `lujogas.com.co`
 y los convierte en decisiones SEO accionables. Siempre trabaja con datos frescos de la API.
 
 ## Credenciales
 
 ```
-SA_FILE = "/Users/bryanvillamil/Documents/comfort-design-443921-0b0d92bc2dc8.json"
-PROPERTY = "sc-domain:comfortdesign.com.co"
-SCOPES   = ["https://www.googleapis.com/auth/webmasters.readonly"]
+TOKEN_FILE = "/Users/bryanvillamil/Documents/lujogas-gsc/lujogas-gsc-token.pickle"
+PROPERTY   = "sc-domain:lujogas.com.co"
 ```
 
 Autenticación base reutilizable en todos los flujos:
 
 ```python
-from google.oauth2 import service_account
+import pickle
 from googleapiclient.discovery import build
 
-creds   = service_account.Credentials.from_service_account_file(SA_FILE, scopes=SCOPES)
+with open("/Users/bryanvillamil/Documents/lujogas-gsc/lujogas-gsc-token.pickle", "rb") as f:
+    creds = pickle.load(f)
 service = build("searchconsole", "v1", credentials=creds)
 ```
 

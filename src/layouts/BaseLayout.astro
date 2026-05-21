@@ -14,11 +14,11 @@ interface Props {
 const {
   title = 'LujoGas — Instalación certificada de gas en Medellín',
   description = SITE.description,
-  canonical = Astro.site?.toString() ?? 'https://lujogas.com/',
+  canonical = Astro.site?.toString() ?? 'https://lujogas.com.co/',
   ogImage = '/og-image.jpg',
 } = Astro.props;
 
-const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://lujogas.com${ogImage}`;
+const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://lujogas.com.co${ogImage}`;
 ---
 
 <!doctype html>

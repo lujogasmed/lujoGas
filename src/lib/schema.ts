@@ -6,8 +6,8 @@ export const localBusinessSchema = {
   name: SITE.name,
   description: SITE.description,
   telephone: SITE.phone,
-  url: 'https://lujogas.com',
-  image: 'https://lujogas.com/og-image.jpg', // TODO: replace with actual photo
+  url: 'https://lujogas.com.co',
+  image: 'https://lujogas.com.co/og-image.jpg', // TODO: replace with actual photo
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',
@@ -124,7 +124,7 @@ export const localBusinessSchema = {
       closes: '18:00',
     },
   },
-  hasMap: 'https://maps.google.com/?q=Medellín,Antioquia,Colombia',
+  hasMap: 'https://maps.google.com/?q=LujoGas,Medellín,Antioquia,Colombia',
   // sameAs: [ // TODO: add social profiles when available
   //   'https://www.facebook.com/lujogas',
   //   'https://www.instagram.com/lujogas',

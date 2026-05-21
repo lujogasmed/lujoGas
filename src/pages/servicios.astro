@@ -150,7 +150,7 @@ const serviceListSchema = {
     "@type": "ListItem",
     "position": i + 1,
     "name": s.title,
-    "url": `https://lujogas.com/servicios#${s.slug}`,
+    "url": `https://lujogas.com.co/servicios#${s.slug}`,
     "description": s.description,
   })),
 };
@@ -160,8 +160,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Inicio",    "item": "https://lujogas.com/"         },
-    { "@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://lujogas.com/servicios" },
+    { "@type": "ListItem", "position": 1, "name": "Inicio",    "item": "https://lujogas.com.co/"         },
+    { "@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://lujogas.com.co/servicios" },
   ],
 };
 ---
@@ -177,7 +177,7 @@ const breadcrumbSchema = {
 <BaseLayout
   title="Servicios de Gas en Medellín — Instalación y Certificación | LujoGas"
   description="Instalación de redes, certificación ICONTEC, RPO, detección de fugas, calentadores y más en Medellín. Técnico certificado en todo el Valle de Aburrá."
-  canonical="https://lujogas.com/servicios"
+  canonical="https://lujogas.com.co/servicios"
 >
   <Header />
 

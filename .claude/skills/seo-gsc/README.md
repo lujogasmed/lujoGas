@@ -1,12 +1,12 @@
 # seo-gsc — Qué es y para qué sirve
 
-Conecta directamente a Google Search Console via API y trae datos reales de `comfortdesign.com.co`: clicks, impresiones, CTR y posición. No estima — lee los datos de Google.
+Conecta directamente a Google Search Console via API y trae datos reales de `lujogas.com.co`: clicks, impresiones, CTR y posición. No estima — lee los datos de Google.
 
 ## Conexión
 
 Usa una service account de Google guardada en:
 ```
-/Users/bryanvillamil/Documents/comfort-design-443921-0b0d92bc2dc8.json
+/Users/bryanvillamil/Documents/lujogas-4b22ac949af3.json
 ```
 Sin ese archivo, el skill no funciona. No moverlo al repo.
 

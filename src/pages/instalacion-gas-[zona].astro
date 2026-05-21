@@ -24,19 +24,47 @@ const waText = encodeURIComponent(
 );
 const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`;
 
-// Title: ≤60 chars
-const pageTitle = `Instalación de Gas en ${zona.name} — Técnico Certificado | LujoGas`;
-// Meta description: 140-160 chars
-const pageDesc = `Instalación de gas en ${zona.name}, ${zona.municipio}. Técnico certificado NTC 2505. Certificación ICONTEC, RPO y mantenimiento. LujoGas — +57 301 474 8653.`;
-const canonical = `https://lujogas.com/instalacion-gas-${zona.slug}`;
+// Title: ≤60 chars — keyword primero, diferenciador, marca
+const pageTitle = `Gas en ${zona.name} | Técnico Certificado NTC 2505 · LujoGas`;
+// Meta description: 140-160 chars — keyword + diferenciador + CTA + teléfono
+const pageDesc = `Instalación y certificación de gas en ${zona.name} con técnico certificado ICONTEC. Visita diagnóstica $50.000. Certificado en 24 h. WhatsApp: 301 474 8653.`;
+const canonical = `https://lujogas.com.co/instalacion-gas-${zona.slug}`;
 
 // ── Schemas ─────────────────────────────────────────────────────────────────
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": `Instalación de gas en ${zona.name}`,
+  "description": `Instalación, certificación ICONTEC y mantenimiento de redes de gas natural en ${zona.name}, ${zona.municipio}. Técnico certificado NTC 2505.`,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "LujoGas",
+    "telephone": "+573014748653",
+    "url": "https://lujogas.com.co",
+  },
+  "areaServed": {
+    "@type": zona.tipo === 'municipio' ? "City" : "Place",
+    "name": zona.name,
+    "containedIn": { "@type": "AdministrativeArea", "name": zona.municipio },
+  },
+  "serviceType": "Instalación y certificación de gas natural",
+  "offers": {
+    "@type": "Offer",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "price": "50000",
+      "priceCurrency": "COP",
+      "description": "Visita diagnóstica técnica",
+    },
+  },
+};
+
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Inicio",    "item": "https://lujogas.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://lujogas.com/servicios" },
+    { "@type": "ListItem", "position": 1, "name": "Inicio",    "item": "https://lujogas.com.co/" },
+    { "@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://lujogas.com.co/servicios" },
     { "@type": "ListItem", "position": 3, "name": `Instalación de gas en ${zona.name}`, "item": canonical },
   ],
 };
@@ -146,6 +174,7 @@ const procesoPasos = [
 
   <main>
     <!-- Schemas -->
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
@@ -354,6 +383,32 @@ const procesoPasos = [
             </details>
           ))}
         </div>
+      </div>
+    </section>
+
+    <!-- ── Sectores cubiertos ───────────────────────────────────────────── -->
+    <section class="section-pad bg-background" aria-labelledby="sectores-heading">
+      <div class="container-section">
+        <div class="text-center mb-10 reveal">
+          <EyebrowLabel text={`Cobertura en ${zona.name}`} />
+          <h2 id="sectores-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(26px,3vw,42px);">
+            Sectores y barrios que atendemos en {zona.name}
+          </h2>
+          <p class="text-muted mt-3 max-w-[52ch] mx-auto text-[15px]">
+            Cobertura completa de instalación y certificación de gas en todos los sectores de {zona.name}.
+          </p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-3 reveal-stagger">
+          {zona.sectores.map((sector) => (
+            <span class="inline-flex items-center gap-1.5 border border-neutral/15 rounded-full px-4 py-2 text-[13px] font-medium text-primary bg-surface">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.5" aria-hidden="true"><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+              {sector}
+            </span>
+          ))}
+        </div>
+        <p class="text-center text-muted text-[13.5px] mt-6">
+          ¿Tu dirección está en {zona.name} pero no ves tu sector? Escríbenos — cubrimos toda la zona.
+        </p>
       </div>
     </section>
 
