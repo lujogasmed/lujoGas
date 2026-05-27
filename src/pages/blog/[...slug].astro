@@ -1,0 +1,203 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/organisms/Header.astro';
+import Footer from '../../components/organisms/Footer.astro';
+import CTASection from '../../components/organisms/CTASection.astro';
+import EyebrowLabel from '../../components/atoms/EyebrowLabel.astro';
+import Button from '../../components/atoms/Button.astro';
+import WhatsAppIcon from '../../components/atoms/WhatsAppIcon.astro';
+import { WHATSAPP_URL } from '../../lib/constants';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { data } = post;
+const slug = post.slug;
+const { Content } = await post.render();
+const allPosts = await getCollection('blog');
+const related = allPosts
+  .filter(p => p.slug !== slug && p.data.pillar === data.pillar)
+  .slice(0, 3);
+
+const pillarSlugs: Record<number, string> = {
+  1: '/blog/seguridad-instalaciones-gas-medellin',
+  2: '/blog/certificacion-gas-icontec-medellin',
+  3: '/blog/instalacion-gas-residencial-comercial-medellin',
+  4: '/blog/mantenimiento-redes-gas-medellin',
+};
+const pillarNames: Record<number, string> = {
+  1: 'Seguridad en Instalaciones de Gas',
+  2: 'Certificación de Gas ICONTEC',
+  3: 'Instalación de Gas',
+  4: 'Mantenimiento de Redes de Gas',
+};
+const canonicalUrl = `https://lujogas.com.co/blog/${slug}`;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: data.title,
+  description: data.description,
+  author: {
+    '@type': 'Person',
+    name: data.author,
+    knowsAbout: 'Instalación y certificación de redes de gas — NTC 2505',
+  },
+  datePublished: data.publishDate.toISOString(),
+  publisher: {
+    '@type': 'Organization',
+    name: 'LujoGas',
+    url: 'https://lujogas.com.co',
+  },
+  mainEntityOfPage: canonicalUrl,
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'LujoGas', item: 'https://lujogas.com.co/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://lujogas.com.co/blog/' },
+    { '@type': 'ListItem', position: 3, name: data.title, item: canonicalUrl },
+  ],
+};
+---
+
+<BaseLayout
+  title={`${data.title} | LujoGas`}
+  description={data.description}
+  canonical={canonicalUrl}
+>
+  <Header />
+
+  <main>
+    <!-- Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+    <!-- Article Hero -->
+    <section class="relative bg-hero-bg overflow-hidden pt-[140px] pb-[60px] md:pt-[160px] md:pb-[80px]">
+      <div class="pipes-bg" />
+      <div class="container-section relative z-10">
+        <!-- Breadcrumb -->
+        <nav class="flex items-center gap-2 text-sm text-hero-text/60 mb-6" aria-label="Breadcrumb">
+          <a href="/" class="hover:text-blue-bright transition-colors">Inicio</a>
+          <span>/</span>
+          <a href="/blog/" class="hover:text-blue-bright transition-colors">Blog</a>
+          {data.pillar && (
+            <>
+              <span>/</span>
+              <a href={pillarSlugs[data.pillar]} class="hover:text-blue-bright transition-colors">{pillarNames[data.pillar]}</a>
+            </>
+          )}
+        </nav>
+
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-tertiary/20 text-tertiary uppercase tracking-wider">
+            {data.category}
+          </span>
+          <span class="text-hero-text/50 text-sm">{data.readingTime} min de lectura</span>
+          <span class="text-hero-text/50 text-sm">•</span>
+          <span class="text-hero-text/50 text-sm">
+            {new Date(data.publishDate).toLocaleDateString('es-CO', { month: 'long', day: 'numeric', year: 'numeric' })}
+          </span>
+        </div>
+
+        <h1 class="font-display text-4xl md:text-6xl lg:text-7xl text-background leading-[0.85] tracking-[-0.02em] uppercase max-w-4xl">
+          {data.title}
+        </h1>
+
+        {data.tags.length > 0 && (
+          <div class="flex flex-wrap gap-2 mt-6">
+            {data.tags.map((tag: string) => (
+              <span class="text-xs text-hero-text/40 bg-background/5 px-3 py-1 rounded-full border border-neutral/10">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="section-pad">
+      <div class="container-section max-w-[800px]">
+        <article class="prose-custom">
+          <Content />
+        </article>
+
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 mt-12 pt-8 border-t border-neutral/20">
+          {data.tags.map((tag: string) => (
+            <span class="text-sm text-muted bg-background px-3 py-1 rounded-full border border-neutral/10">
+              #{tag}
+            </span>
+          ))}
+        </div>
+
+        <!-- Author -->
+        <div class="mt-10 p-6 bg-surface rounded-2xl border border-neutral/10">
+          <p class="text-sm text-muted">Escrito por</p>
+          <p class="font-display text-xl text-primary uppercase mt-1">{data.author}</p>
+          <p class="text-muted text-sm mt-1">
+            Técnico certificado NTC 2505 — Instalación, mantenimiento y certificación de redes de gas en Medellín
+          </p>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-10 p-8 bg-hero-bg rounded-2xl text-center">
+          <p class="font-display text-2xl md:text-3xl text-background uppercase">
+            ¿Necesitas un técnico certificado?
+          </p>
+          <p class="text-hero-text mt-3 max-w-md mx-auto">
+            Solicita tu visita diagnóstica por $50.000 y obtén tu certificado ICONTEC en 24-48 horas.
+          </p>
+          <div class="mt-6">
+            <Button href={WHATSAPP_URL} variant="whatsapp" size="lg" target="_blank" rel="noopener noreferrer" ariaLabel="Cotizar por WhatsApp">
+              <WhatsAppIcon />
+              Cotizar por WhatsApp
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related articles -->
+    {related.length > 0 && (
+      <section class="section-pad bg-surface">
+        <div class="container-section">
+          <EyebrowLabel text="Artículos relacionados" class="mb-2" />
+          <h2 class="font-display text-3xl md:text-4xl text-primary uppercase tracking-[-0.02em] mb-10">
+            Sigue <span class="text-tertiary">aprendiendo</span>
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {related.map((r) => (
+              <a
+                href={`/blog/${r.slug}`}
+                class="group bg-background rounded-2xl p-6 border border-neutral/20 hover:border-tertiary/30 hover:-translate-y-1 transition-all duration-300"
+              >
+                <h3 class="font-display text-xl text-primary uppercase leading-tight group-hover:text-tertiary transition-colors">
+                  {r.data.title}
+                </h3>
+                <p class="text-muted text-sm mt-3 line-clamp-2">{r.data.description}</p>
+                <span class="inline-block mt-4 text-sm font-semibold text-tertiary">Leer artículo →</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <CTASection />
+  </main>
+
+  <Footer />
+
+</BaseLayout>

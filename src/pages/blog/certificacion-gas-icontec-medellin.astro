@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/organisms/Header.astro';
+import Footer from '../../components/organisms/Footer.astro';
+import CTASection from '../../components/organisms/CTASection.astro';
+import EyebrowLabel from '../../components/atoms/EyebrowLabel.astro';
+import Button from '../../components/atoms/Button.astro';
+import WhatsAppIcon from '../../components/atoms/WhatsAppIcon.astro';
+import { getCollection } from 'astro:content';
+import { WHATSAPP_URL } from '../../lib/constants';
+
+const allPosts = await getCollection('blog');
+const articles = allPosts.filter(p => p.data.pillar === 2).sort((a, b) => a.data.publishDate.getTime() - b.data.publishDate.getTime());
+
+const pillarSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Certificación de Gas ICONTEC en Medellín — Guía Completa',
+  description: 'Todo sobre la certificación ICONTEC de gas en Medellín: qué es, cómo obtenerla, costos y requisitos. Guía de un técnico certificado NTC 2505.',
+  author: { '@type': 'Person', name: 'Luis Guillermo Muñoz Vélez' },
+  datePublished: '2026-05-27',
+  publisher: { '@type': 'Organization', name: 'LujoGas' },
+};
+---
+
+<BaseLayout
+  title="Certificación de Gas ICONTEC en Medellín — Guía Completa | LujoGas"
+  description="Guía completa sobre la certificación de gas ICONTEC en Medellín. Aprende qué es la RPO, cuánto cuesta, cómo obtener tu certificado NTC 2505 y por qué es obligatoria."
+  canonical="https://lujogas.com.co/blog/certificacion-gas-icontec-medellin"
+>
+  <Header />
+  <script type="application/ld+json" set:html={JSON.stringify(pillarSchema)} />
+
+  <main>
+    <section class="relative bg-hero-bg overflow-hidden pt-[140px] pb-[80px] md:pt-[160px] md:pb-[100px]">
+      <div class="pipes-bg" />
+      <div class="container-section relative z-10">
+        <nav class="flex items-center gap-2 text-sm text-hero-text/60 mb-6">
+          <a href="/" class="hover:text-blue-bright transition-colors">Inicio</a>
+          <span>/</span>
+          <a href="/blog/" class="hover:text-blue-bright transition-colors">Blog</a>
+          <span>/</span>
+          <span class="text-hero-text/40">Certificación</span>
+        </nav>
+        <EyebrowLabel text="Pilar de Contenido" class="mb-2" />
+        <h1 class="font-display text-4xl md:text-6xl lg:text-7xl text-background leading-[0.85] tracking-[-0.02em] uppercase max-w-4xl">
+          Certificación de Gas <span class="text-tertiary">ICONTEC</span> en Medellín
+        </h1>
+        <p class="text-hero-text text-lg md:text-xl max-w-2xl mt-6 leading-relaxed">
+          La certificación ICONTEC es el documento que acredita que tu instalación de gas cumple la normativa colombiana NTC 2505. En esta guía te explicamos todo el proceso, desde la visita diagnóstica hasta la entrega del certificado, para que puedas tener gas de forma legal y segura en tu hogar o negocio en Medellín.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-pad">
+      <div class="container-section max-w-[800px]">
+        <p class="text-primary/80 text-lg leading-relaxed mb-8">
+          En <strong>LujoGas</strong>, con más de 3.000 certificaciones realizadas en Medellín y el Valle de Aburrá, sabemos que el proceso puede generar dudas. Por eso hemos creado este clúster: para que entiendas cada paso y sepas exactamente qué esperar.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface">
+      <div class="container-section">
+        <EyebrowLabel text="Artículos del clúster" class="mb-2" />
+        <h2 class="font-display text-3xl md:text-4xl text-primary uppercase tracking-[-0.02em] mb-10">
+          Todo sobre <span class="text-tertiary">certificación</span> de gas
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger">
+          {articles.map((article) => (
+            <a
+              href={`/blog/${article.data.slug}`}
+              class="group bg-background rounded-2xl p-6 border border-neutral/20 hover:border-tertiary/30 hover:-translate-y-1 transition-all duration-300"
+            >
+              <span class="font-mono text-sm text-tertiary mb-2 block">{article.data.readingTime} min</span>
+              <h3 class="font-display text-xl text-primary uppercase leading-tight group-hover:text-tertiary transition-colors">
+                {article.data.title}
+              </h3>
+              <p class="text-muted text-sm mt-3 line-clamp-3">{article.data.description}</p>
+              <span class="inline-block mt-4 text-sm font-semibold text-tertiary">Leer artículo →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad">
+      <div class="container-section max-w-[800px]">
+        <h2 class="font-display text-3xl text-primary uppercase tracking-[-0.02em] mb-6">
+          ¿Por qué necesitas la certificación ICONTEC?
+        </h2>
+        <p class="text-primary/80 text-lg leading-relaxed mb-5">
+          Sin el certificado ICONTEC no puedes contratar el servicio de gas natural. Es un requisito legal establecido en la Resolución 90902 de 2013 y la NTC 2505. Además, proteger tu hogar y a tu familia es la razón más importante.
+        </p>
+        <p class="text-primary/80 text-lg leading-relaxed mb-5">
+          Si estás vendiendo o arrendando tu propiedad en Medellín, el certificado de gas es uno de los documentos que te solicitarán. No tenerlo puede retrasar la transacción o incluso impedirla.
+        </p>
+      </div>
+    </section>
+
+    <CTASection />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  const io = new IntersectionObserver(
+    (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }),
+    { threshold: 0.08 }
+  );
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      el.classList.add('in');
+    } else {
+      io.observe(el);
+    }
+  });
+</script>

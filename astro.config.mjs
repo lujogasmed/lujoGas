@@ -23,6 +23,10 @@ export default defineConfig({
         if (item.url.includes('/certificacion-gas-medellin')) return { ...item, priority: 0.90 };
         if (item.url.includes('/mantenimiento-gas-medellin')) return { ...item, priority: 0.88 };
         if (item.url.includes('/instalacion-gas-'))           return { ...item, priority: 0.80 };
+        if (item.url.includes('/rpo-gas-medellin'))           return { ...item, priority: 0.90 };
+        if (item.url.includes('/rpo-gas-'))                   return { ...item, priority: 0.75 };
+        if (item.url.match(/\/blog\/?$/))                     return { ...item, changefreq: 'weekly', priority: 0.85 };
+        if (item.url.includes('/blog/'))                      return { ...item, changefreq: 'monthly', priority: 0.80 };
         if (item.url.includes('/nosotros'))      return { ...item, changefreq: 'monthly', priority: 0.7 };
         return item;
       },

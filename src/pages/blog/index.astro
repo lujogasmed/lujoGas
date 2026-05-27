@@ -1,0 +1,241 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/organisms/Header.astro';
+import Footer from '../../components/organisms/Footer.astro';
+import CTASection from '../../components/organisms/CTASection.astro';
+import EyebrowLabel from '../../components/atoms/EyebrowLabel.astro';
+import Button from '../../components/atoms/Button.astro';
+import WhatsAppIcon from '../../components/atoms/WhatsAppIcon.astro';
+import { getCollection } from 'astro:content';
+import { WHATSAPP_URL } from '../../lib/constants';
+
+const allPosts = await getCollection('blog');
+const posts = allPosts.sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+
+const pillars = [
+  {
+    id: 1,
+    title: 'Seguridad en Instalaciones de Gas',
+    slug: 'seguridad-instalaciones-gas-medellin',
+    description: 'Aprende a prevenir fugas, conoce la normativa NTC 2505 y protege tu hogar con materiales certificados.',
+    icon: 'shield',
+    articles: posts.filter(p => p.data.pillar === 1),
+  },
+  {
+    id: 2,
+    title: 'Certificación de Gas ICONTEC',
+    slug: 'certificacion-gas-icontec-medellin',
+    description: 'Todo sobre la certificación ICONTEC, la RPO y cómo obtener tu certificado de gas en Medellín.',
+    icon: 'certificate',
+    articles: posts.filter(p => p.data.pillar === 2),
+  },
+  {
+    id: 3,
+    title: 'Instalación de Gas Residencial y Comercial',
+    slug: 'instalacion-gas-residencial-comercial-medellin',
+    description: 'Guías de instalación, precios, tipos de gas y cómo elegir al técnico adecuado en Medellín.',
+    icon: 'wrench',
+    articles: posts.filter(p => p.data.pillar === 3),
+  },
+  {
+    id: 4,
+    title: 'Mantenimiento y Cuidado de Redes de Gas',
+    slug: 'mantenimiento-redes-gas-medellin',
+    description: 'Consejos de mantenimiento, señales de alerta y guías de emergencia para tu red de gas.',
+    icon: 'check',
+    articles: posts.filter(p => p.data.pillar === 4),
+  },
+];
+
+const funnelLabels: Record<string, string> = {
+  tofu: 'Informacional',
+  mofu: 'Comercial',
+  bofu: 'Transaccional',
+  retencion: 'Cuidado',
+};
+const funnelColors: Record<string, string> = {
+  tofu: 'bg-secondary/10 text-secondary',
+  mofu: 'bg-tertiary/10 text-tertiary',
+  bofu: 'bg-whatsapp/10 text-whatsapp-dark',
+  retencion: 'bg-[#8B5CF6]/10 text-[#8B5CF6]',
+};
+
+const iconSvgs: Record<string, string> = {
+  shield: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+  certificate: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>',
+  wrench: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
+  check: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>',
+};
+
+function pluralize(count: number, singular: string, plural: string): string {
+  return count === 1 ? singular : plural;
+}
+---
+
+<BaseLayout
+  title="Blog de Gas en Medellín — Seguridad y Certificación | LujoGas"
+  description="Artículos sobre instalación, certificación y mantenimiento de gas en Medellín. Guías prácticas escritas por técnico certificado NTC 2505."
+  canonical="https://lujogas.com.co/blog/"
+>
+  <Header />
+
+  <main>
+    <!-- Hero -->
+    <section class="relative bg-hero-bg overflow-hidden pt-[140px] pb-[80px] md:pt-[160px] md:pb-[100px]">
+      <div class="pipes-bg" />
+      <div class="container-section relative z-10">
+        <div class="flex justify-center mb-6">
+          <EyebrowLabel text="Blog de Gas en Medellín" />
+        </div>
+        <h1 class="font-display text-5xl md:text-7xl lg:text-8xl text-background text-center leading-[0.85] tracking-[-0.02em] uppercase">
+          Blog de <span class="text-tertiary">Gas</span> en Medellín
+        </h1>
+        <p class="text-hero-text text-center text-lg md:text-xl max-w-2xl mx-auto mt-6 font-body leading-relaxed">
+          Guías prácticas, normativas y consejos escritos por <strong class="text-blue-bright">Luis Guillermo Muñoz Vélez</strong>, técnico certificado NTC 2505 en Medellín.
+        </p>
+      </div>
+    </section>
+
+    <!-- Featured posts -->
+    {posts.filter(p => p.data.featured).length > 0 && (
+      <section class="section-pad bg-surface">
+        <div class="container-section">
+          <EyebrowLabel text="Artículos destacados" class="mb-2" />
+          <h2 class="font-display text-4xl md:text-5xl text-primary uppercase tracking-[-0.02em] mb-12">
+            Lo más <span class="text-tertiary">leído</span>
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger">
+            {posts.filter(p => p.data.featured).slice(0, 6).map((post) => {
+              const colorClass = funnelColors[post.data.funnel] || 'bg-gray-100 text-gray-800';
+              const label = funnelLabels[post.data.funnel] || post.data.funnel;
+              return (
+                <a
+                  href={`/blog/${post.slug}`}
+                  class="group bg-background rounded-2xl p-6 border border-neutral/20 hover:border-tertiary/30 hover:-translate-y-1 transition-all duration-300 block"
+                >
+                  <span class={`inline-block text-xs font-semibold px-3 py-1 rounded-full mb-4 ${colorClass}`}>
+                    {label}
+                  </span>
+                  <h3 class="font-display text-xl md:text-2xl text-primary uppercase leading-tight group-hover:text-tertiary transition-colors">
+                    {post.data.title}
+                  </h3>
+                  <p class="text-muted text-sm mt-3 line-clamp-2">
+                    {post.data.description}
+                  </p>
+                  <div class="flex items-center gap-3 mt-4 text-xs text-muted">
+                    <span>{post.data.readingTime} min lectura</span>
+                    <span>•</span>
+                    <span>{new Date(post.data.publishDate).toLocaleDateString('es-CO', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Pillars -->
+    <section class="section-pad">
+      <div class="container-section">
+        <div class="text-center mb-16">
+          <EyebrowLabel text="Explora por tema" class="mb-2" />
+          <h2 class="font-display text-4xl md:text-5xl text-primary uppercase tracking-[-0.02em]">
+            Clústers de <span class="text-tertiary">contenido</span>
+          </h2>
+          <p class="text-muted text-lg max-w-xl mx-auto mt-4">
+            Cada clúster agrupa artículos relacionados para que profundices en el tema que más te interese.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal-stagger">
+          {pillars.map((pillar) => (
+            <a
+              href={`/blog/${pillar.slug}`}
+              class="group bg-surface rounded-2xl p-8 border border-neutral/20 hover:border-secondary/30 hover:-translate-y-1 transition-all duration-300"
+            >
+              <div class="flex items-start gap-4">
+                <span class="flex-shrink-0 mt-1 text-secondary" set:html={iconSvgs[pillar.icon]} />
+                <div>
+                  <h3 class="font-display text-2xl md:text-3xl text-primary uppercase group-hover:text-secondary transition-colors">
+                    {pillar.title}
+                  </h3>
+                  <p class="text-muted mt-2">{pillar.description}</p>
+                  <span class="inline-block mt-4 text-sm font-semibold text-secondary">
+                    {pillar.articles.length} {pluralize(pillar.articles.length, 'artículo', 'artículos')} →
+                  </span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- All articles -->
+    <section class="section-pad bg-surface">
+      <div class="container-section">
+        <EyebrowLabel text="Todos los artículos" class="mb-2" />
+        <h2 class="font-display text-4xl md:text-5xl text-primary uppercase tracking-[-0.02em] mb-12">
+          Contenido <span class="text-tertiary">completo</span>
+        </h2>
+
+        {pillars.map((pillar) => (
+          <div class="mb-16 last:mb-0">
+            <h3 class="font-display text-2xl text-primary uppercase mb-6 flex items-center gap-3">
+              <span set:html={iconSvgs[pillar.icon]} />
+              <a href={`/blog/${pillar.slug}`} class="hover:text-secondary transition-colors">
+                {pillar.title}
+              </a>
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {pillar.articles.map((post) => {
+                const colorClass = funnelColors[post.data.funnel] || 'bg-gray-100 text-gray-800';
+                const label = funnelLabels[post.data.funnel] || post.data.funnel;
+                return (
+                  <a
+                    href={`/blog/${post.slug}`}
+                    class="group bg-background rounded-xl p-5 border border-neutral/10 hover:border-tertiary/20 hover:-translate-y-0.5 transition-all duration-200"
+                  >
+                    <span class={`inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full mb-3 ${colorClass}`}>
+                      {label}
+                    </span>
+                    <h4 class="font-display text-lg text-primary uppercase leading-tight group-hover:text-tertiary transition-colors">
+                      {post.data.title}
+                    </h4>
+                    <p class="text-muted text-sm mt-2 line-clamp-2">{post.data.description}</p>
+                    <div class="flex items-center gap-2 mt-3 text-xs text-muted">
+                      <span>{post.data.readingTime} min</span>
+                      <span>•</span>
+                      <span>{new Date(post.data.publishDate).toLocaleDateString('es-CO', { month: 'short', day: 'numeric' })}</span>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <CTASection />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  const io = new IntersectionObserver(
+    (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }),
+    { threshold: 0.08 }
+  );
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      el.classList.add('in');
+    } else {
+      io.observe(el);
+    }
+  });
+</script>

@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/organisms/Header.astro';
+import Footer from '../../components/organisms/Footer.astro';
+import CTASection from '../../components/organisms/CTASection.astro';
+import EyebrowLabel from '../../components/atoms/EyebrowLabel.astro';
+import Button from '../../components/atoms/Button.astro';
+import WhatsAppIcon from '../../components/atoms/WhatsAppIcon.astro';
+import { getCollection } from 'astro:content';
+import { WHATSAPP_URL } from '../../lib/constants';
+
+const allPosts = await getCollection('blog');
+const articles = allPosts.filter(p => p.data.pillar === 4).sort((a, b) => a.data.publishDate.getTime() - b.data.publishDate.getTime());
+
+const pillarSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Mantenimiento y Cuidado de Redes de Gas en Medellín — Guía Completa',
+  description: 'Guía completa de mantenimiento de gas en Medellín: preventivo, correctivo, RPO, señales de alerta y emergencias.',
+  author: { '@type': 'Person', name: 'Luis Guillermo Muñoz Vélez' },
+  datePublished: '2026-05-27',
+  publisher: { '@type': 'Organization', name: 'LujoGas' },
+};
+---
+
+<BaseLayout
+  title="Mantenimiento y Cuidado de Redes de Gas en Medellín — Guía Completa | LujoGas"
+  description="Guía completa de mantenimiento de redes de gas en Medellín. Aprende a prevenir emergencias, detectar señales de alerta y cuidar tu instalación con consejos de un técnico NTC 2505."
+  canonical="https://lujogas.com.co/blog/mantenimiento-redes-gas-medellin"
+>
+  <Header />
+  <script type="application/ld+json" set:html={JSON.stringify(pillarSchema)} />
+
+  <main>
+    <section class="relative bg-hero-bg overflow-hidden pt-[140px] pb-[80px] md:pt-[160px] md:pb-[100px]">
+      <div class="pipes-bg" />
+      <div class="container-section relative z-10">
+        <nav class="flex items-center gap-2 text-sm text-hero-text/60 mb-6">
+          <a href="/" class="hover:text-blue-bright transition-colors">Inicio</a>
+          <span>/</span>
+          <a href="/blog/" class="hover:text-blue-bright transition-colors">Blog</a>
+          <span>/</span>
+          <span class="text-hero-text/40">Mantenimiento</span>
+        </nav>
+        <EyebrowLabel text="Pilar de Contenido" class="mb-2" />
+        <h1 class="font-display text-4xl md:text-6xl lg:text-7xl text-background leading-[0.85] tracking-[-0.02em] uppercase max-w-4xl">
+          Mantenimiento y <span class="text-tertiary">Cuidado</span> de Redes de Gas en Medellín
+        </h1>
+        <p class="text-hero-text text-lg md:text-xl max-w-2xl mt-6 leading-relaxed">
+          El mantenimiento regular de tu red de gas es la mejor inversión que puedes hacer para proteger tu hogar. En esta guía encontrarás consejos prácticos de cuidado, señales de alerta, protocolos de emergencia y todo lo que necesitas saber para mantener tu instalación en perfecto estado.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-pad">
+      <div class="container-section max-w-[800px]">
+        <p class="text-primary/80 text-lg leading-relaxed mb-8">
+          En <strong>LujoGas</strong> sabemos que una instalación de gas bien mantenida puede durar décadas sin problemas. Por eso hemos creado este clúster con información práctica que te ayudará a detectar problemas a tiempo y saber cuándo llamar a un técnico certificado NTC 2505.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface">
+      <div class="container-section">
+        <EyebrowLabel text="Artículos del clúster" class="mb-2" />
+        <h2 class="font-display text-3xl md:text-4xl text-primary uppercase tracking-[-0.02em] mb-10">
+          Todo sobre <span class="text-tertiary">mantenimiento</span> de gas
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger">
+          {articles.map((article) => (
+            <a
+              href={`/blog/${article.data.slug}`}
+              class="group bg-background rounded-2xl p-6 border border-neutral/20 hover:border-tertiary/30 hover:-translate-y-1 transition-all duration-300"
+            >
+              <span class="font-mono text-sm text-tertiary mb-2 block">{article.data.readingTime} min</span>
+              <h3 class="font-display text-xl text-primary uppercase leading-tight group-hover:text-tertiary transition-colors">
+                {article.data.title}
+              </h3>
+              <p class="text-muted text-sm mt-3 line-clamp-3">{article.data.description}</p>
+              <span class="inline-block mt-4 text-sm font-semibold text-tertiary">Leer artículo →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad">
+      <div class="container-section max-w-[800px]">
+        <h2 class="font-display text-3xl text-primary uppercase tracking-[-0.02em] mb-6">
+          ¿Cada cuánto dar mantenimiento a tu red de gas?
+        </h2>
+        <p class="text-primary/80 text-lg leading-relaxed mb-5">
+          La normativa colombiana exige la RPO cada 5 años, pero el mantenimiento preventivo recomendado es anual. En Medellín, donde el clima puede acelerar la corrosión en zonas húmedas, una revisión anual puede detectar problemas antes de que se conviertan en emergencias.
+        </p>
+        <p class="text-primary/80 text-lg leading-relaxed mb-5">
+          Además del mantenimiento profesional, hay pequeñas cosas que puedes hacer tú mismo: revisar visualmente las tuberías, verificar que las llamas sean azules y estables, y estar atento a cualquier olor extraño.
+        </p>
+      </div>
+    </section>
+
+    <CTASection />
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<script>
+  const io = new IntersectionObserver(
+    (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }),
+    { threshold: 0.08 }
+  );
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      el.classList.add('in');
+    } else {
+      io.observe(el);
+    }
+  });
+</script>

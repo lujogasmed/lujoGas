@@ -8,6 +8,7 @@ const links = [
   { href: '/#confianza', label: 'Confianza' },
   { href: '/#cobertura', label: 'Cobertura' },
   { href: '/#contacto', label: 'Contacto' },
+  { href: '/blog/', label: 'Blog' },
 ];
 
 const marqueeItems = [
@@ -44,7 +45,9 @@ const bar =
             {item.highlight ? (
               <>
                 ·{' '}
-                <b class="text-blue-bright font-bold not-italic text-glow-blue">{item.text}</b>
+                <b class="text-blue-bright font-bold not-italic text-glow-blue">
+                  {item.text}
+                </b>
                 {item.suffix}
               </>
             ) : (
@@ -63,7 +66,9 @@ const bar =
             {item.highlight ? (
               <>
                 ·{' '}
-                <b class="text-blue-bright font-bold not-italic text-glow-blue">{item.text}</b>
+                <b class="text-blue-bright font-bold not-italic text-glow-blue">
+                  {item.text}
+                </b>
                 {item.suffix}
               </>
             ) : (
@@ -83,33 +88,38 @@ const bar =
   >
     <div class="container-section flex items-center justify-between h-[64px]">
       <!-- Logo: link solo en internas -->
-      {isInternal ? (
-        <a
-          href="/"
-          class="inline-flex items-center h-[60px] transition-[filter] duration-700 group-[.scrolled]/nav:[filter:drop-shadow(0_0_8px_rgba(106,170,255,0.65))_drop-shadow(0_0_24px_rgba(61,127,255,0.4))_drop-shadow(0_0_48px_rgba(61,127,255,0.18))]"
-          aria-label="LujoGas — Ir al inicio"
-        >
-          <img
-            src="https://res.cloudinary.com/dx9vtev71/image/upload/e_background_removal/q_auto/f_auto/v1776525850/logo-lujoGas_hoc8ga.png"
-            alt="LujoGas"
-            height="60"
-            class="h-[60px] w-auto"
-            loading="eager"
-            decoding="async"
-          />
-        </a>
-      ) : (
-        <span class="inline-flex items-center h-[60px] transition-[filter] duration-700 group-[.scrolled]/nav:[filter:drop-shadow(0_0_8px_rgba(106,170,255,0.65))_drop-shadow(0_0_24px_rgba(61,127,255,0.4))_drop-shadow(0_0_48px_rgba(61,127,255,0.18))]" aria-label="LujoGas">
-          <img
-            src="https://res.cloudinary.com/dx9vtev71/image/upload/e_background_removal/q_auto/f_auto/v1776525850/logo-lujoGas_hoc8ga.png"
-            alt="LujoGas"
-            height="60"
-            class="h-[60px] w-auto"
-            loading="eager"
-            decoding="async"
-          />
-        </span>
-      )}
+      {
+        isInternal ? (
+          <a
+            href="/"
+            class="inline-flex items-center h-[60px] transition-[filter] duration-700 group-[.scrolled]/nav:[filter:drop-shadow(0_0_8px_rgba(106,170,255,0.65))_drop-shadow(0_0_24px_rgba(61,127,255,0.4))_drop-shadow(0_0_48px_rgba(61,127,255,0.18))]"
+            aria-label="LujoGas — Ir al inicio"
+          >
+            <img
+              src="https://res.cloudinary.com/dx9vtev71/image/upload/e_background_removal/q_auto/f_auto/v1776525850/logo-lujoGas_hoc8ga.png"
+              alt="LujoGas"
+              height="60"
+              class="h-[60px] w-auto"
+              loading="eager"
+              decoding="async"
+            />
+          </a>
+        ) : (
+          <span
+            class="inline-flex items-center h-[60px] transition-[filter] duration-700 group-[.scrolled]/nav:[filter:drop-shadow(0_0_8px_rgba(106,170,255,0.65))_drop-shadow(0_0_24px_rgba(61,127,255,0.4))_drop-shadow(0_0_48px_rgba(61,127,255,0.18))]"
+            aria-label="LujoGas"
+          >
+            <img
+              src="https://res.cloudinary.com/dx9vtev71/image/upload/e_background_removal/q_auto/f_auto/v1776525850/logo-lujoGas_hoc8ga.png"
+              alt="LujoGas"
+              height="60"
+              class="h-[60px] w-auto"
+              loading="eager"
+              decoding="async"
+            />
+          </span>
+        )
+      }
 
       <!-- Desktop links — pill nav -->
       <div
@@ -121,15 +131,17 @@ const bar =
           class="absolute top-1 bottom-1 rounded-full bg-blue-base/15 border border-blue-base/25 transition-[left,width,opacity] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] opacity-0 pointer-events-none"
         >
         </div>
-        {isInternal && (
-          <a
-            href="/"
-            data-nav
-            class="relative z-10 text-[11px] font-semibold tracking-[1.6px] uppercase text-blue-bright no-underline py-2 px-[18px] rounded-full transition-colors duration-200 hover:text-blue-bright/70 whitespace-nowrap"
-          >
-            ← Inicio
-          </a>
-        )}
+        {
+          isInternal && (
+            <a
+              href="/"
+              data-nav
+              class="relative z-10 text-[11px] font-semibold tracking-[1.6px] uppercase text-blue-bright no-underline py-2 px-[18px] rounded-full transition-colors duration-200 hover:text-blue-bright/70 whitespace-nowrap"
+            >
+              ← Inicio
+            </a>
+          )
+        }
         {
           links.map(({ href, label }) => (
             <a
@@ -213,21 +225,21 @@ const bar =
     <!-- Links -->
     <nav class="flex-1 flex items-center px-7 py-4" aria-label="Menú mobile">
       <ul class="list-none m-0 p-0 w-full" role="list">
-        {isInternal && (
-          <li
-            class="opacity-0 -translate-x-6 transition-[opacity,transform] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] [transition-delay:0s] border-b border-white/[0.06] group-[.open]/menu:opacity-100 group-[.open]/menu:translate-x-0"
-          >
-            <a
-              href="/"
-              class="flex items-baseline gap-4 py-[18px] font-display text-[clamp(26px,6vw,40px)] font-semibold tracking-[-0.01em] text-blue-bright no-underline transition-[color,padding-left] duration-200 hover:text-blue-bright/80 hover:pl-2"
-            >
-              <span class="font-mono text-[12px] font-semibold tracking-[0.14em] text-blue-bright opacity-70 shrink-0 mb-1">
-                ←
-              </span>
-              Inicio
-            </a>
-          </li>
-        )}
+        {
+          isInternal && (
+            <li class="opacity-0 -translate-x-6 transition-[opacity,transform] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] [transition-delay:0s] border-b border-white/[0.06] group-[.open]/menu:opacity-100 group-[.open]/menu:translate-x-0">
+              <a
+                href="/"
+                class="flex items-baseline gap-4 py-[18px] font-display text-[clamp(26px,6vw,40px)] font-semibold tracking-[-0.01em] text-blue-bright no-underline transition-[color,padding-left] duration-200 hover:text-blue-bright/80 hover:pl-2"
+              >
+                <span class="font-mono text-[12px] font-semibold tracking-[0.14em] text-blue-bright opacity-70 shrink-0 mb-1">
+                  ←
+                </span>
+                Inicio
+              </a>
+            </li>
+          )
+        }
         {
           links.map(({ href, label }, i) => (
             <li
