@@ -70,16 +70,49 @@ const iconSvgs: Record<string, string> = {
 function pluralize(count: number, singular: string, plural: string): string {
   return count === 1 ? singular : plural;
 }
+
+const blogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'Blog de Gas en Medellín — LujoGas',
+  description:
+    'Artículos sobre instalación, certificación y mantenimiento de gas en Medellín, escritos por técnico certificado NTC 2505.',
+  url: 'https://lujogas.com.co/blog',
+  inLanguage: 'es-CO',
+  publisher: {
+    '@type': 'Organization',
+    name: 'LujoGas',
+    url: 'https://lujogas.com.co',
+  },
+  blogPost: posts.map((p) => ({
+    '@type': 'BlogPosting',
+    headline: p.data.title,
+    url: `https://lujogas.com.co/blog/${p.slug}`,
+    datePublished: p.data.publishDate.toISOString(),
+    author: { '@type': 'Person', name: p.data.author },
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'LujoGas', item: 'https://lujogas.com.co/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://lujogas.com.co/blog' },
+  ],
+};
 ---
 
 <BaseLayout
   title="Blog de Gas en Medellín — Seguridad y Certificación | LujoGas"
   description="Artículos sobre instalación, certificación y mantenimiento de gas en Medellín. Guías prácticas escritas por técnico certificado NTC 2505."
-  canonical="https://lujogas.com.co/blog/"
+  canonical="https://lujogas.com.co/blog"
 >
   <Header />
 
   <main>
+    <script type="application/ld+json" set:html={JSON.stringify(blogSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     <!-- Hero -->
     <section class="relative bg-hero-bg overflow-hidden pt-[140px] pb-[80px] md:pt-[160px] md:pb-[100px]">
       <div class="pipes-bg" />

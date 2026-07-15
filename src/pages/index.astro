@@ -31,30 +31,30 @@ const websiteSchema = {
 const homeServices = [
   {
     slug: 'instalacion-gas',
-    title: 'Instalación de redes de gas',
+    title: 'Instalación de gas en Medellín',
     desc: 'Redes residenciales y comerciales en cobre o polietileno bajo NTC 2505. Incluye prueba hidrostática y certificado.',
-    href: '/servicios#instalacion-gas',
+    href: '/instalacion-gas-medellin',
     icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 12h6m6 0h6M9 6v12M15 6v12"/><circle cx="12" cy="12" r="2.2"/></svg>`,
   },
   {
     slug: 'certificacion-gas',
-    title: 'Certificación ICONTEC',
-    desc: 'Certificado oficial para activar el servicio con Gas Natural o EPM en Antioquia. Entrega en 24–48 h.',
-    href: '/servicios#certificacion-gas',
+    title: 'Certificación de gas en Medellín',
+    desc: 'Certificado ICONTEC oficial para activar el servicio con Gas Natural o EPM en Antioquia. Entrega en 24–48 h.',
+    href: '/certificacion-gas-medellin',
     icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>`,
   },
   {
     slug: 'rpo',
-    title: 'Revisión Periódica Obligatoria',
-    desc: 'RPO exigida por ley. Mantén tu certificación vigente y evita sanciones. Incluye reporte técnico.',
-    href: '/servicios#rpo',
+    title: 'RPO en Medellín — Revisión Periódica',
+    desc: 'RPO exigida por ley cada 5 años. Mantén tu certificación vigente y evita sanciones. Incluye reporte técnico.',
+    href: '/rpo-gas-medellin',
     icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>`,
   },
   {
     slug: 'deteccion-fugas',
-    title: 'Detección y reparación de fugas',
-    desc: 'Localización con detectores electrónicos de alta sensibilidad. Reparación inmediata en la misma visita.',
-    href: '/servicios#deteccion-fugas',
+    title: 'Mantenimiento de gas en Medellín',
+    desc: 'Preventivo, correctivo y detección de fugas con detectores electrónicos. Reparación inmediata en la misma visita.',
+    href: '/mantenimiento-gas-medellin',
     icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4m0 4h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/></svg>`,
   },
   {
@@ -75,7 +75,7 @@ const homeServices = [
 ---
 
 <BaseLayout
-  title="LujoGas — Instalación certificada de gas en Medellín"
+  title="Instalación de Gas en Medellín Certificada | LujoGas"
   description="Instalación, certificación ICONTEC y mantenimiento de redes de gas en Medellín. Técnico certificado NTC 2505. RPO, detección de fugas, calentadores. ¡Llámanos!"
   canonical="https://lujogas.com.co/"
 >
@@ -398,7 +398,7 @@ const homeServices = [
   <Footer />
 
   <!-- Botón flotante WhatsApp -->
-  <WhatsAppFloat client:load href={WHATSAPP_URL} />
+  <WhatsAppFloat client:idle href={WHATSAPP_URL} />
 </BaseLayout>
 
 <script is:inline>

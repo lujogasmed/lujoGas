@@ -30,6 +30,8 @@ const anim =
       loop
       playsinline
       disablepictureinpicture
+      preload="metadata"
+      poster="https://res.cloudinary.com/dx9vtev71/video/upload/so_0,q_auto,f_jpg/v1776524902/there_is_a_202604181007_1_mpzjwj.jpg"
       class="absolute right-0 top-0 w-full h-full object-cover object-center opacity-25 lg:opacity-[0.88]"
     >
       <source src={VIDEO_URL} type="video/mp4" />
@@ -92,7 +94,7 @@ const anim =
 
       <!-- Body copy -->
       <p
-        class={`${anim} [animation-delay:0.42s] font-body text-[15px] font-light leading-[1.75] text-hero-muted max-w-[360px] mb-10`}
+        class={`${anim} [animation-delay:0.42s] font-body text-[15px] font-normal leading-[1.75] text-hero-muted max-w-[360px] mb-10`}
       >
         Redes residenciales y comerciales ejecutadas por técnicos certificados.
         Diseño, instalación, pruebas hidrostáticas y certificado oficial — todo

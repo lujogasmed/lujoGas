@@ -18,6 +18,7 @@ const links = [
 <BaseLayout
   title="Página no encontrada | LujoGas"
   description="Esta página no existe. Vuelve al inicio o explora nuestros servicios de instalación, certificación y mantenimiento de gas en Medellín."
+  noindex={true}
 >
   <Header />
 
@@ -100,5 +101,5 @@ const links = [
   </main>
 
   <Footer />
-  <WhatsAppFloat client:load href={WHATSAPP_URL} />
+  <WhatsAppFloat client:idle href={WHATSAPP_URL} />
 </BaseLayout>

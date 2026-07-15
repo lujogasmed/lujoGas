@@ -12,7 +12,7 @@ LujoGas es una empresa de servicios técnicos de gas con sede en Medellín, Anti
 **Dirección:** Calle 57 Sur # 65-94 (9708), Medellín, Antioquia, Colombia
 **Teléfono / WhatsApp:** +57 301 474 8653
 **Horario:** Lunes–Viernes 8am–5pm · Sábado 8am–12pm
-**Sitio web:** https://lujogas.com
+**Sitio web:** https://lujogas.com.co
 
 ## Servicios que ofrecemos
 
@@ -80,45 +80,67 @@ Todos los materiales (tuberías, válvulas, accesorios) cumplen Norma Técnica C
 ## Datos de contacto
 
 - **WhatsApp:** https://wa.me/573014748653
-- **Sitio web:** https://lujogas.com
+- **Sitio web:** https://lujogas.com.co
 - **Dirección:** Calle 57 Sur # 65-94 (9708), Medellín, Antioquia
 - **Horario de atención:** Lunes–Viernes 8am–5pm · Sábado 8am–12pm
 
 ## Páginas del sitio
 
-- https://lujogas.com/ — Página principal
-- https://lujogas.com/servicios — Todos los servicios de gas en Medellín
-- https://lujogas.com/nosotros — Quiénes somos, técnico y certificaciones
-- https://lujogas.com/rpo-gas-medellin — Revisión Periódica Obligatoria (RPO) de gas en Medellín
-- https://lujogas.com/blog — Blog educativo de gas
-- https://lujogas.com/blog/seguridad-instalaciones-gas-medellin — Pilar: Seguridad en instalaciones de gas
-- https://lujogas.com/blog/certificacion-gas-icontec-medellin — Pilar: Certificación ICONTEC de gas
-- https://lujogas.com/blog/instalacion-gas-residencial-comercial-medellin — Pilar: Instalación de gas
-- https://lujogas.com/blog/mantenimiento-redes-gas-medellin — Pilar: Mantenimiento de redes de gas
+- https://lujogas.com.co/ — Página principal
+- https://lujogas.com.co/servicios — Todos los servicios de gas en Medellín
+- https://lujogas.com.co/nosotros — Quiénes somos, técnico y certificaciones
+- https://lujogas.com.co/instalacion-gas-medellin — Instalación de gas en Medellín
+- https://lujogas.com.co/certificacion-gas-medellin — Certificación de gas ICONTEC en Medellín
+- https://lujogas.com.co/mantenimiento-gas-medellin — Mantenimiento de redes de gas en Medellín
+- https://lujogas.com.co/rpo-gas-medellin — Revisión Periódica Obligatoria (RPO) de gas en Medellín
+- https://lujogas.com.co/blog — Blog educativo de gas
 
-## Últimos artículos del blog
+## Cobertura por zona
 
-- https://lujogas.com/blog/gas-natural-vs-glp-medellin — Gas Natural vs GLP en Medellín: cuál elegir
-- https://lujogas.com/blog/precios-certificacion-gas-icontec-medellin-2026 — Precios certificación ICONTEC 2026
-- https://lujogas.com/blog/como-detectar-fugas-gas-cocina-medellin — Cómo detectar fugas de gas en la cocina
-- https://lujogas.com/blog/que-hacer-si-huelo-gas-en-mi-casa-medellin — Qué hacer si huele a gas en casa
-- https://lujogas.com/blog/cada-cuanto-revisar-instalacion-gas-medellin — Cada cuánto revisar la instalación de gas
-- https://lujogas.com/blog/consejos-seguridad-gas-hogar-medellin — Consejos de seguridad de gas para el hogar
-- https://lujogas.com/blog/certificacion-gas-tiempo-medellin — Cuánto tarda la certificación de gas
-- https://lujogas.com/blog/requisitos-certificacion-casa-apartamento-medellin — Requisitos para certificación de gas
-- https://lujogas.com/blog/diferencia-certificacion-revision-rpo-medellin — Diferencia entre certificación y RPO
-- https://lujogas.com/blog/instalacion-gas-obra-nueva-medellin — Instalación de gas en obra nueva
-- https://lujogas.com/blog/instalacion-gas-calentador-paso-medellin — Instalación de calentador a gas
-- https://lujogas.com/blog/instalacion-gas-cocina-restaurante-medellin — Instalación de gas para cocina de restaurante
-- https://lujogas.com/blog/como-elegir-instalador-gas-medellin — Cómo elegir instalador de gas
-- https://lujogas.com/blog/instalacion-gas-conjunto-residencial-medellin — Instalación de gas en conjunto residencial
-- https://lujogas.com/blog/calentador-gas-no-enciende-medellin — Calentador a gas no enciende: causas y solución
-- https://lujogas.com/blog/mantenimiento-gas-ahorrar-dinero-medellin — Mantenimiento de gas para ahorrar dinero
-- https://lujogas.com/blog/mantenimiento-gas-pre-invierno-medellin — Mantenimiento de gas pre-invierno
-- https://lujogas.com/blog/senales-red-gas-mal-estado-medellin — Señales de que la red de gas está en mal estado
-- https://lujogas.com/blog/mantenimiento-red-gas-casa-medellin — Mantenimiento de red de gas en casa
-- https://lujogas.com/blog/limpieza-boquillas-estufa-gas-medellin — Limpieza de boquillas de estufa
-- https://lujogas.com/blog/gas-para-industria-medellin — Gas natural para industria en Medellín
-- https://lujogas.com/blog/calentador-gas-glp-comercial-medellin — Calentador a gas comercial
-- https://lujogas.com/blog/regulacion-presion-gas-comercial-medellin — Regulación de presión de gas comercial
-- https://lujogas.com/blog/normatividad-gas-comercial-restaurantes-medellin — Normatividad de gas para comerciales y restaurantes
+- https://lujogas.com.co/instalacion-gas-el-poblado — Instalación de gas en El Poblado
+- https://lujogas.com.co/instalacion-gas-laureles — Instalación de gas en Laureles
+- https://lujogas.com.co/instalacion-gas-envigado — Instalación de gas en Envigado
+- https://lujogas.com.co/instalacion-gas-bello — Instalación de gas en Bello
+- https://lujogas.com.co/instalacion-gas-itagui — Instalación de gas en Itagüí
+- https://lujogas.com.co/instalacion-gas-sabaneta — Instalación de gas en Sabaneta
+- https://lujogas.com.co/instalacion-gas-robledo — Instalación de gas en Robledo
+- https://lujogas.com.co/instalacion-gas-la-estrella — Instalación de gas en La Estrella
+- https://lujogas.com.co/instalacion-gas-copacabana — Instalación de gas en Copacabana
+- https://lujogas.com.co/instalacion-gas-belen — Instalación de gas en Belén
+
+## Guías del blog (pilares)
+
+- https://lujogas.com.co/blog/seguridad-instalaciones-gas-medellin — Pilar: Seguridad en instalaciones de gas
+- https://lujogas.com.co/blog/certificacion-gas-icontec-medellin — Pilar: Certificación ICONTEC de gas
+- https://lujogas.com.co/blog/instalacion-gas-residencial-comercial-medellin — Pilar: Instalación de gas
+- https://lujogas.com.co/blog/mantenimiento-redes-gas-medellin — Pilar: Mantenimiento de redes de gas
+
+## Artículos del blog
+
+- https://lujogas.com.co/blog/como-detectar-fuga-gas-casa — Cómo detectar una fuga de gas en casa
+- https://lujogas.com.co/blog/ntc-2505-norma-colombiana-instalaciones-gas — NTC 2505: norma colombiana de instalaciones de gas
+- https://lujogas.com.co/blog/materiales-certificados-vs-no-certificados-gas — Materiales certificados vs no certificados
+- https://lujogas.com.co/blog/tipos-tuberia-gas-cobre-cpvc-polietileno — Tipos de tubería para gas
+- https://lujogas.com.co/blog/gas-natural-vs-glp-diferencias-costos-medellin — Gas natural vs GLP en Medellín
+- https://lujogas.com.co/blog/que-es-certificacion-icontec-gas-obligatoria — Qué es la certificación ICONTEC de gas
+- https://lujogas.com.co/blog/rpo-gas-revision-periodica-obligatoria-colombia — RPO: Revisión Periódica Obligatoria
+- https://lujogas.com.co/blog/cuanto-cuesta-certificacion-gas-medellin — Cuánto cuesta la certificación de gas en Medellín
+- https://lujogas.com.co/blog/pasos-obtener-certificado-gas-diagnostico-final — Pasos para obtener el certificado de gas
+- https://lujogas.com.co/blog/que-revisa-tecnico-certificado-inspeccion-gas — Qué revisa un técnico certificado
+- https://lujogas.com.co/blog/certificacion-gas-para-arriendo-requisitos-medellin — Certificación de gas para arriendo
+- https://lujogas.com.co/blog/cuanto-cuesta-instalar-gas-casa-medellin — Cuánto cuesta instalar gas en Medellín
+- https://lujogas.com.co/blog/instalacion-gas-apartamento-vs-casa-diferencias — Instalación de gas: apartamento vs casa
+- https://lujogas.com.co/blog/como-elegir-tecnico-gas-certificado-medellin — Cómo elegir un técnico de gas certificado
+- https://lujogas.com.co/blog/instalacion-gas-para-restaurantes-requisitos-ntc — Instalación de gas para restaurantes
+- https://lujogas.com.co/blog/instalacion-calentador-gas-tipos-precio — Instalación de calentador a gas
+- https://lujogas.com.co/blog/gas-natural-obra-nueva-constructor-medellin — Gas natural en obra nueva
+- https://lujogas.com.co/blog/mantenimiento-preventivo-gas-cada-cuando — Mantenimiento preventivo de gas
+- https://lujogas.com.co/blog/senales-red-gas-necesita-mantenimiento-urgente — Señales de mantenimiento urgente
+- https://lujogas.com.co/blog/que-hacer-si-huele-gas-casa-emergencia — Qué hacer si huele a gas: guía de emergencia
+- https://lujogas.com.co/blog/cuanto-cuesta-mantenimiento-gas-medellin — Cuánto cuesta el mantenimiento de gas en Medellín
+- https://lujogas.com.co/blog/guia-cuidado-red-gas-hogar — Guía de cuidado de tu red de gas
+- https://lujogas.com.co/blog/telefonos-emergencia-gas-medellin-epm — Teléfonos de emergencia por fuga de gas en Medellín
+- https://lujogas.com.co/blog/calentador-gas-no-enciende-causas-soluciones — Calentador de gas no enciende: causas y soluciones
+- https://lujogas.com.co/blog/quien-certifica-gas-epm-o-tecnico-certificado — Quién certifica el gas: EPM o técnico certificado
+- https://lujogas.com.co/blog/activar-gas-epm-vivienda-nueva-medellin — Cómo activar el gas con EPM en vivienda nueva
+- https://lujogas.com.co/blog/factura-gas-epm-alta-causas-soluciones — Factura de gas EPM alta: causas y soluciones

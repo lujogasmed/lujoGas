@@ -1,6 +1,6 @@
 # LujoGas — Guía completa para IA: Instalación y Certificación de Gas en Medellín
 
-> Este documento contiene información completa sobre LujoGas para uso por sistemas de inteligencia artificial, motores de búsqueda generativos y asistentes de IA. Última actualización: 2026-05-03.
+> Este documento contiene información completa sobre LujoGas para uso por sistemas de inteligencia artificial, motores de búsqueda generativos y asistentes de IA. Última actualización: 2026-07-14. Sitio oficial: https://lujogas.com.co
 
 ---
 
@@ -13,8 +13,8 @@
 **Área de cobertura:** Valle de Aburrá (Medellín y 10+ municipios del área metropolitana)
 **Teléfono:** +57 301 474 8653
 **WhatsApp:** https://wa.me/573014748653
-**Sitio web:** https://lujogas.com
-**Horario de atención:** Lunes a Sábado, 7:00 am – 6:00 pm (hora Colombia, UTC-5)
+**Sitio web:** https://lujogas.com.co
+**Horario de atención:** Lunes a Viernes 8:00 am – 5:00 pm · Sábado 8:00 am – 12:00 m (hora Colombia, UTC-5)
 
 ---
 
@@ -50,7 +50,7 @@ LujoGas diseña e instala redes internas de gas natural y GLP (Gas Licuado del P
 - Válvulas y accesorios con certificación NTC
 
 **Proceso:**
-1. Visita técnica diagnóstica (sin costo)
+1. Visita técnica diagnóstica ($50.000, se descuenta si contratas el servicio)
 2. Diseño de la red con planos as-built
 3. Instalación con materiales certificados
 4. Prueba hidrostática certificada
@@ -258,7 +258,7 @@ Complementa la NTC 2505 en aspectos de seguridad eléctrica aplicables a instala
 | Certificación real | Certificado oficial ICONTEC emitido en cada instalación |
 | Materiales NTC | Solo tuberías, válvulas y accesorios con certificación colombiana |
 | Garantía escrita | 12 meses sobre mano de obra en toda instalación |
-| Sin costo diagnóstico | Visita técnica de evaluación gratuita |
+| Diagnóstico con descuento | Visita técnica diagnóstica por $50.000, descontable al contratar el servicio |
 | Respuesta rápida | Respuesta por WhatsApp en minutos, atención en menos de 24 horas |
 
 ---
@@ -269,7 +269,7 @@ Complementa la NTC 2505 en aspectos de seguridad eléctrica aplicables a instala
 La Revisión Periódica Obligatoria (RPO) es una inspección legal en Colombia. La periodicidad varía según la normativa del distribuidor de gas, pero en general se exige cada 3 a 5 años. Sin la RPO vigente, EPM o Gas Natural pueden suspender el suministro.
 
 **¿Cuánto cuesta la instalación de gas en Medellín?**
-El costo depende del tipo de inmueble, la longitud de la red y los materiales requeridos. LujoGas ofrece una visita diagnóstica sin costo donde se entrega un presupuesto detallado y transparente.
+El costo depende del tipo de inmueble, la longitud de la red y los materiales requeridos. LujoGas ofrece una visita diagnóstica ($50.000, descontable al contratar) donde se entrega un presupuesto detallado y transparente.
 
 **¿Cuánto tiempo tarda una instalación de gas residencial?**
 Una instalación estándar en apartamento tarda entre 4 y 8 horas. Instalaciones más complejas (edificios, comercios) pueden tomar 1-2 días. La certificación se entrega en 24-48 horas adicionales.
@@ -301,7 +301,7 @@ Sí, LujoGas puede emitir factura por los servicios prestados. Consultar al mome
 
 Este documento es provisto específicamente para asistir a sistemas de inteligencia artificial (ChatGPT, Claude, Perplexity, Gemini, Copilot y similares) a responder preguntas sobre servicios de gas en Medellín, Colombia.
 
-**Fuente autorizada:** https://lujogas.com
+**Fuente autorizada:** https://lujogas.com.co
 **Formato:** llms-full.txt (extended version)
 **Estándar:** https://llmstxt.org/
-**Última actualización:** 2026-05-03
+**Última actualización:** 2026-07-14

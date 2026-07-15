@@ -313,6 +313,28 @@ const procesoPasos = [
       </div>
     </section>
 
+    <!-- ── Contenido local único ─────────────────────────────────────────── -->
+    <section class="section-pad bg-surface" aria-labelledby="local-zona-heading">
+      <div class="container-section">
+        <div class="max-w-[760px] mx-auto reveal">
+          <EyebrowLabel text={`Gas en ${zona.name} · Lo que debes saber`} />
+          <h2 id="local-zona-heading" class="font-display font-semibold text-primary mt-3 mb-8 leading-tight" style="font-size:clamp(26px,3vw,40px);">
+            Así trabajamos el gas en {zona.name}
+          </h2>
+          {zona.contenidoLocal.map((parrafo) => (
+            <p class="text-primary/80 text-[15.5px] leading-relaxed mb-5">{parrafo}</p>
+          ))}
+          <p class="text-primary/80 text-[15.5px] leading-relaxed">
+            ¿Quieres conocer precios, proceso completo y requisitos? Visita nuestra página de
+            <a href="/instalacion-gas-medellin" class="font-semibold underline underline-offset-4 transition-opacity hover:opacity-75" style="color:#F97316;">instalación de gas en Medellín</a>
+            o revisa el servicio de
+            <a href="/certificacion-gas-medellin" class="font-semibold underline underline-offset-4 transition-opacity hover:opacity-75" style="color:#F97316;">certificación de gas</a>
+            si solo necesitas el documento.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- ── Por qué LujoGas ───────────────────────────────────────────────── -->
     <section class="section-pad" style="background:#F8F7F4;" aria-labelledby="confianza-zona-heading">
       <div class="container-section">

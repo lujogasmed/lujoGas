@@ -5,6 +5,16 @@
       "has": [{ "type": "host", "value": "www.lujogas.com.co" }],
       "destination": "https://lujogas.com.co/:path*",
       "permanent": true
+    },
+    {
+      "source": "/blog/cada-cuanto-revisar-instalacion-gas-casa",
+      "destination": "/blog/rpo-gas-revision-periodica-obligatoria-colombia",
+      "permanent": true
+    },
+    {
+      "source": "/blog/como-saber-si-rpo-vencida-consultar",
+      "destination": "/blog/rpo-gas-revision-periodica-obligatoria-colombia",
+      "permanent": true
     }
   ],
   "headers": [

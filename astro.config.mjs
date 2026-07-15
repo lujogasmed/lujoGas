@@ -5,6 +5,10 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://lujogas.com.co',
+  trailingSlash: 'never',
+  build: {
+    format: 'file',
+  },
   integrations: [
     react(),
     tailwind({
@@ -17,7 +21,7 @@ export default defineConfig({
       customPages: [],
       serialize(item) {
         // Prioridades por tipo de página
-        if (item.url === 'https://lujogas.com/') return { ...item, changefreq: 'weekly',  priority: 1.0 };
+        if (item.url === 'https://lujogas.com.co/') return { ...item, changefreq: 'weekly',  priority: 1.0 };
         if (item.url.includes('/servicios'))     return { ...item, changefreq: 'monthly', priority: 0.9 };
         if (item.url.includes('/instalacion-gas-medellin'))   return { ...item, priority: 0.95 };
         if (item.url.includes('/certificacion-gas-medellin')) return { ...item, priority: 0.90 };

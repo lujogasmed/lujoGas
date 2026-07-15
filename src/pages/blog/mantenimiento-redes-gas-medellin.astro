@@ -14,18 +14,28 @@ const articles = allPosts.filter(p => p.data.pillar === 4).sort((a, b) => a.data
 
 const pillarSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'Mantenimiento y Cuidado de Redes de Gas en Medellín — Guía Completa',
+  '@type': 'CollectionPage',
+  name: 'Guía de Mantenimiento de Redes de Gas en Medellín',
   description: 'Guía completa de mantenimiento de gas en Medellín: preventivo, correctivo, RPO, señales de alerta y emergencias.',
+  url: 'https://lujogas.com.co/blog/mantenimiento-redes-gas-medellin',
+  inLanguage: 'es-CO',
   author: { '@type': 'Person', name: 'Luis Guillermo Muñoz Vélez' },
-  datePublished: '2026-05-27',
-  publisher: { '@type': 'Organization', name: 'LujoGas' },
+  publisher: { '@type': 'Organization', name: 'LujoGas', url: 'https://lujogas.com.co' },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: articles.map((a, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: a.data.title,
+      url: `https://lujogas.com.co/blog/${a.slug}`,
+    })),
+  },
 };
 ---
 
 <BaseLayout
-  title="Mantenimiento y Cuidado de Redes de Gas en Medellín — Guía Completa | LujoGas"
-  description="Guía completa de mantenimiento de redes de gas en Medellín. Aprende a prevenir emergencias, detectar señales de alerta y cuidar tu instalación con consejos de un técnico NTC 2505."
+  title="Guía de Mantenimiento de Redes de Gas en Medellín | LujoGas"
+  description="Guía de mantenimiento de redes de gas en Medellín: preventivo, correctivo, RPO, señales de alerta y emergencias. Consejos de técnico certificado NTC 2505."
   canonical="https://lujogas.com.co/blog/mantenimiento-redes-gas-medellin"
 >
   <Header />
@@ -38,13 +48,13 @@ const pillarSchema = {
         <nav class="flex items-center gap-2 text-sm text-hero-text/60 mb-6">
           <a href="/" class="hover:text-blue-bright transition-colors">Inicio</a>
           <span>/</span>
-          <a href="/blog/" class="hover:text-blue-bright transition-colors">Blog</a>
+          <a href="/blog" class="hover:text-blue-bright transition-colors">Blog</a>
           <span>/</span>
           <span class="text-hero-text/40">Mantenimiento</span>
         </nav>
         <EyebrowLabel text="Pilar de Contenido" class="mb-2" />
         <h1 class="font-display text-4xl md:text-6xl lg:text-7xl text-background leading-[0.85] tracking-[-0.02em] uppercase max-w-4xl">
-          Mantenimiento y <span class="text-tertiary">Cuidado</span> de Redes de Gas en Medellín
+          Guía de Mantenimiento y <span class="text-tertiary">Cuidado</span> de Redes de Gas en Medellín
         </h1>
         <p class="text-hero-text text-lg md:text-xl max-w-2xl mt-6 leading-relaxed">
           El mantenimiento regular de tu red de gas es la mejor inversión que puedes hacer para proteger tu hogar. En esta guía encontrarás consejos prácticos de cuidado, señales de alerta, protocolos de emergencia y todo lo que necesitas saber para mantener tu instalación en perfecto estado.
@@ -56,6 +66,9 @@ const pillarSchema = {
       <div class="container-section max-w-[800px]">
         <p class="text-primary/80 text-lg leading-relaxed mb-8">
           En <strong>LujoGas</strong> sabemos que una instalación de gas bien mantenida puede durar décadas sin problemas. Por eso hemos creado este clúster con información práctica que te ayudará a detectar problemas a tiempo y saber cuándo llamar a un técnico certificado NTC 2505.
+        </p>
+        <p class="text-primary/80 text-lg leading-relaxed mb-8">
+          ¿Tu red ya necesita revisión? Agenda directo nuestro servicio de <a href="/mantenimiento-gas-medellin" class="text-tertiary font-semibold underline underline-offset-4 hover:text-tertiary/80 transition-colors">mantenimiento de gas en Medellín</a> — preventivo, correctivo y RPO.
         </p>
       </div>
     </section>
@@ -69,7 +82,7 @@ const pillarSchema = {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger">
           {articles.map((article) => (
             <a
-              href={`/blog/${article.data.slug}`}
+              href={`/blog/${article.slug}`}
               class="group bg-background rounded-2xl p-6 border border-neutral/20 hover:border-tertiary/30 hover:-translate-y-1 transition-all duration-300"
             >
               <span class="font-mono text-sm text-tertiary mb-2 block">{article.data.readingTime} min</span>

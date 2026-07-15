@@ -7,7 +7,7 @@ export const localBusinessSchema = {
   description: SITE.description,
   telephone: SITE.phone,
   url: 'https://lujogas.com.co',
-  image: 'https://lujogas.com.co/og-image.jpg', // TODO: replace with actual photo
+  image: 'https://res.cloudinary.com/dxcbyed7d/image/upload/w_1200,h_630,c_fill,g_auto/v1781108208/lucho_ljvjfy.jpg',
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',
@@ -25,9 +25,15 @@ export const localBusinessSchema = {
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      opens: '07:00',
-      closes: '18:00',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:00',
+      closes: '17:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Saturday'],
+      opens: '08:00',
+      closes: '12:00',
     },
   ],
   areaServed: [
@@ -119,9 +125,9 @@ export const localBusinessSchema = {
     availableLanguage: 'Spanish',
     hoursAvailable: {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      opens: '07:00',
-      closes: '18:00',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:00',
+      closes: '17:00',
     },
   },
   hasMap: 'https://maps.google.com/?q=LujoGas,Medellín,Antioquia,Colombia',

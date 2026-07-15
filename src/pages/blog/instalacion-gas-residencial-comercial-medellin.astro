@@ -14,18 +14,28 @@ const articles = allPosts.filter(p => p.data.pillar === 3).sort((a, b) => a.data
 
 const pillarSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'Instalación de Gas Residencial y Comercial en Medellín — Guía Completa',
+  '@type': 'CollectionPage',
+  name: 'Guía de Instalación de Gas Residencial y Comercial en Medellín',
   description: 'Guía completa de instalación de gas en Medellín: precios, tipos de instalación, cómo elegir técnico, gas natural vs GLP y más.',
+  url: 'https://lujogas.com.co/blog/instalacion-gas-residencial-comercial-medellin',
+  inLanguage: 'es-CO',
   author: { '@type': 'Person', name: 'Luis Guillermo Muñoz Vélez' },
-  datePublished: '2026-05-27',
-  publisher: { '@type': 'Organization', name: 'LujoGas' },
+  publisher: { '@type': 'Organization', name: 'LujoGas', url: 'https://lujogas.com.co' },
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: articles.map((a, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: a.data.title,
+      url: `https://lujogas.com.co/blog/${a.slug}`,
+    })),
+  },
 };
 ---
 
 <BaseLayout
-  title="Instalación de Gas Residencial y Comercial en Medellín — Guía Completa | LujoGas"
-  description="Guía completa de instalación de gas en Medellín. Precios desde $850.000, tipos de instalación, cómo elegir técnico certificado NTC 2505 y todo lo que debes saber."
+  title="Guía de Instalación de Gas en Medellín: Precios y Tipos | LujoGas"
+  description="Guía de instalación de gas en Medellín: precios, tipos de instalación residencial y comercial, gas natural vs GLP y cómo elegir técnico certificado NTC 2505."
   canonical="https://lujogas.com.co/blog/instalacion-gas-residencial-comercial-medellin"
 >
   <Header />
@@ -38,13 +48,13 @@ const pillarSchema = {
         <nav class="flex items-center gap-2 text-sm text-hero-text/60 mb-6">
           <a href="/" class="hover:text-blue-bright transition-colors">Inicio</a>
           <span>/</span>
-          <a href="/blog/" class="hover:text-blue-bright transition-colors">Blog</a>
+          <a href="/blog" class="hover:text-blue-bright transition-colors">Blog</a>
           <span>/</span>
           <span class="text-hero-text/40">Instalación</span>
         </nav>
         <EyebrowLabel text="Pilar de Contenido" class="mb-2" />
         <h1 class="font-display text-4xl md:text-6xl lg:text-7xl text-background leading-[0.85] tracking-[-0.02em] uppercase max-w-4xl">
-          Instalación de Gas <span class="text-tertiary">Residencial y Comercial</span> en Medellín
+          Guía de Instalación de Gas <span class="text-tertiary">Residencial y Comercial</span> en Medellín
         </h1>
         <p class="text-hero-text text-lg md:text-xl max-w-2xl mt-6 leading-relaxed">
           ¿Estás pensando en instalar gas en tu hogar o negocio en Medellín? En esta guía encontrarás precios actualizados, tipos de instalación, diferencias entre gas natural y GLP, y consejos para elegir al técnico certificado adecuado para tu proyecto.
@@ -56,6 +66,9 @@ const pillarSchema = {
       <div class="container-section max-w-[800px]">
         <p class="text-primary/80 text-lg leading-relaxed mb-8">
           Desde <strong>LujoGas</strong> hemos realizado cientos de instalaciones en todo Medellín: desde apartamentos en El Poblado hasta casas en Belén y restaurantes en Laureles. Sabemos que cada proyecto es único, y por eso hemos creado este clúster con información práctica y transparente.
+        </p>
+        <p class="text-primary/80 text-lg leading-relaxed mb-8">
+          ¿Listo para instalar? Cotiza directo en nuestro servicio de <a href="/instalacion-gas-medellin" class="text-tertiary font-semibold underline underline-offset-4 hover:text-tertiary/80 transition-colors">instalación de gas en Medellín</a> con técnico certificado NTC 2505.
         </p>
       </div>
     </section>
@@ -69,7 +82,7 @@ const pillarSchema = {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger">
           {articles.map((article) => (
             <a
-              href={`/blog/${article.data.slug}`}
+              href={`/blog/${article.slug}`}
               class="group bg-background rounded-2xl p-6 border border-neutral/20 hover:border-tertiary/30 hover:-translate-y-1 transition-all duration-300"
             >
               <span class="font-mono text-sm text-tertiary mb-2 block">{article.data.readingTime} min</span>

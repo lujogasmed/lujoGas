@@ -9,13 +9,17 @@ interface Props {
   description?: string;
   canonical?: string;
   ogImage?: string;
+  noindex?: boolean;
+  ogType?: string;
 }
 
 const {
-  title = 'LujoGas — Instalación certificada de gas en Medellín',
+  title = 'Instalación de Gas en Medellín Certificada | LujoGas',
   description = SITE.description,
   canonical = Astro.site?.toString() ?? 'https://lujogas.com.co/',
-  ogImage = '/og-image.jpg',
+  ogImage = 'https://res.cloudinary.com/dxcbyed7d/image/upload/w_1200,h_630,c_fill,g_auto/v1781108208/lucho_ljvjfy.jpg',
+  noindex = false,
+  ogType = 'website',
 } = Astro.props;
 
 const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://lujogas.com.co${ogImage}`;
@@ -32,7 +36,7 @@ const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://lujogas.
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'} />
 
     <!-- Theme color -->
     <meta name="theme-color" content="#0D0D0D" />
@@ -43,7 +47,7 @@ const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://lujogas.
     <link rel="alternate" hreflang="x-default" href={canonical} />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="LujoGas" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -76,11 +80,11 @@ const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://lujogas.
     <link
       rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap"
     />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap"
     />
 
     <!-- Favicon -->
