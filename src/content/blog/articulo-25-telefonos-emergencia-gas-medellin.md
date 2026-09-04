@@ -1,6 +1,6 @@
 ---
-title: "Teléfonos de emergencia por fuga de gas en Medellín"
-description: "Líneas de emergencia por fuga de gas en Medellín: EPM (604) 44 44 115 y 123. Qué decir, qué hacer mientras llega ayuda y cuándo llamar a un técnico."
+title: "Fuga de gas en Medellín: teléfonos EPM y qué hacer"
+description: "¿Fuga de gas? Llama a EPM (604) 44 44 115 o al 123. Protocolo paso a paso, qué decir en la llamada y cuándo necesitas un técnico NTC 2505 en Medellín."
 slug: "telefonos-emergencia-gas-medellin-epm"
 publishDate: 2026-07-14
 author: "Luis Guillermo Muñoz Vélez"
@@ -82,7 +82,7 @@ Si alguien presenta mareo, náuseas, dolor de cabeza o somnolencia, sácalo al a
 
 ## Después de la emergencia: la reparación es con técnico certificado
 
-Aquí es donde muchos hogares de Medellín se confunden. EPM controla la emergencia, pero **no repara la red interna**: esa es responsabilidad del propietario y debe hacerla un técnico certificado bajo la norma NTC 2505.
+Aquí es donde muchos hogares de Medellín se confunden. EPM controla la emergencia, pero **no repara la red interna**: esa es responsabilidad del propietario y debe hacerla un técnico certificado bajo la norma **[NTC 2505](/blog/ntc-2505-norma-colombiana-instalaciones-gas)**.
 
 Si EPM suspendió el servicio por la fuga, el proceso para recuperarlo es:
 
@@ -90,7 +90,7 @@ Si EPM suspendió el servicio por la fuga, el proceso para recuperarlo es:
 2. **Prueba de hermeticidad** que confirme que la fuga quedó resuelta.
 3. **Certificado oficial** de la instalación, que es el documento que EPM exige para reconectar.
 
-En LujoGas realizamos este proceso completo en Medellín y el Valle de Aburrá: la visita diagnóstica cuesta $50.000 (descontable si contratas el servicio), la [detección y reparación de fugas](/mantenimiento-gas-medellin) parte desde $100.000 y el certificado se entrega en 24 a 48 horas hábiles para que EPM reactive el servicio. Puedes ver el detalle del proceso en nuestro servicio de [certificación de gas en Medellín](/certificacion-gas-medellin).
+En LujoGas realizamos este proceso completo en Medellín y el Valle de Aburrá: la visita diagnóstica cuesta $50.000 (descontable si contratas el servicio), la [detección y reparación de fugas](/mantenimiento-gas-medellin) parte desde $100.000 y el [certificado de gas en Medellín](/certificacion-gas-medellin) se entrega en 24 a 48 horas hábiles para que EPM reactive el servicio.
 
 ## Cómo evitar la próxima emergencia
 

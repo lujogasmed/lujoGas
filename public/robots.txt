@@ -25,3 +25,7 @@ Allow: /
 
 # Sitemap
 Sitemap: https://lujogas.com.co/sitemap-index.xml
+
+# AI / GEO
+# https://lujogas.com.co/llms.txt
+# https://lujogas.com.co/llms-full.txt

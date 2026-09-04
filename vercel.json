@@ -1,10 +1,22 @@
 {
   "cleanUrls": true,
+  "trailingSlash": false,
   "redirects": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "www.lujogas.com.co" }],
+      "destination": "https://lujogas.com.co/",
+      "permanent": true
+    },
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "www.lujogas.com.co" }],
       "destination": "https://lujogas.com.co/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/og-image.jpg",
+      "destination": "https://res.cloudinary.com/dxcbyed7d/image/upload/w_1200,h_630,c_fill,g_auto/v1781108208/lucho_ljvjfy.jpg",
       "permanent": true
     },
     {

@@ -53,7 +53,7 @@ Si el técnico falla en el punto 1, descártalo de inmediato. Los demás puntos 
 
 ## Qué es la certificación NTC 2505 y por qué es obligatoria
 
-La **Norma Técnica Colombiana NTC 2505** regula las instalaciones internas de gas combustible en Colombia: diámetros de tubería, materiales permitidos, ventilación de recintos, pruebas de hermeticidad y condiciones de seguridad. Complementariamente, la **Resolución 90902 de 2013 del Ministerio de Minas y Energía** establece los requisitos que deben cumplir las instalaciones internas y sustenta la Revisión Periódica Obligatoria (RPO) cada 5 años.
+La **[Norma Técnica Colombiana NTC 2505](/blog/ntc-2505-norma-colombiana-instalaciones-gas)** regula las instalaciones internas de gas combustible en Colombia: diámetros de tubería, materiales permitidos, ventilación de recintos, pruebas de hermeticidad y condiciones de seguridad. Complementariamente, la **Resolución 90902 de 2013 del Ministerio de Minas y Energía** establece los requisitos que deben cumplir las instalaciones internas y sustenta la Revisión Periódica Obligatoria (RPO) cada 5 años.
 
 Un técnico certificado NTC 2505 pasó por una evaluación teórica y práctica ante un organismo certificador acreditado. Ese certificado tiene vencimiento: **verifica siempre que esté vigente**, no solo que exista.
 

@@ -30,7 +30,7 @@ const faq = [
   },
   {
     q: '¿Cuánto cuesta la RPO en Medellín?',
-    a: 'La visita diagnóstica cuesta $50.000. La RPO completa, con pruebas y certificado, tiene un costo que depende de la cantidad de puntos de consumo y el estado de la instalación. Te damos el precio exacto después de la visita.',
+    a: 'La visita diagnóstica cuesta $60.000. La RPO completa, con pruebas y certificado, tiene un costo que depende de la cantidad de puntos de consumo y el estado de la instalación. Te damos el precio exacto después de la visita.',
   },
   {
     q: '¿Qué pasa si encuentran fallas durante la RPO?',
@@ -60,8 +60,18 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'LujoGas', item: 'https://lujogas.com.co/' },
-    { '@type': 'ListItem', position: 2, name: 'RPO Gas Medellín', item: canonical },
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'LujoGas',
+      item: 'https://lujogas.com.co/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'RPO Gas Medellín',
+      item: canonical,
+    },
   ],
 };
 
@@ -69,7 +79,8 @@ const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: 'Revisión Periódica Obligatoria (RPO) de Gas en Medellín',
-  description: 'Revisión Periódica Obligatoria de gas realizada por técnico certificado NTC 2505 en Medellín y el Valle de Aburrá. Certificado ICONTEC en 24-48 horas.',
+  description:
+    'Revisión Periódica Obligatoria de gas realizada por técnico certificado NTC 2505 en Medellín y el Valle de Aburrá. Certificado ICONTEC en 24-48 horas.',
   provider: { '@type': 'LocalBusiness', name: 'LujoGas' },
   areaServed: zonas.map((z) => z.name),
   serviceType: 'Revisión Periódica Obligatoria de Gas',
@@ -77,41 +88,74 @@ const serviceSchema = {
 ---
 
 <BaseLayout
-  title="RPO en Medellín: Revisión Periódica de Gas | LujoGas"
-  description="RPO en Medellín con técnico certificado NTC 2505. Evita la suspensión del servicio: revisión periódica obligatoria y certificado en 24–48 h. Escríbenos."
+  title="Revisión Periódica Obligatoria de Gas Medellín | LujoGas"
+  description="RPO de gas en Medellín desde $120.000. Técnico certificado NTC 2505, certificado ICONTEC en 24–48 h. Evita suspensión de EPM. Agenda por WhatsApp."
   canonical={canonical}
 >
   <Header />
   <script type="application/ld+json" set:html={JSON.stringify(rpoFaqSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(breadcrumbSchema)}
+  />
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
 
   <main>
     <!-- Hero -->
-    <section class="relative bg-hero-bg overflow-hidden pt-[140px] pb-[80px] md:pt-[160px] md:pb-[100px]">
-      <div class="pipes-bg" />
+    <section
+      class="relative bg-hero-bg overflow-hidden pt-[140px] pb-[80px] md:pt-[160px] md:pb-[100px]"
+    >
+      <div class="pipes-bg"></div>
       <div class="container-section relative z-10">
-        <nav class="flex items-center gap-2 text-sm text-hero-text/60 mb-6" aria-label="Breadcrumb">
-          <a href="/" class="hover:text-blue-bright transition-colors">Inicio</a>
+        <nav
+          class="flex items-center gap-2 text-sm text-hero-text/60 mb-6"
+          aria-label="Breadcrumb"
+        >
+          <a href="/" class="hover:text-blue-bright transition-colors">Inicio</a
+          >
           <span>/</span>
           <span class="text-hero-text/40">RPO Gas Medellín</span>
         </nav>
         <EyebrowLabel text="Revisión Periódica Obligatoria" class="mb-2" />
-        <h1 class="font-display text-4xl md:text-6xl lg:text-7xl text-background leading-[0.85] tracking-[-0.02em] uppercase max-w-4xl">
-          Revisión Periódica Obligatoria de Gas <span class="text-tertiary">en Medellín</span>
+        <h1
+          class="font-display text-4xl md:text-6xl lg:text-7xl text-background leading-[0.85] tracking-[-0.02em] uppercase max-w-4xl"
+        >
+          Revisión Periódica Obligatoria de Gas <span class="text-tertiary"
+            >en Medellín</span
+          >
         </h1>
-        <p class="text-xl md:text-2xl text-blue-bright font-display tracking-wide uppercase mt-4">
+        <p
+          class="text-xl md:text-2xl text-blue-bright font-display tracking-wide uppercase mt-4"
+        >
           Revisión Periódica Obligatoria de gas
         </p>
-        <p class="text-hero-text text-lg md:text-xl max-w-2xl mt-6 leading-relaxed">
-          La normativa colombiana exige una revisión completa de tu instalación de gas cada 5 años. En <strong>LujoGas</strong> realizamos la RPO con técnico certificado <strong>NTC 2505</strong> y emitimos el certificado <strong>ICONTEC</strong> en 24 a 48 horas en toda Medellín y el Valle de Aburrá.
+        <p
+          class="text-hero-text text-lg md:text-xl max-w-2xl mt-6 leading-relaxed"
+        >
+          La normativa colombiana exige una revisión completa de tu instalación
+          de gas cada 5 años. En <strong>LujoGas</strong> realizamos la RPO con técnico
+          certificado <strong>NTC 2505</strong> y emitimos el certificado <strong
+            >ICONTEC</strong
+          > en 24 a 48 horas en toda Medellín y el Valle de Aburrá.
         </p>
         <div class="flex flex-wrap gap-4 mt-8">
-          <Button href={WHATSAPP_URL} variant="whatsapp" size="lg" target="_blank" rel="noopener noreferrer" ariaLabel="Agendar RPO por WhatsApp">
+          <Button
+            href={WHATSAPP_URL}
+            variant="whatsapp"
+            size="lg"
+            target="_blank"
+            rel="noopener noreferrer"
+            ariaLabel="Agendar RPO por WhatsApp"
+          >
             <WhatsAppIcon />
             Agendar RPO
           </Button>
-          <Button href="tel:+573014748653" variant="ghost" size="lg" ariaLabel="Llamar ahora">
+          <Button
+            href="tel:+573014748653"
+            variant="ghost"
+            size="lg"
+            ariaLabel="Llamar ahora"
+          >
             Llamar ahora
           </Button>
         </div>
@@ -126,14 +170,20 @@ const serviceSchema = {
     <!-- Stats -->
     <section class="py-12 bg-hero-surface">
       <div class="container-section">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center reveal-stagger">
+        <div
+          class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center reveal-stagger"
+        >
           <div>
             <p class="font-display text-3xl md:text-4xl text-tertiary">3+</p>
             <p class="text-hero-text text-sm mt-1">Años de experiencia</p>
           </div>
           <div>
-            <p class="font-display text-3xl md:text-4xl text-tertiary">3.000+</p>
-            <p class="text-hero-text text-sm mt-1">Certificaciones realizadas</p>
+            <p class="font-display text-3xl md:text-4xl text-tertiary">
+              3.000+
+            </p>
+            <p class="text-hero-text text-sm mt-1">
+              Certificaciones realizadas
+            </p>
           </div>
           <div>
             <p class="font-display text-3xl md:text-4xl text-tertiary">10</p>
@@ -151,17 +201,36 @@ const serviceSchema = {
     <section class="section-pad">
       <div class="container-section max-w-[800px]">
         <EyebrowLabel text="¿Qué es la RPO?" class="mb-2" />
-        <h2 class="font-display text-3xl md:text-4xl text-primary uppercase tracking-[-0.02em] mb-6">
+        <h2
+          class="font-display text-3xl md:text-4xl text-primary uppercase tracking-[-0.02em] mb-6"
+        >
           Revisión Periódica Obligatoria de gas
         </h2>
         <p class="text-primary/80 text-lg leading-relaxed mb-5">
-          La <strong>Revisión Periódica Obligatoria (RPO)</strong> es una inspección técnica que deben pasar todas las instalaciones de gas en Colombia cada 5 años, según lo establecido por la resolución CREG 067 de 1995 y la Norma Técnica Colombiana NTC 2505.
+          La <strong>Revisión Periódica Obligatoria (RPO)</strong> es una inspección
+          técnica que deben pasar todas las instalaciones de gas en Colombia cada
+          5 años, según lo establecido por la resolución CREG 067 de 1995 y la{' '}
+          <a
+            href="/blog/ntc-2505-norma-colombiana-instalaciones-gas"
+            class="text-tertiary font-semibold underline underline-offset-4 hover:opacity-80"
+          >
+            Norma Técnica Colombiana NTC 2505
+          </a>.
         </p>
         <p class="text-primary/80 text-lg leading-relaxed mb-5">
-          El objetivo de la RPO es verificar que tu instalación de gas sigue siendo segura con el paso del tiempo. Las tuberías se deterioran, las conexiones se aflojan y los gasodomésticos envejecen. Una revisión periódica detecta estos problemas antes de que se conviertan en emergencias.
+          El objetivo de la RPO es verificar que tu instalación de gas sigue
+          siendo segura con el paso del tiempo. Las tuberías se deterioran, las
+          conexiones se aflojan y los gasodomésticos envejecen. Una revisión
+          periódica detecta estos problemas antes de que se conviertan en
+          emergencias.
         </p>
         <p class="text-primary/80 text-lg leading-relaxed">
-          En <strong>LujoGas</strong>, nuestro técnico certificado NTC 2505 realiza la inspección completa: revisa la tubería en todo su recorrido, las conexiones, las válvulas, los reguladores de presión, la ventilación de los recintos y el funcionamiento de los gasodomésticos. Si todo está en orden, emitimos el certificado ICONTEC en 24 a 48 horas.
+          En <strong>LujoGas</strong>, nuestro técnico certificado NTC 2505
+          realiza la inspección completa: revisa la tubería en todo su
+          recorrido, las conexiones, las válvulas, los reguladores de presión,
+          la ventilación de los recintos y el funcionamiento de los
+          gasodomésticos. Si todo está en orden, emitimos el certificado ICONTEC
+          en 24 a 48 horas.
         </p>
       </div>
     </section>
@@ -171,40 +240,75 @@ const serviceSchema = {
       <div class="container-section">
         <div class="max-w-[800px] mx-auto">
           <EyebrowLabel text="¿Qué revisamos?" class="mb-2" />
-          <h2 class="font-display text-3xl md:text-4xl text-primary uppercase tracking-[-0.02em] mb-8">
+          <h2
+            class="font-display text-3xl md:text-4xl text-primary uppercase tracking-[-0.02em] mb-8"
+          >
             Nuestro proceso de <span class="text-tertiary">inspección RPO</span>
           </h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1000px] mx-auto">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1000px] mx-auto"
+        >
           <div class="bg-background rounded-xl p-6 border border-neutral/10">
             <span class="font-display text-2xl text-tertiary">01</span>
-            <h3 class="font-display text-lg text-primary uppercase mt-2">Inspección visual</h3>
-            <p class="text-muted text-sm mt-2">Revisamos el estado general de la tubería, conexiones, válvulas y reguladores buscando corrosión, golpes o desgaste.</p>
+            <h3 class="font-display text-lg text-primary uppercase mt-2">
+              Inspección visual
+            </h3>
+            <p class="text-muted text-sm mt-2">
+              Revisamos el estado general de la tubería, conexiones, válvulas y
+              reguladores buscando corrosión, golpes o desgaste.
+            </p>
           </div>
           <div class="bg-background rounded-xl p-6 border border-neutral/10">
             <span class="font-display text-2xl text-tertiary">02</span>
-            <h3 class="font-display text-lg text-primary uppercase mt-2">Prueba de hermeticidad</h3>
-            <p class="text-muted text-sm mt-2">Presurizamos la red con aire comprimido y verificamos que no haya pérdida de presión. Es la prueba más importante para descartar fugas.</p>
+            <h3 class="font-display text-lg text-primary uppercase mt-2">
+              Prueba de hermeticidad
+            </h3>
+            <p class="text-muted text-sm mt-2">
+              Presurizamos la red con aire comprimido y verificamos que no haya
+              pérdida de presión. Es la prueba más importante para descartar
+              fugas.
+            </p>
           </div>
           <div class="bg-background rounded-xl p-6 border border-neutral/10">
             <span class="font-display text-2xl text-tertiary">03</span>
-            <h3 class="font-display text-lg text-primary uppercase mt-2">Verificación de ventilación</h3>
-            <p class="text-muted text-sm mt-2">Medimos que los recintos con gasodomésticos tengan la ventilación adecuada para evitar acumulación de monóxido de carbono.</p>
+            <h3 class="font-display text-lg text-primary uppercase mt-2">
+              Verificación de ventilación
+            </h3>
+            <p class="text-muted text-sm mt-2">
+              Medimos que los recintos con gasodomésticos tengan la ventilación
+              adecuada para evitar acumulación de monóxido de carbono.
+            </p>
           </div>
           <div class="bg-background rounded-xl p-6 border border-neutral/10">
             <span class="font-display text-2xl text-tertiary">04</span>
-            <h3 class="font-display text-lg text-primary uppercase mt-2">Revisión de gasodomésticos</h3>
-            <p class="text-muted text-sm mt-2">Verificamos que estufas, calentadores, hornos y secadoras estén correctamente conectados y funcionando sin fugas.</p>
+            <h3 class="font-display text-lg text-primary uppercase mt-2">
+              Revisión de gasodomésticos
+            </h3>
+            <p class="text-muted text-sm mt-2">
+              Verificamos que estufas, calentadores, hornos y secadoras estén
+              correctamente conectados y funcionando sin fugas.
+            </p>
           </div>
           <div class="bg-background rounded-xl p-6 border border-neutral/10">
             <span class="font-display text-2xl text-tertiary">05</span>
-            <h3 class="font-display text-lg text-primary uppercase mt-2">Análisis de combustión</h3>
-            <p class="text-muted text-sm mt-2">Medimos la calidad de la combustión y las emisiones para garantizar que los equipos quemen gas de forma eficiente y segura.</p>
+            <h3 class="font-display text-lg text-primary uppercase mt-2">
+              Análisis de combustión
+            </h3>
+            <p class="text-muted text-sm mt-2">
+              Medimos la calidad de la combustión y las emisiones para
+              garantizar que los equipos quemen gas de forma eficiente y segura.
+            </p>
           </div>
           <div class="bg-background rounded-xl p-6 border border-neutral/10">
             <span class="font-display text-2xl text-tertiary">06</span>
-            <h3 class="font-display text-lg text-primary uppercase mt-2">Certificado ICONTEC</h3>
-            <p class="text-muted text-sm mt-2">Si todo está en orden, emitimos el certificado ICONTEC oficial y lo enviamos en formato digital y físico en 24 a 48 horas.</p>
+            <h3 class="font-display text-lg text-primary uppercase mt-2">
+              Certificado ICONTEC
+            </h3>
+            <p class="text-muted text-sm mt-2">
+              Si todo está en orden, emitimos el certificado ICONTEC oficial y
+              lo enviamos en formato digital y físico en 24 a 48 horas.
+            </p>
           </div>
         </div>
       </div>
@@ -214,50 +318,81 @@ const serviceSchema = {
     <section class="section-pad">
       <div class="container-section max-w-[800px]">
         <EyebrowLabel text="¿Por qué LujoGas?" class="mb-2" />
-        <h2 class="font-display text-3xl md:text-4xl text-primary uppercase tracking-[-0.02em] mb-8">
+        <h2
+          class="font-display text-3xl md:text-4xl text-primary uppercase tracking-[-0.02em] mb-8"
+        >
           Tu RPO con <span class="text-tertiary">tranquilidad</span>
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="flex gap-4">
             <span class="text-tertiary text-xl flex-shrink-0">✓</span>
             <div>
-              <h3 class="font-display text-lg text-primary uppercase">Técnico certificado NTC 2505</h3>
-              <p class="text-muted text-sm mt-1">Luis Guillermo Muñoz Vélez, técnico certificado con aval ICONTEC.</p>
+              <h3 class="font-display text-lg text-primary uppercase">
+                Técnico certificado NTC 2505
+              </h3>
+              <p class="text-muted text-sm mt-1">
+                Luis Guillermo Muñoz Vélez, técnico certificado con aval
+                ICONTEC.
+              </p>
             </div>
           </div>
           <div class="flex gap-4">
             <span class="text-tertiary text-xl flex-shrink-0">✓</span>
             <div>
-              <h3 class="font-display text-lg text-primary uppercase">Certificado en 24-48 horas</h3>
-              <p class="text-muted text-sm mt-1">Recibes tu certificado ICONTEC en formato digital al día siguiente hábil.</p>
+              <h3 class="font-display text-lg text-primary uppercase">
+                Certificado en 24-48 horas
+              </h3>
+              <p class="text-muted text-sm mt-1">
+                Recibes tu certificado ICONTEC en formato digital al día
+                siguiente hábil.
+              </p>
             </div>
           </div>
           <div class="flex gap-4">
             <span class="text-tertiary text-xl flex-shrink-0">✓</span>
             <div>
-              <h3 class="font-display text-lg text-primary uppercase">Corrección de fallas incluida</h3>
-              <p class="text-muted text-sm mt-1">Si encontramos problemas, los corregimos para que obtengas tu certificado.</p>
+              <h3 class="font-display text-lg text-primary uppercase">
+                Corrección de fallas incluida
+              </h3>
+              <p class="text-muted text-sm mt-1">
+                Si encontramos problemas, los corregimos para que obtengas tu
+                certificado.
+              </p>
             </div>
           </div>
           <div class="flex gap-4">
             <span class="text-tertiary text-xl flex-shrink-0">✓</span>
             <div>
-              <h3 class="font-display text-lg text-primary uppercase">Materiales certificados</h3>
-              <p class="text-muted text-sm mt-1">Usamos exclusivamente materiales con sello NTC 2505. Sin atajos.</p>
+              <h3 class="font-display text-lg text-primary uppercase">
+                Materiales certificados
+              </h3>
+              <p class="text-muted text-sm mt-1">
+                Usamos exclusivamente materiales con sello NTC 2505. Sin atajos.
+              </p>
             </div>
           </div>
           <div class="flex gap-4">
             <span class="text-tertiary text-xl flex-shrink-0">✓</span>
             <div>
-              <h3 class="font-display text-lg text-primary uppercase">Experiencia local</h3>
-              <p class="text-muted text-sm mt-1">Más de 3.000 certificaciones realizadas en Medellín y el Valle de Aburrá.</p>
+              <h3 class="font-display text-lg text-primary uppercase">
+                Experiencia local
+              </h3>
+              <p class="text-muted text-sm mt-1">
+                Más de 3.000 certificaciones realizadas en Medellín y el Valle
+                de Aburrá.
+              </p>
             </div>
           </div>
           <div class="flex gap-4">
             <span class="text-tertiary text-xl flex-shrink-0">✓</span>
             <div>
-              <h3 class="font-display text-lg text-primary uppercase">Sin intermediarios</h3>
-              <p class="text-muted text-sm mt-1">El técnico que hace la visita es el mismo que certifica. Atención directa y personalizada.</p>
+              <h3 class="font-display text-lg text-primary uppercase">
+                Sin intermediarios
+              </h3>
+              <p class="text-muted text-sm mt-1">
+                El técnico que hace la visita es el mismo que certifica.
+                Atención directa y personalizada.
+              </p>
             </div>
           </div>
         </div>
@@ -268,22 +403,31 @@ const serviceSchema = {
     <section class="section-pad bg-surface">
       <div class="container-section">
         <EyebrowLabel text="Cobertura" class="mb-2" />
-        <h2 class="font-display text-3xl md:text-4xl text-primary uppercase tracking-[-0.02em] mb-4">
+        <h2
+          class="font-display text-3xl md:text-4xl text-primary uppercase tracking-[-0.02em] mb-4"
+        >
           RPO en todo <span class="text-tertiary">Medellín</span> y el Valle de Aburrá
         </h2>
         <p class="text-muted text-lg max-w-2xl mb-10">
-          Realizamos la Revisión Periódica Obligatoria en los principales municipios y barrios del área metropolitana.
+          Realizamos la Revisión Periódica Obligatoria en los principales
+          municipios y barrios del área metropolitana.
         </p>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-          {zonas.map((zona) => (
-            <a
-              href={`/rpo-gas-${zona.slug}`}
-              class="block bg-background rounded-xl p-4 text-center border border-neutral/10 hover:border-tertiary/30 hover:-translate-y-0.5 transition-all duration-200"
-            >
-              <span class="font-display text-lg text-primary uppercase">{zona.name}</span>
-              <span class="block text-xs text-muted mt-1 capitalize">{zona.tipo}</span>
-            </a>
-          ))}
+          {
+            zonas.map((zona) => (
+              <a
+                href={`/rpo-gas-${zona.slug}`}
+                class="block bg-background rounded-xl p-4 text-center border border-neutral/10 hover:border-tertiary/30 hover:-translate-y-0.5 transition-all duration-200"
+              >
+                <span class="font-display text-lg text-primary uppercase">
+                  {zona.name}
+                </span>
+                <span class="block text-xs text-muted mt-1 capitalize">
+                  {zona.tipo}
+                </span>
+              </a>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -292,21 +436,27 @@ const serviceSchema = {
     <section class="section-pad" id="faq">
       <div class="container-section max-w-[800px]">
         <EyebrowLabel text="Preguntas frecuentes" class="mb-2" />
-        <h2 class="font-display text-3xl md:text-4xl text-primary uppercase tracking-[-0.02em] mb-8">
+        <h2
+          class="font-display text-3xl md:text-4xl text-primary uppercase tracking-[-0.02em] mb-8"
+        >
           Todo lo que necesitas <span class="text-tertiary">saber</span>
         </h2>
         <div class="space-y-3">
-          {faq.map((item) => (
-            <details class="group bg-surface rounded-xl border border-neutral/10 overflow-hidden">
-              <summary class="cursor-pointer font-display text-lg text-primary uppercase p-5 pr-12 relative hover:text-tertiary transition-colors list-none [&::-webkit-details-marker]:hidden">
-                {item.q}
-                <span class="absolute right-5 top-5 text-tertiary transition-transform duration-300 group-open:rotate-45 text-xl">+</span>
-              </summary>
-              <div class="px-5 pb-5">
-                <p class="text-primary/80 leading-relaxed">{item.a}</p>
-              </div>
-            </details>
-          ))}
+          {
+            faq.map((item) => (
+              <details class="group bg-surface rounded-xl border border-neutral/10 overflow-hidden">
+                <summary class="cursor-pointer font-display text-lg text-primary uppercase p-5 pr-12 relative hover:text-tertiary transition-colors list-none [&::-webkit-details-marker]:hidden">
+                  {item.q}
+                  <span class="absolute right-5 top-5 text-tertiary transition-transform duration-300 group-open:rotate-45 text-xl">
+                    +
+                  </span>
+                </summary>
+                <div class="px-5 pb-5">
+                  <p class="text-primary/80 leading-relaxed">{item.a}</p>
+                </div>
+              </details>
+            ))
+          }
         </div>
       </div>
     </section>

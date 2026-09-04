@@ -7,21 +7,21 @@ Referencias [T/C/O/S/P/G#] → `FULL-AUDIT-REPORT.md`.
 
 ## FASE 0 — Desbloquear medición (día 1, requiere acción tuya)
 
-- [ ] **Re-autenticar GSC**: corregir rutas en `lujogas-gsc/lujogas-auth.py` y ejecutar (abre navegador). Luego publicar app OAuth "In production" en GCP para que no caduque cada 7 días.
-- [ ] Correr `/tmp/gsc_lujogas_report.py` → baseline real de clicks/impresiones/CTR/posiciones. **Sin esto, optimizamos a ciegas.**
+- [x] **Re-autenticar GSC**: token vigente (validado 2026-09-03). Revisar OAuth “In production” en GCP para que no caduque cada 7 días.
+- [x] Correr `lujogas-reporte.py` → baseline real de clicks/impresiones/CTR/posiciones.
 
 ## FASE 1 — Críticos (semana 1) · Impacto inmediato, esfuerzo bajo
 
-- [ ] **[T3]** Crear `og-image.jpg` real (1200×630, foto técnico/marca) y subir a `public/`. Verificar en todas las páginas + `schema.ts:10`.
-- [ ] **[T1]** robots.txt: `Sitemap: https://lujogas.com.co/sitemap-index.xml`.
-- [ ] **[T2]** Eliminar `public/sitemap.xml` estático obsoleto (dominio equivocado, 3 URLs).
-- [ ] **[G1]** Regenerar `llms.txt` y `llms-full.txt`: dominio `lujogas.com.co`, slugs reales de los 28 artículos, NAP correcto.
+- [x] **[T3]** og:image vía Cloudinary en layout/schema + redirect `/og-image.jpg` → Cloudinary en `vercel.json`.
+- [x] **[T1]** robots.txt: `Sitemap: https://lujogas.com.co/sitemap-index.xml`.
+- [x] **[T2]** Eliminar `public/sitemap.xml` estático obsoleto.
+- [x] **[G1]** Regenerar `llms.txt` y `llms-full.txt`: dominio `lujogas.com.co`, slugs reales, NAP, hechos citables GEO.
 - [ ] **[C4]** Corregir art-21: dirección de cierre de llave (horario/¼ vuelta perpendicular) + línea emergencias EPM (604 44 44 115) y 123.
-- [ ] **[T4]** Redirect 301 www→non-www en Vercel (`vercel.json`/config dominio).
-- [ ] **[T5]** `trailingSlash: 'never'` en astro.config + unificar sitemap/canonicals.
-- [ ] **[S7]** Reemplazar placeholders NAP: postalCode y NIT reales en `data/site.json`.
-- [ ] **[S3]** Sincronizar horario site.json ↔ schema ↔ Google Business Profile.
-- [ ] **[T6]** `noindex` en 404.astro.
+- [x] **[T4]** Redirect 301 www→non-www en Vercel (`vercel.json` incluye `/` y `/:path*`).
+- [x] **[T5]** `trailingSlash: 'never'` en astro.config + unificar sitemap/canonicals.
+- [ ] **[S7]** Reemplazar placeholder NIT real en `data/site.json` (postalCode 050021 ya cargado).
+- [ ] **[S3]** Sincronizar horario site.json ↔ schema ↔ Google Business Profile (site/schema ya alineados L-V 8-17 / Sáb 8-12).
+- [x] **[T6]** `noindex` en 404.astro.
 
 ## FASE 2 — CTR y SERP (semana 2) · Sube CTR sin subir posición
 

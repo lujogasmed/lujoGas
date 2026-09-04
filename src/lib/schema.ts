@@ -3,12 +3,16 @@ import { SITE } from './constants';
 export const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
+  '@id': 'https://lujogas.com.co/#localbusiness',
   name: SITE.name,
+  alternateName: 'Lujo Gas Medellín',
   description: SITE.description,
   telephone: SITE.phone,
   url: 'https://lujogas.com.co',
   image: 'https://res.cloudinary.com/dxcbyed7d/image/upload/w_1200,h_630,c_fill,g_auto/v1781108208/lucho_ljvjfy.jpg',
+  logo: 'https://lujogas.com.co/favicon.svg',
   priceRange: '$$',
+  currenciesAccepted: 'COP',
   address: {
     '@type': 'PostalAddress',
     streetAddress: SITE.address,
@@ -35,6 +39,14 @@ export const localBusinessSchema = {
       opens: '08:00',
       closes: '12:00',
     },
+  ],
+  knowsAbout: [
+    'Instalación de gas Medellín',
+    'Certificación de gas NTC 2505',
+    'Revisión Periódica Obligatoria RPO',
+    'Detección de fugas de gas',
+    'ICONTEC',
+    'EPM gas natural',
   ],
   areaServed: [
     { '@type': 'City', name: 'Medellín' },
@@ -123,21 +135,26 @@ export const localBusinessSchema = {
     telephone: SITE.phone,
     contactType: 'customer service',
     availableLanguage: 'Spanish',
-    hoursAvailable: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '08:00',
-      closes: '17:00',
-    },
+    areaServed: 'CO',
+    hoursAvailable: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '08:00',
+        closes: '17:00',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Saturday'],
+        opens: '08:00',
+        closes: '12:00',
+      },
+    ],
   },
   hasMap: 'https://maps.google.com/?q=LujoGas,Medellín,Antioquia,Colombia',
-  // sameAs: [ // TODO: add social profiles when available
-  //   'https://www.facebook.com/lujogas',
-  //   'https://www.instagram.com/lujogas',
-  // ],
-  // aggregateRating: { // TODO: add when reviews are collected
-  //   '@type': 'AggregateRating',
-  //   ratingValue: '4.9',
-  //   reviewCount: '47',
-  // },
+  // Perfiles sociales reales: agregar a sameAs cuando existan.
+  // Reviews GBP reales: activar aggregateRating solo con datos verificables.
+  sameAs: [
+    'https://maps.google.com/?q=LujoGas,Medellín,Antioquia,Colombia',
+  ],
 };
