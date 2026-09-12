@@ -1,5 +1,5 @@
 ---
-title: "¿Quién certifica el gas en Medellín: EPM o técnico NTC 2505?"
+title: "¿EPM o técnico certifica el gas en Medellín?"
 description: "EPM no certifica la red interna de gas — lo hace un técnico NTC 2505 acreditado. Roles de EPM vs técnico, costos desde $120.000 y proceso en Medellín."
 slug: "quien-certifica-gas-epm-o-tecnico-certificado"
 publishDate: 2026-07-14
