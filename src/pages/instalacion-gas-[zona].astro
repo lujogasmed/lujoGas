@@ -5,6 +5,7 @@ import Footer from '../components/organisms/Footer.astro';
 import CTASection from '../components/organisms/CTASection.astro';
 import EyebrowLabel from '../components/atoms/EyebrowLabel.astro';
 import { zonas } from '../data/zonas';
+import { zonasDetalle } from '../data/zonasDetalle';
 import { WHATSAPP_NUMBER } from '../lib/constants';
 
 export async function getStaticPaths() {
@@ -16,8 +17,17 @@ export async function getStaticPaths() {
 
 const { zona } = Astro.props;
 
-// Neighboring zones (all other zones, up to 5)
-const neighborZones = zonas.filter((z) => z.slug !== zona.slug).slice(0, 5);
+const detalle = zonasDetalle[zona.slug];
+
+// Zonas cercanas: vecinos geográficos reales, no las 5 primeras del array.
+// Antes todas las páginas enlazaban al mismo bloque, lo que daba un enlazado
+// interno idéntico entre zonas y sin señal de proximidad.
+const neighborZones = detalle.vecinos
+  .map((slug) => zonas.find((z) => z.slug === slug))
+  .filter((z) => z !== undefined && z.slug !== zona.slug);
+
+// Nota propia por sector: convierte la lista de nombres en texto indexable.
+const sectoresDetalle = detalle.sectoresDetalle;
 
 const waText = encodeURIComponent(
   `Hola LujoGas, necesito información sobre instalación de gas en ${zona.name}.`
@@ -73,20 +83,18 @@ const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
+    // Preguntas propias de la zona — son las que diferencian esta página del resto.
+    ...detalle.faqLocal.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
     {
       "@type": "Question",
       "name": `¿Cuánto cuesta la instalación de gas en ${zona.name}?`,
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": `La visita diagnóstica tiene un costo de $50.000. Tras la evaluación técnica en ${zona.name}, entregamos un presupuesto detallado con el valor exacto de la instalación, sin costos ocultos.`,
-      },
-    },
-    {
-      "@type": "Question",
-      "name": `¿LujoGas atiende en ${zona.name}?`,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": `Sí, atendemos con cobertura completa en ${zona.name}, ${zona.municipio} y todo el Valle de Aburrá. Contáctanos por WhatsApp al +57 301 474 8653 para coordinar la visita.`,
+        "text": `La visita diagnóstica tiene un costo de $50.000, descontable si contratas el servicio. Tras la evaluación técnica en ${zona.name}, entregamos un presupuesto detallado con el valor exacto de la instalación, sin costos ocultos.`,
       },
     },
     {
@@ -95,22 +103,6 @@ const faqSchema = {
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "El técnico Luis Guillermo Muñoz Vélez está certificado bajo la NTC 2505, con aval ICONTEC y reconocimiento de EPM / Gas Natural en Antioquia.",
-      },
-    },
-    {
-      "@type": "Question",
-      "name": "¿Cuánto tarda la certificación de gas?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Una vez aprobada la instalación o revisión, el certificado oficial ICONTEC se entrega en 24 a 48 horas hábiles.",
-      },
-    },
-    {
-      "@type": "Question",
-      "name": "¿Qué norma técnica aplica para instalaciones de gas en Colombia?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "En Colombia, las instalaciones de gas domiciliario se rigen por la NTC 2505 (Norma Técnica Colombiana). Todos los trabajos de LujoGas cumplen esta normativa.",
       },
     },
   ],
@@ -420,12 +412,15 @@ const procesoPasos = [
             Cobertura completa de instalación y certificación de gas en todos los sectores de {zona.name}.
           </p>
         </div>
-        <div class="flex flex-wrap justify-center gap-3 reveal-stagger">
-          {zona.sectores.map((sector) => (
-            <span class="inline-flex items-center gap-1.5 border border-neutral/15 rounded-full px-4 py-2 text-[13px] font-medium text-primary bg-surface">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.5" aria-hidden="true"><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
-              {sector}
-            </span>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 reveal-stagger">
+          {sectoresDetalle.map((sector) => (
+            <div class="border border-neutral/15 rounded-2xl px-5 py-4 bg-surface">
+              <h3 class="flex items-center gap-2 font-display font-semibold text-primary text-[15px] mb-1.5">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.5" class="flex-shrink-0" aria-hidden="true"><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                {sector.nombre}
+              </h3>
+              <p class="text-muted text-[13.5px] leading-relaxed">{sector.nota}</p>
+            </div>
           ))}
         </div>
         <p class="text-center text-muted text-[13.5px] mt-6">
@@ -440,10 +435,10 @@ const procesoPasos = [
         <div class="text-center mb-10 reveal">
           <EyebrowLabel text="También atendemos en" />
           <h2 id="zonas-cercanas-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(26px,3vw,42px);">
-            Cobertura en todo el Valle de Aburrá
+            Zonas vecinas a {zona.name}
           </h2>
           <p class="text-muted mt-3 max-w-[50ch] mx-auto text-[15px]">
-            Además de {zona.name}, atendemos instalaciones de gas en todos los municipios y barrios del área metropolitana de Medellín.
+            El mismo técnico certificado atiende las zonas contiguas a {zona.name}, y el resto del Valle de Aburrá.
           </p>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 reveal-stagger">

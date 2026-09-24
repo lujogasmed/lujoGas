@@ -4,10 +4,12 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node scripts/gen-lastmod.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "lastmod": "node scripts/gen-lastmod.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^3.6.0",

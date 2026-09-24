@@ -2,6 +2,12 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
+import { readFileSync } from 'node:fs';
+
+// Fechas reales de última modificación por URL (generadas por scripts/gen-lastmod.mjs
+// en el prebuild). Un lastmod igual para todas las URLs en cada deploy hace que Google
+// lo descarte como señal; con fechas reales recupera la priorización de rastreo.
+const lastmodMap = JSON.parse(readFileSync(new URL('./src/data/lastmod.json', import.meta.url), 'utf8'));
 
 export default defineConfig({
   site: 'https://lujogas.com.co',
@@ -17,9 +23,11 @@ export default defineConfig({
     sitemap({
       changefreq: 'monthly',
       priority: 0.7,
-      lastmod: new Date(),
       customPages: [],
       serialize(item) {
+        const lastmod = lastmodMap[item.url] ?? lastmodMap[item.url.replace(/\/$/, '')];
+        if (lastmod) item = { ...item, lastmod };
+
         // Prioridades por tipo de página
         if (item.url === 'https://lujogas.com.co/') return { ...item, changefreq: 'weekly',  priority: 1.0 };
         if (item.url.includes('/servicios'))     return { ...item, changefreq: 'monthly', priority: 0.9 };

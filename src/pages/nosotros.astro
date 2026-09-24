@@ -6,6 +6,7 @@ import CTASection from '../components/organisms/CTASection.astro';
 import EyebrowLabel from '../components/atoms/EyebrowLabel.astro';
 import StatCounter from '../components/molecules/StatCounter.astro';
 import { SITE } from '../lib/constants';
+import { zonas } from '../data/zonas';
 
 const stats = [
   { value: 3, suffix: '+', label: 'Años en instalación de gas' },
@@ -98,6 +99,55 @@ const founderSchema = {
   },
   telephone: SITE.phone,
   url: 'https://lujogas.com.co/nosotros',
+  hasCredential: {
+    '@type': 'EducationalOccupationalCredential',
+    credentialCategory: 'Certificado de competencia laboral',
+    name: 'Técnico certificado en instalaciones de gas — NTC 2505',
+    about: 'Instalaciones para suministro de gas combustible destinadas a usos residenciales y comerciales (NTC 2505)',
+    recognizedBy: {
+      '@type': 'Organization',
+      name: 'ICONTEC',
+      url: 'https://www.icontec.org',
+    },
+  },
+  areaServed: zonas.map((z) => ({
+    '@type': z.tipo === 'municipio' ? 'City' : 'Place',
+    name: z.name,
+  })),
+};
+
+// FAQ sobre el técnico y la credencial — señal E-E-A-T y contenido citable para IA.
+const faqTecnico = [
+  {
+    q: '¿Qué significa que un técnico de gas esté certificado bajo NTC 2505?',
+    a: 'Significa que tiene un certificado de competencia laboral vigente en instalaciones de gas, respaldado por un organismo de inspección acreditado ante el ONAC. La NTC 2505 es la Norma Técnica Colombiana que define materiales, ventilación, distancias de seguridad y pruebas que debe cumplir toda red de gas interna en el país. Sin esa credencial, el documento que se expida no lo acepta la distribuidora.',
+  },
+  {
+    q: '¿Quién ejecuta el trabajo que contrato con LujoGas?',
+    a: 'El mismo técnico que firma el certificado: Luis Guillermo Muñoz Vélez. LujoGas no es un call center ni una intermediación que reparte la visita a terceros. Quien evalúa, ejecuta y responde por la instalación es la misma persona, de principio a fin.',
+  },
+  {
+    q: '¿EPM certifica la red de gas de mi casa?',
+    a: 'No. EPM distribuye el gas y exige el certificado vigente para activar o mantener activo el servicio, pero no certifica ni repara la red interna del inmueble. Esa parte la ejecuta un técnico certificado NTC 2505 respaldado por un organismo de inspección acreditado.',
+  },
+  {
+    q: '¿Qué recibo al terminar el trabajo?',
+    a: 'El certificado oficial que ampara la instalación, entregado en 24 a 48 horas hábiles una vez aprobada la revisión, y el reporte técnico con lo que se verificó y lo que se corrigió. Ese certificado es el documento que la distribuidora exige y el que queda vigente hasta la siguiente revisión periódica.',
+  },
+  {
+    q: '¿En qué zonas del Valle de Aburrá atiende el técnico?',
+    a: 'Medellín y su área metropolitana: El Poblado, Laureles, Belén, Robledo, Envigado, Sabaneta, Itagüí, La Estrella, Bello y Copacabana, además de corregimientos cercanos. La visita diagnóstica se coordina por WhatsApp según disponibilidad de agenda.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqTecnico.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
 };
 
 // BreadcrumbList schema
@@ -142,6 +192,10 @@ const breadcrumbSchema = {
     <script
       type="application/ld+json"
       set:html={JSON.stringify(breadcrumbSchema)}
+    />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(faqSchema)}
     />
 
     <!-- ── Page Hero ── -->
@@ -594,6 +648,113 @@ const breadcrumbSchema = {
               >Gas en Envigado</span
             >
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Qué respalda la credencial ────────────────────────────────── -->
+    <section class="section-pad bg-background" aria-labelledby="credencial-heading">
+      <div class="container-section">
+        <div class="max-w-[760px] mx-auto">
+          <EyebrowLabel text="La credencial" />
+          <h2
+            id="credencial-heading"
+            class="font-display font-semibold text-primary mt-3 mb-6 leading-tight"
+            style="font-size:clamp(26px,3vw,40px);"
+          >
+            Qué significa "técnico certificado NTC 2505"
+          </h2>
+
+          <div class="flex flex-col gap-4 text-muted text-[15.5px] leading-relaxed">
+            <p>
+              En Colombia, cualquier persona puede instalar una tubería. Muy pocas pueden
+              certificarla. La diferencia es un <strong class="text-primary">certificado de
+              competencia laboral vigente en instalaciones de gas</strong>, expedido bajo la
+              NTC 2505 y respaldado por un organismo de inspección acreditado ante el ONAC.
+              Ese documento es el que permite firmar el certificado que EPM exige para
+              activar o mantener activo el servicio.
+            </p>
+            <p>
+              La <a href="/blog/ntc-2505-norma-colombiana-instalaciones-gas" class="font-semibold underline underline-offset-2" style="color:#F97316;">NTC 2505</a>
+              es la Norma Técnica Colombiana que define qué materiales se admiten, cómo debe
+              ventilarse el espacio, qué distancias de seguridad hay que respetar y qué
+              pruebas debe superar la instalación. No es una recomendación: la reglamentación
+              nacional la hizo de obligatorio cumplimiento, y la
+              <a href="/rpo-gas-medellin" class="font-semibold underline underline-offset-2" style="color:#F97316;">Revisión Periódica Obligatoria</a>
+              verifica cada cinco años que se siga cumpliendo.
+            </p>
+            <p>
+              Conviene tener clara una distinción que genera confusión permanente:
+              <strong class="text-primary">EPM distribuye el gas y exige el certificado, pero
+              no certifica ni repara la red interna</strong> del inmueble. Esa parte
+              corresponde al técnico certificado. Lo explicamos a fondo en
+              <a href="/blog/quien-certifica-gas-epm-o-tecnico-certificado" class="font-semibold underline underline-offset-2" style="color:#F97316;">quién certifica el gas en Medellín</a>.
+            </p>
+            <p>
+              En LujoGas no hay intermediación: quien evalúa, ejecuta y firma es la misma
+              persona. Si algo queda mal, sabes exactamente a quién llamar.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ del técnico ───────────────────────────────────────────── -->
+    <section class="section-pad" style="background:#F8F7F4;" aria-labelledby="faq-nosotros-heading">
+      <div class="container-section">
+        <div class="text-center mb-10 reveal">
+          <EyebrowLabel text="Preguntas frecuentes" />
+          <h2
+            id="faq-nosotros-heading"
+            class="font-display font-semibold text-primary mt-3 leading-tight"
+            style="font-size:clamp(28px,3.5vw,44px);"
+          >
+            Sobre el técnico y la certificación
+          </h2>
+        </div>
+        <div class="max-w-[720px] mx-auto flex flex-col gap-4 reveal-stagger">
+          {faqTecnico.map((faq) => (
+            <details class="group border border-neutral/15 rounded-2xl overflow-hidden bg-background">
+              <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer font-display font-semibold text-primary text-[16px] leading-snug list-none">
+                {faq.q}
+                <svg class="flex-shrink-0 transition-transform duration-200 group-open:rotate-180" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="px-6 pb-5 text-muted text-[14.5px] leading-relaxed border-t border-neutral/10 pt-4">
+                {faq.a}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Cobertura completa ────────────────────────────────────────── -->
+    <section class="section-pad bg-background" aria-labelledby="cobertura-nosotros-heading">
+      <div class="container-section">
+        <div class="text-center mb-10 reveal">
+          <EyebrowLabel text="Dónde atiendo" />
+          <h2
+            id="cobertura-nosotros-heading"
+            class="font-display font-semibold text-primary mt-3 leading-tight"
+            style="font-size:clamp(26px,3vw,42px);"
+          >
+            Cobertura en Medellín y el Valle de Aburrá
+          </h2>
+          <p class="text-muted mt-3 max-w-[54ch] mx-auto text-[15px]">
+            El mismo técnico certificado atiende cada una de estas zonas. La visita
+            diagnóstica se coordina por WhatsApp según disponibilidad de agenda.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 reveal-stagger">
+          {zonas.map((z) => (
+            <a
+              href={`/instalacion-gas-${z.slug}`}
+              class="group flex items-center justify-center gap-2 border border-neutral/15 rounded-xl px-4 py-3 text-[13.5px] font-semibold text-primary hover:border-tertiary/40 hover:bg-tertiary/5 transition-all duration-200 text-center min-h-[44px]"
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0" style="color:#F97316;" aria-hidden="true"><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+              Gas en {z.name}
+            </a>
+          ))}
         </div>
       </div>
     </section>
