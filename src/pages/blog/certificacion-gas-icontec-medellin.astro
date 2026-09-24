@@ -31,6 +31,41 @@ const pillarSchema = {
     })),
   },
 };
+
+// FAQ propia del pilar — el hub era demasiado delgado (538 palabras) para indexar
+// por sí solo; su única función era enlazar al clúster.
+const faq = [
+  {
+    q: '¿Qué es exactamente el certificado de gas ICONTEC?',
+    a: 'Es el documento que acredita que la instalación interna de gas de un inmueble cumple la NTC 2505. Lo expide un técnico con certificado de competencia laboral vigente, respaldado por un organismo de inspección acreditado ante el ONAC. Es el documento que EPM exige para activar el servicio o para mantenerlo activo tras la revisión periódica.',
+  },
+  {
+    q: '¿Cuánto cuesta certificar el gas en Medellín?',
+    a: 'En LujoGas la certificación parte de $120.000 y la visita diagnóstica previa cuesta $50.000, descontable si contratas el servicio. El valor final depende de si la instalación pasa la revisión o requiere correcciones, que se presupuestan aparte y siempre antes de intervenir.',
+  },
+  {
+    q: '¿Cuánto tarda la entrega del certificado?',
+    a: 'De 24 a 48 horas hábiles una vez aprobada la instalación o la revisión. Si aparecen hallazgos, el plazo empieza a contar desde que se corrigen, no desde la visita inicial.',
+  },
+  {
+    q: '¿El certificado vence?',
+    a: 'Sí. La reglamentación exige la Revisión Periódica Obligatoria cada cinco años, y EPM notifica el vencimiento en la factura. Además, el certificado deja de amparar la instalación si se modifica el trazado, se agrega un punto o se cambia un gasodoméstico que altere el caudal.',
+  },
+  {
+    q: '¿EPM expide el certificado?',
+    a: 'No. EPM distribuye el gas y exige el certificado, pero no certifica ni repara la red interna del inmueble. Esa parte corresponde al técnico certificado.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 ---
 
 <BaseLayout
@@ -40,6 +75,7 @@ const pillarSchema = {
 >
   <Header />
   <script type="application/ld+json" set:html={JSON.stringify(pillarSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <main>
     <section class="relative bg-hero-bg overflow-hidden pt-[140px] pb-[80px] md:pt-[160px] md:pb-[100px]">
@@ -108,6 +144,97 @@ const pillarSchema = {
         <p class="text-primary/80 text-lg leading-relaxed mb-5">
           Si estás vendiendo o arrendando tu propiedad en Medellín, el certificado de gas es uno de los documentos que te solicitarán. No tenerlo puede retrasar la transacción o incluso impedirla.
         </p>
+      </div>
+    </section>
+
+
+    <section class="section-pad bg-surface">
+      <div class="container-section max-w-[800px]">
+        <h2 class="font-display text-3xl text-primary uppercase tracking-[-0.02em] mb-6">
+          El proceso, paso a paso
+        </h2>
+        <p class="text-primary/80 text-lg leading-relaxed mb-5">
+          Certificar una instalación no es firmar un papel. Es un procedimiento con pasos
+          verificables, y conocerlos ayuda a distinguir a quien lo hace bien de quien solo
+          vende el documento.
+        </p>
+        <ol class="flex flex-col gap-4 mb-8">
+          <li class="text-primary/80 text-[16px] leading-relaxed">
+            <strong class="text-primary">1. Visita diagnóstica.</strong> El técnico recorre el
+            trazado completo, revisa materiales, ventilación, distancias de seguridad y estado
+            de reguladores y válvulas. Aquí se define si la instalación pasa tal como está o
+            qué hay que corregir.
+          </li>
+          <li class="text-primary/80 text-[16px] leading-relaxed">
+            <strong class="text-primary">2. Presupuesto de correcciones.</strong> Si hay
+            hallazgos, se entregan por escrito con su costo antes de intervenir. Sin
+            sorpresas a mitad del trabajo.
+          </li>
+          <li class="text-primary/80 text-[16px] leading-relaxed">
+            <strong class="text-primary">3. Ejecución.</strong> Se corrige lo que la norma
+            exija, con materiales que lleven sello de conformidad NTC. El
+            <a href="/blog/materiales-certificados-vs-no-certificados-gas" class="text-tertiary font-semibold underline underline-offset-4">material no certificado</a>
+            es una de las causas de rechazo más frecuentes en Medellín.
+          </li>
+          <li class="text-primary/80 text-[16px] leading-relaxed">
+            <strong class="text-primary">4. Prueba de hermeticidad.</strong> Se aísla la red,
+            se presuriza y se verifica que mantenga presión. Es la prueba que respalda el
+            certificado: si la presión cae, hay escape en alguna parte.
+          </li>
+          <li class="text-primary/80 text-[16px] leading-relaxed">
+            <strong class="text-primary">5. Expedición del certificado.</strong> Aprobada la
+            instalación, el documento se entrega en 24 a 48 horas hábiles junto con el reporte
+            técnico de lo verificado.
+          </li>
+        </ol>
+
+        <h2 class="font-display text-3xl text-primary uppercase tracking-[-0.02em] mb-6">
+          Cuándo necesitas certificar
+        </h2>
+        <p class="text-primary/80 text-lg leading-relaxed mb-5">
+          Hay cuatro situaciones que obligan a tener el certificado al día, y conviene
+          identificarlas antes de que se conviertan en un problema:
+        </p>
+        <ul class="flex flex-col gap-3 mb-8">
+          <li class="text-primary/80 text-[16px] leading-relaxed">
+            <strong class="text-primary">Instalación nueva.</strong> Sin certificado, la
+            distribuidora no activa el medidor. Es el caso típico de
+            <a href="/blog/activar-gas-epm-vivienda-nueva-medellin" class="text-tertiary font-semibold underline underline-offset-4">vivienda nueva entregada por constructora</a>.
+          </li>
+          <li class="text-primary/80 text-[16px] leading-relaxed">
+            <strong class="text-primary">Revisión periódica vencida.</strong> EPM lo notifica
+            en la factura y puede suspender el servicio. La
+            <a href="/rpo-gas-medellin" class="text-tertiary font-semibold underline underline-offset-4">RPO</a>
+            se hace cada cinco años.
+          </li>
+          <li class="text-primary/80 text-[16px] leading-relaxed">
+            <strong class="text-primary">Modificación de la red.</strong> Mover un punto,
+            agregar uno nuevo o cambiar un gasodoméstico que altere el caudal deja sin efecto
+            el certificado anterior.
+          </li>
+          <li class="text-primary/80 text-[16px] leading-relaxed">
+            <strong class="text-primary">Arriendo o venta.</strong> El certificado vigente es
+            uno de los documentos que suelen pedirse. Lo detallamos en
+            <a href="/blog/certificacion-gas-para-arriendo-requisitos-medellin" class="text-tertiary font-semibold underline underline-offset-4">certificación de gas para arriendo</a>.
+          </li>
+        </ul>
+
+        <h2 class="font-display text-3xl text-primary uppercase tracking-[-0.02em] mb-6">
+          Preguntas frecuentes
+        </h2>
+        <div class="flex flex-col gap-4">
+          {faq.map((f) => (
+            <details class="group border border-neutral/15 rounded-2xl overflow-hidden bg-background">
+              <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer font-display font-semibold text-primary text-[16px] leading-snug list-none">
+                {f.q}
+                <svg class="flex-shrink-0 transition-transform duration-200 group-open:rotate-180" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="px-6 pb-5 text-muted text-[14.5px] leading-relaxed border-t border-neutral/10 pt-4">
+                {f.a}
+              </div>
+            </details>
+          ))}
+        </div>
       </div>
     </section>
 

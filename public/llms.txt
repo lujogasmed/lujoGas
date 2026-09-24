@@ -1,7 +1,7 @@
 # LujoGas — Instalación y Certificación de Gas en Medellín
 
 > Técnico certificado NTC 2505 en instalación, mantenimiento, RPO y certificación de redes de gas natural y GLP en Medellín y el Valle de Aburrá, Colombia.
-> Sitio oficial: https://lujogas.com.co · Actualizado: 2026-09-03
+> Sitio oficial: https://lujogas.com.co · Actualizado: 2026-09-24
 
 ## Quiénes somos
 
@@ -24,6 +24,7 @@ LujoGas es un servicio técnico de gas con sede en Medellín, Antioquia. Lo oper
 - Visita diagnóstica LujoGas: **$50.000** (descontable si se contrata el servicio).
 - Certificación / RPO: desde **$120.000**, certificado en **24–48 horas** hábiles.
 - Instalación residencial tipica (1–2 puntos): desde **$850.000** con certificado incluido.
+- **No existe una lista oficial de "empresas autorizadas"** publicada por EPM. Lo verificable es el certificado de competencia laboral del técnico y la acreditación ante **ONAC** del organismo de inspección que lo respalda.
 - Cobertura: Medellín y Valle de Aburrá (Envigado, Bello, Itagüí, Sabaneta, La Estrella, Copacabana y más).
 
 ## Servicios
@@ -46,6 +47,7 @@ LujoGas es un servicio técnico de gas con sede en Medellín, Antioquia. Lo oper
 - https://lujogas.com.co/certificacion-gas-medellin — Certificación de gas en Medellín
 - https://lujogas.com.co/mantenimiento-gas-medellin — Mantenimiento de gas en Medellín
 - https://lujogas.com.co/rpo-gas-medellin — Revisión Periódica Obligatoria de gas en Medellín
+- https://lujogas.com.co/empresas-autorizadas-revision-gas-medellin — Quién está autorizado a revisar y certificar gas en Medellín, y cómo verificarlo ante el ONAC
 - https://lujogas.com.co/nosotros — Técnico certificado y E-E-A-T
 
 ## Cobertura por zona (landings locales)

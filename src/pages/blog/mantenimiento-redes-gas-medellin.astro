@@ -31,6 +31,41 @@ const pillarSchema = {
     })),
   },
 };
+
+// FAQ propia del pilar: el hub quedaba por debajo de las 600 palabras y su único
+// contenido era el listado del clúster, insuficiente para indexar por sí solo.
+const faq = [
+  {
+    q: "¿Qué diferencia hay entre mantenimiento preventivo y RPO?",
+    a: "La Revisión Periódica Obligatoria es un requisito legal cada cinco años, termina en un certificado y la exige la distribuidora. El mantenimiento preventivo es voluntario, se hace con más frecuencia y su objetivo es encontrar desgaste antes de que se vuelva hallazgo o falla. Uno no reemplaza al otro: el preventivo hace que la RPO salga limpia.",
+  },
+  {
+    q: "¿Cada cuánto conviene hacer mantenimiento preventivo?",
+    a: "Una vez al año para una instalación residencial en uso normal, y siempre después de una remodelación que haya tocado la tubería o de un cambio de gasodoméstico. En instalaciones comerciales con cocina de uso continuo, la frecuencia razonable es mayor por la carga de trabajo de los equipos.",
+  },
+  {
+    q: "¿Qué incluye el mantenimiento de una red de gas?",
+    a: "Revisión del trazado completo, verificación de materiales y uniones, estado de reguladores y válvulas, limpieza y ajuste de quemadores, comprobación de ventilación y ductos de evacuación, y prueba de hermeticidad. Al terminar se entrega el reporte de lo verificado y lo corregido.",
+  },
+  {
+    q: "¿Cuánto cuesta el mantenimiento de gas en Medellín?",
+    a: "La visita diagnóstica cuesta $50.000, descontable si contratas el servicio. El valor del mantenimiento depende de lo que encuentre la revisión, y se presupuesta antes de intervenir. Si además se requiere certificación, esta parte de $120.000.",
+  },
+  {
+    q: "¿El mantenimiento evita que me suspendan el servicio?",
+    a: "Indirectamente sí. Lo que evita la suspensión es presentar el certificado de la revisión periódica dentro del plazo que EPM notifica en la factura. El mantenimiento hace que esa revisión no encuentre hallazgos que obliguen a corregir de urgencia y a pagar dos veces.",
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 ---
 
 <BaseLayout
@@ -40,6 +75,7 @@ const pillarSchema = {
 >
   <Header />
   <script type="application/ld+json" set:html={JSON.stringify(pillarSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <main>
     <section class="relative bg-hero-bg overflow-hidden pt-[140px] pb-[80px] md:pt-[160px] md:pb-[100px]">
@@ -108,6 +144,69 @@ const pillarSchema = {
         <p class="text-primary/80 text-lg leading-relaxed mb-5">
           Además del mantenimiento profesional, hay pequeñas cosas que puedes hacer tú mismo: revisar visualmente las tuberías, verificar que las llamas sean azules y estables, y estar atento a cualquier olor extraño.
         </p>
+      </div>
+    </section>
+
+
+    <section class="section-pad bg-surface">
+      <div class="container-section max-w-[800px]">
+
+        <h2 class="font-display text-3xl text-primary uppercase tracking-[-0.02em] mb-6">
+          Preventivo, correctivo y obligatorio: qué es cada uno
+        </h2>
+        <ul class="flex flex-col gap-4 mb-10">
+          <li class="text-primary/80 text-[16px] leading-relaxed">
+            <strong class="text-primary">Preventivo.</strong> Programado, anual, busca desgaste antes de que falle. Incluye limpieza de quemadores, revisión de uniones, estado de reguladores y verificación de ventilación. Detalle completo en <a href="/blog/mantenimiento-preventivo-gas-cada-cuando" class="text-tertiary font-semibold underline underline-offset-4">cada cuánto hacer mantenimiento preventivo</a>.
+          </li>
+          <li class="text-primary/80 text-[16px] leading-relaxed">
+            <strong class="text-primary">Correctivo.</strong> Responde a un problema ya presente: una fuga localizada, un regulador que falla, un calentador que no enciende. No es opcional cuando aparece, y conviene atenderlo antes de que crezca.
+          </li>
+          <li class="text-primary/80 text-[16px] leading-relaxed">
+            <strong class="text-primary">Revisión Periódica Obligatoria.</strong> Exigida por la reglamentación cada cinco años, termina en certificado y la notifica EPM en la factura. Es la única de las tres que tiene consecuencia legal directa: sin ella, la distribuidora puede suspender el servicio.
+          </li>
+        </ul>
+
+        <h2 class="font-display text-3xl text-primary uppercase tracking-[-0.02em] mb-6">
+          Señales de que tu red necesita mantenimiento ya
+        </h2>
+        <ul class="flex flex-col gap-4 mb-10">
+          <li class="text-primary/80 text-[16px] leading-relaxed">
+            <strong class="text-primary">Llama amarilla o anaranjada.</strong> La llama sana es azul y estable. El color indica combustión incompleta, casi siempre por quemador sucio o ventilación insuficiente.
+          </li>
+          <li class="text-primary/80 text-[16px] leading-relaxed">
+            <strong class="text-primary">Olor intermitente a gas.</strong> Aparece y se va. Suele ser una unión que pierde ajuste con la dilatación térmica, y es la antesala de una fuga franca.
+          </li>
+          <li class="text-primary/80 text-[16px] leading-relaxed">
+            <strong class="text-primary">Consumo que sube sin cambio de hábitos.</strong> Un escape pequeño y constante no se oye ni se huele con claridad, pero sí se cobra. Otras causas en <a href="/blog/factura-gas-epm-alta-causas-soluciones" class="text-tertiary font-semibold underline underline-offset-4">factura de gas alta</a>.
+          </li>
+          <li class="text-primary/80 text-[16px] leading-relaxed">
+            <strong class="text-primary">Hollín alrededor de ollas o en la pared.</strong> Residuo de combustión incompleta. Indica que el equipo no está recibiendo el aire que necesita.
+          </li>
+          <li class="text-primary/80 text-[16px] leading-relaxed">
+            <strong class="text-primary">Llave de paso que cuesta girar.</strong> Una válvula trabada es un problema el día que haya que cerrarla con urgencia.
+          </li>
+        </ul>
+
+        <p class="text-primary/80 text-lg leading-relaxed mb-10">
+          Si reconociste alguna de estas señales, la revisión no debería esperar a la próxima RPO. Agenda la <a href="/mantenimiento-gas-medellin" class="text-tertiary font-semibold underline underline-offset-4">visita de mantenimiento</a> y, si la instalación cumple, el certificado se entrega en 24 a 48 horas hábiles.
+        </p>
+
+        <h2 class="font-display text-3xl text-primary uppercase tracking-[-0.02em] mb-6">
+          Preguntas frecuentes
+        </h2>
+        <div class="flex flex-col gap-4">
+          {faq.map((f) => (
+            <details class="group border border-neutral/15 rounded-2xl overflow-hidden bg-background">
+              <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer font-display font-semibold text-primary text-[16px] leading-snug list-none">
+                {f.q}
+                <svg class="flex-shrink-0 transition-transform duration-200 group-open:rotate-180" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="px-6 pb-5 text-muted text-[14.5px] leading-relaxed border-t border-neutral/10 pt-4">
+                {f.a}
+              </div>
+            </details>
+          ))}
+        </div>
       </div>
     </section>
 

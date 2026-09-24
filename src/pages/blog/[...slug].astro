@@ -100,10 +100,16 @@ const breadcrumbSchema = {
     { '@type': 'ListItem', position: 3, name: data.title, item: canonicalUrl },
   ],
 };
+
+// El sufijo de marca empujaba 20 de los 31 artículos por encima de los 60 caracteres,
+// con lo que Google truncaba el título en el SERP. Se añade solo si cabe.
+const SUFIJO_MARCA = ' | LujoGas';
+const pageTitle =
+  data.title.length + SUFIJO_MARCA.length <= 60 ? `${data.title}${SUFIJO_MARCA}` : data.title;
 ---
 
 <BaseLayout
-  title={`${data.title} | LujoGas`}
+  title={pageTitle}
   description={data.description}
   canonical={canonicalUrl}
   ogImage={articleImage}
