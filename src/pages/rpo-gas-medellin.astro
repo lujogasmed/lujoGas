@@ -30,7 +30,7 @@ const faq = [
   },
   {
     q: '¿Cuánto cuesta la RPO en Medellín?',
-    a: 'La visita diagnóstica cuesta $60.000. La RPO completa, con pruebas y certificado, tiene un costo que depende de la cantidad de puntos de consumo y el estado de la instalación. Te damos el precio exacto después de la visita.',
+    a: 'La visita diagnóstica cuesta $50.000, descontable si contratas el servicio. La RPO completa, con pruebas y certificado, tiene un costo que depende de la cantidad de puntos de consumo y el estado de la instalación. Te damos el precio exacto después de la visita.',
   },
   {
     q: '¿Qué pasa si encuentran fallas durante la RPO?',
@@ -88,8 +88,8 @@ const serviceSchema = {
 ---
 
 <BaseLayout
-  title="RPO Gas Medellín desde $120.000 | Certificado en 24 h"
-  description="Revisión Periódica Obligatoria de gas en Medellín desde $120.000. Técnico NTC 2505, certificado en 24–48 h. Evita que EPM te suspenda el servicio."
+  title="RPO Gas Medellín desde $150.000 | Certificado 24-48 h"
+  description="Revisión Periódica Obligatoria de gas en Medellín desde $150.000. Técnico NTC 2505, certificado en 24–48 h. Evita que EPM te suspenda el servicio."
   canonical={canonical}
 >
   <Header />
@@ -209,7 +209,9 @@ const serviceSchema = {
         <p class="text-primary/80 text-lg leading-relaxed mb-5">
           La <strong>Revisión Periódica Obligatoria (RPO)</strong> es una inspección
           técnica que deben pasar todas las instalaciones de gas en Colombia cada
-          5 años, según lo establecido por la resolución CREG 067 de 1995 y la{' '}
+          5 años, según lo establecido por la resolución CREG 067 de 1995 y la{
+            ' '
+          }
           <a
             href="/blog/ntc-2505-norma-colombiana-instalaciones-gas"
             class="text-tertiary font-semibold underline underline-offset-4 hover:opacity-80"
@@ -231,6 +233,18 @@ const serviceSchema = {
           la ventilación de los recintos y el funcionamiento de los
           gasodomésticos. Si todo está en orden, emitimos el certificado ICONTEC
           en 24 a 48 horas.
+        </p>
+        <p class="text-primary/80 text-lg leading-relaxed mt-5">
+          Si vives en un conjunto o edificio, ten en cuenta que la RPO de tu
+          apartamento no cubre la tubería de las zonas comunes. Esa es la línea
+          matriz, también se revisa cada 5 años y la contrata la administración:
+          lo explicamos en
+          <a
+            href="/certificacion-linea-matriz-gas-medellin"
+            class="text-tertiary font-semibold underline underline-offset-4 hover:opacity-80"
+          >
+            certificación de línea matriz de gas
+          </a>.
         </p>
       </div>
     </section>
@@ -416,7 +430,7 @@ const serviceSchema = {
           {
             zonas.map((zona) => (
               <a
-                href={`/rpo-gas-${zona.slug}`}
+                href={`/instalacion-gas-${zona.slug}`}
                 class="block bg-background rounded-xl p-4 text-center border border-neutral/10 hover:border-tertiary/30 hover:-translate-y-0.5 transition-all duration-200"
               >
                 <span class="font-display text-lg text-primary uppercase">
@@ -466,6 +480,13 @@ const serviceSchema = {
 
   <Footer />
 
+  <script is:inline>
+    const io = new IntersectionObserver(
+      (entries) => { entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => io.observe(el));
+  </script>
   <script>
     // FAQ accordion keyboard accessibility
     document.querySelectorAll('details summary').forEach((summary) => {

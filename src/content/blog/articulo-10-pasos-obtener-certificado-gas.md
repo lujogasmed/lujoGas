@@ -128,9 +128,9 @@ Guarda ambas copias: el siguiente ciclo de Revisión Periódica Obligatoria se c
 | Servicio | Precio desde |
 |---|---|
 | Visita diagnóstica | $50.000 (descontable) |
-| Certificación ICONTEC | $120.000 |
+| Certificación ICONTEC | $150.000 |
 | Corrección de hallazgos + certificación | $200.000 |
-| Revisión Periódica Obligatoria | $120.000 |
+| Revisión Periódica Obligatoria | $150.000 |
 
 El desglose completo y qué factores hacen subir el valor están en [cuánto cuesta la certificación de gas en Medellín](/blog/cuanto-cuesta-certificacion-gas-medellin).
 

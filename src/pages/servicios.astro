@@ -17,6 +17,8 @@ const services = [
     detail: 'Para viviendas unifamiliares, apartamentos, edificios y locales comerciales. Incluye planos as-built, prueba hidrostática certificada y acompañamiento hasta activación del servicio con Gas Natural o EPM.',
     icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 12h6m6 0h6M9 6v12M15 6v12"/><circle cx="12" cy="12" r="2.2"/></svg>`,
     badge: 'Servicio principal',
+    href: '/instalacion-gas-medellin',
+    linkLabel: 'Instalación de gas en Medellín',
   },
   {
     num: '02',
@@ -27,6 +29,8 @@ const services = [
     detail: 'Emitida por inspector certificado bajo normativa RETIE y NTC 2505. Revisión integral de la instalación, corrección de no conformidades y entrega del certificado en 24–48 horas.',
     icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>`,
     badge: 'Alta demanda',
+    href: '/certificacion-gas-medellin',
+    linkLabel: 'Certificación de gas en Medellín',
   },
   {
     num: '03',
@@ -37,6 +41,8 @@ const services = [
     detail: 'Verificamos estado de tuberías, reguladores, válvulas y puntos de conexión. Al final emitimos reporte técnico con diagnóstico completo y, si todo está en orden, el certificado de RPO vigente.',
     icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>`,
     badge: 'Obligatorio por ley',
+    href: '/rpo-gas-medellin',
+    linkLabel: 'RPO de gas en Medellín',
   },
   {
     num: '04',
@@ -108,6 +114,18 @@ const services = [
     icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z"/><path d="m9 12 2 2 4-4"/></svg>`,
     badge: null,
   },
+  {
+    num: '11',
+    slug: 'certificacion-linea-matriz',
+    title: 'Certificación de líneas matrices en conjuntos residenciales',
+    keyword: 'certificación línea matriz gas Medellín',
+    description: 'Revisión periódica y certificación de la línea matriz de gas en conjuntos, edificios y centros comerciales. Obligatoria cada 5 años y a cargo de la administración.',
+    detail: 'El valor depende del número de apartamentos. Si hay hallazgos, la administración recibe un informe escrito para corregirlos, y si lo decide, hacemos las correcciones antes de certificar.',
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-6h6v6"/><path d="M12 3v5M4 12h16"/></svg>`,
+    badge: 'Para administraciones',
+    href: '/certificacion-linea-matriz-gas-medellin',
+    linkLabel: 'Certificación de línea matriz',
+  },
 ];
 
 const process = [
@@ -150,7 +168,7 @@ const serviceListSchema = {
     "@type": "ListItem",
     "position": i + 1,
     "name": s.title,
-    "url": `https://lujogas.com.co/servicios#${s.slug}`,
+    "url": s.href ? `https://lujogas.com.co${s.href}` : `https://lujogas.com.co/servicios#${s.slug}`,
     "description": s.description,
   })),
 };
@@ -171,7 +189,7 @@ const breadcrumbSchema = {
   meta description: 158 chars ✅
   H1: keyword "servicios de gas" + "Medellín" ✅
   Schema: ItemList + BreadcrumbList + LocalBusiness (BaseLayout) ✅
-  10 servicios con H3 keyword-ricos ✅
+  11 servicios con H3 keyword-ricos ✅
   Internal links a programáticas + /nosotros ✅
 -->
 <BaseLayout
@@ -265,7 +283,7 @@ const breadcrumbSchema = {
     <section class="section-pad bg-background" id="servicios" aria-labelledby="servicios-grid-heading">
       <div class="container-section">
         <div class="text-center mb-14 reveal">
-          <EyebrowLabel text="10 servicios especializados" />
+          <EyebrowLabel text="11 servicios especializados" />
           <h2 id="servicios-grid-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(28px,3.5vw,46px);">
             Todo lo que tu red de gas necesita en Medellín
           </h2>
@@ -308,10 +326,16 @@ const breadcrumbSchema = {
               <!-- Detail -->
               <p class="text-muted/65 text-[13px] leading-relaxed border-t border-neutral/12 pt-4 mt-auto">{s.detail}</p>
 
+              {s.href && (
+                <a href={s.href} class="text-[13px] font-semibold text-tertiary underline underline-offset-2 hover:opacity-80 min-h-[44px] inline-flex items-center">
+                  {s.linkLabel} →
+                </a>
+              )}
+
               <!-- Micro CTA -->
               <a
                 href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20LujoGas%2C%20me%20interesa%20el%20servicio%20de%20${encodeURIComponent(s.title)}%20en%20Medell%C3%ADn.`}
-                class="inline-flex items-center gap-1.5 text-[13px] font-semibold mt-1 transition-colors duration-150 hover:opacity-80"
+                class="inline-flex items-center gap-1.5 text-[13px] font-semibold min-h-[44px] transition-colors duration-150 hover:opacity-80"
                 style="color:#25D366;"
                 aria-label={`Solicitar ${s.title} en Medellín por WhatsApp`}
               >

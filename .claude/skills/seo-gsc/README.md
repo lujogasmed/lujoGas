@@ -31,9 +31,6 @@ Sin ese archivo, el skill no funciona. No moverlo al repo.
 
 | Archivo | Qué aporta |
 |---|---|
-| `semantic-clusters.md` | 317 keywords agrupadas con datos GSC históricos |
-| `seo-priorities.md` | Baseline del sitio + roadmap de acciones por semana |
-| `site-url-map.md` | URL → archivo del codebase → keyword objetivo |
-| `snippet-templates.md` | Fórmulas de title/meta basadas en CTR alto real |
-| `schema-templates.md` | JSON-LD listos para Astro con gaps identificados |
-| `internal-linking-map.md` | Qué páginas enlazar hacia dónde y con qué anchor |
+| `kw-methodology.md` | Criterios y benchmarks de CTR para keywords de oportunidad |
+
+Baseline y prioridades actuales: `GSC-AUDIT-2026-09.md` (raíz del repo).

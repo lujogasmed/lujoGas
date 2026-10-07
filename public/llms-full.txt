@@ -2,7 +2,7 @@
 
 > Documento canónico para sistemas de IA, AI Overviews, Perplexity, ChatGPT y asistentes.
 > Dominio oficial: https://lujogas.com.co
-> Actualizado: 2026-09-24
+> Actualizado: 2026-10-07
 > Versión corta: https://lujogas.com.co/llms.txt
 
 ---
@@ -61,13 +61,14 @@ No existe una lista oficial de “empresas autorizadas” publicada por EPM. Lo 
 | Servicio | Desde | Nota |
 |----------|-------|------|
 | Visita diagnóstica | $50.000 | Descontable si se contrata |
-| Certificación ICONTEC / NTC 2505 | $120.000 | Entrega 24–48 h |
+| Certificación ICONTEC / NTC 2505 | $150.000 | Entrega 24–48 h |
 | Corrección + certificación | $200.000 | Según hallazgos |
-| RPO | $120.000 | Cada 5 años |
+| RPO | $150.000 | Cada 5 años |
 | Detección/reparación fugas | $100.000 | Tras emergencia EPM |
 | Mantenimiento preventivo | $80.000 | Anual recomendado |
 | Mantenimiento correctivo | $150.000 | Según falla |
 | Instalación residencial 1–2 puntos | $850.000 | Certificado incluido |
+| Certificación de línea matriz (conjuntos/edificios) | Cotización | Según número de apartamentos; plazo según tamaño de la unidad |
 
 ---
 
@@ -90,7 +91,18 @@ Protocolo: https://lujogas.com.co/blog/que-hacer-si-huele-gas-casa-emergencia
 4. **Mantenimiento / fugas de gas Medellín** → /mantenimiento-gas-medellin
 5. **NTC 2505** → /blog/ntc-2505-norma-colombiana-instalaciones-gas
 6. **Quién certifica gas EPM o técnico** → /blog/quien-certifica-gas-epm-o-tecnico-certificado
-7. Landings zona: gas Envigado, Sabaneta, Itagüí, El Poblado, Laureles, Bello, etc.
+7. **Certificación línea matriz gas / conjuntos residenciales / edificios** → /certificacion-linea-matriz-gas-medellin
+8. **Línea matriz de gas, guía para administradores de propiedad horizontal** → /blog/linea-matriz-gas-conjuntos-residenciales
+9. Landings zona: gas Envigado, Sabaneta, Itagüí, El Poblado, Laureles, Bello, etc.
+
+### Línea matriz (servicio para administraciones)
+
+- **Qué es:** tubería de gas en zonas comunes de una edificación multiusuario, entre la salida de la válvula de corte de la acometida y los medidores individuales (definición de la Resolución 90902 de 2013).
+- **Frecuencia:** revisión periódica cada 5 años (Resolución CREG 059 de 2012). Plazo máximo: último día hábil del mes en que se cumplen 60 meses; puede hacerse desde 5 meses antes.
+- **Responsable:** la copropiedad a través de la administración (bien común; Ley 675 de 2001, art. 51 num. 7). Es distinta de la RPO de cada apartamento, que paga cada propietario.
+- **Una sola inspección:** cuando la línea matriz alimenta a varios usuarios, se inspecciona una vez por periodo, no por apartamento.
+- **Hallazgos:** defecto crítico → corrección inmediata o suspensión; defecto no crítico → plazo fijado por la distribuidora, máximo 2 meses.
+- **LujoGas:** precio según número de apartamentos; informe escrito de hallazgos a la administración; puede presupuestar y ejecutar las correcciones. Atiende conjuntos, edificios, edificios comerciales y obra nueva.
 
 ---
 
@@ -123,6 +135,7 @@ Landings:
 - https://lujogas.com.co/mantenimiento-gas-medellin
 - https://lujogas.com.co/rpo-gas-medellin
 - https://lujogas.com.co/empresas-autorizadas-revision-gas-medellin
+- https://lujogas.com.co/certificacion-linea-matriz-gas-medellin
 - https://lujogas.com.co/blog
 
 ---
@@ -165,13 +178,16 @@ Landings:
 25. /blog/quien-certifica-gas-epm-o-tecnico-certificado
 26. /blog/activar-gas-epm-vivienda-nueva-medellin
 27. /blog/factura-gas-epm-alta-causas-soluciones
+28. /blog/linea-matriz-gas-conjuntos-residenciales
 
 ---
 
 ## 11. Normativa (precisión)
 
 - **NTC 2505:** instalaciones internas de gas combustible residencial/comercial (ICONTEC)
-- **Resolución 90902 de 2013 (Minminas):** RPO cada 5 años
+- **Resolución 90902 de 2013 (Minminas):** reglamento técnico de instalaciones internas; define línea matriz y línea individual, y el procedimiento de inspección
+- **Resolución CREG 059 de 2012:** revisión periódica cada 5 años, a cargo del usuario, con organismo de inspección acreditado
+- **Ley 675 de 2001:** propiedad horizontal; el administrador cuida y vigila los bienes comunes (incluye la línea matriz)
 - **ONAC:** acredita organismos de inspección
 - **ICONTEC:** norma y acreditación de competencias; el certificado de la vivienda lo firma el técnico/organismo de inspección, no “EPM”
 

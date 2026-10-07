@@ -167,7 +167,7 @@ y descubre keywords secundarias que el contenido no cubre todavía.
 from datetime import date, timedelta
 import json, sys
 
-PAGE = sys.argv[1] if len(sys.argv) > 1 else input("URL (ej: /blog/closet-a-medida-medellin/): ")
+PAGE = sys.argv[1] if len(sys.argv) > 1 else input("URL (ej: /certificacion-gas-medellin): ")
 end   = date.today()
 start = end - timedelta(days=90)
 
@@ -274,10 +274,10 @@ print(json.dumps({"target": TARGET, "related": related[:25]}, indent=2, ensure_a
 - FAQ: [preguntas reales de GSC]
 
 ### CTA recomendado
-[Según intención: cotizar / WhatsApp / formulario / descargar]
+[WhatsApp con mensaje prellenado según intención — el sitio no tiene formulario]
 
 ### URL objetivo
-[/servicios/... para intención comercial | /blog/... para informacional]
+[landing plana /{servicio}-gas-medellin o /instalacion-gas-{zona} para comercial | /blog/{slug} para informacional]
 
 ### Notas técnicas
 - Longitud mínima recomendada: [800 MOFU / 1200 BOFU]

@@ -126,7 +126,7 @@ El mantenimiento preventivo anual desde $80.000 corrige todo eso antes de que ll
 | Detección y reparación de fugas | $100.000 | Inmediato |
 | Mantenimiento correctivo | $150.000 | Según falla |
 | Mantenimiento preventivo | $80.000 | Programado |
-| Revisión Periódica Obligatoria | $120.000 | 24-48 h hábiles |
+| Revisión Periódica Obligatoria | $150.000 | 24-48 h hábiles |
 
 Desglose en [cuánto cuesta el mantenimiento de gas en Medellín](/blog/cuanto-cuesta-mantenimiento-gas-medellin).
 

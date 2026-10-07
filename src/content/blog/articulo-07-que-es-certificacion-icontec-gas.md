@@ -22,7 +22,7 @@ faq:
   - q: "¿La certificación ICONTEC de gas es obligatoria?"
     a: "Sí. La Resolución 90902 de 2013 del Ministerio de Minas y Energía y el Reglamento Técnico de Instalaciones Internas de Gas la exigen para toda instalación nueva, ampliación o reforma, y establecen la Revisión Periódica Obligatoria cada 5 años. Sin certificado vigente, EPM puede negar la activación del servicio o suspenderlo."
   - q: "¿Cuánto cuesta la certificación ICONTEC de gas en Medellín?"
-    a: "Con LujoGas parte desde $120.000 con entrega del documento en 24 a 48 horas hábiles. La visita diagnóstica cuesta $50.000 y se descuenta si contratas el servicio. Si la red presenta hallazgos que deben corregirse, el paquete de corrección más certificación parte desde $200.000."
+    a: "Con LujoGas parte desde $150.000 con entrega del documento en 24 a 48 horas hábiles. La visita diagnóstica cuesta $50.000 y se descuenta si contratas el servicio. Si la red presenta hallazgos que deben corregirse, el paquete de corrección más certificación parte desde $200.000."
   - q: "¿Cuánto tiempo vale la certificación de gas?"
     a: "El certificado de la Revisión Periódica Obligatoria tiene vigencia de 5 años. El certificado de una instalación nueva acredita la conformidad al momento de la construcción, y a partir de ahí corre el ciclo de 5 años de la RPO. Cualquier ampliación o reforma de la red exige una nueva certificación antes de cumplirse ese plazo."
   - q: "¿ICONTEC expide directamente el certificado de mi casa?"
@@ -112,9 +112,9 @@ Un certificado falso cuesta el doble: EPM lo rechaza, pagas de nuevo, y mientras
 | Servicio | Precio desde | Entrega |
 |---|---|---|
 | Visita diagnóstica | $50.000 (descontable) | Inmediata |
-| Certificación ICONTEC | $120.000 | 24-48 h hábiles |
+| Certificación ICONTEC | $150.000 | 24-48 h hábiles |
 | Corrección de hallazgos + certificación | $200.000 | Según hallazgos |
-| Revisión Periódica Obligatoria | $120.000 | 24-48 h hábiles |
+| Revisión Periódica Obligatoria | $150.000 | 24-48 h hábiles |
 
 Si la instalación está en buen estado, el proceso completo se resuelve en una visita y el documento llega en 24 a 48 horas hábiles. Si hay hallazgos, se corrigen primero y luego se certifica — típicamente entre 2 y 5 días hábiles. El desglose de costos y qué los hace subir está en [cuánto cuesta la certificación de gas en Medellín](/blog/cuanto-cuesta-certificacion-gas-medellin).
 

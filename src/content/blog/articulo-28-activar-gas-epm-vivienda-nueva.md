@@ -22,7 +22,7 @@ faq:
   - q: "¿La constructora no dejó el gas listo?"
     a: "Depende del proyecto. Muchas constructoras entregan la red interna construida pero sin certificar a nombre del propietario, y casi nunca conectan los gasodomésticos. Antes de recibir el apartamento, verifica en el acta de entrega si la red está certificada; si no, necesitarás la certificación antes de pedir la activación a EPM."
   - q: "¿Cuánto cuesta dejar el gas funcionando en una vivienda nueva en Medellín?"
-    a: "Con LujoGas: visita diagnóstica $50.000 (descontable), certificación ICONTEC desde $120.000 con entrega en 24-48 horas, y conexión de gasodomésticos según el equipo. Si la red tiene fallas, la corrección más certificación parte desde $200.000. El presupuesto se entrega antes de intervenir, sin costos ocultos."
+    a: "Con LujoGas: visita diagnóstica $50.000 (descontable), certificación ICONTEC desde $150.000 con entrega en 24-48 horas, y conexión de gasodomésticos según el equipo. Si la red tiene fallas, la corrección más certificación parte desde $200.000. El presupuesto se entrega antes de intervenir, sin costos ocultos."
   - q: "¿Cuánto tarda todo el proceso de activación?"
     a: "La parte técnica es rápida: inspección, conexión de gasodomésticos y certificado en 24 a 48 horas hábiles. Los tiempos de EPM para instalar o habilitar el medidor varían según el proyecto y la zona. En total, la mayoría de nuestros clientes en Medellín tienen el gas funcionando en menos de una semana."
   - q: "¿Puedo conectar la estufa yo mismo mientras activan el gas?"
@@ -73,7 +73,7 @@ Con el certificado vigente, se solicita la activación: EPM instala o habilita e
 | Concepto | Precio LujoGas |
 |----------|----------------|
 | Visita diagnóstica | $50.000 (se descuenta si contratas) |
-| Certificación ICONTEC | Desde $120.000 |
+| Certificación ICONTEC | Desde $150.000 |
 | Corrección de hallazgos + certificación | Desde $200.000 |
 | Conexión de gasodomésticos | Según equipo — presupuesto en la visita |
 
@@ -88,7 +88,7 @@ El valor exacto depende del estado de la red y del número de equipos a conectar
 
 ## Apartamento vs casa: diferencias en la activación
 
-En **apartamentos** de edificios nuevos, la red troncal es del edificio y tu certificación cubre la red interna desde tu medidor — el proceso suele ser más rápido. En **casas** nuevas o independientes, a veces hay que gestionar también la acometida con EPM, lo que suma tiempo. El detalle está en nuestra comparativa de [instalación de gas en apartamento vs casa](/blog/instalacion-gas-apartamento-vs-casa-diferencias).
+En **apartamentos** de edificios nuevos, la red troncal es del edificio y tu certificación cubre la red interna desde tu medidor — el proceso suele ser más rápido. Esa red troncal es la línea matriz, y su certificación le corresponde a la constructora o a la administración: lo explicamos en [certificación de línea matriz de gas](/certificacion-linea-matriz-gas-medellin). En **casas** nuevas o independientes, a veces hay que gestionar también la acometida con EPM, lo que suma tiempo. El detalle está en nuestra comparativa de [instalación de gas en apartamento vs casa](/blog/instalacion-gas-apartamento-vs-casa-diferencias).
 
 ## Deja el gas funcionando en una sola gestión
 

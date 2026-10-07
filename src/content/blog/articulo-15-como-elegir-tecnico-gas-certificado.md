@@ -23,7 +23,7 @@ faq:
   - q: "¿Qué es la certificación NTC 2505?"
     a: "La NTC 2505 es la Norma Técnica Colombiana que regula las instalaciones internas de gas combustible en edificaciones residenciales y comerciales. Un técnico certificado en esta norma demostró, mediante evaluación de un organismo acreditado, que sabe instalar, revisar y reparar redes de gas cumpliendo los requisitos de seguridad exigidos en Colombia."
   - q: "¿Cuánto cobra un técnico de gas certificado en Medellín?"
-    a: "En LujoGas la visita diagnóstica cuesta $50.000 y se descuenta del valor total si contratas el servicio. La certificación ICONTEC parte desde $120.000 y una certificación con corrección de fallas desde $200.000. Desconfía de precios demasiado bajos: suelen esconder trabajo sin certificado, materiales no homologados o falta de garantía."
+    a: "En LujoGas la visita diagnóstica cuesta $50.000 y se descuenta del valor total si contratas el servicio. La certificación ICONTEC parte desde $150.000 y una certificación con corrección de fallas desde $200.000. Desconfía de precios demasiado bajos: suelen esconder trabajo sin certificado, materiales no homologados o falta de garantía."
   - q: "¿Puedo contratar a un plomero para trabajos de gas?"
     a: "No. Las redes de gas solo pueden ser intervenidas por técnicos con certificado de competencia laboral NTC 2505 vigente. Un plomero sin esta certificación no está habilitado para instalar, modificar ni certificar redes de gas, y su trabajo no será aceptado por la distribuidora ni por un organismo certificador como ICONTEC."
   - q: "¿Qué pasa si contrato un técnico sin certificación?"
@@ -90,7 +90,7 @@ Precios de referencia de LujoGas en Medellín y el Valle de Aburrá:
 | Servicio | Precio |
 |----------|--------|
 | Visita diagnóstica | $50.000 (descontable si contratas el servicio) |
-| Certificación ICONTEC | Desde $120.000 — entrega en 24-48 horas |
+| Certificación ICONTEC | Desde $150.000 — entrega en 24-48 horas |
 | Certificación + corrección de fallas | Desde $200.000 |
 | Instalación, mantenimiento, reparación | Cotización personalizada según diagnóstico |
 
@@ -116,7 +116,7 @@ Es la Norma Técnica Colombiana que regula las instalaciones internas de gas com
 
 ### ¿Cuánto cobra un técnico de gas certificado en Medellín?
 
-En LujoGas la visita diagnóstica cuesta $50.000, descontable si contratas el servicio. La certificación ICONTEC parte desde $120.000 y la certificación con corrección de fallas desde $200.000. Desconfía de precios demasiado bajos: suelen esconder trabajo sin certificado o materiales no homologados.
+En LujoGas la visita diagnóstica cuesta $50.000, descontable si contratas el servicio. La certificación ICONTEC parte desde $150.000 y la certificación con corrección de fallas desde $200.000. Desconfía de precios demasiado bajos: suelen esconder trabajo sin certificado o materiales no homologados.
 
 ### ¿Puedo contratar a un plomero para trabajos de gas?
 

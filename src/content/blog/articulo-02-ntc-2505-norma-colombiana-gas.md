@@ -150,9 +150,9 @@ Si sospechas que tu instalación no cumple, empieza por reconocer las señales: 
 | Servicio | Precio desde | Entrega |
 |---|---|---|
 | Visita diagnóstica | $50.000 (descontable) | Inmediata |
-| Certificación ICONTEC / NTC 2505 | $120.000 | 24-48 h hábiles |
+| Certificación ICONTEC / NTC 2505 | $150.000 | 24-48 h hábiles |
 | Corrección de hallazgos + certificación | $200.000 | Según hallazgos |
-| Revisión Periódica Obligatoria (RPO) | $120.000 | 24-48 h hábiles |
+| Revisión Periódica Obligatoria (RPO) | $150.000 | 24-48 h hábiles |
 | Instalación residencial nueva | $850.000 | Certificado incluido |
 
 Trabajamos en Medellín, Envigado, Bello, Itagüí, Sabaneta, La Estrella, Copacabana y todo el Valle de Aburrá. El técnico Luis Guillermo Muñoz Vélez está certificado bajo NTC 2505 y ha realizado más de 3.000 certificaciones.

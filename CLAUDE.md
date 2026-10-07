@@ -9,7 +9,7 @@
 **LujoGas** es una landing page profesional para una empresa de instalación, mantenimiento y certificación de redes de gas en Medellín, Colombia.
 
 **Objetivo primario:** Convertir visitas orgánicas locales en contactos vía WhatsApp (leads directos).
-**Objetivo secundario — CRÍTICO:** Posicionarse en búsquedas locales de Medellín y el área metropolitana. **SEO local y GEO (Generative Engine Optimization) son prioridad absoluta** — cada cambio de contenido debe reforzar la visibilidad en Google, Google Maps, ChatGPT, Perplexity y otros motores de IA.
+**Objetivo secundario:** Posicionarse en búsquedas locales de Medellín y el área metropolitana, en Google, Google Maps y motores de IA (ChatGPT, Perplexity). Los cambios de contenido se evalúan por su efecto en esa visibilidad (SEO local + GEO).
 **Tono de marca:** Confianza técnica, profesionalismo certificado, cercanía local.
 
 ### Meta SEO/GEO — Norte del proyecto
@@ -24,7 +24,7 @@
 5. **Alt text en todas las imágenes** — descriptivo + keyword cuando sea natural.
 6. **Internal linking intencional** — cada página debe tener ≥ 3 links a otras páginas del sitio.
 7. **NAP consistente** (Name, Address, Phone) en footer, schema y toda mención pública. Usar siempre datos de `data/site.json`.
-8. **Keywords locales en el contenido** — mencionar barrios (El Poblado, Laureles, Envigado...) y "Valle de Aburrá" en cada sección clave.
+8. **Keywords locales en el contenido** — mencionar barrios (El Poblado, Laureles, Envigado...) y "Valle de Aburrá" donde aporten contexto real; la repetición forzada cuenta como keyword stuffing.
 9. **No crear contenido genérico** — cada párrafo debe tener intención de búsqueda clara.
 10. **`llms.txt` en raíz** — mantener actualizado para citabilidad en IA (GEO).
 
@@ -37,6 +37,10 @@
 | `/instalacion-gas-medellin` | instalación gas Medellín | Transaccional |
 | `/certificacion-gas-medellin` | certificación gas Medellín | Transaccional |
 | `/mantenimiento-gas-medellin` | mantenimiento gas Medellín | Transaccional |
+| `/rpo-gas-medellin` | RPO gas Medellín | Transaccional |
+| `/empresas-autorizadas-revision-gas-medellin` | empresas autorizadas revisión gas Medellín | Comercial/verificación |
+| `/instalacion-gas-[zona]` | instalación gas {zona} | Transaccional local (datos en `src/data/zonas.ts`) |
+| `/blog/*` | según frontmatter `intent`/`funnel` | Informacional (colección `src/content/blog`) |
 
 ---
 
@@ -54,24 +58,21 @@
 - **GSAP (GreenSock)** — Para animaciones complejas: hero, scroll-triggered, timelines.
   - Usar `ScrollTrigger` plugin para animaciones activadas por scroll.
   - Instanciar siempre dentro de `useEffect` (React) o `<script>` en Astro con `is:inline`.
-- **Lottie-react** — Alternativa para animaciones vectoriales complejas (fogón). Solo si el archivo `.json` Lottie existe.
 - CSS puro (`@keyframes`) — Para micro-animaciones simples: pulso WhatsApp, fade-in suaves.
 
 ### Librerías utilitarias
 - `@astrojs/react` — Integración oficial React + Astro.
 - `@astrojs/sitemap` — Generación automática de sitemap.xml para SEO.
-- `@astrojs/image` (o `astro:assets`) — Optimización de imágenes. Siempre usar `<Image />` de Astro, nunca `<img>` directo.
+- `astro:assets` — Optimización de imágenes. Usar `<Image />` de Astro para imágenes locales.
 - `sharp` — Dependencia de procesamiento de imágenes.
 
 ### Fuentes
-- **Google Fonts** vía `@astrojs/google-fonts` o `<link>` en `<head>`.
-- Fuente display: **Montserrat** o **Raleway** (peso 700/900 para títulos).
-- Fuente cuerpo: **Source Sans 3** o **DM Sans** (legible, profesional).
-- Preload de fuentes críticas en `<head>`.
+- Google Fonts vía `<link>` en `BaseLayout.astro`, con preload de las críticas.
+- Familias definidas en `tailwind.config.mjs` → `fontFamily`: `display` (Bebas Neue), `body` (Plus Jakarta Sans), `mono` (Rajdhani). Ese archivo es la fuente de verdad.
 
 ### Análitica / Tracking
-- **Google Tag Manager** — Snippet en `<head>` y `<body>` del layout base.
-- **Google Analytics 4** — Vía GTM. Evento de conversión: clic en enlace WhatsApp.
+- **Google Analytics 4** vía `gtag.js` directo en `BaseLayout.astro` (ID en `data/site.json`). GTM aún no configurado (`gtmId: [PENDIENTE]`).
+- Evento de conversión: clic en enlace WhatsApp.
 
 ### SEO
 - Meta tags completos en cada página vía componente `<SEO />` o `Astro.head`.
@@ -174,55 +175,26 @@ Si las primeras dos respuestas son "no" y las últimas dos "sí", entonces CSS n
 
 ```
 lujogas/
+├── data/                        # site.json (NAP, GA4, WhatsApp), services.json, coverage.json, trust.json
 ├── public/
-│   ├── favicon.svg
-│   ├── robots.txt
-│   ├── images/                  # Imágenes estáticas no procesadas por Astro
-│   └── lottie/                  # Archivos .json de animaciones Lottie
-│
+│   ├── robots.txt, favicon.*, manifest.webmanifest
+│   └── llms.txt, llms-full.txt  # GEO
+├── scripts/gen-lastmod.mjs      # prebuild: fechas lastmod reales del sitemap
 ├── src/
-│   ├── assets/                  # Imágenes procesadas por astro:assets
-│   │   ├── hero-bg.jpg
-│   │   └── ...
-│   │
 │   ├── components/
-│   │   ├── atoms/               # Elementos UI mínimos (Button, Icon, Badge, Input...)
-│   │   │   ├── Button.astro
-│   │   │   ├── Icon.astro
-│   │   │   ├── Badge.astro
-│   │   │   └── WhatsAppButton.tsx  # React si necesita interactividad
-│   │   │
-│   │   ├── molecules/           # Combinación de átomos (ServiceCard, TrustBadge...)
-│   │   │   ├── ServiceCard.astro
-│   │   │   ├── TrustBadge.astro
-│   │   │   └── NavLink.astro
-│   │   │
-│   │   ├── organisms/           # Secciones completas (Header, Footer, Hero...)
-│   │   │   ├── Header.astro
-│   │   │   ├── Footer.astro
-│   │   │   ├── HeroSection.astro
-│   │   │   ├── ServicesGrid.astro
-│   │   │   ├── TrustSection.astro
-│   │   │   ├── CoverageMap.astro
-│   │   │   └── CTASection.astro
-│   │   │
-│   │   └── react/               # Componentes React (solo si necesitan estado/interactividad)
-│   │       ├── HeroAnimation.tsx  # Animación fogón GSAP/Lottie
-│   │       ├── WhatsAppCTA.tsx    # Botón flotante con pulso
-│   │       └── ScrollReveal.tsx   # Wrapper de animaciones scroll
-│   │
-│   ├── layouts/                 # Templates (Atomic Design nivel 4)
-│   │   └── BaseLayout.astro      # Layout principal: head, GTM, fuentes, SEO base
-│   │
-│   ├── pages/                   # Pages (Atomic Design nivel 5)
-│   │   └── index.astro           # Landing page principal (única página)
-│   │
-│   ├── styles/
-│   │   └── global.css            # Variables CSS, keyframes, estilos base
-│   │
+│   │   ├── atoms/       # Button, EyebrowLabel, GeoMeta, Logo, WhatsAppIcon, WhatsAppButton.tsx
+│   │   ├── molecules/   # ServiceCard, TrustBadge, StatCounter, ComunaList
+│   │   ├── organisms/   # Header, Footer, HeroSection, ServicesGrid, TrustSection, CoverageSection, CTASection
+│   │   └── react/       # WhatsAppFloat.tsx (único componente React con estado)
+│   ├── content/         # config.ts (schema zod del blog) + blog/*.md
+│   ├── data/            # zonas.ts, zonasDetalle.ts, lastmod.json (generado)
+│   ├── layouts/BaseLayout.astro   # head, GA4, fuentes, SEO base, LocalBusiness
+│   ├── pages/           # index, servicios, nosotros, *-gas-medellin, rpo-gas-medellin,
+│   │                    # empresas-autorizadas-…, instalacion-gas-[zona], blog/, 404
+│   ├── styles/global.css
 │   └── lib/
-│       ├── constants.ts          # Teléfono WhatsApp, textos fijos, URLs
-│       └── schema.ts             # JSON-LD LocalBusiness schema
+│       ├── constants.ts # re-exporta data/site.json + WHATSAPP_URL
+│       └── schema.ts    # generadores JSON-LD
 │
 ├── astro.config.mjs
 ├── tailwind.config.mjs
@@ -236,12 +208,11 @@ lujogas/
 ## 6. Secciones de la Landing (orden y propósito)
 
 ### 6.1 Hero — Animación Fogón Encendiendo
-**Componente:** `src/components/react/HeroAnimation.tsx` (client:load)
+**Componente:** `src/components/organisms/HeroSection.astro`
 
 **Animación decidida:** Video MP4 en autoplay silenciado de un quemador de gas encendiéndose. Fondo oscuro, llama azul/naranja. Ícono de unmute discreto. Sin sonido automático. El copy aparece cuando la llama está estable, el CTA de WhatsApp aparece al final.
 
-- Video en `public/videos/hero-flame.mp4` + poster JPG de primer frame.
-- Timeline GSAP sincronizado al progreso del video (`timeupdate`).
+- Video servido desde Cloudinary (URL en `HeroSection.astro`) + poster como fallback.
 - Copy principal: **"Instalamos tu red de gas con certificación oficial"**
 - Subheadline: **"Servicio técnico especializado en Medellín y área metropolitana"**
 - CTA principal: botón WhatsApp → `https://wa.me/57XXXXXXXXX?text=...`
@@ -252,7 +223,7 @@ lujogas/
 **Accesibilidad:** `prefers-reduced-motion` → mostrar imagen estática del fogón encendido, sin animación.
 
 ### 6.2 Servicios de Gas
-**Componente:** `src/components/astro/ServiceCard.astro`
+**Componente:** `src/components/molecules/ServiceCard.astro` (en `organisms/ServicesGrid.astro`)
 
 Servicios a listar (con ícono SVG):
 1. Instalación de redes de gas residencial
@@ -267,7 +238,7 @@ Cada card: ícono + título + descripción breve (2 líneas) + micro-CTA "Solici
 **Animación:** `ScrollTrigger` fade + slide-up en stagger al entrar en viewport.
 
 ### 6.3 Por Qué Elegirnos / Confianza
-**Componente:** `src/components/astro/TrustBadge.astro`
+**Componente:** `src/components/molecules/TrustBadge.astro` (en `organisms/TrustSection.astro`)
 
 Elementos de confianza:
 - Técnicos certificados por entidades colombianas (Gas Natural, EPM, Icontec)
@@ -279,7 +250,7 @@ Elementos de confianza:
 Visual: badges/íconos de certificación + contador animado de clientes/proyectos.
 
 ### 6.4 Cobertura en Medellín
-**Componente:** `src/components/astro/CoverageMap.astro`
+**Componente:** `src/components/organisms/CoverageSection.astro`
 
 - Mapa estático o embed Google Maps centrado en Medellín.
 - Lista de comunas/barrios cubiertos: El Poblado, Laureles, Envigado, Bello, Itagüí, Sabaneta, etc.
@@ -290,7 +261,6 @@ Sección dedicada pre-footer:
 - Headline de urgencia/beneficio
 - Botón WhatsApp grande con número visible
 - Horario de atención
-- Opcionalmente: formulario de nombre + teléfono (Netlify Forms o similar)
 
 ### 6.6 Footer con SEO local
 - Logo + nombre empresa
@@ -304,41 +274,20 @@ Sección dedicada pre-footer:
 
 ## 7. Paleta de Colores
 
-```css
-/* src/styles/global.css */
-:root {
-  --color-flame-blue: #1E90FF;      /* Llama azul gas */
-  --color-flame-orange: #FF6B1A;    /* Llama naranja/fuego */
-  --color-dark: #0D0D0D;            /* Fondo hero oscuro */
-  --color-dark-surface: #1A1A2E;    /* Cards en fondo oscuro */
-  --color-steel: #2C3E50;           /* Gris acero técnico */
-  --color-steel-light: #ECF0F1;     /* Fondo secciones claras */
-  --color-white: #FFFFFF;
-  --color-text: #1A1A1A;
-  --color-text-muted: #6B7280;
-  --color-success: #27AE60;         /* Badges de certificación */
-  --color-whatsapp: #25D366;        /* Verde WhatsApp oficial */
-  --color-whatsapp-dark: #1DA851;   /* Hover WhatsApp */
-}
-```
+Tokens de color en `tailwind.config.mjs` → `theme.extend.colors` (`primary`, `secondary`, `tertiary`, `background`, `whatsapp`, `hero-*`, `flame.*`…). Usar esos nombres; no hardcodear hex.
 
 ---
 
 ## 8. WhatsApp CTA — Especificaciones
 
-```typescript
-// src/lib/constants.ts
-export const WHATSAPP_NUMBER = "573XXXXXXXXX"; // Reemplazar con número real
-export const WHATSAPP_MESSAGE = "Hola LujoGas, quiero solicitar información sobre instalación de gas en Medellín";
-export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
-```
+`src/lib/constants.ts` exporta `WHATSAPP_NUMBER`, `WHATSAPP_MESSAGE` y `WHATSAPP_URL` leyendo `data/site.json`. Importar de ahí; nunca escribir el número en componentes. Cada CTA puede abrir un mensaje prellenado acorde al contexto (instalación, mantenimiento, certificación, zona).
 
 **Botón flotante** (sticky, bottom-right):
 - Ícono WhatsApp SVG oficial verde
 - Animación: `pulse` CSS suave cada 3s
 - `z-index: 9999`
 - En mobile: tamaño mínimo 56x56px (touch target)
-- Tracking GTM: evento `whatsapp_click` con label de sección origen
+- Tracking GA4: evento `whatsapp_click` con label de sección origen
 
 ---
 
@@ -351,39 +300,24 @@ export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURICo
 - "instalación gas El Poblado / Laureles / Envigado"
 - "mantenimiento gas residencial Medellín"
 
+### Clusters de keywords (research base)
+- **Instalación:** instalacion de gas medellin · instalar gas en apartamento medellin · tecnico de gas medellin
+- **Certificación:** certificacion de gas medellin · quien certifica redes de gas en medellin
+- **Mantenimiento / urgencias:** mantenimiento red de gas medellin · fuga de gas medellin · tecnico de gas urgente medellin
+- **Por zona (long tail):** instalacion gas el poblado · certificacion gas envigado · revision gas itagui
+
+Las landings `/instalacion-gas-[zona]` atacan el cluster por zona; la home y las landings `*-medellin`, los demás.
+
 ### Implementación técnica
 - `<title>`: "Instalación y Certificación de Gas en Medellín | LujoGas"
 - `<meta name="description">`: Incluir "Medellín", servicio principal, diferenciador.
 - H1 único: Debe incluir keyword principal.
 - H2/H3: Incluir variaciones de keywords locales.
 - Alt text en imágenes: descriptivo + keyword cuando sea natural.
-- URL canónica: `https://lujogas.com/` (o dominio real).
+- URL canónica: `https://lujogas.com.co/...` sin slash final (`site` + `trailingSlash: 'never'` en `astro.config.mjs`).
 
-### JSON-LD LocalBusiness (en BaseLayout.astro)
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "LujoGas",
-  "description": "Instalación, mantenimiento y certificación de redes de gas en Medellín",
-  "telephone": "+57-3XX-XXX-XXXX",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "[Dirección]",
-    "addressLocality": "Medellín",
-    "addressRegion": "Antioquia",
-    "postalCode": "[CP]",
-    "addressCountry": "CO"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 6.2442,
-    "longitude": -75.5812
-  },
-  "areaServed": ["Medellín", "Envigado", "Bello", "Itagüí", "Sabaneta"],
-  "serviceType": ["Instalación de gas", "Certificación de gas", "Mantenimiento de gas"]
-}
-```
+### JSON-LD
+Generadores en `src/lib/schema.ts`; `LocalBusiness` se inyecta en `BaseLayout.astro` con NAP de `data/site.json`.
 
 ---
 
@@ -423,15 +357,7 @@ export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURICo
 
 ## 12. Variables de Entorno
 
-```bash
-# .env (nunca commitear)
-PUBLIC_WHATSAPP_NUMBER=573XXXXXXXXX
-PUBLIC_GTM_ID=GTM-XXXXXXX
-PUBLIC_GA4_ID=G-XXXXXXXXXX
-PUBLIC_MAPS_EMBED_URL=https://maps.google.com/...
-```
-
-Acceso en Astro: `import.meta.env.PUBLIC_*`
+El código no usa `import.meta.env`: WhatsApp, GA4 y GTM salen de `data/site.json`. Si se agrega una variable de entorno, documentarla aquí con su consumidor (`.env` nunca se commitea).
 
 ---
 
@@ -445,17 +371,16 @@ npm install
 npm run dev          # http://localhost:4321
 
 # Build producción
-npm run build        # Output en /dist
+npm run build        # prebuild genera src/data/lastmod.json; output en /dist
 
 # Preview build
 npm run preview
 
 # Type check
-npm run check        # astro check + tsc
-
-# Lint
-npm run lint         # eslint src/
+npm run check        # astro check (requiere instalar @astrojs/check; hoy no está en devDependencies)
 ```
+
+El script `lint` existe en `package.json`, pero eslint no está instalado ni configurado.
 
 ---
 
@@ -476,13 +401,17 @@ npm run lint         # eslint src/
 
 ## 15. Notas Importantes para Claude Code
 
-1. **No inventar teléfonos, direcciones ni RUT.** Usar placeholders `[PENDIENTE]` y comentar `// TODO: reemplazar con dato real`.
-2. **El video del hero** (`public/videos/hero-flame.mp4`) puede no existir aún. El componente debe tener fallback con imagen estática.
-3. **GSAP requiere licencia** para uso en producción comercial. Verificar con el cliente si tienen licencia o usar GSAP Club Free (gratuito para proyectos no comerciales). Alternativa libre: Motion One o CSS puro.
+1. **No inventar teléfonos, direcciones ni NIT.** El NAP real vive en `data/site.json`; lo que siga `[PENDIENTE]` ahí (NIT, GTM) se deja como placeholder con `// TODO: reemplazar con dato real`.
+2. **El video del hero** se sirve desde Cloudinary; mantener poster/fallback estático por si la URL falla.
+3. **GSAP** es gratuito también para uso comercial desde la v3.13 (plugins incluidos); no requiere licencia.
 4. **Accesibilidad mínima requerida:** contraste WCAG AA, navegación por teclado en CTA, `alt` en todas las imágenes, `aria-label` en botones de ícono.
 5. **Mobile-first siempre.** Diseñar primero para 375px, luego escalar a desktop.
 6. **No usar `document` ni `window` en nivel de módulo** en componentes Astro (SSR/SSG). Solo dentro de `<script>` o `useEffect`.
 
 ---
 
-*Última actualización: inicio del proyecto | Mantener este archivo actualizado con cada decisión arquitectónica relevante.*
+## 16. Definition of Done
+
+Una tarea está terminada cuando: compila (`npm run build`), cumple las reglas SEO de §1 (title, meta, H1, schema), no empeora Core Web Vitals, funciona a 375px y mantiene el camino a WhatsApp.
+
+*Mantener este archivo actualizado con cada decisión arquitectónica relevante.*

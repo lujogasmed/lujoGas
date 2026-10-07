@@ -1,6 +1,6 @@
 ---
 title: "¿EPM o técnico certifica el gas en Medellín?"
-description: "EPM no certifica la red interna de gas — lo hace un técnico NTC 2505 acreditado. Roles de EPM vs técnico, costos desde $120.000 y proceso en Medellín."
+description: "EPM no certifica la red interna de gas — lo hace un técnico NTC 2505 acreditado. Roles de EPM vs técnico, costos desde $150.000 y proceso en Medellín."
 slug: "quien-certifica-gas-epm-o-tecnico-certificado"
 publishDate: 2026-07-14
 author: "Luis Guillermo Muñoz Vélez"
@@ -24,7 +24,7 @@ faq:
   - q: "¿Cómo sé si un técnico está realmente certificado?"
     a: "Pídele el carné o certificado de competencia laboral vigente en NTC 2505 y verifica que trabaje con un organismo de inspección acreditado por ONAC. Desconfía de quien no muestre credenciales, no entregue documento oficial o cobre muy por debajo del mercado. Un certificado falso no sirve ante EPM y te deja el riesgo intacto."
   - q: "¿Cuánto cuesta certificar la instalación de gas en Medellín?"
-    a: "Con LujoGas, la certificación ICONTEC parte desde $120.000 con entrega del documento en 24 a 48 horas hábiles. Si la red presenta fallas, el paquete de corrección más certificación parte desde $200.000. La visita diagnóstica cuesta $50.000 y se descuenta si contratas el servicio."
+    a: "Con LujoGas, la certificación ICONTEC parte desde $150.000 con entrega del documento en 24 a 48 horas hábiles. Si la red presenta fallas, el paquete de corrección más certificación parte desde $200.000. La visita diagnóstica cuesta $50.000 y se descuenta si contratas el servicio."
   - q: "¿Qué pasa si mi red no tiene certificado vigente?"
     a: "EPM puede suspender el servicio hasta que presentes el certificado, especialmente si la RPO está vencida (la ley la exige cada 5 años). Además, ante un siniestro, el seguro del hogar puede negar la cobertura si la instalación no estaba certificada. Regularizar es rápido: revisión, corrección de hallazgos si los hay y certificado en 24-48 horas."
   - q: "¿Cuáles son las empresas autorizadas para revisión de gas natural en Medellín?"
@@ -44,6 +44,8 @@ Cuando alguien busca "empresas autorizadas para revisión gas natural Medellín"
 - **EPM** autoriza y exige el certificado para activar, reconectar o mantener el servicio, pero **no inspecciona ni certifica** la red interna como servicio regular.
 - La revisión la hace un **técnico certificado bajo la [NTC 2505](/blog/ntc-2505-norma-colombiana-instalaciones-gas)**, con respaldo de un **organismo de inspección acreditado ante ONAC**.
 - "Autorizado" en este contexto significa: **credenciales vigentes + organismo acreditado + documento que EPM acepta**, no un plomero genérico ni un intermediario sin carné.
+
+En conjuntos y edificios hay una segunda revisión que no es de ningún propietario: la de la tubería de zonas comunes. EPM indica que esa [línea matriz](/certificacion-linea-matriz-gas-medellin) la certifican organismos de inspección acreditados ante ONAC e inscritos ante la distribuidora, y su contratación le corresponde a la administración.
 
 Si estás eligiendo a quién contratar, usa el checklist de [cómo elegir un técnico de gas certificado en Medellín](/blog/como-elegir-tecnico-gas-certificado-medellin). En LujoGas realizamos la [certificación de gas en Medellín](/certificacion-gas-medellin) y la [RPO](/rpo-gas-medellin) con técnico NTC 2505 y entrega del certificado en 24 a 48 horas hábiles.
 
@@ -111,8 +113,8 @@ Con LujoGas en Medellín, Envigado, Bello, Itagüí, Sabaneta y todo el Valle de
 | Servicio | Precio | Entrega |
 |----------|--------|---------|
 | Visita diagnóstica | $50.000 (descontable) | Inmediata |
-| Certificación ICONTEC | Desde $120.000 | 24-48 h hábiles |
+| Certificación ICONTEC | Desde $150.000 | 24-48 h hábiles |
 | Corrección + certificación | Desde $200.000 | Según hallazgos |
-| RPO | Desde $120.000 | 24-48 h hábiles |
+| RPO | Desde $150.000 | 24-48 h hábiles |
 
 Si tu RPO está vencida o EPM te está pidiendo el certificado, agenda directo en nuestro servicio de [certificación de gas en Medellín](/certificacion-gas-medellin): revisamos, corregimos lo necesario y entregamos el documento que EPM acepta, en 24 a 48 horas hábiles.

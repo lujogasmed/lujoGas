@@ -19,7 +19,7 @@ pillar: 2
 featured: true
 faq:
   - q: "¿Cuánto cuesta certificar una instalación de gas en Medellín?"
-    a: "La certificación ICONTEC de una instalación residencial en Medellín cuesta desde $120.000, con entrega del certificado en 24-48 horas. Si la inspección detecta fallas que corregir, el servicio de certificación con corrección incluida parte desde $200.000. La visita diagnóstica cuesta $50.000 y se descuenta del total si contratas el servicio con LujoGas."
+    a: "La certificación ICONTEC de una instalación residencial en Medellín cuesta desde $150.000, con entrega del certificado en 24-48 horas. Si la inspección detecta fallas que corregir, el servicio de certificación con corrección incluida parte desde $200.000. La visita diagnóstica cuesta $50.000 y se descuenta del total si contratas el servicio con LujoGas."
   - q: "¿Cada cuánto debo certificar mi instalación de gas?"
     a: "La Resolución 90902 de 2013 del Ministerio de Minas y Energía establece la Revisión Periódica Obligatoria (RPO) cada 5 años para instalaciones de gas residenciales. Además, necesitas certificado vigente para conexiones nuevas con EPM, reformas de la red interna, venta o arriendo del inmueble y reconexiones del servicio."
   - q: "¿Qué pasa si mi instalación no pasa la inspección?"
@@ -30,7 +30,7 @@ faq:
     a: "La inspección en sitio toma entre 1 y 2 horas según el tamaño de la instalación. El certificado ICONTEC se entrega en 24 a 48 horas después de la visita. Atendemos Medellín y todo el Valle de Aburrá: El Poblado, Laureles, Envigado, Bello, Itagüí, Sabaneta, La Estrella y Copacabana. Escríbenos por WhatsApp para agendar."
 ---
 
-Si estás buscando cuánto cuesta la certificación de gas en Medellín, aquí tienes la respuesta directa: la **visita diagnóstica cuesta $50.000**, la **certificación ICONTEC parte desde $120.000** y, si tu instalación necesita reparaciones, la **certificación con corrección de fallas parte desde $200.000**. En esta guía te explicamos qué incluye cada tarifa, por qué varía el precio y cómo evitar cobros ocultos que abundan en el mercado del Valle de Aburrá.
+Si estás buscando cuánto cuesta la certificación de gas en Medellín, aquí tienes la respuesta directa: la **visita diagnóstica cuesta $50.000**, la **certificación ICONTEC parte desde $150.000** y, si tu instalación necesita reparaciones, la **certificación con corrección de fallas parte desde $200.000**. En esta guía te explicamos qué incluye cada tarifa, por qué varía el precio y cómo evitar cobros ocultos que abundan en el mercado del Valle de Aburrá.
 
 ## Precios de certificación de gas en Medellín (2026)
 
@@ -39,7 +39,7 @@ Esta es la tabla de referencia de LujoGas para instalaciones residenciales y com
 | Servicio | Precio | Entrega | ¿Qué incluye? |
 |----------|--------|---------|---------------|
 | Visita diagnóstica | $50.000 | Inmediata | Inspección, prueba básica de hermeticidad, diagnóstico completo. **Se descuenta si contratas el servicio** |
-| Certificación ICONTEC | Desde $120.000 | 24-48 horas | Inspección completa, pruebas de presión, verificación NTC 2505, emisión del certificado |
+| Certificación ICONTEC | Desde $150.000 | 24-48 horas | Inspección completa, pruebas de presión, verificación NTC 2505, emisión del certificado |
 | Certificación + corrección de fallas | Desde $200.000 | 24-48 horas | Todo lo anterior + reparación de fallas encontradas, mano de obra y materiales menores |
 
 El "desde" no es truco comercial: el precio final depende de la cantidad de puntos de consumo (estufa, calentador, horno, secadora), los metros de tubería a inspeccionar y el estado general de la red. En una visita el técnico te da el valor exacto antes de empezar, sin sorpresas.
@@ -78,7 +78,7 @@ Además de la RPO, necesitas certificado vigente en estos casos:
 
 ## Factores que suben o bajan el precio de la certificación
 
-Para que entiendas por qué una certificación puede costar $120.000 en un apartamento de Sabaneta y algo más en una casa grande de Envigado, estos son los factores que evaluamos:
+Para que entiendas por qué una certificación puede costar $150.000 en un apartamento de Sabaneta y algo más en una casa grande de Envigado, estos son los factores que evaluamos:
 
 ### Cantidad de puntos de consumo
 
@@ -116,7 +116,7 @@ En Medellín abundan los call centers y las empresas que subcontratan técnicos 
 
 ### ¿Cuánto cuesta certificar una instalación de gas en Medellín?
 
-La certificación ICONTEC parte desde **$120.000** con entrega en 24-48 horas. Si la inspección encuentra fallas, la certificación con corrección incluida parte desde **$200.000**. La visita diagnóstica cuesta $50.000 y se descuenta si contratas el servicio.
+La certificación ICONTEC parte desde **$150.000** con entrega en 24-48 horas. Si la inspección encuentra fallas, la certificación con corrección incluida parte desde **$200.000**. La visita diagnóstica cuesta $50.000 y se descuenta si contratas el servicio.
 
 ### ¿Cada cuánto debo certificar mi instalación de gas?
 

@@ -44,9 +44,9 @@ El **mantenimiento preventivo** es lo que evita llegar ahí. Esta guía explica 
 | **Objetivo** | Evitar que algo falle | Reparar lo que ya falló | Verificar cumplimiento normativo |
 | **Resultado** | Instalación ajustada | Falla resuelta | **Certificado** |
 | **Lo exige** | Nadie, es tu decisión | La falla | EPM |
-| **Precio desde** | $80.000 | $150.000 | $120.000 |
+| **Precio desde** | $80.000 | $150.000 | $150.000 |
 
-**El preventivo no reemplaza a la RPO.** Lo que hace es que, cuando llegue la RPO, se apruebe sin hallazgos y sin costo de corrección. Es la diferencia entre pagar $120.000 cada cinco años o pagar $200.000 más el reemplazo de lo que se deterioró sin que nadie lo mirara.
+**El preventivo no reemplaza a la RPO.** Lo que hace es que, cuando llegue la RPO, se apruebe sin hallazgos y sin costo de corrección. Es la diferencia entre pagar $150.000 cada cinco años o pagar $200.000 más el reemplazo de lo que se deterioró sin que nadie lo mirara.
 
 Detalle de la obligación legal en [RPO: revisión periódica obligatoria](/blog/rpo-gas-revision-periodica-obligatoria-colombia).
 
@@ -126,7 +126,7 @@ Cada una está explicada en [señales de que tu red de gas necesita mantenimient
 | Visita diagnóstica | $50.000 (descontable) | Cuando sospechas un problema |
 | Mantenimiento preventivo | $80.000 | 1 vez al año |
 | Detección y reparación de fugas | $100.000 | Inmediato ante síntomas |
-| Revisión Periódica Obligatoria | $120.000 | Cada 5 años (obligatoria) |
+| Revisión Periódica Obligatoria | $150.000 | Cada 5 años (obligatoria) |
 | Mantenimiento correctivo | $150.000 | Cuando hay falla concreta |
 
 Los repuestos se cotizan aparte, siempre con sello de certificación NTC. El desglose completo está en [cuánto cuesta el mantenimiento de gas en Medellín](/blog/cuanto-cuesta-mantenimiento-gas-medellin).

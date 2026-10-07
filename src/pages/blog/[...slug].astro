@@ -22,9 +22,12 @@ const { data } = post;
 const slug = post.slug;
 const { Content } = await post.render();
 const allPosts = await getCollection('blog');
+// Línea matriz se cotiza por número de apartamentos: sus artículos no muestran precios
+const showPrice = !data.tags.includes('linea-matriz');
 // Related posts: score por tags compartidos (cross-pillar), mismo pillar como desempate
 const related = allPosts
   .filter(p => p.slug !== slug)
+  .filter(p => showPrice || !p.data.description.includes('$'))
   .map(p => {
     const sharedTags = p.data.tags.filter(t => data.tags.includes(t)).length;
     const samePillar = p.data.pillar === data.pillar ? 1 : 0;
@@ -170,7 +173,7 @@ const pageTitle =
     <!-- Article Content -->
     <section class="section-pad">
       <div class="container-section max-w-[800px]">
-        <article class="prose-custom">
+        <article class="prose-custom [&_table]:block [&_table]:max-w-full [&_table]:overflow-x-auto md:[&_table]:table">
           <Content />
         </article>
 
@@ -198,7 +201,9 @@ const pageTitle =
             ¿Necesitas un técnico certificado?
           </p>
           <p class="text-hero-text mt-3 max-w-md mx-auto">
-            Solicita tu visita diagnóstica por $50.000 y obtén tu certificado ICONTEC en 24-48 horas.
+            {showPrice
+              ? 'Solicita tu visita diagnóstica por $50.000 y obtén tu certificado ICONTEC en 24-48 horas.'
+              : 'Escríbenos con el número de apartamentos de la unidad y te enviamos la cotización.'}
           </p>
           <div class="mt-6">
             <Button href={WHATSAPP_URL} variant="whatsapp" size="lg" target="_blank" rel="noopener noreferrer" ariaLabel="Cotizar por WhatsApp">
@@ -236,7 +241,7 @@ const pageTitle =
       </section>
     )}
 
-    <CTASection />
+    <CTASection showPrice={showPrice} />
   </main>
 
   <Footer />

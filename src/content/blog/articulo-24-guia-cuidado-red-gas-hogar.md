@@ -28,7 +28,7 @@ faq:
   - q: "¿Puedo guardar cosas en el espacio donde está el calentador?"
     a: "No conviertas ese recinto en bodega. Necesita ventilación permanente, y las cajas, la ropa o los productos de aseo pueden bloquear las rejillas y crear carga combustible cerca de una llama. Además, el técnico necesita acceso libre al artefacto, al regulador y a la válvula para la revisión."
   - q: "¿Cada cuánto necesito un técnico certificado?"
-    a: "Mantenimiento preventivo una vez al año desde $80.000, y Revisión Periódica Obligatoria cada 5 años desde $120.000, que es la exigida por ley y por EPM. Fuera de ese calendario, ante cualquier señal de alerta —olor, llama amarilla, hollín, mareo, factura disparada— hay que llamar de inmediato sin esperar la fecha programada."
+    a: "Mantenimiento preventivo una vez al año desde $80.000, y Revisión Periódica Obligatoria cada 5 años desde $150.000, que es la exigida por ley y por EPM. Fuera de ese calendario, ante cualquier señal de alerta —olor, llama amarilla, hollín, mareo, factura disparada— hay que llamar de inmediato sin esperar la fecha programada."
 ---
 
 Cuidar tu red de gas no significa convertirte en técnico. Significa saber dos cosas: **qué tareas simples te corresponden** y —más importante— **dónde está la línea que no debes cruzar**.
@@ -97,7 +97,7 @@ La regla general es simple: **todo lo que implique abrir la red requiere técnic
 | **Mensual** | Confirmar rejillas despejadas | Tú |
 | **Cada 6 meses** | Revisar fecha de vencimiento de la manguera flexible | Tú |
 | **Anual** | Mantenimiento preventivo de red, estufa y calentador | Técnico — desde $80.000 |
-| **Cada 5 años** | Revisión Periódica Obligatoria | Técnico — desde $120.000 |
+| **Cada 5 años** | Revisión Periódica Obligatoria | Técnico — desde $150.000 |
 | **Antes de viajar varios días** | Cerrar válvula de paso general | Tú |
 | **Después de una remodelación** | Verificación de rejillas y recertificación si se movió tubería | Técnico |
 | **Ante cualquier señal de alerta** | Llamar de inmediato | Técnico o emergencia EPM |
@@ -137,7 +137,7 @@ Guárdalo en tu celular hoy. Detalle en [qué hacer si huele a gas](/blog/que-ha
 | Visita diagnóstica | $50.000 (descontable) |
 | Mantenimiento preventivo | $80.000 |
 | Detección y reparación de fugas | $100.000 |
-| Revisión Periódica Obligatoria | $120.000 |
+| Revisión Periódica Obligatoria | $150.000 |
 | Mantenimiento correctivo | $150.000 |
 
 ## Agenda tu revisión anual

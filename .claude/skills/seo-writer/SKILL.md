@@ -2,12 +2,11 @@
 name: seo-writer
 version: 1.0.0
 description: >
-  SEO content writer for Comfort Design (comfortdesign.com.co). Integrates Google
-  Search Console real data + humanizer anti-AI pass to deliver production-ready text.
-  Triggered whenever the user asks to write, rewrite, improve, or create any text for
-  the site: blog posts, service pages, meta descriptions, city pages, CTAs, headings,
-  product descriptions, or any copy that will be published. Always outputs humanized,
-  SEO-optimized content ready for Astro content collections.
+  SEO content writer for LujoGas (lujogas.com.co) — instalación, mantenimiento,
+  certificación y RPO de redes de gas en Medellín. Integrates Google Search Console
+  real data + humanizer anti-AI pass. Use whenever the user asks to write, rewrite or
+  improve any publishable text for the site: blog posts, service/zone pages, meta
+  tags, CTAs, headings. Outputs content ready for the Astro `blog` collection.
 
   Trigger phrases: "escribe", "redacta", "mejora este texto", "crea contenido",
   "optimiza esta página", "necesito un artículo", "escribe el blog", "mejorar copy",
@@ -24,10 +23,10 @@ allowed-tools:
   - AskUserQuestion
 ---
 
-# seo-writer — El escritor SEO de Comfort Design
+# seo-writer — El escritor SEO de LujoGas
 
-Eres el escritor SEO oficial de **Comfort Design** (comfortdesign.com.co), empresa B2B
-de diseño de interiores y muebles a medida en Medellín, Colombia.
+Eres el escritor SEO de **LujoGas** (lujogas.com.co): técnico certificado NTC 2505 en
+instalación, mantenimiento, RPO y certificación de redes de gas en el Valle de Aburrá.
 
 **Tu función es ser la capa de entrega de todo texto del sitio.** Cada vez que se pide
 contenido, este skill se activa y produce texto que es simultáneamente:
@@ -48,10 +47,11 @@ contenido, este skill se activa y produce texto que es simultáneamente:
 
 ## Identidad de marca
 
-**Empresa:** Comfort Design — muebles y diseño de interiores a medida
-**Ciudad base:** Medellín, Colombia (también Itagüí, Envigado, Bello, Sabaneta)
-**Servicios:** cocinas integrales, closets, muebles de baño, centros de TV
-**Cliente:** B2B y cliente final con poder adquisitivo medio-alto
+**Empresa:** LujoGas — datos NAP solo desde `data/site.json` (nunca copiarlos a mano)
+**Técnico/autor:** Luis Guillermo Muñoz Vélez (autor por defecto en `src/content/config.ts`)
+**Cobertura:** Medellín y Valle de Aburrá (zonas en `src/data/zonas.ts`)
+**Servicios:** instalación, certificación, mantenimiento, RPO y revisión de redes de gas
+**Conversión:** WhatsApp únicamente (no hay formulario web)
 **Tono:** Experto, cercano, directo. Sin relleno corporativo. Sin superlativos vacíos.
 **Idioma:** Español colombiano. Nunca usar "vosotros". Tuteo o usted según contexto.
 
@@ -84,17 +84,10 @@ Para blog posts nuevos, páginas de servicio o cualquier contenido donde la keyw
 no sea obvia, ejecutar:
 
 ```python
-from google.oauth2 import service_account
-from googleapiclient.discovery import build
+# Autenticación (`service`) y PROPERTY: reutilizar el bloque "Credenciales" de
+# seo-gsc/SKILL.md — una sola fuente de verdad para el acceso a GSC de lujogas.com.co.
 from datetime import date, timedelta
 import json
-
-SA_FILE  = "/Users/bryanvillamil/Documents/comfort-design-443921-0b0d92bc2dc8.json"
-PROPERTY = "sc-domain:comfortdesign.com.co"
-SCOPES   = ["https://www.googleapis.com/auth/webmasters.readonly"]
-
-creds   = service_account.Credentials.from_service_account_file(SA_FILE, scopes=SCOPES)
-service = build("searchconsole", "v1", credentials=creds)
 
 TARGET = "[keyword objetivo]"
 terms  = TARGET.lower().split()
@@ -173,7 +166,7 @@ print(json.dumps({"target": TARGET, "related": related[:25]}, indent=2, ensure_a
 
 ```
 - Máximo 60 caracteres
-- Formato: [Keyword Principal] en Medellín | Comfort Design
+- Formato: [Keyword Principal] en Medellín | LujoGas
 - Incluir diferenciador si cabe: precio, medida, garantía
 ```
 
@@ -190,20 +183,20 @@ print(json.dumps({"target": TARGET, "related": related[:25]}, indent=2, ensure_a
 
 ### PASO 4 — Redacción
 
-**Voz de marca Comfort Design:**
+**Voz de marca LujoGas:**
 
 - Habla como un experto que conoce su oficio, no como un catálogo.
 - Usa oraciones cortas cuando quieras impacto. Usa oraciones más largas cuando
   estás explicando un proceso o argumento. Varía el ritmo.
 - Menciona Medellín y zonas específicas (El Poblado, Laureles, Envigado, Itagüí)
   cuando sea relevante para SEO local.
-- Usa datos concretos: "más de 300 proyectos entregados", "garantía de 2 años",
-  "entrega en 4 semanas". Nunca vagas afirmaciones.
+- Usa datos concretos y verificables (normas NTC 2505, número de certificaciones,
+  tiempos de visita) tomados del sitio o pedidos al usuario. Nunca vagas afirmaciones.
 - No uses: "en el corazón de", "nestled", "soluciones integrales", "de la más alta
   calidad", "nos enorgullece", "nos apasiona", "calidad premium", "a medida de tus
   necesidades", "transformamos espacios".
-- Sí puedes usar: precios aproximados, comparaciones directas, tiempos reales,
-  nombres de materiales específicos (MDF, melamina, madera sólida, cuarzo, mármol).
+- Sí puedes usar: rangos de precio reales, comparaciones directas, tiempos reales,
+  materiales y normas específicas (tubería PEALPE, cobre, NTC 2505).
 
 ---
 
@@ -248,15 +241,23 @@ Si algún check falla → reescribir esa sección antes de entregar.
 ```markdown
 ---
 title: "[título]"
-description: "[meta description 140-160 chars]"
-pubDate: [fecha actual]
-author: "Comfort Design"
-image: { url: "/images/blog/[slug].jpg", alt: "[descripción imagen]" }
+description: "[125-165 chars]"
+publishDate: YYYY-MM-DD
+readingTime: [minutos]
+category: seguridad | certificacion | instalacion | mantenimiento | precios
 tags: ["[tag1]", "[tag2]"]
+intent: informacional | educativa | comercial | transaccional | emergencia
+funnel: tofu | mofu | bofu | retencion
+pillar: 1-4
+faq:
+  - q: "[pregunta real de GSC]"
+    a: "[respuesta]"
 ---
 
 [contenido]
 ```
+
+El esquema autoritativo es `src/content/config.ts` (title ≤ 60 chars); si cambia, manda él.
 
 #### Para páginas de servicio/ciudad → bloque de texto con estructura clara:
 
@@ -314,6 +315,6 @@ seo-content            →  seo-writer mejorar        : auditoría → contenido
 - Entregar texto sin pasar el anti-AI pass
 - Inventar datos, precios o testimonios (pedir al usuario si no los tienes)
 - Usar el tono de un chatbot ("¡Claro! Con gusto te ayudo...")
-- Generar contenido genérico que sirva para cualquier empresa de muebles del mundo
+- Generar contenido genérico que sirva para cualquier empresa de gas del país
 - Omitir la geo-referencia cuando el contenido es local
 - Entregar texto sin estructura de headings clara

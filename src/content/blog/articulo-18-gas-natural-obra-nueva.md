@@ -124,7 +124,7 @@ Los requisitos normativos detrás de cada punto están en [la guía de la NTC 25
 | Instalación residencial 1-2 puntos | $850.000 | Materiales certificados + certificado |
 | Instalación residencial 3+ puntos | $1.200.000 | Mayor diámetro, múltiples válvulas |
 | Instalación comercial | $2.500.000 | Alto caudal, locales del proyecto |
-| Certificación por unidad | Desde $120.000 | 24-48 h hábiles |
+| Certificación por unidad | Desde $150.000 | 24-48 h hábiles |
 
 En proyectos de varias unidades el valor por unidad baja: el trabajo con ductos previstos es más eficiente y la certificación se organiza por lotes. Cotizamos sobre planos. Desglose de factores de precio en [cuánto cuesta instalar gas en una casa en Medellín](/blog/cuanto-cuesta-instalar-gas-casa-medellin).
 

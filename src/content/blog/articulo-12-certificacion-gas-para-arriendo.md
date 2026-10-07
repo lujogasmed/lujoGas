@@ -23,7 +23,7 @@ faq:
   - q: "¿Quién paga la certificación de gas: el arrendador o el arrendatario?"
     a: "La certificación previa a la entrega del inmueble corresponde al arrendador, porque debe entregar la instalación en condiciones seguras y conformes con la NTC 2505. Durante el contrato, la RPO de los 5 años suele asumirla el propietario, salvo que el contrato pacte algo distinto por escrito."
   - q: "¿Cuánto cuesta certificar el gas para arrendar en Medellín?"
-    a: "En LujoGas la visita diagnóstica cuesta $50.000, descontables si contratas el servicio. La certificación ICONTEC va desde $120.000 con entrega en 24-48 horas. Si la instalación necesita correcciones para cumplir la NTC 2505, el paquete de certificación más corrección de fallas va desde $200.000."
+    a: "En LujoGas la visita diagnóstica cuesta $50.000, descontables si contratas el servicio. La certificación ICONTEC va desde $150.000 con entrega en 24-48 horas. Si la instalación necesita correcciones para cumplir la NTC 2505, el paquete de certificación más corrección de fallas va desde $200.000."
   - q: "¿Qué pasa si arriendo un inmueble sin certificado de gas vigente?"
     a: "El nuevo arrendatario puede tener problemas para activar el servicio con EPM, y en caso de fuga o siniestro la aseguradora puede negar la cobertura por incumplir la RPO. También te expones a la suspensión del servicio y a responsabilidad civil como propietario si ocurre un accidente."
   - q: "¿Con cuánta anticipación debo hacer la certificación antes de entregar el inmueble?"
@@ -99,7 +99,7 @@ Precios de LujoGas para Medellín y el Valle de Aburrá:
 | Servicio | Precio | Tiempo de entrega |
 |---|---|---|
 | Visita diagnóstica | $50.000 (descontable si contratas el servicio) | Se agenda en 24-48 horas |
-| Certificación ICONTEC (instalación conforme) | Desde $120.000 | Certificado en 24-48 horas |
+| Certificación ICONTEC (instalación conforme) | Desde $150.000 | Certificado en 24-48 horas |
 | Certificación + corrección de fallas | Desde $200.000 | 2 a 5 días según las correcciones |
 
 El precio final depende de la cantidad de puntos de consumo (estufa, calentador, horno, secadora) y del estado real de la red, por eso siempre empezamos con la visita diagnóstica: sin ella, cualquier precio cerrado es adivinanza.
@@ -131,7 +131,7 @@ La certificación previa a la entrega corresponde al arrendador, porque debe ent
 
 ### ¿Cuánto cuesta certificar el gas para arrendar en Medellín?
 
-La visita diagnóstica cuesta $50.000, descontables si contratas el servicio. La certificación ICONTEC va desde $120.000 con entrega en 24-48 horas. Si la instalación necesita correcciones para cumplir la NTC 2505, el paquete de certificación más corrección de fallas va desde $200.000.
+La visita diagnóstica cuesta $50.000, descontables si contratas el servicio. La certificación ICONTEC va desde $150.000 con entrega en 24-48 horas. Si la instalación necesita correcciones para cumplir la NTC 2505, el paquete de certificación más corrección de fallas va desde $200.000.
 
 ### ¿Qué pasa si arriendo un inmueble sin certificado de gas vigente?
 

@@ -26,7 +26,7 @@ faq:
   - q: "¿El calentador a gas necesita ducto de evacuación?"
     a: "Depende del tipo. Los tipo A (sin ducto) están limitados a potencias bajas y recintos con ventilación amplia. Los tipo B requieren obligatoriamente ducto de evacuación al exterior con la sección, altura y remate que define la norma. Los tipo C (estancos) llevan un conducto coaxial sellado que hace entrada de aire y salida de gases al exterior."
   - q: "¿Instalar un calentador exige nueva certificación de gas?"
-    a: "Sí. Agregar un calentador modifica el caudal de la red y añade un punto de consumo, así que la instalación debe certificarse nuevamente bajo NTC 2505. La certificación ICONTEC parte desde $120.000 con entrega en 24 a 48 horas hábiles. Sin ese documento, la ampliación queda irregular ante EPM."
+    a: "Sí. Agregar un calentador modifica el caudal de la red y añade un punto de consumo, así que la instalación debe certificarse nuevamente bajo NTC 2505. La certificación ICONTEC parte desde $150.000 con entrega en 24 a 48 horas hábiles. Sin ese documento, la ampliación queda irregular ante EPM."
   - q: "¿Por qué mi calentador se apaga solo o no enciende?"
     a: "Las causas más frecuentes son termocupla defectuosa, presión de gas insuficiente, obstrucción del ducto de evacuación, ventilación deficiente del recinto o baterías agotadas en modelos de encendido electrónico. Algunas se resuelven en minutos y otras indican un problema de la red. El diagnóstico detallado está en nuestro artículo sobre el calentador que no enciende."
 ---
@@ -129,7 +129,7 @@ Por eso la visita diagnóstica va antes de comprar el equipo, no después. El pr
 | Visita diagnóstica | $50.000 (descontable) | Define tipo, ubicación y requisitos |
 | Instalación con punto de gas existente | Cotización en visita | Conexión, pruebas y ajuste |
 | Instalación con punto de gas nuevo y ducto | Desde $850.000 | Incluye tubería certificada y certificado |
-| Certificación ICONTEC tras la ampliación | Desde $120.000 | 24-48 h hábiles |
+| Certificación ICONTEC tras la ampliación | Desde $150.000 | 24-48 h hábiles |
 | Mantenimiento preventivo del calentador | Desde $80.000 | Recomendado anual |
 | Mantenimiento correctivo | Desde $150.000 | Termocupla, presión, ventilación |
 

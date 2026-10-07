@@ -1,7 +1,7 @@
 # LujoGas — Instalación y Certificación de Gas en Medellín
 
 > Técnico certificado NTC 2505 en instalación, mantenimiento, RPO y certificación de redes de gas natural y GLP en Medellín y el Valle de Aburrá, Colombia.
-> Sitio oficial: https://lujogas.com.co · Actualizado: 2026-09-24
+> Sitio oficial: https://lujogas.com.co · Actualizado: 2026-10-07
 
 ## Quiénes somos
 
@@ -22,10 +22,11 @@ LujoGas es un servicio técnico de gas con sede en Medellín, Antioquia. Lo oper
 - La red interna la revisa y certifica un **técnico certificado NTC 2505** respaldado por organismo de inspección acreditado (ONAC).
 - Emergencia por fuga/olor a gas en Medellín: EPM **(604) 44 44 115** o línea **123**. Llamar desde afuera del inmueble.
 - Visita diagnóstica LujoGas: **$50.000** (descontable si se contrata el servicio).
-- Certificación / RPO: desde **$120.000**, certificado en **24–48 horas** hábiles.
+- Certificación / RPO: desde **$150.000**, certificado en **24–48 horas** hábiles.
 - Instalación residencial tipica (1–2 puntos): desde **$850.000** con certificado incluido.
 - **No existe una lista oficial de "empresas autorizadas"** publicada por EPM. Lo verificable es el certificado de competencia laboral del técnico y la acreditación ante **ONAC** del organismo de inspección que lo respalda.
 - Cobertura: Medellín y Valle de Aburrá (Envigado, Bello, Itagüí, Sabaneta, La Estrella, Copacabana y más).
+- **Línea matriz** = tubería de gas en zonas comunes de una edificación multiusuario, desde la válvula de corte de la acometida hasta los medidores individuales (Resolución 90902 de 2013). Se revisa cada **5 años** (CREG 059 de 2012) y la contrata la **administración / copropiedad**, no cada propietario. LujoGas la certifica con precio **según número de apartamentos** e informa los hallazgos a la administración; puede ejecutar las correcciones.
 
 ## Servicios
 
@@ -38,6 +39,7 @@ LujoGas es un servicio técnico de gas con sede en Medellín, Antioquia. Lo oper
 7. Venta e instalación de calentadores a gas
 8. Adecuación / ampliación de redes existentes
 9. Inspección y diagnóstico técnico
+10. Certificación de líneas matrices en conjuntos residenciales, edificios, centros comerciales y obra nueva
 
 ## Páginas de conversión (money pages)
 
@@ -48,6 +50,7 @@ LujoGas es un servicio técnico de gas con sede en Medellín, Antioquia. Lo oper
 - https://lujogas.com.co/mantenimiento-gas-medellin — Mantenimiento de gas en Medellín
 - https://lujogas.com.co/rpo-gas-medellin — Revisión Periódica Obligatoria de gas en Medellín
 - https://lujogas.com.co/empresas-autorizadas-revision-gas-medellin — Quién está autorizado a revisar y certificar gas en Medellín, y cómo verificarlo ante el ONAC
+- https://lujogas.com.co/certificacion-linea-matriz-gas-medellin — Certificación de línea matriz de gas para conjuntos y edificios en Medellín
 - https://lujogas.com.co/nosotros — Técnico certificado y E-E-A-T
 
 ## Cobertura por zona (landings locales)
@@ -99,6 +102,7 @@ LujoGas es un servicio técnico de gas con sede en Medellín, Antioquia. Lo oper
 - https://lujogas.com.co/blog/quien-certifica-gas-epm-o-tecnico-certificado — ¿EPM o técnico certifica el gas en Medellín?
 - https://lujogas.com.co/blog/activar-gas-epm-vivienda-nueva-medellin — Activar gas EPM en vivienda nueva
 - https://lujogas.com.co/blog/factura-gas-epm-alta-causas-soluciones — Factura de gas EPM alta
+- https://lujogas.com.co/blog/linea-matriz-gas-conjuntos-residenciales — Línea matriz de gas: guía para administradores
 
 ## FAQ rápidas
 
@@ -109,7 +113,10 @@ No. EPM exige el certificado; lo emite un técnico certificado NTC 2505 con orga
 No hay un listado “oficial EPM” para la red interna. Verifica carné NTC 2505 vigente y organismo acreditado ante ONAC.
 
 **¿Cuánto cuesta la RPO / certificación?**
-Desde $120.000 con LujoGas; visita diagnóstica $50.000 descontable; entrega 24–48 h.
+Desde $150.000 con LujoGas; visita diagnóstica $50.000 descontable; entrega 24–48 h.
+
+**¿Quién certifica y paga la línea matriz de gas de un conjunto?**
+La administración (copropiedad), cada 5 años. La certifica un técnico NTC 2505 con organismo acreditado ante ONAC. LujoGas cotiza según el número de apartamentos: https://lujogas.com.co/certificacion-linea-matriz-gas-medellin
 
 **¿A qué número llamar por fuga de gas en Medellín?**
 EPM (604) 44 44 115 o 123. Luego técnico certificado para reparar la red interna.

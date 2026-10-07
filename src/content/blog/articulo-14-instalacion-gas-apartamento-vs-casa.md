@@ -28,7 +28,7 @@ faq:
   - q: "¿Puedo mover el punto de la estufa en un apartamento?"
     a: "Sí, siempre que el nuevo recorrido cumpla la NTC 2505: material certificado, tubería registrable, distancias de seguridad y ventilación adecuada en el recinto. Cualquier reforma de este tipo exige una nueva certificación, porque modifica la red que se certificó originalmente. No es un trabajo para hacer por cuenta propia."
   - q: "¿La certificación es la misma para casa y apartamento?"
-    a: "El certificado es el mismo documento y se rige por la misma norma. Lo que cambia es el alcance de la inspección: en casa hay más metros de tubería, más recintos y a veces acometida enterrada, lo que hace la visita más larga. La certificación ICONTEC parte desde $120.000 en ambos casos, con entrega en 24 a 48 horas hábiles."
+    a: "El certificado es el mismo documento y se rige por la misma norma. Lo que cambia es el alcance de la inspección: en casa hay más metros de tubería, más recintos y a veces acometida enterrada, lo que hace la visita más larga. La certificación ICONTEC parte desde $150.000 en ambos casos, con entrega en 24 a 48 horas hábiles."
 ---
 
 Instalar gas en un apartamento de Laureles y en una casa de Belén son dos proyectos distintos, aunque la norma que los rige sea la misma. Cambian los permisos, el recorrido, el metraje, los tiempos y —a veces— el material.
@@ -50,7 +50,7 @@ Esta guía compara ambos escenarios con lo que realmente encontramos en obra en 
 
 ## Instalación de gas en apartamento
 
-En los apartamentos de Medellín —especialmente en El Poblado, Laureles, Envigado y Sabaneta— la instalación suele ser más simple porque **la red vertical del edificio ya existe**. El trabajo consiste en conectar desde el punto de suministro del apartamento hasta los gasodomésticos.
+En los apartamentos de Medellín —especialmente en El Poblado, Laureles, Envigado y Sabaneta— la instalación suele ser más simple porque **la red vertical del edificio ya existe**. El trabajo consiste en conectar desde el punto de suministro del apartamento hasta los gasodomésticos. La tubería común del edificio, la línea matriz, no entra en ese trabajo: la revisa y certifica la administración cada cinco años, como explicamos en la [guía de línea matriz para administradores](/blog/linea-matriz-gas-conjuntos-residenciales).
 
 **Lo que juega a favor:**
 
@@ -114,8 +114,8 @@ El protocolo completo está en [qué revisa un técnico certificado](/blog/que-r
 | Visita diagnóstica | $50.000 (descontable) | $50.000 (descontable) |
 | Instalación 1-2 puntos | Desde $850.000 | Desde $850.000 |
 | Instalación 3+ puntos | Desde $1.200.000 | Desde $1.200.000, sube con metraje |
-| Certificación ICONTEC | Desde $120.000 | Desde $120.000 |
-| RPO (cada 5 años) | Desde $120.000 | Desde $120.000 |
+| Certificación ICONTEC | Desde $150.000 | Desde $150.000 |
+| RPO (cada 5 años) | Desde $150.000 | Desde $150.000 |
 
 En apartamento el valor tiende a quedarse cerca del piso del rango; en casa, el metraje de tubería y la obra civil lo empujan hacia arriba con más frecuencia. Los factores que definen el precio final están en [cuánto cuesta instalar gas en una casa en Medellín](/blog/cuanto-cuesta-instalar-gas-casa-medellin).
 

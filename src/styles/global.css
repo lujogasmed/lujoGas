@@ -224,11 +224,11 @@
   text-decoration-color: theme('colors.tertiary / 60%');
 }
 .prose-custom blockquote {
-  border-left: 3px solid theme('colors.tertiary');
+  border: 1px solid theme('colors.neutral / 20%');
   margin: 1.5rem 0;
-  padding: 0.75rem 1.25rem;
+  padding: 1rem 1.25rem;
   background: theme('colors.surface');
-  border-radius: 0 0.5rem 0.5rem 0;
+  border-radius: 0.75rem;
   color: theme('colors.primary / 75%');
   font-style: italic;
 }

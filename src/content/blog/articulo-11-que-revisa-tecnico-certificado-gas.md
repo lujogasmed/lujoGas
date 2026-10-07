@@ -142,9 +142,9 @@ Los criterios completos para elegir están en [cómo elegir un técnico de gas c
 | Servicio | Precio desde | Entrega |
 |---|---|---|
 | Visita diagnóstica (incluye informe) | $50.000 (descontable) | Inmediata |
-| Certificación ICONTEC | $120.000 | 24-48 h hábiles |
+| Certificación ICONTEC | $150.000 | 24-48 h hábiles |
 | Corrección + certificación | $200.000 | Según hallazgos |
-| Revisión Periódica Obligatoria | $120.000 | 24-48 h hábiles |
+| Revisión Periódica Obligatoria | $150.000 | 24-48 h hábiles |
 
 Atendemos Medellín, Envigado, Bello, Itagüí, Sabaneta, La Estrella, Copacabana y todo el Valle de Aburrá. Agenda desde [certificación de gas en Medellín](/certificacion-gas-medellin) o revisa el servicio de [mantenimiento de gas](/mantenimiento-gas-medellin) si lo que buscas es la revisión anual preventiva.
 

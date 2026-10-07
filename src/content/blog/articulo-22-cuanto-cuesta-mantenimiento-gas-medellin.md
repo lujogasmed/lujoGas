@@ -19,7 +19,7 @@ pillar: 4
 featured: false
 faq:
   - q: "¿Cuánto vale el mantenimiento de gas en Medellín?"
-    a: "El mantenimiento preventivo parte desde $80.000, la detección y reparación de fugas desde $100.000, la RPO desde $120.000 y el mantenimiento correctivo desde $150.000. La visita diagnóstica cuesta $50.000 y se descuenta del total si contratas el servicio. El precio final depende del estado de la red y los materiales necesarios."
+    a: "El mantenimiento preventivo parte desde $80.000, la detección y reparación de fugas desde $100.000, y la RPO y el mantenimiento correctivo desde $150.000 cada uno. La visita diagnóstica cuesta $50.000 y se descuenta del total si contratas el servicio. El precio final depende del estado de la red y los materiales necesarios."
   - q: "¿Cada cuánto se debe hacer mantenimiento a la instalación de gas?"
     a: "El mantenimiento preventivo se recomienda una vez al año, especialmente para calentadores y estufas. Además, la Resolución 90902 de 2013 exige la Revisión Periódica Obligatoria (RPO) cada 5 años con un técnico certificado NTC 2505. Cumplir ambas te evita reparaciones costosas y mantiene válida la cobertura del seguro del hogar."
   - q: "¿Qué incluye el mantenimiento preventivo de gas?"
@@ -27,7 +27,7 @@ faq:
   - q: "¿Qué pasa si no hago mantenimiento a mi red de gas?"
     a: "Aumenta el riesgo de fugas, intoxicación por monóxido de carbono y daños en gasodomésticos. Una llama amarilla o un calentador ineficiente consume más gas y sube tu factura de EPM. Además, si la RPO está vencida, la distribuidora puede suspender el servicio y el seguro del hogar puede negar cobertura ante un siniestro."
   - q: "¿El mantenimiento incluye el certificado de gas?"
-    a: "El mantenimiento preventivo y el correctivo no incluyen certificado. Si necesitas certificación ICONTEC o renovar la RPO, ese es un servicio aparte que parte desde $120.000 con entrega en 24-48 horas. Si el técnico encuentra fallas durante la revisión, puede corregirlas y certificar en la misma visita desde $200.000."
+    a: "El mantenimiento preventivo y el correctivo no incluyen certificado. Si necesitas certificación ICONTEC o renovar la RPO, ese es un servicio aparte que parte desde $150.000 con entrega en 24-48 horas. Si el técnico encuentra fallas durante la revisión, puede corregirlas y certificar en la misma visita desde $200.000."
 ---
 
 ## Cuánto cuesta el mantenimiento de gas en Medellín: precios 2026
@@ -41,7 +41,7 @@ Tabla resumen de precios de LujoGas:
 | Visita diagnóstica | $50.000 (descontable) | Cuando sospechas un problema |
 | Mantenimiento preventivo | $80.000 | 1 vez al año |
 | Detección y reparación de fugas | $100.000 | Inmediato ante síntomas |
-| Revisión Periódica Obligatoria (RPO) | $120.000 | Cada 5 años (obligatoria) |
+| Revisión Periódica Obligatoria (RPO) | $150.000 | Cada 5 años (obligatoria) |
 | Mantenimiento correctivo | $150.000 | Cuando hay falla concreta |
 
 Los precios finales dependen del estado de la red, la cantidad de puntos de gas y los materiales necesarios. Los materiales y repuestos se cotizan por separado, siempre con sello de certificación NTC.
@@ -63,9 +63,9 @@ Recomendado una vez al año. En edificios antiguos de Laureles o Belén, donde l
 
 Si sientes olor a gas, la factura de EPM subió sin explicación o escuchas silbidos cerca de la tubería, necesitas este servicio de inmediato. Incluye localización de la fuga con detector electrónico, reparación y prueba de hermeticidad posterior. Respuesta rápida en toda Medellín y el Valle de Aburrá.
 
-**Importante**: si el olor a gas es fuerte, no esperes la visita técnica. Cierra la válvula de paso, abre puertas y ventanas, no acciones interruptores y llama a la línea de emergencias de EPM: **(604) 44 44 115** o al 123. Tenemos una guía completa de [qué hacer si huele a gas](/blog/que-hacer-si-huele-gas-emergencia).
+**Importante**: si el olor a gas es fuerte, no esperes la visita técnica. Cierra la válvula de paso, abre puertas y ventanas, no acciones interruptores y llama a la línea de emergencias de EPM: **(604) 44 44 115** o al 123. Tenemos una guía completa de [qué hacer si huele a gas](/blog/que-hacer-si-huele-gas-casa-emergencia).
 
-## Revisión Periódica Obligatoria (RPO): desde $120.000
+## Revisión Periódica Obligatoria (RPO): desde $150.000
 
 La RPO no es opcional: la **Resolución 90902 de 2013 del Ministerio de Minas y Energía** exige revisar toda instalación de gas cada 5 años con un técnico certificado. Incluye inspección completa según la norma NTC 2505, pruebas de hermeticidad, verificación de ventilación, revisión de gasodomésticos y emisión del certificado.
 
@@ -109,7 +109,7 @@ La visita diagnóstica cuesta $50.000 y ese valor se descuenta si contratas el s
 
 ### ¿Cuánto vale el mantenimiento de gas en Medellín?
 
-El preventivo parte desde $80.000, la detección y reparación de fugas desde $100.000, la RPO desde $120.000 y el correctivo desde $150.000. La visita diagnóstica cuesta $50.000, descontable del total si contratas el servicio.
+El preventivo parte desde $80.000, la detección y reparación de fugas desde $100.000, y la RPO y el correctivo desde $150.000 cada uno. La visita diagnóstica cuesta $50.000, descontable del total si contratas el servicio.
 
 ### ¿Cada cuánto se debe hacer mantenimiento a la instalación de gas?
 
@@ -125,4 +125,4 @@ Aumenta el riesgo de fugas e intoxicación por monóxido de carbono, los gasodom
 
 ### ¿El mantenimiento incluye el certificado de gas?
 
-No. La certificación ICONTEC o renovación de RPO es un servicio aparte desde $120.000 con entrega en 24-48 horas. Si hay fallas, el técnico puede corregirlas y certificar en la misma visita desde $200.000.
+No. La certificación ICONTEC o renovación de RPO es un servicio aparte desde $150.000 con entrega en 24-48 horas. Si hay fallas, el técnico puede corregirlas y certificar en la misma visita desde $200.000.

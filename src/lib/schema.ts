@@ -44,6 +44,7 @@ export const localBusinessSchema = {
     'Instalación de gas Medellín',
     'Certificación de gas NTC 2505',
     'Revisión Periódica Obligatoria RPO',
+    'Certificación de línea matriz de gas',
     'Detección de fugas de gas',
     'ICONTEC',
     'EPM gas natural',
@@ -126,6 +127,15 @@ export const localBusinessSchema = {
           '@type': 'Service',
           name: 'Venta e instalación de calentadores de agua a gas',
           description: 'Suministro e instalación de calentadores de paso y almacenamiento a gas natural y GLP.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Certificación de línea matriz de gas en conjuntos residenciales',
+          description: 'Revisión periódica y certificación de la línea matriz de gas en conjuntos, edificios y centros comerciales, con informe de hallazgos a la administración.',
+          url: 'https://lujogas.com.co/certificacion-linea-matriz-gas-medellin',
         },
       },
     ],

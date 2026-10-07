@@ -129,7 +129,7 @@ Qué revisa exactamente el técnico está en [qué revisa un técnico certificad
 | Servicio | Precio desde |
 |---|---|
 | Visita diagnóstica (con informe de materiales) | $50.000 (descontable) |
-| Certificación ICONTEC | $120.000 |
+| Certificación ICONTEC | $150.000 |
 | Corrección de hallazgos + certificación | $200.000 |
 | Mantenimiento preventivo | $80.000 |
 | Instalación residencial nueva con materiales certificados | $850.000 |

@@ -100,12 +100,12 @@ Es más rápida, pero **no menos exigente en norma**. Una conexión de cilindro 
 
 - **Zona urbana de Medellín (El Poblado, Laureles, Belén, Robledo) y municipios con red**: gas natural, casi sin excepción. El ahorro mensual y la comodidad del suministro continuo lo justifican. Si estás en el sur del valle, mira nuestro servicio de [instalación de gas en Envigado](/instalacion-gas-envigado).
 - **Corregimientos y veredas sin red (Santa Elena, San Cristóbal, partes altas de Bello o Copacabana)**: GLP con tanque estacionario si el consumo es alto, o cilindros si es solo cocción.
-- **Negocios de comida con alta demanda térmica**: si hay red, gas natural comercial; si no, tanque estacionario de GLP dimensionado por un técnico. Antes de decidir, revisa las diferencias en nuestro artículo sobre [gas residencial vs comercial](/blog/instalacion-gas-residencial-vs-comercial-medellin).
+- **Negocios de comida con alta demanda térmica**: si hay red, gas natural comercial; si no, tanque estacionario de GLP dimensionado por un técnico. Antes de decidir, revisa las diferencias en nuestro artículo sobre [gas residencial vs comercial](/blog/instalacion-gas-residencial-comercial-medellin).
 - **Vivienda temporal o arriendo corto**: GLP por cilindro evita la inversión de conexión.
 
 ## Cómo te ayudamos en LujoGas
 
-En LujoGas trabajamos **ambos sistemas** en Medellín y todo el Valle de Aburrá: diseñamos e instalamos redes de gas natural y GLP, convertimos gasodomésticos entre gases, y certificamos instalaciones bajo NTC 2505 con técnico certificado (Luis Guillermo Muñoz Vélez). La visita diagnóstica cuesta $50.000 y **se descuenta si contratas el servicio**; la certificación ICONTEC va desde $120.000 con entrega en 24–48 horas.
+En LujoGas trabajamos **ambos sistemas** en Medellín y todo el Valle de Aburrá: diseñamos e instalamos redes de gas natural y GLP, convertimos gasodomésticos entre gases, y certificamos instalaciones bajo NTC 2505 con técnico certificado (Luis Guillermo Muñoz Vélez). La visita diagnóstica cuesta $50.000 y **se descuenta si contratas el servicio**; la certificación ICONTEC va desde $150.000 con entrega en 24–48 horas.
 
 ¿No sabes qué le conviene a tu casa o negocio? Escríbenos por WhatsApp, cuéntanos tu barrio y tu consumo, y te asesoramos sin sesgo. Conoce todos nuestros [servicios de gas en Medellín](/servicios).
 

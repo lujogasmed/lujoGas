@@ -18,13 +18,14 @@ import CTASection from '../components/organisms/CTASection.astro';
 import EyebrowLabel from '../components/atoms/EyebrowLabel.astro';
 import { WHATSAPP_NUMBER } from '../lib/constants';
 
-const canonical = 'https://lujogas.com.co/empresas-autorizadas-revision-gas-medellin';
+const canonical =
+  'https://lujogas.com.co/empresas-autorizadas-revision-gas-medellin';
 const pageTitle = 'Empresas Autorizadas Revisión Gas Medellín | LujoGas';
 const pageDesc =
   'Quién está autorizado para revisar y certificar gas en Medellín, cómo verificarlo ante el ONAC y qué documento exigir. Guía de técnico certificado NTC 2505.';
 
 const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-  'Hola LujoGas, quiero verificar la revisión de gas de mi inmueble en Medellín.'
+  'Hola LujoGas, quiero verificar la revisión de gas de mi inmueble en Medellín.',
 )}`;
 
 const pasosVerificacion = [
@@ -78,7 +79,7 @@ const faq = [
   },
   {
     q: '¿Cuánto cuesta la revisión periódica obligatoria en Medellín?',
-    a: 'En LujoGas la revisión con certificación parte de $120.000, y la visita diagnóstica previa cuesta $50.000, descontable si contratas el servicio. El valor final depende de los hallazgos que haya que corregir, que se presupuestan aparte y siempre antes de intervenir.',
+    a: 'En LujoGas la revisión con certificación parte de $150.000, y la visita diagnóstica previa cuesta $50.000, descontable si contratas el servicio. El valor final depende de los hallazgos que haya que corregir, que se presupuestan aparte y siempre antes de intervenir.',
   },
   {
     q: '¿Cada cuánto hay que hacer la revisión?',
@@ -104,7 +105,7 @@ const serviceSchema = {
     '@type': 'Offer',
     priceSpecification: {
       '@type': 'PriceSpecification',
-      price: '120000',
+      price: '150000',
       priceCurrency: 'COP',
       description: 'Revisión con certificación, desde',
     },
@@ -115,9 +116,24 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://lujogas.com.co/' },
-    { '@type': 'ListItem', position: 2, name: 'Servicios', item: 'https://lujogas.com.co/servicios' },
-    { '@type': 'ListItem', position: 3, name: 'Empresas autorizadas para revisión de gas en Medellín', item: canonical },
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Inicio',
+      item: 'https://lujogas.com.co/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Servicios',
+      item: 'https://lujogas.com.co/servicios',
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Empresas autorizadas para revisión de gas en Medellín',
+      item: canonical,
+    },
   ],
 };
 
@@ -148,20 +164,41 @@ const howToSchema = {
   <Header />
 
   <main>
-    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
-    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(serviceSchema)}
+    />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(breadcrumbSchema)}
+    />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
 
     <!-- ── Hero ───────────────────────────────────────────────────────── -->
-    <section class="relative overflow-hidden pt-[140px] pb-[80px]" style="background-color:#333333;" aria-labelledby="hero-heading">
+    <section
+      class="relative overflow-hidden pt-[140px] pb-[80px]"
+      style="background-color:#333333;"
+      aria-labelledby="hero-heading"
+    >
       <div class="pipes-bg" aria-hidden="true"></div>
       <div class="container-section relative z-10">
         <nav aria-label="Ruta de navegación" class="mb-6">
-          <ol class="flex items-center gap-2 text-[12px] text-neutral/50 font-mono tracking-wide">
-            <li><a href="/" class="hover:text-neutral/80 transition-colors">Inicio</a></li>
+          <ol
+            class="flex items-center gap-2 text-[12px] text-neutral/50 font-mono tracking-wide"
+          >
+            <li>
+              <a href="/" class="hover:text-neutral/80 transition-colors"
+                >Inicio</a
+              >
+            </li>
             <li aria-hidden="true" class="text-neutral/30">/</li>
-            <li><a href="/servicios" class="hover:text-neutral/80 transition-colors">Servicios</a></li>
+            <li>
+              <a
+                href="/servicios"
+                class="hover:text-neutral/80 transition-colors">Servicios</a
+              >
+            </li>
             <li aria-hidden="true" class="text-neutral/30">/</li>
             <li class="text-neutral/70">Empresas autorizadas</li>
           </ol>
@@ -170,7 +207,10 @@ const howToSchema = {
         <div class="max-w-[780px]">
           <div class="flex items-center gap-3 mb-5">
             <span class="block w-8 h-px" style="background:#F97316;"></span>
-            <span class="font-mono text-[11px] font-semibold tracking-[0.26em] uppercase" style="color:#F97316;">
+            <span
+              class="font-mono text-[11px] font-semibold tracking-[0.26em] uppercase"
+              style="color:#F97316;"
+            >
               Medellín · Valle de Aburrá · Cómo verificar
             </span>
           </div>
@@ -183,11 +223,15 @@ const howToSchema = {
             Empresas autorizadas para revisión de gas en Medellín
           </h1>
 
-          <p class="text-neutral/70 max-w-[62ch] mb-8" style="font-size:clamp(15px,1.3vw,17px); line-height:1.65;">
-            No existe una lista de empresas autorizadas publicada por EPM, y esa es la
-            primera cosa que conviene saber. Lo que se verifica es la credencial del
-            técnico y la acreditación del organismo que la respalda. Aquí está cómo
-            comprobarlo en cuatro pasos, antes de dejar entrar a nadie a tu instalación.
+          <p
+            class="text-neutral/70 max-w-[62ch] mb-8"
+            style="font-size:clamp(15px,1.3vw,17px); line-height:1.65;"
+          >
+            No existe una lista de empresas autorizadas publicada por EPM, y esa
+            es la primera cosa que conviene saber. Lo que se verifica es la
+            credencial del técnico y la acreditación del organismo que la
+            respalda. Aquí está cómo comprobarlo en cuatro pasos, antes de dejar
+            entrar a nadie a tu instalación.
           </p>
 
           <div class="flex flex-col sm:flex-row gap-3">
@@ -209,38 +253,64 @@ const howToSchema = {
           </div>
         </div>
       </div>
-      <div class="absolute bottom-0 left-0 right-0 h-16 pointer-events-none" style="background:linear-gradient(to bottom, transparent, #F8F7F4);" aria-hidden="true"></div>
+      <div
+        class="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
+        style="background:linear-gradient(to bottom, transparent, #F8F7F4);"
+        aria-hidden="true"
+      >
+      </div>
     </section>
 
     <!-- ── Cómo funciona la autorización ──────────────────────────────── -->
-    <section class="section-pad" style="background:#F8F7F4;" aria-labelledby="como-heading">
+    <section
+      class="section-pad"
+      style="background:#F8F7F4;"
+      aria-labelledby="como-heading"
+    >
       <div class="container-section">
         <div class="max-w-[760px] mx-auto">
           <EyebrowLabel text="El mecanismo real" />
-          <h2 id="como-heading" class="font-display font-semibold text-primary mt-3 mb-6 leading-tight" style="font-size:clamp(26px,3vw,40px);">
+          <h2
+            id="como-heading"
+            class="font-display font-semibold text-primary mt-3 mb-6 leading-tight"
+            style="font-size:clamp(26px,3vw,40px);"
+          >
             Quién está autorizado a revisar y certificar tu red de gas
           </h2>
-          <div class="flex flex-col gap-4 text-muted text-[15.5px] leading-relaxed">
+          <div
+            class="flex flex-col gap-4 text-muted text-[15.5px] leading-relaxed"
+          >
             <p>
-              La autorización no se otorga a una empresa como sello genérico. Se sostiene
-              sobre dos piezas que van juntas: un <strong class="text-primary">técnico con
-              certificado de competencia laboral vigente</strong> en instalaciones de gas
-              bajo la <a href="/blog/ntc-2505-norma-colombiana-instalaciones-gas" class="font-semibold underline underline-offset-2" style="color:#F97316;">NTC 2505</a>,
-              y un <strong class="text-primary">organismo de inspección acreditado ante el
-              ONAC</strong> que respalda esa certificación.
+              La autorización no se otorga a una empresa como sello genérico. Se
+              sostiene sobre dos piezas que van juntas: un <strong
+                class="text-primary"
+                >técnico con certificado de competencia laboral vigente</strong
+              > en instalaciones de gas bajo la <a
+                href="/blog/ntc-2505-norma-colombiana-instalaciones-gas"
+                class="font-semibold underline underline-offset-2"
+                style="color:#F97316;">NTC 2505</a
+              >, y un <strong class="text-primary"
+                >organismo de inspección acreditado ante el ONAC</strong
+              > que respalda esa certificación.
             </p>
             <p>
-              Por eso buscar "empresas autorizadas" no lleva a una lista oficial: el registro
-              que sí es público y verificable es el de organismos acreditados que mantiene el
-              ONAC. Una empresa puede tener nombre, fachada y factura, y aun así el documento
-              que expida no servir para nada si detrás no hay un técnico acreditado.
+              Por eso buscar "empresas autorizadas" no lleva a una lista
+              oficial: el registro que sí es público y verificable es el de
+              organismos acreditados que mantiene el ONAC. Una empresa puede
+              tener nombre, fachada y factura, y aun así el documento que expida
+              no servir para nada si detrás no hay un técnico acreditado.
             </p>
             <p>
               La otra mitad de la confusión viene de EPM. La distribuidora
-              <strong class="text-primary">exige</strong> el certificado vigente y notifica su
-              vencimiento en la factura, pero <strong class="text-primary">no revisa ni
-              certifica</strong> la red interna del inmueble. Lo explicamos en detalle en
-              <a href="/blog/quien-certifica-gas-epm-o-tecnico-certificado" class="font-semibold underline underline-offset-2" style="color:#F97316;">quién certifica el gas en Medellín</a>.
+              <strong class="text-primary">exige</strong> el certificado vigente y
+              notifica su vencimiento en la factura, pero <strong
+                class="text-primary">no revisa ni certifica</strong
+              > la red interna del inmueble. Lo explicamos en detalle en
+              <a
+                href="/blog/quien-certifica-gas-epm-o-tecnico-certificado"
+                class="font-semibold underline underline-offset-2"
+                style="color:#F97316;">quién certifica el gas en Medellín</a
+              >.
             </p>
           </div>
         </div>
@@ -252,44 +322,86 @@ const howToSchema = {
       <div class="container-section">
         <div class="text-center mb-12 reveal">
           <EyebrowLabel text="Cuatro pasos" />
-          <h2 id="pasos-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(28px,3.5vw,44px);">
+          <h2
+            id="pasos-heading"
+            class="font-display font-semibold text-primary mt-3 leading-tight"
+            style="font-size:clamp(28px,3.5vw,44px);"
+          >
             Cómo verificar antes de contratar
           </h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 reveal-stagger max-w-[900px] mx-auto">
-          {pasosVerificacion.map((p) => (
-            <div class="border border-neutral/15 rounded-2xl px-6 py-5 bg-surface">
-              <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg font-display font-bold text-[15px] mb-3" style="background:rgba(249,115,22,0.12); color:#F97316;">
-                {p.n}
-              </span>
-              <h3 class="font-display font-semibold text-primary text-[16.5px] mb-2 leading-snug">{p.title}</h3>
-              <p class="text-muted text-[14.5px] leading-relaxed">{p.desc}</p>
-            </div>
-          ))}
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-5 reveal-stagger max-w-[900px] mx-auto"
+        >
+          {
+            pasosVerificacion.map((p) => (
+              <div class="border border-neutral/15 rounded-2xl px-6 py-5 bg-surface">
+                <span
+                  class="inline-flex items-center justify-center w-8 h-8 rounded-lg font-display font-bold text-[15px] mb-3"
+                  style="background:rgba(249,115,22,0.12); color:#F97316;"
+                >
+                  {p.n}
+                </span>
+                <h3 class="font-display font-semibold text-primary text-[16.5px] mb-2 leading-snug">
+                  {p.title}
+                </h3>
+                <p class="text-muted text-[14.5px] leading-relaxed">{p.desc}</p>
+              </div>
+            ))
+          }
         </div>
       </div>
     </section>
 
     <!-- ── Señales de alerta ──────────────────────────────────────────── -->
-    <section class="section-pad" style="background:#F8F7F4;" aria-labelledby="alerta-heading">
+    <section
+      class="section-pad"
+      style="background:#F8F7F4;"
+      aria-labelledby="alerta-heading"
+    >
       <div class="container-section">
         <div class="max-w-[760px] mx-auto">
           <EyebrowLabel text="Señales de alerta" />
-          <h2 id="alerta-heading" class="font-display font-semibold text-primary mt-3 mb-6 leading-tight" style="font-size:clamp(26px,3vw,40px);">
+          <h2
+            id="alerta-heading"
+            class="font-display font-semibold text-primary mt-3 mb-6 leading-tight"
+            style="font-size:clamp(26px,3vw,40px);"
+          >
             Cuándo desconfiar de quien te ofrece la revisión
           </h2>
           <ul class="flex flex-col gap-3">
-            {senalesAlerta.map((s) => (
-              <li class="flex items-start gap-3 text-muted text-[15px] leading-relaxed">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" class="flex-shrink-0 mt-1" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><path d="M12 9v4m0 4h.01"/></svg>
-                <span>{s}</span>
-              </li>
-            ))}
+            {
+              senalesAlerta.map((s) => (
+                <li class="flex items-start gap-3 text-muted text-[15px] leading-relaxed">
+                  <svg
+                    width="17"
+                    height="17"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#F97316"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    class="flex-shrink-0 mt-1"
+                    aria-hidden="true"
+                  >
+                    <>
+                      <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" />
+                      <path d="M12 9v4m0 4h.01" />
+                    </>
+                  </svg>
+                  <span>{s}</span>
+                </li>
+              ))
+            }
           </ul>
           <p class="text-muted text-[15px] leading-relaxed mt-6">
-            Si ya te hicieron una revisión con alguna de estas señales, vale la pena
-            verificar el documento antes de darlo por válido. Revisamos el estado real de la
-            instalación en la <a href="/mantenimiento-gas-medellin" class="font-semibold underline underline-offset-2" style="color:#F97316;">visita de mantenimiento</a>
+            Si ya te hicieron una revisión con alguna de estas señales, vale la
+            pena verificar el documento antes de darlo por válido. Revisamos el
+            estado real de la instalación en la <a
+              href="/mantenimiento-gas-medellin"
+              class="font-semibold underline underline-offset-2"
+              style="color:#F97316;">visita de mantenimiento</a
+            >
             y, si cumple, expedimos el certificado que la distribuidora sí acepta.
           </p>
         </div>
@@ -297,35 +409,64 @@ const howToSchema = {
     </section>
 
     <!-- ── LujoGas ────────────────────────────────────────────────────── -->
-    <section class="section-pad bg-background" aria-labelledby="lujogas-heading">
+    <section
+      class="section-pad bg-background"
+      aria-labelledby="lujogas-heading"
+    >
       <div class="container-section">
         <div class="max-w-[760px] mx-auto">
           <EyebrowLabel text="Nuestra credencial" />
-          <h2 id="lujogas-heading" class="font-display font-semibold text-primary mt-3 mb-6 leading-tight" style="font-size:clamp(26px,3vw,40px);">
+          <h2
+            id="lujogas-heading"
+            class="font-display font-semibold text-primary mt-3 mb-6 leading-tight"
+            style="font-size:clamp(26px,3vw,40px);"
+          >
             Qué puedes verificar de LujoGas
           </h2>
-          <div class="flex flex-col gap-4 text-muted text-[15.5px] leading-relaxed">
+          <div
+            class="flex flex-col gap-4 text-muted text-[15.5px] leading-relaxed"
+          >
             <p>
-              El técnico es <strong class="text-primary">Luis Guillermo Muñoz Vélez</strong>,
-              certificado bajo NTC 2505, con más de 3.000 certificaciones realizadas en el
-              Valle de Aburrá. El certificado de competencia laboral está a su nombre y se
-              muestra cuando se pide, sin rodeos. Puedes conocer su trayectoria en
-              <a href="/nosotros" class="font-semibold underline underline-offset-2" style="color:#F97316;">la página del técnico</a>.
+              El técnico es <strong class="text-primary"
+                >Luis Guillermo Muñoz Vélez</strong
+              >, certificado bajo NTC 2505, con más de 3.000 certificaciones
+              realizadas en el Valle de Aburrá. El certificado de competencia
+              laboral está a su nombre y se muestra cuando se pide, sin rodeos.
+              Puedes conocer su trayectoria en
+              <a
+                href="/nosotros"
+                class="font-semibold underline underline-offset-2"
+                style="color:#F97316;">la página del técnico</a
+              >.
             </p>
             <p>
-              No hay intermediación: quien evalúa, ejecuta y firma es la misma persona. La
-              visita diagnóstica cuesta <strong class="text-primary">$50.000</strong>,
-              descontable si contratas el servicio; la
-              <a href="/rpo-gas-medellin" class="font-semibold underline underline-offset-2" style="color:#F97316;">revisión periódica obligatoria</a>
-              con certificación parte de <strong class="text-primary">$120.000</strong>, y el
-              documento se entrega en 24 a 48 horas hábiles una vez aprobada la revisión.
+              No hay intermediación: quien evalúa, ejecuta y firma es la misma
+              persona. La visita diagnóstica cuesta <strong class="text-primary"
+                >$50.000</strong
+              >, descontable si contratas el servicio; la
+              <a
+                href="/rpo-gas-medellin"
+                class="font-semibold underline underline-offset-2"
+                style="color:#F97316;">revisión periódica obligatoria</a
+              >
+              con certificación parte de <strong class="text-primary"
+                >$150.000</strong
+              >, y el documento se entrega en 24 a 48 horas hábiles una vez
+              aprobada la revisión.
             </p>
             <p>
               Atendemos Medellín y el Valle de Aburrá completo. Si necesitas
-              <a href="/instalacion-gas-medellin" class="font-semibold underline underline-offset-2" style="color:#F97316;">instalación</a>
+              <a
+                href="/instalacion-gas-medellin"
+                class="font-semibold underline underline-offset-2"
+                style="color:#F97316;">instalación</a
+              >
               o solo la
-              <a href="/certificacion-gas-medellin" class="font-semibold underline underline-offset-2" style="color:#F97316;">certificación</a>,
-              el proceso y los precios están detallados en cada página.
+              <a
+                href="/certificacion-gas-medellin"
+                class="font-semibold underline underline-offset-2"
+                style="color:#F97316;">certificación</a
+              >, el proceso y los precios están detallados en cada página.
             </p>
           </div>
         </div>
@@ -333,26 +474,47 @@ const howToSchema = {
     </section>
 
     <!-- ── FAQ ────────────────────────────────────────────────────────── -->
-    <section class="section-pad" style="background:#F8F7F4;" aria-labelledby="faq-heading">
+    <section
+      class="section-pad"
+      style="background:#F8F7F4;"
+      aria-labelledby="faq-heading"
+    >
       <div class="container-section">
         <div class="text-center mb-10 reveal">
           <EyebrowLabel text="Preguntas frecuentes" />
-          <h2 id="faq-heading" class="font-display font-semibold text-primary mt-3 leading-tight" style="font-size:clamp(28px,3.5vw,44px);">
+          <h2
+            id="faq-heading"
+            class="font-display font-semibold text-primary mt-3 leading-tight"
+            style="font-size:clamp(28px,3.5vw,44px);"
+          >
             Sobre la autorización para revisar gas
           </h2>
         </div>
         <div class="max-w-[720px] mx-auto flex flex-col gap-4 reveal-stagger">
-          {faq.map((f) => (
-            <details class="group border border-neutral/15 rounded-2xl overflow-hidden bg-background">
-              <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer font-display font-semibold text-primary text-[16px] leading-snug list-none">
-                {f.q}
-                <svg class="flex-shrink-0 transition-transform duration-200 group-open:rotate-180" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </summary>
-              <div class="px-6 pb-5 text-muted text-[14.5px] leading-relaxed border-t border-neutral/10 pt-4">
-                {f.a}
-              </div>
-            </details>
-          ))}
+          {
+            faq.map((f) => (
+              <details class="group border border-neutral/15 rounded-2xl overflow-hidden bg-background">
+                <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer font-display font-semibold text-primary text-[16px] leading-snug list-none">
+                  {f.q}
+                  <svg
+                    class="flex-shrink-0 transition-transform duration-200 group-open:rotate-180"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </summary>
+                <div class="px-6 pb-5 text-muted text-[14.5px] leading-relaxed border-t border-neutral/10 pt-4">
+                  {f.a}
+                </div>
+              </details>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -362,3 +524,11 @@ const howToSchema = {
 
   <Footer />
 </BaseLayout>
+
+<script is:inline>
+  const io = new IntersectionObserver(
+    (entries) => { entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); },
+    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => io.observe(el));
+</script>

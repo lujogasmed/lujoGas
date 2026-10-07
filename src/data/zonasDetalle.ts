@@ -271,7 +271,7 @@ export const zonasDetalle: Record<string, ZonaDetalle> = {
       },
       {
         q: '¿Cuánto cuesta la revisión en Robledo?',
-        a: 'La visita diagnóstica cuesta $50.000 y se descuenta si contratas el servicio. La certificación o RPO parte de $120.000 y el valor final depende de los hallazgos que haya que corregir. El presupuesto se entrega después de la visita, con el detalle de lo que exige la norma, antes de intervenir nada.',
+        a: 'La visita diagnóstica cuesta $50.000 y se descuenta si contratas el servicio. La certificación o RPO parte de $150.000 y el valor final depende de los hallazgos que haya que corregir. El presupuesto se entrega después de la visita, con el detalle de lo que exige la norma, antes de intervenir nada.',
       },
     ],
   },

@@ -10,17 +10,24 @@ import { getCollection } from 'astro:content';
 import { WHATSAPP_URL } from '../../lib/constants';
 
 const allPosts = await getCollection('blog');
-const articles = allPosts.filter(p => p.data.pillar === 2).sort((a, b) => a.data.publishDate.getTime() - b.data.publishDate.getTime());
+const articles = allPosts
+  .filter((p) => p.data.pillar === 2)
+  .sort((a, b) => a.data.publishDate.getTime() - b.data.publishDate.getTime());
 
 const pillarSchema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: 'Guía de Certificación de Gas ICONTEC en Medellín',
-  description: 'Todo sobre la certificación ICONTEC de gas en Medellín: qué es, cómo obtenerla, costos y requisitos. Guía de un técnico certificado NTC 2505.',
+  description:
+    'Todo sobre la certificación ICONTEC de gas en Medellín: qué es, cómo obtenerla, costos y requisitos. Guía de un técnico certificado NTC 2505.',
   url: 'https://lujogas.com.co/blog/certificacion-gas-icontec-medellin',
   inLanguage: 'es-CO',
   author: { '@type': 'Person', name: 'Luis Guillermo Muñoz Vélez' },
-  publisher: { '@type': 'Organization', name: 'LujoGas', url: 'https://lujogas.com.co' },
+  publisher: {
+    '@type': 'Organization',
+    name: 'LujoGas',
+    url: 'https://lujogas.com.co',
+  },
   mainEntity: {
     '@type': 'ItemList',
     itemListElement: articles.map((a, i) => ({
@@ -41,7 +48,7 @@ const faq = [
   },
   {
     q: '¿Cuánto cuesta certificar el gas en Medellín?',
-    a: 'En LujoGas la certificación parte de $120.000 y la visita diagnóstica previa cuesta $50.000, descontable si contratas el servicio. El valor final depende de si la instalación pasa la revisión o requiere correcciones, que se presupuestan aparte y siempre antes de intervenir.',
+    a: 'En LujoGas la certificación parte de $150.000 y la visita diagnóstica previa cuesta $50.000, descontable si contratas el servicio. El valor final depende de si la instalación pasa la revisión o requiere correcciones, que se presupuestan aparte y siempre antes de intervenir.',
   },
   {
     q: '¿Cuánto tarda la entrega del certificado?',
@@ -66,6 +73,16 @@ const faqSchema = {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'LujoGas', item: 'https://lujogas.com.co/' },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://lujogas.com.co/blog' },
+    { '@type': 'ListItem', position: 3, name: pillarSchema.name, item: pillarSchema.url },
+  ],
+};
 ---
 
 <BaseLayout
@@ -76,24 +93,39 @@ const faqSchema = {
   <Header />
   <script type="application/ld+json" set:html={JSON.stringify(pillarSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <main>
-    <section class="relative bg-hero-bg overflow-hidden pt-[140px] pb-[80px] md:pt-[160px] md:pb-[100px]">
-      <div class="pipes-bg" />
+    <section
+      class="relative bg-hero-bg overflow-hidden pt-[140px] pb-[80px] md:pt-[160px] md:pb-[100px]"
+    >
+      <div class="pipes-bg"></div>
       <div class="container-section relative z-10">
         <nav class="flex items-center gap-2 text-sm text-hero-text/60 mb-6">
-          <a href="/" class="hover:text-blue-bright transition-colors">Inicio</a>
+          <a href="/" class="hover:text-blue-bright transition-colors">Inicio</a
+          >
           <span>/</span>
-          <a href="/blog" class="hover:text-blue-bright transition-colors">Blog</a>
+          <a href="/blog" class="hover:text-blue-bright transition-colors"
+            >Blog</a
+          >
           <span>/</span>
           <span class="text-hero-text/40">Certificación</span>
         </nav>
         <EyebrowLabel text="Pilar de Contenido" class="mb-2" />
-        <h1 class="font-display text-4xl md:text-6xl lg:text-7xl text-background leading-[0.85] tracking-[-0.02em] uppercase max-w-4xl">
-          Guía de Certificación de Gas <span class="text-tertiary">ICONTEC</span> en Medellín
+        <h1
+          class="font-display text-4xl md:text-6xl lg:text-7xl text-background leading-[0.85] tracking-[-0.02em] uppercase max-w-4xl"
+        >
+          Guía de Certificación de Gas <span class="text-tertiary">ICONTEC</span
+          > en Medellín
         </h1>
-        <p class="text-hero-text text-lg md:text-xl max-w-2xl mt-6 leading-relaxed">
-          La certificación ICONTEC es el documento que acredita que tu instalación de gas cumple la normativa colombiana NTC 2505. En esta guía te explicamos todo el proceso, desde la visita diagnóstica hasta la entrega del certificado, para que puedas tener gas de forma legal y segura en tu hogar o negocio en Medellín.
+        <p
+          class="text-hero-text text-lg md:text-xl max-w-2xl mt-6 leading-relaxed"
+        >
+          La certificación ICONTEC es el documento que acredita que tu
+          instalación de gas cumple la normativa colombiana NTC 2505. En esta
+          guía te explicamos todo el proceso, desde la visita diagnóstica hasta
+          la entrega del certificado, para que puedas tener gas de forma legal y
+          segura en tu hogar o negocio en Medellín.
         </p>
       </div>
     </section>
@@ -101,10 +133,18 @@ const faqSchema = {
     <section class="section-pad">
       <div class="container-section max-w-[800px]">
         <p class="text-primary/80 text-lg leading-relaxed mb-8">
-          En <strong>LujoGas</strong>, con más de 3.000 certificaciones realizadas en Medellín y el Valle de Aburrá, sabemos que el proceso puede generar dudas. Por eso hemos creado este clúster: para que entiendas cada paso y sepas exactamente qué esperar.
+          En <strong>LujoGas</strong>, con más de 3.000 certificaciones
+          realizadas en Medellín y el Valle de Aburrá, sabemos que el proceso
+          puede generar dudas. Por eso hemos creado este clúster: para que
+          entiendas cada paso y sepas exactamente qué esperar.
         </p>
         <p class="text-primary/80 text-lg leading-relaxed mb-8">
-          ¿Necesitas certificar tu instalación ya? Ve directo a nuestro servicio de <a href="/certificacion-gas-medellin" class="text-tertiary font-semibold underline underline-offset-4 hover:text-tertiary/80 transition-colors">certificación de gas en Medellín</a> — certificado ICONTEC en 24-48 horas.
+          ¿Necesitas certificar tu instalación ya? Ve directo a nuestro servicio
+          de <a
+            href="/certificacion-gas-medellin"
+            class="text-tertiary font-semibold underline underline-offset-4 hover:text-tertiary/80 transition-colors"
+            >certificación de gas en Medellín</a
+          > — certificado ICONTEC en 24-48 horas.
         </p>
       </div>
     </section>
@@ -112,128 +152,181 @@ const faqSchema = {
     <section class="section-pad bg-surface">
       <div class="container-section">
         <EyebrowLabel text="Artículos del clúster" class="mb-2" />
-        <h2 class="font-display text-3xl md:text-4xl text-primary uppercase tracking-[-0.02em] mb-10">
+        <h2
+          class="font-display text-3xl md:text-4xl text-primary uppercase tracking-[-0.02em] mb-10"
+        >
           Todo sobre <span class="text-tertiary">certificación</span> de gas
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger">
-          {articles.map((article) => (
-            <a
-              href={`/blog/${article.slug}`}
-              class="group bg-background rounded-2xl p-6 border border-neutral/20 hover:border-tertiary/30 hover:-translate-y-1 transition-all duration-300"
-            >
-              <span class="font-mono text-sm text-tertiary mb-2 block">{article.data.readingTime} min</span>
-              <h3 class="font-display text-xl text-primary uppercase leading-tight group-hover:text-tertiary transition-colors">
-                {article.data.title}
-              </h3>
-              <p class="text-muted text-sm mt-3 line-clamp-3">{article.data.description}</p>
-              <span class="inline-block mt-4 text-sm font-semibold text-tertiary">Leer artículo →</span>
-            </a>
-          ))}
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal-stagger"
+        >
+          {
+            articles.map((article) => (
+              <a
+                href={`/blog/${article.slug}`}
+                class="group bg-background rounded-2xl p-6 border border-neutral/20 hover:border-tertiary/30 hover:-translate-y-1 transition-all duration-300"
+              >
+                <span class="font-mono text-sm text-tertiary mb-2 block">
+                  {article.data.readingTime} min
+                </span>
+                <h3 class="font-display text-xl text-primary uppercase leading-tight group-hover:text-tertiary transition-colors">
+                  {article.data.title}
+                </h3>
+                <p class="text-muted text-sm mt-3 line-clamp-3">
+                  {article.data.description}
+                </p>
+                <span class="inline-block mt-4 text-sm font-semibold text-tertiary">
+                  Leer artículo →
+                </span>
+              </a>
+            ))
+          }
         </div>
       </div>
     </section>
 
     <section class="section-pad">
       <div class="container-section max-w-[800px]">
-        <h2 class="font-display text-3xl text-primary uppercase tracking-[-0.02em] mb-6">
+        <h2
+          class="font-display text-3xl text-primary uppercase tracking-[-0.02em] mb-6"
+        >
           ¿Por qué necesitas la certificación ICONTEC?
         </h2>
         <p class="text-primary/80 text-lg leading-relaxed mb-5">
-          Sin el certificado ICONTEC no puedes contratar el servicio de gas natural. Es un requisito legal establecido en la Resolución 90902 de 2013 y la NTC 2505. Además, proteger tu hogar y a tu familia es la razón más importante.
+          Sin el certificado ICONTEC no puedes contratar el servicio de gas
+          natural. Es un requisito legal establecido en la Resolución 90902 de
+          2013 y la NTC 2505. Además, proteger tu hogar y a tu familia es la
+          razón más importante.
         </p>
         <p class="text-primary/80 text-lg leading-relaxed mb-5">
-          Si estás vendiendo o arrendando tu propiedad en Medellín, el certificado de gas es uno de los documentos que te solicitarán. No tenerlo puede retrasar la transacción o incluso impedirla.
+          Si estás vendiendo o arrendando tu propiedad en Medellín, el
+          certificado de gas es uno de los documentos que te solicitarán. No
+          tenerlo puede retrasar la transacción o incluso impedirla.
         </p>
       </div>
     </section>
 
-
     <section class="section-pad bg-surface">
       <div class="container-section max-w-[800px]">
-        <h2 class="font-display text-3xl text-primary uppercase tracking-[-0.02em] mb-6">
+        <h2
+          class="font-display text-3xl text-primary uppercase tracking-[-0.02em] mb-6"
+        >
           El proceso, paso a paso
         </h2>
         <p class="text-primary/80 text-lg leading-relaxed mb-5">
-          Certificar una instalación no es firmar un papel. Es un procedimiento con pasos
-          verificables, y conocerlos ayuda a distinguir a quien lo hace bien de quien solo
-          vende el documento.
+          Certificar una instalación no es firmar un papel. Es un procedimiento
+          con pasos verificables, y conocerlos ayuda a distinguir a quien lo
+          hace bien de quien solo vende el documento.
         </p>
         <ol class="flex flex-col gap-4 mb-8">
           <li class="text-primary/80 text-[16px] leading-relaxed">
-            <strong class="text-primary">1. Visita diagnóstica.</strong> El técnico recorre el
-            trazado completo, revisa materiales, ventilación, distancias de seguridad y estado
-            de reguladores y válvulas. Aquí se define si la instalación pasa tal como está o
-            qué hay que corregir.
+            <strong class="text-primary">1. Visita diagnóstica.</strong> El técnico
+            recorre el trazado completo, revisa materiales, ventilación, distancias
+            de seguridad y estado de reguladores y válvulas. Aquí se define si la
+            instalación pasa tal como está o qué hay que corregir.
           </li>
           <li class="text-primary/80 text-[16px] leading-relaxed">
-            <strong class="text-primary">2. Presupuesto de correcciones.</strong> Si hay
-            hallazgos, se entregan por escrito con su costo antes de intervenir. Sin
-            sorpresas a mitad del trabajo.
+            <strong class="text-primary">2. Presupuesto de correcciones.</strong
+            > Si hay hallazgos, se entregan por escrito con su costo antes de intervenir.
+            Sin sorpresas a mitad del trabajo.
           </li>
           <li class="text-primary/80 text-[16px] leading-relaxed">
-            <strong class="text-primary">3. Ejecución.</strong> Se corrige lo que la norma
-            exija, con materiales que lleven sello de conformidad NTC. El
-            <a href="/blog/materiales-certificados-vs-no-certificados-gas" class="text-tertiary font-semibold underline underline-offset-4">material no certificado</a>
+            <strong class="text-primary">3. Ejecución.</strong> Se corrige lo que
+            la norma exija, con materiales que lleven sello de conformidad NTC. El
+            <a
+              href="/blog/materiales-certificados-vs-no-certificados-gas"
+              class="text-tertiary font-semibold underline underline-offset-4"
+              >material no certificado</a
+            >
             es una de las causas de rechazo más frecuentes en Medellín.
           </li>
           <li class="text-primary/80 text-[16px] leading-relaxed">
-            <strong class="text-primary">4. Prueba de hermeticidad.</strong> Se aísla la red,
-            se presuriza y se verifica que mantenga presión. Es la prueba que respalda el
-            certificado: si la presión cae, hay escape en alguna parte.
+            <strong class="text-primary">4. Prueba de hermeticidad.</strong> Se aísla
+            la red, se presuriza y se verifica que mantenga presión. Es la prueba
+            que respalda el certificado: si la presión cae, hay escape en alguna parte.
           </li>
           <li class="text-primary/80 text-[16px] leading-relaxed">
-            <strong class="text-primary">5. Expedición del certificado.</strong> Aprobada la
-            instalación, el documento se entrega en 24 a 48 horas hábiles junto con el reporte
-            técnico de lo verificado.
+            <strong class="text-primary">5. Expedición del certificado.</strong> Aprobada
+            la instalación, el documento se entrega en 24 a 48 horas hábiles junto
+            con el reporte técnico de lo verificado.
           </li>
         </ol>
 
-        <h2 class="font-display text-3xl text-primary uppercase tracking-[-0.02em] mb-6">
+        <h2
+          class="font-display text-3xl text-primary uppercase tracking-[-0.02em] mb-6"
+        >
           Cuándo necesitas certificar
         </h2>
         <p class="text-primary/80 text-lg leading-relaxed mb-5">
-          Hay cuatro situaciones que obligan a tener el certificado al día, y conviene
-          identificarlas antes de que se conviertan en un problema:
+          Hay cuatro situaciones que obligan a tener el certificado al día, y
+          conviene identificarlas antes de que se conviertan en un problema:
         </p>
         <ul class="flex flex-col gap-3 mb-8">
           <li class="text-primary/80 text-[16px] leading-relaxed">
-            <strong class="text-primary">Instalación nueva.</strong> Sin certificado, la
-            distribuidora no activa el medidor. Es el caso típico de
-            <a href="/blog/activar-gas-epm-vivienda-nueva-medellin" class="text-tertiary font-semibold underline underline-offset-4">vivienda nueva entregada por constructora</a>.
+            <strong class="text-primary">Instalación nueva.</strong> Sin certificado,
+            la distribuidora no activa el medidor. Es el caso típico de
+            <a
+              href="/blog/activar-gas-epm-vivienda-nueva-medellin"
+              class="text-tertiary font-semibold underline underline-offset-4"
+              >vivienda nueva entregada por constructora</a
+            >.
           </li>
           <li class="text-primary/80 text-[16px] leading-relaxed">
-            <strong class="text-primary">Revisión periódica vencida.</strong> EPM lo notifica
-            en la factura y puede suspender el servicio. La
-            <a href="/rpo-gas-medellin" class="text-tertiary font-semibold underline underline-offset-4">RPO</a>
+            <strong class="text-primary">Revisión periódica vencida.</strong> EPM
+            lo notifica en la factura y puede suspender el servicio. La
+            <a
+              href="/rpo-gas-medellin"
+              class="text-tertiary font-semibold underline underline-offset-4"
+              >RPO</a
+            >
             se hace cada cinco años.
           </li>
           <li class="text-primary/80 text-[16px] leading-relaxed">
-            <strong class="text-primary">Modificación de la red.</strong> Mover un punto,
-            agregar uno nuevo o cambiar un gasodoméstico que altere el caudal deja sin efecto
-            el certificado anterior.
+            <strong class="text-primary">Modificación de la red.</strong> Mover un
+            punto, agregar uno nuevo o cambiar un gasodoméstico que altere el caudal
+            deja sin efecto el certificado anterior.
           </li>
           <li class="text-primary/80 text-[16px] leading-relaxed">
-            <strong class="text-primary">Arriendo o venta.</strong> El certificado vigente es
-            uno de los documentos que suelen pedirse. Lo detallamos en
-            <a href="/blog/certificacion-gas-para-arriendo-requisitos-medellin" class="text-tertiary font-semibold underline underline-offset-4">certificación de gas para arriendo</a>.
+            <strong class="text-primary">Arriendo o venta.</strong> El certificado
+            vigente es uno de los documentos que suelen pedirse. Lo detallamos en
+            <a
+              href="/blog/certificacion-gas-para-arriendo-requisitos-medellin"
+              class="text-tertiary font-semibold underline underline-offset-4"
+              >certificación de gas para arriendo</a
+            >.
           </li>
         </ul>
 
-        <h2 class="font-display text-3xl text-primary uppercase tracking-[-0.02em] mb-6">
+        <h2
+          class="font-display text-3xl text-primary uppercase tracking-[-0.02em] mb-6"
+        >
           Preguntas frecuentes
         </h2>
         <div class="flex flex-col gap-4">
-          {faq.map((f) => (
-            <details class="group border border-neutral/15 rounded-2xl overflow-hidden bg-background">
-              <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer font-display font-semibold text-primary text-[16px] leading-snug list-none">
-                {f.q}
-                <svg class="flex-shrink-0 transition-transform duration-200 group-open:rotate-180" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </summary>
-              <div class="px-6 pb-5 text-muted text-[14.5px] leading-relaxed border-t border-neutral/10 pt-4">
-                {f.a}
-              </div>
-            </details>
-          ))}
+          {
+            faq.map((f) => (
+              <details class="group border border-neutral/15 rounded-2xl overflow-hidden bg-background">
+                <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer font-display font-semibold text-primary text-[16px] leading-snug list-none">
+                  {f.q}
+                  <svg
+                    class="flex-shrink-0 transition-transform duration-200 group-open:rotate-180"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </summary>
+                <div class="px-6 pb-5 text-muted text-[14.5px] leading-relaxed border-t border-neutral/10 pt-4">
+                  {f.a}
+                </div>
+              </details>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -246,8 +339,14 @@ const faqSchema = {
 
 <script>
   const io = new IntersectionObserver(
-    (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }),
-    { threshold: 0.08 }
+    (entries) =>
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      }),
+    { threshold: 0.08 },
   );
   document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => {
     const rect = el.getBoundingClientRect();
