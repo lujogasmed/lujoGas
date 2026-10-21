@@ -65,8 +65,10 @@ const articleSchema = {
   wordCount,
   author: {
     '@type': 'Person',
+    '@id': 'https://lujogas.com.co/nosotros#tecnico',
     name: data.author,
-    knowsAbout: 'Instalación y certificación de redes de gas — NTC 2505',
+    url: 'https://lujogas.com.co/nosotros',
+    jobTitle: 'Técnico certificado en redes de gas — NTC 2505',
   },
   datePublished: data.publishDate.toISOString(),
   dateModified: (data.updatedDate ?? data.publishDate).toISOString(),
@@ -189,7 +191,9 @@ const pageTitle =
         <!-- Author -->
         <div class="mt-10 p-6 bg-surface rounded-2xl border border-neutral/10">
           <p class="text-sm text-muted">Escrito por</p>
-          <p class="font-display text-xl text-primary uppercase mt-1">{data.author}</p>
+          <p class="font-display text-xl text-primary uppercase mt-1">
+            <a href="/nosotros" rel="author" class="hover:text-tertiary">{data.author}</a>
+          </p>
           <p class="text-muted text-sm mt-1">
             Técnico certificado NTC 2505 — Instalación, mantenimiento y certificación de redes de gas en Medellín
           </p>

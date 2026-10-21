@@ -19,7 +19,7 @@ const { value, suffix, label, dark = false } = Astro.props;
     data-count={value}
     data-suffix={suffix}
   >
-    <span class="n">0</span>
+    <span class="n">{value}</span>
     <span class:list={['text-[0.5em] ml-[2px]', dark ? 'text-neutral/40' : 'text-primary/50']}>{suffix}</span>
   </div>
   <div class:list={['text-[14px] tracking-[0.04em]', dark ? 'text-neutral/55' : 'text-muted']}>{label}</div>

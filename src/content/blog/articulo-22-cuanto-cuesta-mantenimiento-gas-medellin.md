@@ -3,7 +3,7 @@ title: "¿Cuánto cuesta el mantenimiento de gas en Medellín?"
 description: "Precios del mantenimiento de gas en Medellín: preventivo, correctivo, RPO y detección de fugas. Técnico certificado NTC 2505. Presupuesto sin compromiso."
 slug: "cuanto-cuesta-mantenimiento-gas-medellin"
 publishDate: 2026-06-06
-updatedDate: 2026-07-14
+updatedDate: 2026-10-21
 author: "Luis Guillermo Muñoz Vélez"
 readingTime: 8
 category: "precios"
@@ -65,11 +65,11 @@ Si sientes olor a gas, la factura de EPM subió sin explicación o escuchas silb
 
 **Importante**: si el olor a gas es fuerte, no esperes la visita técnica. Cierra la válvula de paso, abre puertas y ventanas, no acciones interruptores y llama a la línea de emergencias de EPM: **(604) 44 44 115** o al 123. Tenemos una guía completa de [qué hacer si huele a gas](/blog/que-hacer-si-huele-gas-casa-emergencia).
 
-## Revisión Periódica Obligatoria (RPO): desde $150.000
+## La revisión periódica (RPO) no es mantenimiento
 
-La RPO no es opcional: la **Resolución 90902 de 2013 del Ministerio de Minas y Energía** exige revisar toda instalación de gas cada 5 años con un técnico certificado. Incluye inspección completa según la norma NTC 2505, pruebas de hermeticidad, verificación de ventilación, revisión de gasodomésticos y emisión del certificado.
+La RPO es otra cosa: una inspección obligatoria cada 5 años que termina en certificado, no una limpieza ni un ajuste. La exige la **Resolución 90902 de 2013 del Ministerio de Minas y Energía** y, si se vence, EPM suspende el servicio.
 
-Si tu RPO está vencida, la distribuidora puede suspender el servicio y tu seguro del hogar puede negar cobertura en caso de siniestro. Consulta todos los detalles en nuestra página de [RPO en Medellín](/rpo-gas-medellin).
+Si llegaste aquí buscando cuánto vale la revisión del gas, la respuesta completa, con la tarifa oficial de EPM para 2026, los plazos y lo que cuesta una suspensión, está en [cuánto vale la revisión del gas en Medellín](/rpo-gas-medellin). Con LujoGas parte desde $150.000.
 
 ## Mantenimiento correctivo: desde $150.000
 

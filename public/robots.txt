@@ -1,7 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /_astro/
 Disallow: /cdn-cgi/
 
 # Allow AI crawlers for GEO (Generative Engine Optimization)

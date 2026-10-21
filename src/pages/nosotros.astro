@@ -5,140 +5,288 @@ import Footer from '../components/organisms/Footer.astro';
 import CTASection from '../components/organisms/CTASection.astro';
 import EyebrowLabel from '../components/atoms/EyebrowLabel.astro';
 import StatCounter from '../components/molecules/StatCounter.astro';
-import { SITE } from '../lib/constants';
+import WhatsAppIcon from '../components/atoms/WhatsAppIcon.astro';
+import { SITE, WHATSAPP_NUMBER } from '../lib/constants';
 import { zonas } from '../data/zonas';
+import { TECNICO, FOTO_CERTIFICADO } from '../data/tecnico';
+
+const PAGE_URL = 'https://lujogas.com.co/nosotros';
+const anios = new Date().getFullYear() - TECNICO.inicioEnGas;
+const telefonoVisible = SITE.phone.replace(/^\+57(\d{3})(\d{3})(\d{4})$/, '+57 $1 $2 $3');
+const fechaActualizado = new Date(`${TECNICO.actualizado}T12:00:00-05:00`).toLocaleDateString('es-CO', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+const wa = (msg: string) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+const waCredencial = wa(
+  'Hola Luis, antes de agendar quiero verificar tu certificado de competencia laboral en gas y el organismo de inspección que respalda el certificado.',
+);
+const waVisita = wa('Hola Luis, quiero agendar una visita técnica de gas en Medellín.');
+
+// ── Credencial: solo se publican campos con dato real ─────────────────────
+const { credencial, organismo } = TECNICO;
+const vigencia = credencial.vigenteHasta
+  ? new Date(`${credencial.vigenteHasta}T12:00:00-05:00`).toLocaleDateString('es-CO', {
+      month: 'long',
+      year: 'numeric',
+    })
+  : null;
+const credencialFilas = [
+  { k: 'Documento', v: credencial.nombre },
+  { k: 'Expedido por', v: credencial.emisor },
+  { k: 'Número', v: credencial.numero },
+  { k: 'Vigente hasta', v: vigencia },
+  { k: 'Organismo de inspección', v: organismo.nombre },
+  { k: 'Acreditación ONAC', v: organismo.codigoOnac },
+].filter((f): f is { k: string; v: string } => Boolean(f.v));
+const credencialCompleta = Boolean(credencial.numero && organismo.nombre);
 
 const stats = [
-  { value: 3, suffix: '+', label: 'Años en instalación de gas' },
-  { value: 3000, suffix: '+', label: 'Certificaciones realizadas' },
-  { value: 10, suffix: '+', label: 'Municipios cubiertos' },
-  { value: 500, suffix: '+', label: 'Instalaciones realizadas' },
+  { value: anios, suffix: '+', label: 'Años trabajando redes de gas' },
+  { value: TECNICO.certificaciones, suffix: '+', label: 'Certificaciones realizadas' },
+  { value: TECNICO.instalaciones, suffix: '+', label: 'Instalaciones realizadas' },
+  { value: zonas.length, suffix: '', label: 'Zonas del Valle de Aburrá' },
 ];
 
-const timeline = [
-  {
-    eyebrow: 'Mi historia',
-    title: 'De la logística al gas',
-    body: 'Durante varios años trabajé como auxiliar en logística, una etapa que me enseñó el valor de la responsabilidad, el orden y el compromiso. Sin embargo, dentro de mí siempre existió el deseo de crecer profesionalmente y brindarle una mejor calidad de vida a mi familia.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg>`,
-  },
-  {
-    eyebrow: 'Certificación',
-    title: 'Técnico certificado en gas en Medellín',
-    body: 'Hace dos años tomé una decisión que marcó un antes y un después: certificarme en el área de gas. No fue un camino fácil, pero con esfuerzo, disciplina y dedicación logré formarme como técnico certificado, adquiriendo conocimientos que hoy me permiten desempeñarme con seguridad y profesionalismo en cada instalación en Medellín y el Valle de Aburrá. Para mí, la certificación no es solo un requisito — es el respaldo de un trabajo bien hecho y seguro.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.745 3.745 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.745 3.745 0 0 1 3.296-1.043A3.745 3.745 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.745 3.745 0 0 1 3.296 1.043 3.745 3.745 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"/></svg>`,
-  },
-  {
-    eyebrow: 'Mis metas',
-    title: 'Ser referente en gas en Medellín',
-    body: 'Mi objetivo es seguir creciendo como profesional, mejorar cada día y brindar un servicio de gas de calidad en Medellín y el Valle de Aburrá. Busco ser reconocido por mi responsabilidad, honestidad y compromiso con la seguridad de cada cliente. Cada trabajo que realizo lo hago pensando en la seguridad de cada hogar.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"/></svg>`,
-  },
+// ── Ficha de datos (bloque citable por buscadores e IA) ───────────────────
+const ficha = [
+  { k: 'Técnico responsable', v: TECNICO.nombre },
+  { k: 'Norma que aplica', v: 'NTC 2505 — instalaciones de gas residenciales y comerciales' },
+  { k: 'Trabaja en gas desde', v: `${TECNICO.inicioEnGas} · certificado desde ${TECNICO.anioCertificacion}` },
+  { k: 'Certificaciones realizadas', v: `Más de ${TECNICO.certificaciones.toLocaleString('es-CO')}` },
+  { k: 'Visita diagnóstica', v: '$50.000, descontable si contratas el servicio' },
+  { k: 'Certificación / RPO', v: 'Desde $150.000 · certificado en 24–48 h hábiles' },
+  { k: 'Instalación residencial', v: 'Desde $850.000 con certificado incluido' },
+  { k: 'Cobertura', v: 'Medellín, Envigado, Sabaneta, Itagüí, La Estrella, Bello y Copacabana' },
+  { k: 'Horario', v: SITE.schedule },
+  { k: 'Dirección', v: `${SITE.address}, ${SITE.city}, ${SITE.region}` },
+  { k: 'Teléfono / WhatsApp', v: telefonoVisible },
 ];
 
-const values = [
+// ── Verificación de cualquier técnico ─────────────────────────────────────
+const verificar = [
   {
-    title: 'Certificación real',
-    desc: 'Cada trabajo termina con certificado oficial emitido por organismo acreditado. No firmamos algo que no podamos respaldar.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.745 3.745 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.745 3.745 0 0 1 3.296-1.043A3.745 3.745 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.745 3.745 0 0 1 3.296 1.043 3.745 3.745 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"/></svg>`,
+    t: 'Pide el certificado de competencia laboral a nombre de la persona',
+    d: 'El documento que habilita a firmar es personal, no de la empresa. Revisa que el nombre coincida con quien va a tu casa y que la fecha de vigencia no esté vencida.',
   },
   {
-    title: 'Materiales NTC',
-    desc: 'Solo usamos tuberías, válvulas y accesorios con certificación de Norma Técnica Colombiana. Sin atajos.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>`,
+    t: 'Pregunta qué organismo de inspección respalda el certificado',
+    d: 'El certificado de tu instalación lo respalda un organismo de inspección acreditado. Búscalo por nombre en el directorio público del ONAC y confirma que la acreditación esté vigente para instalaciones de gas.',
   },
   {
-    title: 'Técnico certificado',
-    desc: 'Formación y certificación verificada. Actualización constante en normativa técnica colombiana para instalaciones de gas en Medellín.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>`,
+    t: 'Desconfía de "autorizado por EPM"',
+    d: 'EPM distribuye el gas y exige el certificado, pero no publica una lista oficial de técnicos para la red interna. Quien usa esa frase como única credencial te está pidiendo fe, no pruebas.',
   },
   {
-    title: 'Atención oportuna',
-    desc: 'Respuesta rápida a cada solicitud. Coordinamos la visita según tu disponibilidad y cumplimos el horario acordado.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>`,
+    t: 'Exige el presupuesto por escrito antes de que intervenga',
+    d: 'Una revisión seria termina en un informe de hallazgos y un valor cerrado para corregirlos. Si el precio aparece después de abrir la pared, el riesgo es tuyo.',
+  },
+  {
+    t: 'Confirma qué recibes al final',
+    d: 'Certificado de la instalación y reporte técnico de lo verificado y lo corregido. Es lo que EPM pide para activar o mantener el servicio hasta la siguiente revisión periódica.',
   },
 ];
 
-const certifications = [
-  { seal: 'ICO', title: 'ICONTEC', sub: 'Organismo acreditado — vigente' },
-  { seal: 'NTC', title: 'NTC 2505', sub: 'Norma técnica colombiana' },
+// ── Método de trabajo ─────────────────────────────────────────────────────
+const metodo = [
   {
-    seal: 'EPM',
-    title: 'Aval EPM / Gas Natural',
-    sub: 'Instaladores autorizados',
+    t: 'Contacto por WhatsApp',
+    d: 'Me cuentas qué necesitas. Te respondo con precio base, disponibilidad y, si lo pides, foto de mi credencial vigente.',
   },
-  { seal: 'ATN', title: 'Atención rápida', sub: 'Visita coordinada contigo' },
+  {
+    t: 'Visita diagnóstica',
+    d: 'Recorro la red completa desde el medidor hasta cada gasodoméstico: trazado, materiales, uniones, válvulas y regulador.',
+  },
+  {
+    t: 'Prueba de hermeticidad',
+    d: 'La red se somete a presión y se verifica con manómetro que no la pierda. Es la prueba que confirma o descarta una fuga oculta en paredes o pisos.',
+  },
+  {
+    t: 'Ventilación y combustión',
+    d: 'Reviso rejillas, volumen del recinto y ducto del calentador, y mido monóxido de carbono en el ambiente con los equipos encendidos.',
+  },
+  {
+    t: 'Presupuesto cerrado',
+    d: 'Si hay hallazgos, te entrego el valor de la corrección antes de tocar nada. Tú decides.',
+  },
+  {
+    t: 'Corrección con materiales NTC',
+    d: 'Tubería, válvulas y accesorios con sello de Norma Técnica Colombiana. Sin materiales sin certificar que luego reprueben la revisión.',
+  },
+  {
+    t: 'Certificado en 24–48 h',
+    d: 'Aprobada la instalación, recibes el certificado y el reporte técnico. El mismo técnico que visitó es el que firma.',
+  },
 ];
 
-// Schema Person — E-E-A-T signal para Google
-const founderSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Luis Guillermo Muñoz Vélez',
-  jobTitle: 'Técnico Certificado en Redes de Gas',
-  description:
-    'Técnico certificado en instalación, mantenimiento y certificación de redes de gas natural y GLP en Medellín y el Valle de Aburrá, Colombia.',
-  worksFor: {
-    '@type': 'LocalBusiness',
-    name: 'LujoGas',
-    url: 'https://lujogas.com.co',
-    telephone: SITE.phone,
+// ── Hallazgos frecuentes por zona (experiencia de campo) ──────────────────
+const hallazgos = [
+  {
+    h: 'Regulador fuera de vida útil',
+    donde: 'Casas tradicionales del centro de Itagüí y Bello',
+    href: '/instalacion-gas-itagui',
+    implica: 'No conformidad en la RPO. Se reemplaza el regulador y se repite la prueba.',
   },
-  knowsAbout: [
-    'Instalación de redes de gas natural en Medellín',
-    'Certificación de redes de gas residencial NTC 2505',
-    'Mantenimiento de redes de gas GLP',
-    'Inspección de redes de gas Medellín',
-    'Conversión a gas natural Valle de Aburrá',
-  ],
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Medellín',
-    addressRegion: 'Antioquia',
-    addressCountry: 'CO',
+  {
+    h: 'Tubería galvanizada con corrosión',
+    donde: 'Casas de 40 años o más en Laureles y Los Conquistadores',
+    href: '/instalacion-gas-laureles',
+    implica: 'Reemplazo de los tramos afectados; a veces de la red completa.',
   },
-  telephone: SITE.phone,
-  url: 'https://lujogas.com.co/nosotros',
-  hasCredential: {
-    '@type': 'EducationalOccupationalCredential',
-    credentialCategory: 'Certificado de competencia laboral',
-    name: 'Técnico certificado en instalaciones de gas — NTC 2505',
-    about: 'Instalaciones para suministro de gas combustible destinadas a usos residenciales y comerciales (NTC 2505)',
-    recognizedBy: {
-      '@type': 'Organization',
-      name: 'ICONTEC',
-      url: 'https://www.icontec.org',
-    },
+  {
+    h: 'Cocina cerrada sin ventilación',
+    donde: 'Remodelaciones en Laureles y casas de Copacabana',
+    href: '/instalacion-gas-copacabana',
+    implica: 'La NTC 2505 no lo deja pasar: afecta la evacuación de gases de combustión.',
   },
-  areaServed: zonas.map((z) => ({
-    '@type': z.tipo === 'municipio' ? 'City' : 'Place',
-    name: z.name,
-  })),
-};
+  {
+    h: 'Calentador de paso sin ducto ni rejillas',
+    donde: 'Apartamentos de El Tesoro y Los Balsos, en El Poblado',
+    href: '/instalacion-gas-el-poblado',
+    implica: 'Hay que instalar ducto de evacuación y rejillas reglamentarias antes de certificar.',
+  },
+  {
+    h: 'Tramos añadidos sin certificar',
+    donde: 'Viviendas con ampliaciones sucesivas en Bello',
+    href: '/instalacion-gas-bello',
+    implica: 'El tramo nuevo se prueba y se certifica, o se rehace si no cumple.',
+  },
+  {
+    h: 'Red nueva entregada sin certificado',
+    donde: 'Torres nuevas en las lomas de Envigado y en Bello',
+    href: '/instalacion-gas-envigado',
+    implica: 'EPM no activa el medidor hasta que exista certificado vigente de la red interna.',
+  },
+];
 
-// FAQ sobre el técnico y la credencial — señal E-E-A-T y contenido citable para IA.
+const principios = [
+  {
+    t: 'Quien visita, firma',
+    d: 'LujoGas no es un call center. El técnico que evalúa tu red es el mismo que corrige y responde por el certificado.',
+  },
+  {
+    t: 'Materiales con sello NTC',
+    d: 'Solo tuberías, válvulas y accesorios certificados bajo Norma Técnica Colombiana. Sin atajos.',
+  },
+  {
+    t: 'Precio antes de intervenir',
+    d: 'Visita de $50.000 descontable y presupuesto cerrado por escrito antes de cualquier corrección.',
+  },
+  {
+    t: 'Horario que se cumple',
+    d: 'La visita se coordina por WhatsApp según tu disponibilidad y se respeta la hora acordada.',
+  },
+];
+
 const faqTecnico = [
   {
     q: '¿Qué significa que un técnico de gas esté certificado bajo NTC 2505?',
-    a: 'Significa que tiene un certificado de competencia laboral vigente en instalaciones de gas, respaldado por un organismo de inspección acreditado ante el ONAC. La NTC 2505 es la Norma Técnica Colombiana que define materiales, ventilación, distancias de seguridad y pruebas que debe cumplir toda red de gas interna en el país. Sin esa credencial, el documento que se expida no lo acepta la distribuidora.',
+    a: 'Que tiene un certificado de competencia laboral vigente en instalaciones de gas, y que el certificado de tu instalación lo respalda un organismo de inspección acreditado ante el ONAC. La NTC 2505 define materiales, ventilación, distancias de seguridad y pruebas que debe cumplir toda red de gas interna en Colombia. Sin esa credencial, EPM no acepta el documento.',
+  },
+  {
+    q: '¿Cómo verifico que Luis Guillermo Muñoz Vélez está certificado?',
+    a: 'Pídele por WhatsApp, antes de agendar, foto de su certificado de competencia laboral y el nombre del organismo de inspección que respalda el certificado. El nombre del organismo lo puedes buscar en el directorio público del ONAC para confirmar que su acreditación está vigente.',
   },
   {
     q: '¿Quién ejecuta el trabajo que contrato con LujoGas?',
-    a: 'El mismo técnico que firma el certificado: Luis Guillermo Muñoz Vélez. LujoGas no es un call center ni una intermediación que reparte la visita a terceros. Quien evalúa, ejecuta y responde por la instalación es la misma persona, de principio a fin.',
+    a: 'El mismo técnico que firma el certificado: Luis Guillermo Muñoz Vélez. LujoGas no reparte la visita a terceros. Quien evalúa, ejecuta y responde por la instalación es la misma persona.',
   },
   {
     q: '¿EPM certifica la red de gas de mi casa?',
-    a: 'No. EPM distribuye el gas y exige el certificado vigente para activar o mantener activo el servicio, pero no certifica ni repara la red interna del inmueble. Esa parte la ejecuta un técnico certificado NTC 2505 respaldado por un organismo de inspección acreditado.',
+    a: 'No. EPM distribuye el gas y exige el certificado vigente para activar o mantener el servicio, pero no certifica ni repara la red interna del inmueble. Eso lo hace un técnico certificado NTC 2505 respaldado por un organismo de inspección acreditado.',
+  },
+  {
+    q: '¿Cuánta experiencia tiene el técnico?',
+    a: `Trabaja en redes de gas desde ${TECNICO.inicioEnGas}, está certificado desde ${TECNICO.anioCertificacion} y ha realizado más de ${TECNICO.certificaciones.toLocaleString('es-CO')} certificaciones y ${TECNICO.instalaciones} instalaciones en Medellín y el Valle de Aburrá.`,
+  },
+  {
+    q: '¿Cuánto cuesta la visita técnica?',
+    a: 'La visita diagnóstica cuesta $50.000 y se descuenta si contratas el servicio. La certificación o revisión periódica parte de $150.000 y la instalación residencial de 1 a 2 puntos desde $850.000 con certificado incluido.',
   },
   {
     q: '¿Qué recibo al terminar el trabajo?',
-    a: 'El certificado oficial que ampara la instalación, entregado en 24 a 48 horas hábiles una vez aprobada la revisión, y el reporte técnico con lo que se verificó y lo que se corrigió. Ese certificado es el documento que la distribuidora exige y el que queda vigente hasta la siguiente revisión periódica.',
+    a: 'El certificado de la instalación, entregado en 24 a 48 horas hábiles una vez aprobada la revisión, y el reporte técnico con lo verificado y lo corregido. Ese certificado es el que EPM exige y queda vigente hasta la siguiente revisión periódica.',
   },
   {
-    q: '¿En qué zonas del Valle de Aburrá atiende el técnico?',
-    a: 'Medellín y su área metropolitana: El Poblado, Laureles, Belén, Robledo, Envigado, Sabaneta, Itagüí, La Estrella, Bello y Copacabana, además de corregimientos cercanos. La visita diagnóstica se coordina por WhatsApp según disponibilidad de agenda.',
+    q: '¿En qué zonas del Valle de Aburrá atiende?',
+    a: `Medellín y su área metropolitana: ${zonas.map((z) => z.name).join(', ')}. La visita se coordina por WhatsApp según disponibilidad de agenda.`,
   },
 ];
+
+// ── Schema ────────────────────────────────────────────────────────────────
+const personSchema = {
+  '@type': 'Person',
+  '@id': TECNICO.id,
+  name: TECNICO.nombre,
+  jobTitle: TECNICO.cargo,
+  url: TECNICO.url,
+  image: TECNICO.fotoSchema,
+  telephone: SITE.phone,
+  description: `Técnico certificado NTC 2505 en instalación, mantenimiento, revisión periódica y certificación de redes de gas en Medellín y el Valle de Aburrá. Más de ${TECNICO.certificaciones} certificaciones realizadas.`,
+  worksFor: { '@id': 'https://lujogas.com.co/#localbusiness' },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: SITE.address,
+    addressLocality: SITE.city,
+    addressRegion: SITE.region,
+    postalCode: SITE.postalCode,
+    addressCountry: SITE.country,
+  },
+  knowsAbout: [
+    'NTC 2505',
+    'Instalación de redes de gas natural',
+    'Revisión Periódica Obligatoria de gas',
+    'Certificación de instalaciones de gas',
+    'Prueba de hermeticidad',
+    'Ventilación de recintos con gasodomésticos',
+    'Monóxido de carbono',
+    'Gas natural y GLP',
+  ],
+  hasOccupation: {
+    '@type': 'Occupation',
+    name: 'Técnico de redes de gas',
+    occupationLocation: zonas
+      .filter((z) => z.tipo === 'municipio')
+      .map((z) => ({ '@type': 'City', name: z.name })),
+  },
+  hasCredential: {
+    '@type': 'EducationalOccupationalCredential',
+    credentialCategory: 'Certificado de competencia laboral',
+    name: credencial.nombre,
+    ...(credencial.numero && { identifier: credencial.numero }),
+    ...(credencial.vigenteHasta && { validUntil: credencial.vigenteHasta }),
+    ...(credencial.emisor && {
+      recognizedBy: {
+        '@type': 'Organization',
+        name: credencial.emisor,
+        ...(credencial.urlVerificacion && { url: credencial.urlVerificacion }),
+      },
+    }),
+  },
+};
+
+const profileSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  '@id': `${PAGE_URL}#webpage`,
+  url: PAGE_URL,
+  name: 'Técnico certificado de gas en Medellín — Luis Guillermo Muñoz Vélez',
+  inLanguage: 'es-CO',
+  dateModified: TECNICO.actualizado,
+  about: { '@id': 'https://lujogas.com.co/#localbusiness' },
+  mainEntity: personSchema,
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://lujogas.com.co/' },
+    { '@type': 'ListItem', position: 2, name: 'Técnico certificado de gas en Medellín', item: PAGE_URL },
+  ],
+};
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -150,110 +298,86 @@ const faqSchema = {
   })),
 };
 
-// BreadcrumbList schema
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Inicio',
-      item: 'https://lujogas.com.co/',
-    },
-    {
-      '@type': 'ListItem',
-      position: 2,
-      name: 'Nosotros — Técnico certificado en gas Medellín',
-      item: 'https://lujogas.com.co/nosotros',
-    },
-  ],
-};
+const linkClass = 'font-semibold text-tertiary underline underline-offset-2 hover:text-primary';
 ---
 
 <!--
-  SEO: title 52 chars, meta description 157 chars.
-  Schema: Person (E-E-A-T) + BreadcrumbList en body (válido per Google spec).
-  H1 incluye keyword principal + "Medellín".
+  SEO: title 51 chars · meta 157 chars · H1 único con keyword + Medellín.
+  Schema: ProfilePage > Person (@id enlazado a LocalBusiness y al autor del blog) + BreadcrumbList + FAQPage.
+  Datos de credencial en src/data/tecnico.ts (solo se publican si son reales).
 -->
 <BaseLayout
-  title="Técnico Certificado en Gas en Medellín | LujoGas"
-  description="Luis Guillermo Muñoz Vélez, técnico certificado en instalación de gas en Medellín. Certificación ICONTEC y materiales NTC 2505 en el Valle de Aburrá."
-  canonical="https://lujogas.com.co/nosotros"
+  title="Técnico Certificado de Gas en Medellín — Luis Muñoz"
+  description="Luis Guillermo Muñoz Vélez, técnico certificado NTC 2505 en Medellín: +3.000 certificaciones de gas, visita $50.000 y certificado en 24–48 h. Verifícalo aquí."
+  canonical={PAGE_URL}
+  ogType="profile"
 >
   <Header />
 
   <main>
-    <!-- Schema JSON-LD en body — Google lo acepta fuera de <head> -->
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify(founderSchema)}
-    />
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify(breadcrumbSchema)}
-    />
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify(faqSchema)}
-    />
+    <script type="application/ld+json" set:html={JSON.stringify(profileSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
-    <!-- ── Page Hero ── -->
-    <section
-      class="relative overflow-hidden pt-[140px]"
-      style="background-color: #333333;"
-      aria-labelledby="nosotros-heading"
-    >
+    <!-- ── Hero ── -->
+    <section class="relative overflow-hidden bg-primary pt-[120px] md:pt-[140px]" aria-labelledby="nosotros-heading">
       <div class="pipes-bg" aria-hidden="true"></div>
       <div
-        class="absolute inset-0 pointer-events-none"
-        style="background: radial-gradient(ellipse 60% 90% at 90% 50%, rgba(249,115,22,0.12) 0%, transparent 65%);"
+        class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_90%_at_90%_50%,rgba(249,115,22,0.12)_0%,transparent_65%)]"
         aria-hidden="true"
       >
       </div>
 
       <div class="container-section relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-end">
-          <!-- ── Text column ── -->
-          <div class="md:pb-[80px]">
-            <div class="flex items-center gap-3 mb-5">
-              <span class="block w-8 h-px" style="background:#F97316;"></span>
-              <span
-                class="font-mono text-[11px] font-semibold tracking-[0.26em] uppercase"
-                style="color:#F97316;"
-              >
-                LujoGas · Nosotros
-              </span>
-            </div>
-            <!-- H1: keyword "técnico certificado en gas" + "Medellín" en primeras palabras -->
+        <div class="grid grid-cols-1 items-end gap-8 lg:grid-cols-2 lg:gap-16">
+          <div class="pb-4 md:pb-20">
+            <nav aria-label="Ruta de navegación" class="mb-5 font-mono text-[12px] uppercase tracking-[0.2em] text-neutral/60">
+              <a href="/" class="hover:text-tertiary">Inicio</a>
+              <span class="mx-2" aria-hidden="true">/</span>
+              <span class="text-tertiary">Técnico certificado</span>
+            </nav>
             <h1
               id="nosotros-heading"
-              class="font-display font-semibold leading-[0.97] tracking-[-0.01em] text-background mb-5"
-              style="font-size: clamp(40px,5.5vw,78px); max-width: 16ch;"
+              class="mb-5 max-w-[18ch] font-display text-[clamp(40px,5.5vw,76px)] font-semibold leading-[0.97] tracking-[-0.01em] text-background"
             >
-              Técnico certificado en gas en Medellín, al servicio de tu hogar
+              Técnico certificado de gas en Medellín: Luis Guillermo Muñoz Vélez
             </h1>
-            <p
-              class="text-neutral/70 max-w-[52ch]"
-              style="font-size: clamp(15px,1.3vw,17px); line-height: 1.65;"
-            >
-              Soy Luis Guillermo Muñoz Vélez, técnico certificado en instalación
-              y certificación de redes de gas en Medellín y el Valle de Aburrá.
-              Cada trabajo lo realizo con compromiso, responsabilidad y pensando
-              en la seguridad de cada hogar.
+            <p class="max-w-[56ch] text-[15px] leading-relaxed text-neutral/80 md:text-[17px]">
+              LujoGas es el servicio de gas de Luis Guillermo Muñoz Vélez, técnico con certificado de
+              competencia laboral bajo la <strong class="text-background">NTC 2505</strong>. Trabaja
+              redes de gas en Medellín y el Valle de Aburrá desde {TECNICO.inicioEnGas} y ha realizado
+              más de {TECNICO.certificaciones.toLocaleString('es-CO')} certificaciones. El mismo técnico
+              visita, corrige y firma: visita de $50.000 y certificado en 24 a 48 horas hábiles.
+            </p>
+            <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+              <a
+                href={waVisita}
+                target="_blank"
+                rel="noopener"
+                data-wa-source="nosotros_hero"
+                class="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-whatsapp px-6 font-semibold text-white transition-colors hover:bg-whatsapp-dark"
+              >
+                <WhatsAppIcon size={20} />
+                Agendar visita
+              </a>
+              <a
+                href="#credencial"
+                class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-neutral/30 px-6 font-semibold text-background transition-colors hover:border-tertiary hover:text-tertiary"
+              >
+                Verificar credencial
+              </a>
+            </div>
+            <p class="mt-5 font-mono text-[12px] uppercase tracking-[0.18em] text-neutral/50">
+              Datos revisados el <time datetime={TECNICO.actualizado}>{fechaActualizado}</time>
             </p>
           </div>
 
-          <!-- ── Photo column ── -->
-          <div
-            class="relative flex justify-center lg:justify-end items-end hero-photo-enter"
-          >
+          <div class="hero-photo-enter relative flex items-end justify-center lg:justify-end">
             <div class="hero-photo-glow" aria-hidden="true"></div>
             <img
-              src="https://res.cloudinary.com/dxcbyed7d/image/upload/v1781108208/servigas-full-calidad_vormpn.webp"
-              alt="Luis Guillermo Muñoz Vélez — técnico certificado en instalación de gas en Medellín"
-              class="relative z-10 w-auto max-w-full object-contain"
-              style="max-height: clamp(550px, 50vw, 600px);"
+              src={TECNICO.foto}
+              alt="Luis Guillermo Muñoz Vélez, técnico certificado de gas en Medellín"
+              class="relative z-10 max-h-[clamp(420px,50vw,600px)] w-auto max-w-full object-contain"
               width="480"
               height="600"
               loading="eager"
@@ -264,222 +388,327 @@ const breadcrumbSchema = {
         </div>
       </div>
 
-      <div
-        class="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
-        style="background: linear-gradient(to bottom, transparent, #F8F7F4);"
-        aria-hidden="true"
-      >
+      <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent to-background" aria-hidden="true">
       </div>
     </section>
 
     <!-- ── Stats ── -->
-    <section class="bg-background py-16" aria-label="Números LujoGas">
+    <section class="bg-background py-12 md:py-16" aria-label="LujoGas en cifras">
       <div class="container-section">
-        <div
-          class="grid grid-cols-2 md:grid-cols-4 border border-neutral/15 rounded-2xl overflow-hidden reveal"
-        >
-          {
-            stats.map((s) => (
-              <StatCounter value={s.value} suffix={s.suffix} label={s.label} />
-            ))
-          }
+        <div class="reveal grid grid-cols-2 overflow-hidden rounded-2xl border border-neutral/15 md:grid-cols-4">
+          {stats.map((s) => <StatCounter value={s.value} suffix={s.suffix} label={s.label} />)}
         </div>
       </div>
     </section>
 
-    <!-- ── Presentación del fundador ── -->
-    <section
-      class="section-pad bg-background"
-      aria-labelledby="fundador-heading"
-    >
+    <!-- ── Ficha de datos ── -->
+    <section class="bg-background pb-16 md:pb-24" aria-labelledby="ficha-heading">
       <div class="container-section">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center reveal">
-          <!-- Text -->
+        <div class="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
+          <div class="reveal">
+            <EyebrowLabel text="Ficha del servicio" />
+            <h2 id="ficha-heading" class="mb-5 mt-3 font-display text-[clamp(30px,3.5vw,46px)] font-semibold leading-tight text-primary">
+              LujoGas en datos verificables
+            </h2>
+            <p class="text-[15.5px] leading-relaxed text-muted">
+              Lo esencial para decidir antes de escribir: quién va a tu casa, qué norma aplica, cuánto
+              cuesta y dónde trabaja. Los precios son los mismos que aparecen en las páginas de
+              <a href="/instalacion-gas-medellin" class={linkClass}>instalación de gas</a>,
+              <a href="/certificacion-gas-medellin" class={linkClass}>certificación de gas</a> y
+              <a href="/rpo-gas-medellin" class={linkClass}>revisión periódica</a>.
+            </p>
+          </div>
+          <dl class="reveal divide-y divide-neutral/20 overflow-hidden rounded-2xl border border-neutral/20 bg-surface">
+            {
+              ficha.map((f) => (
+                <div class="grid grid-cols-1 gap-1 px-5 py-4 sm:grid-cols-[200px_1fr] sm:gap-4 md:px-6">
+                  <dt class="font-mono text-[12px] font-semibold uppercase tracking-[0.16em] text-tertiary">{f.k}</dt>
+                  <dd class="text-[15px] text-primary">{f.v}</dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Historia ── -->
+    <section class="section-pad bg-bg-alt" aria-labelledby="fundador-heading">
+      <div class="container-section">
+        <div class="reveal grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <EyebrowLabel text="El técnico detrás de LujoGas" />
-            <!-- H2: nombre completo + keyword local para E-E-A-T -->
-            <h2
-              id="fundador-heading"
-              class="font-display font-semibold text-primary mt-3 mb-6 leading-tight"
-              style="font-size:clamp(30px,3.5vw,46px);"
-            >
-              Luis Guillermo Muñoz Vélez — técnico certificado en gas, Medellín
+            <h2 id="fundador-heading" class="mb-6 mt-3 font-display text-[clamp(30px,3.5vw,46px)] font-semibold leading-tight text-primary">
+              De la logística a las redes de gas del Valle de Aburrá
             </h2>
-            <div
-              class="flex flex-col gap-4 text-muted text-[15.5px] leading-relaxed"
-            >
+            <div class="flex flex-col gap-4 text-[15.5px] leading-relaxed text-muted">
               <p>
-                Soy un hombre casado y padre de dos hijos maravillosos, Samuel y
-                Laura, quienes son mi mayor motivación para salir adelante cada
-                día. Esa motivación es la misma que pongo en cada instalación de
-                gas que realizo en Medellín.
+                Durante varios años trabajé como auxiliar de logística. Esa etapa me enseñó orden,
+                puntualidad y a responder por lo que se entrega. Pero quería crecer y darle una mejor
+                vida a mi familia: estoy casado y soy papá de Samuel y Laura.
               </p>
               <p>
-                Hace dos años tomé una decisión que marcó un antes y un después
-                en mi vida: certificarme como técnico en el área de gas. No fue
-                un camino fácil, pero con esfuerzo, disciplina y dedicación
-                logré la formación que hoy me permite desempeñarme con seguridad
-                y profesionalismo en cada red de gas que instalo o certifico en
-                Medellín, el Valle de Aburrá y corregimientos cercanos.
+                En {TECNICO.inicioEnGas} empecé a trabajar en redes de gas y en {TECNICO.anioCertificacion} obtuve
+                mi certificación como técnico bajo la NTC 2505. Desde entonces he hecho más de
+                {' '}{TECNICO.certificaciones.toLocaleString('es-CO')} certificaciones y {TECNICO.instalaciones} instalaciones en
+                Medellín, Envigado, Itagüí, Sabaneta, Bello y el resto del área metropolitana.
               </p>
               <p>
-                Hoy me siento orgulloso de lo que he logrado. Cada trabajo que
-                realizo lo hago con compromiso, responsabilidad y pensando
-                siempre en la seguridad de cada hogar.
+                Ese volumen se explica por la revisión periódica obligatoria: cada vivienda con gas
+                natural debe certificarse cada cinco años, y buena parte de mi trabajo diario es
+                revisar, corregir hallazgos y dejar la instalación lista para que
+                <a href="/blog/quien-certifica-gas-epm-o-tecnico-certificado" class={linkClass}>EPM mantenga el servicio</a>.
+              </p>
+              <p>
+                Mi meta es simple: que cada cliente sepa quién entró a su casa, qué se revisó y por qué
+                el certificado que firmé es válido.
               </p>
             </div>
           </div>
-          <!-- Photo panel — Luis con certificado -->
-          <div class="relative rounded-2xl overflow-hidden" style="min-height:340px;">
+          <figure class="relative overflow-hidden rounded-2xl bg-surface">
             <img
-              src="https://res.cloudinary.com/dxcbyed7d/image/upload/v1781108208/lujogas3_ezview.webp"
-              alt="Luis Guillermo Muñoz Vélez mostrando certificado de instalación de gas en Medellín — LujoGas"
-              class="w-full h-full object-cover object-top"
-              style="min-height:340px; max-height:480px;"
+              src={FOTO_CERTIFICADO.src}
+              alt={FOTO_CERTIFICADO.alt}
+              class="h-full max-h-[480px] min-h-[340px] w-full object-cover object-top"
               width="560"
               height="480"
               loading="lazy"
               decoding="async"
             />
-            <!-- Quote overlay -->
-            <div
-              class="absolute bottom-0 left-0 right-0 p-7"
-              style="background: linear-gradient(to top, rgba(13,13,13,0.88) 0%, rgba(13,13,13,0.55) 60%, transparent 100%);"
-            >
-              <p class="font-display text-[clamp(18px,2vw,24px)] font-semibold text-white leading-tight mb-3">
-                "Cada instalación la hago<br />
-                <span style="color:#F97316;">pensando en la seguridad<br />de tu hogar."</span>
+            <figcaption class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/55 to-transparent p-7">
+              <p class="mb-3 font-display text-[clamp(18px,2vw,24px)] font-semibold leading-tight text-white">
+                "Quien entra a tu casa es<br />
+                <span class="text-tertiary">el mismo que firma el certificado."</span>
               </p>
-              <p class="text-white/70 text-[13px] font-mono tracking-wide">
-                Luis Guillermo Muñoz Vélez — Técnico certificado, LujoGas
-              </p>
+              <p class="font-mono text-[13px] tracking-wide text-white/70">{TECNICO.nombre} — LujoGas</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Credencial ── -->
+    <section id="credencial" class="section-pad relative scroll-mt-24 bg-primary" aria-labelledby="credencial-heading">
+      <div class="pipes-bg" aria-hidden="true"></div>
+      <div class="container-section relative z-10">
+        <div class="mx-auto max-w-[820px]">
+          <EyebrowLabel text="La credencial" />
+          <h2 id="credencial-heading" class="mb-6 mt-3 font-display text-[clamp(28px,3.3vw,44px)] font-semibold leading-tight text-background">
+            Qué respalda a un técnico certificado NTC 2505
+          </h2>
+          <div class="flex flex-col gap-4 text-[15.5px] leading-relaxed text-neutral/75">
+            <p>
+              En Colombia cualquier persona puede instalar una tubería; muy pocas pueden certificarla.
+              La diferencia está en dos documentos: un <strong class="text-background">certificado de
+              competencia laboral en instalaciones de gas</strong> a nombre del técnico, y un
+              <strong class="text-background">organismo de inspección acreditado ante el ONAC</strong>
+              que respalda el certificado de la instalación. Con esos dos, EPM acepta el documento.
+            </p>
+            <p>
+              La <a href="/blog/ntc-2505-norma-colombiana-instalaciones-gas" class={linkClass}>NTC 2505</a> define
+              materiales, ventilación, distancias y pruebas. La reglamentación la hizo obligatoria y la
+              <a href="/rpo-gas-medellin" class={linkClass}>revisión periódica</a> comprueba cada cinco años
+              que la instalación la sigue cumpliendo.
+            </p>
+          </div>
+
+          {
+            credencialFilas.length > 0 && (
+              <dl class="mt-8 divide-y divide-neutral/15 overflow-hidden rounded-2xl border border-neutral/20 bg-background/[0.04]">
+                {credencialFilas.map((f) => (
+                  <div class="grid grid-cols-1 gap-1 px-5 py-4 sm:grid-cols-[220px_1fr] sm:gap-4 md:px-6">
+                    <dt class="font-mono text-[12px] font-semibold uppercase tracking-[0.16em] text-tertiary">{f.k}</dt>
+                    <dd class="text-[15px] text-background">{f.v}</dd>
+                  </div>
+                ))}
+              </dl>
+            )
+          }
+
+          <div class="mt-8 rounded-2xl border border-tertiary/40 bg-tertiary/10 p-6 md:p-8">
+            <p class="font-display text-[22px] font-semibold leading-snug text-background">
+              {credencialCompleta ? 'Compruébalo tú mismo' : 'Pide la credencial antes de agendar'}
+            </p>
+            <p class="mt-3 text-[15px] leading-relaxed text-neutral/75">
+              {
+                credencialCompleta
+                  ? 'Busca el organismo de inspección en el directorio del ONAC y confirma que su acreditación para instalaciones de gas está vigente. Si quieres ver el documento original, te lo envío por WhatsApp.'
+                  : 'Escríbeme y te envío por WhatsApp foto del certificado de competencia laboral vigente y el nombre del organismo de inspección que respalda el certificado. Con ese nombre lo verificas en el directorio público del ONAC antes de que yo entre a tu casa.'
+              }
+            </p>
+            <div class="mt-5 flex flex-col gap-3 sm:flex-row">
+              <a
+                href={waCredencial}
+                target="_blank"
+                rel="noopener"
+                data-wa-source="nosotros_credencial"
+                class="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-whatsapp px-6 font-semibold text-white transition-colors hover:bg-whatsapp-dark"
+              >
+                <WhatsAppIcon size={20} />
+                Pedir la credencial
+              </a>
+              <a
+                href="https://onac.org.co/directorio-de-acreditados/"
+                target="_blank"
+                rel="noopener nofollow"
+                class="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-neutral/30 px-6 font-semibold text-background transition-colors hover:border-tertiary hover:text-tertiary"
+              >
+                Directorio ONAC
+              </a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── Historia / Certificación / Metas ── -->
-    <section
-      class="section-pad"
-      style="background:#F8F7F4;"
-      aria-labelledby="trayectoria-heading"
-    >
+    <!-- ── Cómo verificar a cualquier técnico ── -->
+    <section class="section-pad bg-background" aria-labelledby="verificar-heading">
       <div class="container-section">
-        <div class="text-center mb-14 reveal">
-          <EyebrowLabel text="Trayectoria" />
-          <h2
-            id="trayectoria-heading"
-            class="font-display font-semibold text-primary mt-3 leading-tight"
-            style="font-size:clamp(30px,3.5vw,46px);"
-          >
-            De dónde vengo y hacia dónde voy
+        <div class="reveal mx-auto mb-12 max-w-[720px] text-center">
+          <EyebrowLabel text="Antes de contratar" />
+          <h2 id="verificar-heading" class="mt-3 font-display text-[clamp(28px,3.5vw,44px)] font-semibold leading-tight text-primary">
+            Cómo verificar a un técnico de gas en Medellín en 5 pasos
           </h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal-stagger">
-          {
-            timeline.map((item) => (
-              <div class="group bg-surface border border-neutral/15 rounded-2xl p-8 flex flex-col gap-5 hover:border-tertiary/30 hover:shadow-md transition-all duration-300">
-                <div class="w-11 h-11 rounded-xl bg-tertiary/8 border border-tertiary/18 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/16 transition-all duration-300">
-                  <span class="w-5 h-5 block" set:html={item.icon} />
-                </div>
-                <div>
-                  <p
-                    class="font-mono text-[11px] font-semibold tracking-[0.22em] uppercase mb-2"
-                    style="color:#F97316;"
-                  >
-                    {item.eyebrow}
-                  </p>
-                  <h3 class="font-display font-semibold text-primary text-[18px] leading-snug mb-3">
-                    {item.title}
-                  </h3>
-                  <p class="text-muted text-[14.5px] leading-relaxed">
-                    {item.body}
-                  </p>
-                </div>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Valores ── -->
-    <section
-      class="section-pad bg-background"
-      aria-labelledby="valores-heading"
-    >
-      <div class="container-section">
-        <div class="text-center mb-14 reveal">
-          <EyebrowLabel text="Cómo trabajo" />
-          <h2
-            id="valores-heading"
-            class="font-display font-semibold text-primary mt-3 leading-tight"
-            style="font-size:clamp(30px,3.5vw,46px);"
-          >
-            Los principios que no negocio
-          </h2>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 reveal-stagger">
-          {
-            values.map((v) => (
-              <div class="group bg-surface border border-neutral/15 rounded-2xl p-7 flex gap-5 hover:border-tertiary/30 hover:shadow-md transition-all duration-300">
-                <div class="w-11 h-11 rounded-xl bg-tertiary/8 border border-tertiary/18 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/16 transition-all duration-300">
-                  <span class="w-5 h-5 block" set:html={v.icon} />
-                </div>
-                <div>
-                  <h3 class="font-display font-semibold text-primary text-[18px] tracking-[0.01em] mb-2">
-                    {v.title}
-                  </h3>
-                  <p class="text-muted text-[14px] leading-relaxed">{v.desc}</p>
-                </div>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Certificaciones ── -->
-    <section
-      class="section-pad"
-      style="background-color:#1A1A2E;"
-      aria-labelledby="certs-heading"
-    >
-      <div class="pipes-bg" aria-hidden="true"></div>
-      <div class="container-section relative z-10">
-        <div class="text-center mb-12 reveal">
-          <EyebrowLabel text="Certificaciones" />
-          <h2
-            id="certs-heading"
-            class="font-display font-semibold text-background mt-3 leading-tight"
-            style="font-size:clamp(30px,3.5vw,46px);"
-          >
-            Certificado, medible, verificable
-          </h2>
-          <p class="text-neutral/55 mt-4 max-w-[48ch] mx-auto text-[15px]">
-            Mi certificación como técnico en gas en Medellín no es solo un papel
-            — es el respaldo de que cada instalación cumple la normativa
-            colombiana vigente.
+          <p class="mt-4 text-[15px] leading-relaxed text-muted">
+            Sirve para mí y para cualquier otro. Si quieres profundizar, mira
+            <a href="/empresas-autorizadas-revision-gas-medellin" class={linkClass}>quién está autorizado a revisar gas en Medellín</a>
+            y <a href="/blog/como-elegir-tecnico-gas-certificado-medellin" class={linkClass}>cómo elegir técnico de gas</a>.
           </p>
         </div>
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 reveal-stagger">
+        <ol class="reveal-stagger mx-auto flex max-w-[860px] flex-col gap-4">
           {
-            certifications.map((c) => (
-              <div class="group relative bg-background/[0.04] border border-neutral/12 rounded-2xl p-6 flex flex-col gap-3 hover:bg-background/[0.08] hover:border-tertiary/30 transition-all duration-300 overflow-hidden text-center items-center">
-                <div class="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-tertiary/40 to-transparent" />
-                <div
-                  class="font-display text-[28px] font-bold"
-                  style="color:rgba(249,115,22,0.35);"
-                >
-                  {c.seal}
+            verificar.map((p, i) => (
+              <li class="flex gap-5 rounded-2xl border border-neutral/20 bg-surface p-6">
+                <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-tertiary/10 font-mono text-[18px] font-bold text-tertiary">
+                  {i + 1}
+                </span>
+                <div>
+                  <h3 class="font-display text-[19px] font-semibold leading-snug text-primary">{p.t}</h3>
+                  <p class="mt-2 text-[14.5px] leading-relaxed text-muted">{p.d}</p>
                 </div>
-                <div class="font-display text-[15px] tracking-[0.04em] text-background font-semibold">
-                  {c.title}
-                </div>
-                <div class="text-neutral/50 text-[12px] tracking-[0.03em]">
-                  {c.sub}
-                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <!-- ── Método de trabajo ── -->
+    <section class="section-pad bg-bg-alt" aria-labelledby="metodo-heading">
+      <div class="container-section">
+        <div class="reveal mx-auto mb-12 max-w-[720px] text-center">
+          <EyebrowLabel text="Cómo trabajo" />
+          <h2 id="metodo-heading" class="mt-3 font-display text-[clamp(28px,3.5vw,44px)] font-semibold leading-tight text-primary">
+            Así es una visita técnica de gas, de principio a fin
+          </h2>
+          <p class="mt-4 text-[15px] leading-relaxed text-muted">
+            Siete pasos, el mismo orden en cada casa. El detalle de lo que se mide está en
+            <a href="/blog/que-revisa-tecnico-certificado-inspeccion-gas" class={linkClass}>qué revisa un técnico certificado</a>.
+          </p>
+        </div>
+        <ol class="reveal-stagger grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            metodo.map((m, i) => (
+              <li class="flex flex-col gap-3 rounded-2xl border border-neutral/20 bg-surface p-6">
+                <span class="font-mono text-[12px] font-semibold uppercase tracking-[0.2em] text-tertiary">
+                  Paso {i + 1}
+                </span>
+                <h3 class="font-display text-[19px] font-semibold leading-snug text-primary">{m.t}</h3>
+                <p class="text-[14.5px] leading-relaxed text-muted">{m.d}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <!-- ── Hallazgos frecuentes ── -->
+    <section class="section-pad bg-background" aria-labelledby="hallazgos-heading">
+      <div class="container-section">
+        <div class="reveal mx-auto mb-10 max-w-[760px] text-center">
+          <EyebrowLabel text="Experiencia de campo" />
+          <h2 id="hallazgos-heading" class="mt-3 font-display text-[clamp(28px,3.5vw,44px)] font-semibold leading-tight text-primary">
+            Lo que más encuentro en las redes de gas de Medellín
+          </h2>
+          <p class="mt-4 text-[15px] leading-relaxed text-muted">
+            Después de miles de revisiones, los hallazgos se repiten según el tipo de vivienda y la
+            zona. Si tu casa se parece a alguno de estos casos, ya sabes qué revisar primero.
+          </p>
+        </div>
+        <div class="reveal overflow-hidden rounded-2xl border border-neutral/20 bg-surface">
+          <table class="block w-full text-left text-[14.5px] md:table">
+            <caption class="sr-only">Hallazgos frecuentes en revisiones de gas por zona del Valle de Aburrá</caption>
+            <thead class="hidden bg-primary text-background md:table-header-group">
+              <tr>
+                <th scope="col" class="px-4 py-3 font-mono text-[12px] uppercase tracking-[0.14em] md:px-6">Hallazgo</th>
+                <th scope="col" class="px-4 py-3 font-mono text-[12px] uppercase tracking-[0.14em] md:px-6">Dónde es común</th>
+                <th scope="col" class="px-4 py-3 font-mono text-[12px] uppercase tracking-[0.14em] md:px-6">Qué implica</th>
+              </tr>
+            </thead>
+            <tbody class="block divide-y divide-neutral/20 md:table-row-group">
+              {
+                hallazgos.map((h) => (
+                  <tr class="block px-5 py-4 md:table-row md:p-0">
+                    <th scope="row" class="block pb-2 font-display text-[18px] font-semibold text-primary md:table-cell md:px-6 md:py-4 md:font-body md:text-[14.5px]">{h.h}</th>
+                    <td class="block pb-1 text-muted md:table-cell md:px-6 md:py-4">
+                      <span class="font-semibold text-primary md:hidden">Dónde: </span>
+                      <a href={h.href} class="underline decoration-neutral underline-offset-2 hover:text-tertiary">{h.donde}</a>
+                    </td>
+                    <td class="block text-muted md:table-cell md:px-6 md:py-4">
+                      <span class="font-semibold text-primary md:hidden">Implica: </span>{h.implica}
+                    </td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-5 text-center text-[14px] text-muted">
+          ¿Señales en tu propia casa? Revisa las
+          <a href="/blog/senales-red-gas-necesita-mantenimiento-urgente" class={linkClass}>señales de mantenimiento urgente</a>
+          o agenda un <a href="/mantenimiento-gas-medellin" class={linkClass}>mantenimiento de gas</a>.
+        </p>
+      </div>
+    </section>
+
+    {
+      TECNICO.obras.length > 0 && (
+        <section class="section-pad bg-bg-alt" aria-labelledby="obras-heading">
+          <div class="container-section">
+            <div class="reveal mb-10 text-center">
+              <EyebrowLabel text="Trabajos reales" />
+              <h2 id="obras-heading" class="mt-3 font-display text-[clamp(28px,3.5vw,44px)] font-semibold leading-tight text-primary">
+                Instalaciones y certificaciones en el Valle de Aburrá
+              </h2>
+            </div>
+            <div class="reveal-stagger grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {TECNICO.obras.map((o) => (
+                <figure class="overflow-hidden rounded-2xl border border-neutral/20 bg-surface">
+                  <img src={o.src} alt={o.alt} class="aspect-[4/3] h-auto w-full object-cover" width="600" height="450" loading="lazy" decoding="async" />
+                  <figcaption class="px-5 py-4 text-[14px] text-muted">{o.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    <!-- ── Principios ── -->
+    <section class="section-pad bg-background" aria-labelledby="valores-heading">
+      <div class="container-section">
+        <div class="reveal mb-12 text-center">
+          <EyebrowLabel text="Compromisos" />
+          <h2 id="valores-heading" class="mt-3 font-display text-[clamp(30px,3.5vw,46px)] font-semibold leading-tight text-primary">
+            Lo que no negocio en ningún trabajo
+          </h2>
+        </div>
+        <div class="reveal-stagger grid grid-cols-1 gap-5 sm:grid-cols-2">
+          {
+            principios.map((p) => (
+              <div class="rounded-2xl border border-neutral/15 bg-surface p-7 transition-all duration-300 hover:border-tertiary/30 hover:shadow-md">
+                <h3 class="mb-2 font-display text-[18px] font-semibold tracking-[0.01em] text-primary">{p.t}</h3>
+                <p class="text-[14.5px] leading-relaxed text-muted">{p.d}</p>
               </div>
             ))
           }
@@ -487,274 +716,80 @@ const breadcrumbSchema = {
       </div>
     </section>
 
-    <!-- ── Internal links — link equity a páginas programáticas clave ── -->
-    <section
-      class="section-pad bg-background"
-      aria-labelledby="servicios-link-heading"
-    >
+    <!-- ── Servicios ── -->
+    <section class="bg-background pb-16 md:pb-24" aria-labelledby="servicios-link-heading">
       <div class="container-section">
-        <div class="text-center mb-10 reveal">
-          <EyebrowLabel text="Servicios en Medellín" />
-          <h2
-            id="servicios-link-heading"
-            class="font-display font-semibold text-primary mt-3 leading-tight"
-            style="font-size:clamp(26px,3vw,40px);"
-          >
-            ¿Qué servicio de gas necesitas en Medellín?
-          </h2>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 reveal-stagger">
-          <a
-            href="/instalacion-gas-medellin"
-            class="group bg-surface border border-neutral/15 rounded-xl p-5 flex items-center gap-3 hover:border-tertiary/40 hover:shadow-sm transition-all duration-200"
-          >
-            <span
-              class="w-8 h-8 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/20 transition-colors"
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                aria-hidden="true"
-                ><path
-                  d="M12 3v1m0 16v1M3 12h1m16 0h1m-3.07-7.07.707.707M5.363 18.637l.707-.707m0-12.728.707.707M18.637 18.637l-.707-.707"
-                ></path></svg
+        <h2 id="servicios-link-heading" class="mb-8 text-center font-display text-[clamp(26px,3vw,40px)] font-semibold leading-tight text-primary">
+          Servicios de gas que atiendo en Medellín
+        </h2>
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            [
+              { href: '/instalacion-gas-medellin', t: 'Instalación de gas en Medellín' },
+              { href: '/certificacion-gas-medellin', t: 'Certificación de gas en Medellín' },
+              { href: '/rpo-gas-medellin', t: 'Revisión periódica (RPO)' },
+              { href: '/mantenimiento-gas-medellin', t: 'Mantenimiento y fugas de gas' },
+              { href: '/certificacion-linea-matriz-gas-medellin', t: 'Línea matriz para conjuntos' },
+              { href: '/blog', t: 'Guías técnicas del blog' },
+            ].map((s) => (
+              <a
+                href={s.href}
+                class="flex min-h-[56px] items-center justify-between gap-3 rounded-xl border border-neutral/20 bg-surface px-5 py-4 text-[14.5px] font-semibold text-primary transition-all duration-200 hover:border-tertiary/40 hover:shadow-sm"
               >
-            </span>
-            <span class="font-semibold text-primary text-[14px] leading-snug"
-              >Instalación de gas en Medellín</span
-            >
-          </a>
-          <a
-            href="/certificacion-gas-medellin"
-            class="group bg-surface border border-neutral/15 rounded-xl p-5 flex items-center gap-3 hover:border-tertiary/40 hover:shadow-sm transition-all duration-200"
-          >
-            <span
-              class="w-8 h-8 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/20 transition-colors"
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                aria-hidden="true"
-                ><path
-                  d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                ></path></svg
-              >
-            </span>
-            <span class="font-semibold text-primary text-[14px] leading-snug"
-              >Certificación de gas en Medellín</span
-            >
-          </a>
-          <a
-            href="/mantenimiento-gas-medellin"
-            class="group bg-surface border border-neutral/15 rounded-xl p-5 flex items-center gap-3 hover:border-tertiary/40 hover:shadow-sm transition-all duration-200"
-          >
-            <span
-              class="w-8 h-8 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/20 transition-colors"
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                aria-hidden="true"
-                ><path
-                  d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z"
-                ></path></svg
-              >
-            </span>
-            <span class="font-semibold text-primary text-[14px] leading-snug"
-              >Mantenimiento de gas en Medellín</span
-            >
-          </a>
-          <a
-            href="/instalacion-gas-el-poblado"
-            class="group bg-surface border border-neutral/15 rounded-xl p-5 flex items-center gap-3 hover:border-tertiary/40 hover:shadow-sm transition-all duration-200"
-          >
-            <span
-              class="w-8 h-8 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/20 transition-colors"
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                aria-hidden="true"
-                ><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path><path
-                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-                ></path></svg
-              >
-            </span>
-            <span class="font-semibold text-primary text-[14px] leading-snug"
-              >Gas en El Poblado</span
-            >
-          </a>
-          <a
-            href="/instalacion-gas-laureles"
-            class="group bg-surface border border-neutral/15 rounded-xl p-5 flex items-center gap-3 hover:border-tertiary/40 hover:shadow-sm transition-all duration-200"
-          >
-            <span
-              class="w-8 h-8 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/20 transition-colors"
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                aria-hidden="true"
-                ><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path><path
-                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-                ></path></svg
-              >
-            </span>
-            <span class="font-semibold text-primary text-[14px] leading-snug"
-              >Gas en Laureles</span
-            >
-          </a>
-          <a
-            href="/instalacion-gas-envigado"
-            class="group bg-surface border border-neutral/15 rounded-xl p-5 flex items-center gap-3 hover:border-tertiary/40 hover:shadow-sm transition-all duration-200"
-          >
-            <span
-              class="w-8 h-8 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center flex-shrink-0 group-hover:bg-tertiary/20 transition-colors"
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                aria-hidden="true"
-                ><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path><path
-                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-                ></path></svg
-              >
-            </span>
-            <span class="font-semibold text-primary text-[14px] leading-snug"
-              >Gas en Envigado</span
-            >
-          </a>
+                {s.t}
+                <span class="text-tertiary" aria-hidden="true">→</span>
+              </a>
+            ))
+          }
         </div>
       </div>
     </section>
 
-    <!-- ── Qué respalda la credencial ────────────────────────────────── -->
-    <section class="section-pad bg-background" aria-labelledby="credencial-heading">
+    <!-- ── FAQ ── -->
+    <section class="section-pad bg-bg-alt" aria-labelledby="faq-nosotros-heading">
       <div class="container-section">
-        <div class="max-w-[760px] mx-auto">
-          <EyebrowLabel text="La credencial" />
-          <h2
-            id="credencial-heading"
-            class="font-display font-semibold text-primary mt-3 mb-6 leading-tight"
-            style="font-size:clamp(26px,3vw,40px);"
-          >
-            Qué significa "técnico certificado NTC 2505"
-          </h2>
-
-          <div class="flex flex-col gap-4 text-muted text-[15.5px] leading-relaxed">
-            <p>
-              En Colombia, cualquier persona puede instalar una tubería. Muy pocas pueden
-              certificarla. La diferencia es un <strong class="text-primary">certificado de
-              competencia laboral vigente en instalaciones de gas</strong>, expedido bajo la
-              NTC 2505 y respaldado por un organismo de inspección acreditado ante el ONAC.
-              Ese documento es el que permite firmar el certificado que EPM exige para
-              activar o mantener activo el servicio.
-            </p>
-            <p>
-              La <a href="/blog/ntc-2505-norma-colombiana-instalaciones-gas" class="font-semibold underline underline-offset-2" style="color:#F97316;">NTC 2505</a>
-              es la Norma Técnica Colombiana que define qué materiales se admiten, cómo debe
-              ventilarse el espacio, qué distancias de seguridad hay que respetar y qué
-              pruebas debe superar la instalación. No es una recomendación: la reglamentación
-              nacional la hizo de obligatorio cumplimiento, y la
-              <a href="/rpo-gas-medellin" class="font-semibold underline underline-offset-2" style="color:#F97316;">Revisión Periódica Obligatoria</a>
-              verifica cada cinco años que se siga cumpliendo.
-            </p>
-            <p>
-              Conviene tener clara una distinción que genera confusión permanente:
-              <strong class="text-primary">EPM distribuye el gas y exige el certificado, pero
-              no certifica ni repara la red interna</strong> del inmueble. Esa parte
-              corresponde al técnico certificado. Lo explicamos a fondo en
-              <a href="/blog/quien-certifica-gas-epm-o-tecnico-certificado" class="font-semibold underline underline-offset-2" style="color:#F97316;">quién certifica el gas en Medellín</a>.
-            </p>
-            <p>
-              En LujoGas no hay intermediación: quien evalúa, ejecuta y firma es la misma
-              persona. Si algo queda mal, sabes exactamente a quién llamar.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── FAQ del técnico ───────────────────────────────────────────── -->
-    <section class="section-pad" style="background:#F8F7F4;" aria-labelledby="faq-nosotros-heading">
-      <div class="container-section">
-        <div class="text-center mb-10 reveal">
+        <div class="reveal mb-10 text-center">
           <EyebrowLabel text="Preguntas frecuentes" />
-          <h2
-            id="faq-nosotros-heading"
-            class="font-display font-semibold text-primary mt-3 leading-tight"
-            style="font-size:clamp(28px,3.5vw,44px);"
-          >
+          <h2 id="faq-nosotros-heading" class="mt-3 font-display text-[clamp(28px,3.5vw,44px)] font-semibold leading-tight text-primary">
             Sobre el técnico y la certificación
           </h2>
         </div>
-        <div class="max-w-[720px] mx-auto flex flex-col gap-4 reveal-stagger">
-          {faqTecnico.map((faq) => (
-            <details class="group border border-neutral/15 rounded-2xl overflow-hidden bg-background">
-              <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer font-display font-semibold text-primary text-[16px] leading-snug list-none">
-                {faq.q}
-                <svg class="flex-shrink-0 transition-transform duration-200 group-open:rotate-180" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-              </summary>
-              <div class="px-6 pb-5 text-muted text-[14.5px] leading-relaxed border-t border-neutral/10 pt-4">
-                {faq.a}
-              </div>
-            </details>
-          ))}
+        <div class="mx-auto flex max-w-[760px] flex-col gap-4">
+          {
+            faqTecnico.map((faq) => (
+              <details class="group overflow-hidden rounded-2xl border border-neutral/15 bg-background">
+                <summary class="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 font-display text-[16px] font-semibold leading-snug text-primary">
+                  <h3>{faq.q}</h3>
+                  <svg class="flex-shrink-0 transition-transform duration-200 group-open:rotate-180" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+                </summary>
+                <div class="border-t border-neutral/10 px-6 pb-5 pt-4 text-[14.5px] leading-relaxed text-muted">{faq.a}</div>
+              </details>
+            ))
+          }
         </div>
       </div>
     </section>
 
-    <!-- ── Cobertura completa ────────────────────────────────────────── -->
+    <!-- ── Cobertura ── -->
     <section class="section-pad bg-background" aria-labelledby="cobertura-nosotros-heading">
       <div class="container-section">
-        <div class="text-center mb-10 reveal">
+        <div class="reveal mb-10 text-center">
           <EyebrowLabel text="Dónde atiendo" />
-          <h2
-            id="cobertura-nosotros-heading"
-            class="font-display font-semibold text-primary mt-3 leading-tight"
-            style="font-size:clamp(26px,3vw,42px);"
-          >
-            Cobertura en Medellín y el Valle de Aburrá
+          <h2 id="cobertura-nosotros-heading" class="mt-3 font-display text-[clamp(26px,3vw,42px)] font-semibold leading-tight text-primary">
+            Técnico de gas en Medellín y el Valle de Aburrá
           </h2>
-          <p class="text-muted mt-3 max-w-[54ch] mx-auto text-[15px]">
-            El mismo técnico certificado atiende cada una de estas zonas. La visita
-            diagnóstica se coordina por WhatsApp según disponibilidad de agenda.
-          </p>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 reveal-stagger">
-          {zonas.map((z) => (
-            <a
-              href={`/instalacion-gas-${z.slug}`}
-              class="group flex items-center justify-center gap-2 border border-neutral/15 rounded-xl px-4 py-3 text-[13.5px] font-semibold text-primary hover:border-tertiary/40 hover:bg-tertiary/5 transition-all duration-200 text-center min-h-[44px]"
-            >
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0" style="color:#F97316;" aria-hidden="true"><path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
-              Gas en {z.name}
-            </a>
-          ))}
+        <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+          {
+            zonas.map((z) => (
+              <a
+                href={`/instalacion-gas-${z.slug}`}
+                class="flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-neutral/15 px-4 py-3 text-center text-[13.5px] font-semibold text-primary transition-all duration-200 hover:border-tertiary/40 hover:bg-tertiary/5"
+              >
+                Gas en {z.name}
+              </a>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -777,11 +812,8 @@ const breadcrumbSchema = {
     },
     { threshold: 0.12, rootMargin: '0px 0px -40px 0px' },
   );
-  document
-    .querySelectorAll('.reveal, .reveal-stagger')
-    .forEach((el) => io.observe(el));
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => io.observe(el));
 
-  // ── Counter animation ──
   const counterIo = new IntersectionObserver(
     (entries) => {
       entries.forEach((e) => {
@@ -793,8 +825,7 @@ const breadcrumbSchema = {
         const start = performance.now();
         const tick = (t) => {
           const p = Math.min(1, (t - start) / dur);
-          const eased = 1 - Math.pow(1 - p, 3);
-          nEl.textContent = Math.round(target * eased);
+          nEl.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
           if (p < 1) requestAnimationFrame(tick);
         };
         requestAnimationFrame(tick);
@@ -803,7 +834,5 @@ const breadcrumbSchema = {
     },
     { threshold: 0.4 },
   );
-  document
-    .querySelectorAll('.stat .val')
-    .forEach((el) => counterIo.observe(el));
+  document.querySelectorAll('.stat .val').forEach((el) => counterIo.observe(el));
 </script>

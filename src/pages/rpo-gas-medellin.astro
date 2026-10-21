@@ -14,27 +14,27 @@ const canonical = 'https://lujogas.com.co/rpo-gas-medellin';
 const faq = [
   {
     q: '¿Qué es la Revisión Periódica Obligatoria de gas?',
-    a: 'La RPO es una inspección técnica exigida por la normativa colombiana (CREG 067 de 1995, NTC 2505) que deben pasar todas las instalaciones de gas cada 5 años para verificar que siguen siendo seguras.',
+    a: 'La RPO es una inspección técnica exigida por la regulación colombiana (Resolución CREG 059 de 2012 y NTC 2505) que deben pasar todas las instalaciones de gas cada 5 años para verificar que siguen siendo seguras.',
   },
   {
     q: '¿Cada cuánto hay que hacer la RPO en Medellín?',
-    a: 'Cada 5 años desde la fecha de emisión del último certificado. La normativa colombiana aplica en todo el territorio nacional, incluyendo Medellín y el Valle de Aburrá.',
+    a: 'Cada 5 años desde la fecha del último certificado. Puedes hacerla desde 5 meses antes del vencimiento; EPM avisa en la factura con esa anticipación y vuelve a avisar en el último mes del plazo.',
   },
   {
     q: '¿Qué pasa si no hago la RPO?',
-    a: 'Si la RPO está vencida, la empresa distribuidora puede suspender el servicio de gas. Además, en caso de siniestro, los seguros del hogar podrían no cubrir los daños.',
+    a: 'EPM suspende el servicio. En 2026 la suspensión cuesta $67.000 y la reconexión otros $67.000, además de la revisión pendiente. Si alguien reconecta el gas sin autorización, el cobro sube a $532.000.',
   },
   {
     q: '¿Qué revisa el técnico durante la RPO?',
     a: 'El técnico certificado NTC 2505 revisa: estado de la tubería, conexiones, válvulas, reguladores, ventilación, prueba de hermeticidad, funcionamiento de gasodomésticos y análisis de combustión.',
   },
   {
-    q: '¿Cuánto cuesta la RPO en Medellín?',
-    a: 'La visita diagnóstica cuesta $50.000, descontable si contratas el servicio. La RPO completa, con pruebas y certificado, tiene un costo que depende de la cantidad de puntos de consumo y el estado de la instalación. Te damos el precio exacto después de la visita.',
+    q: '¿Cuánto vale la revisión del gas en Medellín en 2026?',
+    a: 'La tarifa que publica EPM para 2026 es $151.596 con IVA en vivienda residencial y $239.363 en no residencial. Con LujoGas la RPO residencial cuesta desde $150.000, con certificado en 24 a 48 horas. Si aparecen hallazgos, la corrección se presupuesta aparte y antes de intervenir.',
   },
   {
     q: '¿Qué pasa si encuentran fallas durante la RPO?',
-    a: 'Si se detectan fallas, el técnico te explica qué se necesita corregir y te entrega un presupuesto. Una vez corregidas las fallas, se realizan las pruebas finales y se emite el certificado ICONTEC en 24-48 horas.',
+    a: 'Depende del tipo de defecto. Un defecto crítico (fuga, falta de ventilación con riesgo de monóxido) obliga a suspender el servicio hasta corregirlo. Uno no crítico se puede corregir dentro del plazo de la revisión sin cortar el gas. En ambos casos te entregamos el presupuesto antes de intervenir y, corregido, el certificado sale en 24-48 horas.',
   },
   {
     q: '¿Cuánto dura la visita de RPO?',
@@ -88,8 +88,8 @@ const serviceSchema = {
 ---
 
 <BaseLayout
-  title="RPO Gas Medellín desde $150.000 | Certificado 24-48 h"
-  description="Revisión Periódica Obligatoria de gas en Medellín desde $150.000. Técnico NTC 2505, certificado en 24–48 h. Evita que EPM te suspenda el servicio."
+  title="Revisión de Gas Medellín 2026: Precio RPO y Plazos"
+  description="¿Cuánto vale la revisión del gas en 2026? Tarifa EPM $151.596 y RPO con LujoGas desde $150.000 en Medellín. Certificado en 24–48 h. Evita la suspensión."
   canonical={canonical}
 >
   <Header />
@@ -197,6 +197,86 @@ const serviceSchema = {
       </div>
     </section>
 
+    <!-- Precio 2026 — responde "cuánto vale la revisión del gas" -->
+    <section class="section-pad bg-background" aria-labelledby="precio-rpo-heading">
+      <div class="container-section max-w-[860px]">
+        <EyebrowLabel text="Precio 2026" class="mb-2" />
+        <h2
+          id="precio-rpo-heading"
+          class="font-display text-3xl md:text-4xl text-primary uppercase tracking-[-0.02em] mb-6"
+        >
+          ¿Cuánto vale la revisión del gas en Medellín en 2026?
+        </h2>
+        <p class="text-primary/80 text-lg leading-relaxed mb-6">
+          La revisión periódica residencial cuesta <strong>$151.596 con IVA</strong> según la tarifa
+          que publica EPM para 2026. Con <strong>LujoGas la RPO residencial cuesta desde $150.000</strong>,
+          incluye prueba de hermeticidad, revisión de ventilación y medición de monóxido de carbono, y
+          el certificado sale en 24 a 48 horas hábiles. La revisión se paga una vez cada 5 años.
+        </p>
+        <div class="overflow-x-auto rounded-2xl border border-neutral/30 bg-surface">
+          <table class="w-full min-w-[520px] text-left text-[15px]">
+            <caption class="sr-only">Tarifas 2026 de revisión periódica de gas publicadas por EPM</caption>
+            <thead class="bg-primary text-background">
+              <tr>
+                <th scope="col" class="px-4 py-3 md:px-6 font-mono text-[12px] uppercase tracking-[0.14em]">Tipo de instalación</th>
+                <th scope="col" class="px-4 py-3 md:px-6 font-mono text-[12px] uppercase tracking-[0.14em]">Antes de IVA</th>
+                <th scope="col" class="px-4 py-3 md:px-6 font-mono text-[12px] uppercase tracking-[0.14em]">Con IVA</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-neutral/20 text-primary/80">
+              {
+                [
+                  ['Residencial', '$127.392', '$151.596'],
+                  ['No residencial (comercio)', '$201.146', '$239.363'],
+                  ['Industria pequeña (0–60 m³/h)', '$917.733', '$1.092.102'],
+                  ['Industria mediana (61–200 m³/h)', '$1.376.599', '$1.638.152'],
+                  ['Industria grande (más de 201 m³/h)', '$2.064.900', '$2.457.232'],
+                  ['Línea matriz (por usuario)', '$15.221', '$18.112'],
+                ].map(([tipo, base, iva]) => (
+                  <tr>
+                    <th scope="row" class="px-4 py-3 md:px-6 font-semibold text-primary">{tipo}</th>
+                    <td class="px-4 py-3 md:px-6">{base}</td>
+                    <td class="px-4 py-3 md:px-6 font-semibold text-primary">{iva}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+        <p class="text-sm text-muted mt-3">
+          Fuente:
+          <a
+            href="https://www.epm.com.co/clientesyusuarios/gas/revisiones-tecnicas-o-periodicas/"
+            target="_blank"
+            rel="noopener nofollow"
+            class="underline underline-offset-2 hover:text-tertiary">EPM, revisiones técnicas o periódicas de gas</a
+          >. Valores consultados en octubre de 2026.
+        </p>
+
+        <h3 class="font-display text-2xl text-primary uppercase tracking-[-0.01em] mt-10 mb-4">
+          Lo que cuesta no hacerla a tiempo
+        </h3>
+        <ul class="flex flex-col gap-3 text-primary/80 text-lg leading-relaxed">
+          <li><strong>Suspensión del servicio:</strong> $67.000.</li>
+          <li><strong>Reconexión:</strong> $67.000, y solo después de presentar el certificado vigente.</li>
+          <li><strong>Reconexión no autorizada:</strong> $532.000 si el gas se reconecta sin EPM.</li>
+        </ul>
+        <p class="text-primary/80 text-lg leading-relaxed mt-6">
+          El plazo corre desde la fecha del último certificado: puedes hacer la revisión desde 5 meses
+          antes del vencimiento. Si EPM ya te avisó en la factura, agenda con tiempo; si aparecen
+          hallazgos, necesitas margen para corregirlos. El desglose de otros servicios está en
+          <a
+            href="/blog/cuanto-cuesta-mantenimiento-gas-medellin"
+            class="text-tertiary font-semibold underline underline-offset-4 hover:opacity-80">cuánto cuesta el mantenimiento de gas</a
+          > y en
+          <a
+            href="/blog/cuanto-cuesta-certificacion-gas-medellin"
+            class="text-tertiary font-semibold underline underline-offset-4 hover:opacity-80">cuánto cuesta la certificación de gas</a
+          >.
+        </p>
+      </div>
+    </section>
+
     <!-- What is RPO -->
     <section class="section-pad">
       <div class="container-section max-w-[800px]">
@@ -209,7 +289,7 @@ const serviceSchema = {
         <p class="text-primary/80 text-lg leading-relaxed mb-5">
           La <strong>Revisión Periódica Obligatoria (RPO)</strong> es una inspección
           técnica que deben pasar todas las instalaciones de gas en Colombia cada
-          5 años, según lo establecido por la resolución CREG 067 de 1995 y la{
+          5 años, según la Resolución CREG 059 de 2012 y la{
             ' '
           }
           <a

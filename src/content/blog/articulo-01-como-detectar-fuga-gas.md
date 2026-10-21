@@ -1,9 +1,9 @@
 ---
-title: "Cómo detectar una fuga de gas en casa — señales clave"
-description: "Aprende a detectar una fuga de gas en casa con estas 5 señales clave. Técnico certificado NTC 2505 en Medellín. Actuar a tiempo puede salvar tu hogar."
+title: "Cómo saber si hay fuga de gas en casa (y en la pared)"
+description: "Cómo saber si hay una fuga de gas en casa o dentro de la pared: 5 señales, la prueba del medidor y qué hacer ya. Guía de técnico NTC 2505 en Medellín."
 slug: "como-detectar-fuga-gas-casa"
 publishDate: 2026-05-27
-updatedDate: 2026-09-23
+updatedDate: 2026-10-21
 author: "Luis Guillermo Muñoz Vélez"
 readingTime: 9
 category: "seguridad"
@@ -24,6 +24,8 @@ faq:
     a: "A la línea de emergencias de EPM, (604) 44 44 115, o al 123. Llama desde fuera del inmueble, nunca desde adentro. EPM atiende la emergencia y corta el suministro si hace falta, pero no repara ni certifica la red interna: esa parte la resuelve después un técnico certificado NTC 2505."
   - q: "¿Puedo detectar una fuga de gas con agua y jabón?"
     a: "Sí, en uniones y conexiones visibles. Se aplica agua jabonosa sobre la unión y, si hay escape, se forman burbujas. Sirve para confirmar un punto sospechoso, pero no reemplaza la prueba de hermeticidad con manómetro, que es la que mide si toda la red mantiene presión y la que respalda el certificado."
+  - q: "¿Cómo detectar una fuga de gas dentro de la pared?"
+    a: "Cierra todas las llaves de los gasodomésticos y mira el medidor durante 10 a 15 minutos: si el último tambor o dígito se mueve sin consumo, hay escape en la red, aunque no lo veas. Otras pistas son olor concentrado cerca de un muro, manchas de humedad o pintura soplada sobre el trazado y silbido junto a la pared. No rompas el muro para buscarla: la prueba de hermeticidad con manómetro confirma la fuga y el técnico la ubica por tramos."
   - q: "¿Una llama amarilla significa que hay una fuga?"
     a: "No necesariamente. La llama amarilla indica combustión incompleta, que suele venir de un quemador sucio o de ventilación insuficiente. Es una señal de alerta que hay que revisar, porque la combustión incompleta produce monóxido de carbono, pero su causa más común no es la fuga sino la falta de aire."
   - q: "¿Cada cuánto debo revisar la red de gas de mi casa?"
@@ -88,6 +90,26 @@ El orden importa. Cualquier chispa en un ambiente con gas acumulado es suficient
 Lo que EPM hace es atender la emergencia y cortar el suministro. Lo que no hace es reparar ni certificar la red interna del inmueble: esa parte la resuelve después un técnico certificado. La diferencia está explicada en detalle en [quién certifica el gas](/blog/quien-certifica-gas-epm-o-tecnico-certificado), y los números de emergencia completos están en [esta página](/blog/telefonos-emergencia-gas-medellin-epm).
 
 En Medellín, LujoGas atiende reparación y certificación tras una fuga en [El Poblado](/instalacion-gas-el-poblado), [Laureles](/instalacion-gas-laureles), [Envigado](/instalacion-gas-envigado), [Bello](/instalacion-gas-bello) y todo el Valle de Aburrá.
+
+## Cómo detectar una fuga de gas dentro de la pared
+
+En Medellín buena parte de la tubería de gas va empotrada en muros o bajo el piso, sobre todo en apartamentos. Ahí no puedes aplicar agua jabonosa, así que la pregunta es otra: ¿la red pierde gas aunque no se vea dónde?
+
+**La prueba del medidor (la puedes hacer tú):**
+
+1. Apaga y cierra la llave de cada gasodoméstico: estufa, horno, calentador, secadora.
+2. Anota o fotografía la lectura del medidor, fijándote en el último tambor o dígito.
+3. Espera entre 10 y 15 minutos sin usar gas.
+4. Si la lectura cambió, hay escape en algún punto entre el medidor y los equipos.
+
+**Pistas de que la fuga está en un muro:**
+
+- El olor a gas es más fuerte junto a una pared concreta que en el resto de la cocina.
+- Manchas de humedad, pintura soplada o revoque suelto justo sobre el recorrido de la tubería.
+- Un silbido leve al acercar el oído al muro con la casa en silencio.
+- La factura de EPM sube sin cambios de consumo (lo explicamos en [factura de gas alta](/blog/factura-gas-epm-alta-causas-soluciones)).
+
+**Lo que no debes hacer:** romper el muro para buscarla, usar llama para "probar" o aplicar sellantes por fuera. La fuga se confirma con la prueba de hermeticidad y el técnico la localiza aislando tramos; solo entonces se abre el punto exacto. Si la tubería es antigua o de un material que la norma ya no admite, conviene revisar los [tipos de tubería para gas](/blog/tipos-tuberia-gas-cobre-cpvc-polietileno) antes de reparar.
 
 ## Cómo confirma un técnico que hay fuga
 

@@ -161,6 +161,12 @@ export const localBusinessSchema = {
       },
     ],
   },
+  founder: {
+    '@type': 'Person',
+    '@id': 'https://lujogas.com.co/nosotros#tecnico',
+    name: 'Luis Guillermo Muñoz Vélez',
+    url: 'https://lujogas.com.co/nosotros',
+  },
   hasMap: 'https://maps.google.com/?q=LujoGas,Medellín,Antioquia,Colombia',
   // Perfiles sociales reales: agregar a sameAs cuando existan.
   // Reviews GBP reales: activar aggregateRating solo con datos verificables.
