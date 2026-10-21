@@ -4,13 +4,23 @@
   "redirects": [
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "www.lujogas.com.co" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.lujogas.com.co"
+        }
+      ],
       "destination": "https://lujogas.com.co/",
       "permanent": true
     },
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.lujogas.com.co" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.lujogas.com.co"
+        }
+      ],
       "destination": "https://lujogas.com.co/:path*",
       "permanent": true
     },
@@ -21,12 +31,27 @@
     },
     {
       "source": "/blog/cada-cuanto-revisar-instalacion-gas-casa",
-      "destination": "/blog/rpo-gas-revision-periodica-obligatoria-colombia",
+      "destination": "/blog/revision-periodica-gas-epm",
       "permanent": true
     },
     {
       "source": "/blog/como-saber-si-rpo-vencida-consultar",
-      "destination": "/blog/rpo-gas-revision-periodica-obligatoria-colombia",
+      "destination": "/blog/revision-periodica-gas-epm",
+      "permanent": true
+    },
+    {
+      "source": "/blog/rpo-gas-revision-periodica-obligatoria-colombia",
+      "destination": "/blog/revision-periodica-gas-epm",
+      "permanent": true
+    },
+    {
+      "source": "/blog/instalacion-gas-apartamento-vs-casa-diferencias",
+      "destination": "/blog/instalacion-red-gas-domiciliaria",
+      "permanent": true
+    },
+    {
+      "source": "/blog/instalacion-gas-residencial-comercial-medellin",
+      "destination": "/blog/instalacion-red-gas-domiciliaria",
       "permanent": true
     }
   ],
@@ -34,9 +59,18 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
       ]
     }
   ]

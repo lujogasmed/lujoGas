@@ -94,6 +94,6 @@ Una fuga pequeña reparada a tiempo **se paga sola con el ahorro** en pocas fact
 
 ## Bonus: la RPO también protege tu bolsillo
 
-La [Revisión Periódica Obligatoria cada 5 años](/blog/rpo-gas-revision-periodica-obligatoria-colombia) no es solo un requisito legal: es precisamente la inspección que detecta reguladores vencidos, fugas incipientes y combustión ineficiente antes de que inflen tu factura durante meses. Si no recuerdas cuándo fue tu última RPO, ese consumo alto puede ser el primer aviso.
+La [Revisión Periódica Obligatoria cada 5 años](/blog/revision-periodica-gas-epm) no es solo un requisito legal: es precisamente la inspección que detecta reguladores vencidos, fugas incipientes y combustión ineficiente antes de que inflen tu factura durante meses. Si no recuerdas cuándo fue tu última RPO, ese consumo alto puede ser el primer aviso.
 
 ¿La factura sigue sin cuadrar? Escríbenos por WhatsApp con una foto de tu factura y el síntoma que notaste — te decimos sin compromiso si el caso amerita revisión técnica.

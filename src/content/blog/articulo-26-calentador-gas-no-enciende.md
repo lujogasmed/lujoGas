@@ -67,7 +67,7 @@ Este síntoma confunde mucho, pero casi siempre es un **mecanismo de seguridad a
 
 La **termocupla** es un sensor que corta el gas si la llama se apaga; con los años se desgasta y corta antes de tiempo. El **sensor de gases** apaga el equipo cuando la evacuación de la combustión no es adecuada — señal de que el ducto o las rejillas de ventilación tienen un problema. En ambos casos, forzar el encendido repetidamente es mala idea: la causa de fondo sigue ahí.
 
-**Atención especial a la llama amarilla:** indica combustión incompleta, que produce monóxido de carbono — un gas tóxico que no huele. Si además del apagado ves llama amarilla, hollín en la pared o empañamiento excesivo, suspende el uso del calentador hasta la revisión.
+**Atención especial a la llama amarilla:** indica combustión incompleta, que produce monóxido de carbono — un gas tóxico que no huele. Si además del apagado ves llama amarilla, hollín en la pared o empañamiento excesivo, suspende el uso del calentador hasta la revisión. Los síntomas y la ventilación correcta están en [monóxido de carbono por calentador de gas](/blog/monoxido-carbono-calentador-gas).
 
 ## Lo que NO debes hacer
 

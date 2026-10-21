@@ -117,7 +117,7 @@ El material no se escoge por preferencia: se escoge por el recorrido. Estos son 
 | Acometida desde red pública | Polietileno alta densidad | Único aprobado para enterrado |
 | Cocina comercial, alto caudal | Acero | Diámetros mayores a costo razonable |
 
-En apartamentos hay un factor extra: **el reglamento de la copropiedad**. Muchos edificios de El Poblado y Laureles exigen cobre en los ductos comunes, independientemente de lo que permita la norma. Las diferencias entre instalar en apartamento y en casa están en [instalación de gas: apartamento vs casa](/blog/instalacion-gas-apartamento-vs-casa-diferencias).
+En apartamentos hay un factor extra: **el reglamento de la copropiedad**. Muchos edificios de El Poblado y Laureles exigen cobre en los ductos comunes, independientemente de lo que permita la norma. Las diferencias entre instalar en apartamento y en casa están en [instalación de gas: apartamento vs casa](/blog/instalacion-red-gas-domiciliaria).
 
 ## Reglas de instalación que aplican a cualquier material
 

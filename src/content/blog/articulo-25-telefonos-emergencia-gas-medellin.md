@@ -97,7 +97,7 @@ En LujoGas realizamos este proceso completo en Medellín y el Valle de Aburrá: 
 La mayoría de las fugas que atendemos en Medellín eran prevenibles. Tres hábitos reducen drásticamente el riesgo:
 
 - **Revisión anual preventiva** de la red, especialmente en casas con instalaciones de más de 10 años. Aprende a reconocer las [señales de que tu red necesita mantenimiento](/blog/senales-red-gas-necesita-mantenimiento-urgente).
-- **RPO al día**: la Resolución 90902 de 2013 exige la [Revisión Periódica Obligatoria cada 5 años](/blog/rpo-gas-revision-periodica-obligatoria-colombia). Una RPO vencida no solo arriesga la suspensión del servicio: significa que nadie ha verificado tu red en años.
+- **RPO al día**: la Resolución 90902 de 2013 exige la [Revisión Periódica Obligatoria cada 5 años](/blog/revision-periodica-gas-epm). Una RPO vencida no solo arriesga la suspensión del servicio: significa que nadie ha verificado tu red en años.
 - **Conexiones certificadas**: estufas y calentadores conectados con manguera certificada y válvula de corte independiente, nunca con acoples improvisados.
 
 Si no recuerdas cuándo fue la última revisión de tu red, ese es el mejor indicador de que ya toca. Agenda tu [mantenimiento de gas en Medellín](/mantenimiento-gas-medellin) con técnico certificado NTC 2505 y quédate tranquilo.

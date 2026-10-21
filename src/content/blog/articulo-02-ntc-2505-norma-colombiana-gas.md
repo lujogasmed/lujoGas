@@ -120,7 +120,7 @@ Ese es el documento que EPM acepta para activar, reconectar o mantener el servic
 En Medellín y el Valle de Aburrá, EPM distribuye gas natural a la mayoría de hogares y exige el certificado de conformidad NTC 2505 en tres momentos concretos:
 
 1. **Activación de servicio en vivienda nueva.** Sin certificado no hay medidor activo. Es el trámite típico en obras nuevas de Envigado, Sabaneta y La Estrella, explicado en [gas natural en obra nueva](/blog/gas-natural-obra-nueva-constructor-medellin).
-2. **Revisión Periódica Obligatoria cada 5 años.** EPM notifica por factura. Si vence y no se presenta el certificado, procede la suspensión. Ver [RPO: revisión periódica obligatoria](/blog/rpo-gas-revision-periodica-obligatoria-colombia).
+2. **Revisión Periódica Obligatoria cada 5 años.** EPM notifica por factura. Si vence y no se presenta el certificado, procede la suspensión. Ver [RPO: revisión periódica obligatoria](/blog/revision-periodica-gas-epm).
 3. **Reconexión tras suspensión.** Después de un corte por vencimiento o por hallazgo de riesgo, el certificado vigente es requisito para restablecer.
 
 A esto se suma un uso creciente en el mercado inmobiliario: **inmobiliarias y aseguradoras piden el certificado** para arrendar o para responder ante un siniestro. Lo detallamos en [certificación de gas para arriendo](/blog/certificacion-gas-para-arriendo-requisitos-medellin).

@@ -54,7 +54,7 @@ No intentes localizar la fuga tú mismo. Protocolo completo en [qué hacer si hu
 
 ### Señal 2 — Dolor de cabeza, mareo o náusea al usar la cocina o la ducha
 
-Es **la señal más peligrosa de todas** y la que menos se reconoce, porque el monóxido de carbono es incoloro, inodoro y no irrita. No hay olor que te avise: **el síntoma de las personas es la única alarma**.
+Es **la señal más peligrosa de todas** y la que menos se reconoce, porque el monóxido de carbono es incoloro, inodoro y no irrita. No hay olor que te avise: **el síntoma de las personas es la única alarma**. Cómo reconocerlo y prevenirlo está en [monóxido de carbono por calentador de gas](/blog/monoxido-carbono-calentador-gas).
 
 La pista clave: los síntomas aparecen dentro de la vivienda y **mejoran al salir**. Si varias personas de la casa —o incluso una mascota— presentan lo mismo, la sospecha es fuerte.
 

@@ -74,7 +74,7 @@ Un calentador subdimensionado nunca calienta bien y trabaja forzado. Uno sobredi
 
 Prohibido instalar calentadores tipo A y tipo B en **baños y dormitorios**. La razón es directa: consumen el oxígeno del recinto y, si la ventilación falla o el ducto se obstruye, la combustión se vuelve incompleta y genera monóxido de carbono en un espacio donde hay alguien encerrado.
 
-El monóxido es **incoloro, inodoro y no irrita**. No hay señal de alarma: la persona pierde el conocimiento. Es la razón por la que este requisito no admite excepciones.
+El monóxido es **incoloro, inodoro y no irrita**. No hay señal de alarma: la persona pierde el conocimiento. Es la razón por la que este requisito no admite excepciones. Síntomas, señales en el equipo y qué hacer en una emergencia están en [monóxido de carbono por calentador de gas](/blog/monoxido-carbono-calentador-gas).
 
 ### Ventilación del recinto
 

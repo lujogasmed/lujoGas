@@ -112,7 +112,7 @@ Aprobadas las pruebas, se emite el certificado con el número de identificación
 
 Lo recibes en **digital por WhatsApp o correo** en 24 a 48 horas hábiles y en **físico firmado** para tu archivo. Ese es el documento que EPM acepta para activar, reconectar o mantener el servicio.
 
-Guarda ambas copias: el siguiente ciclo de Revisión Periódica Obligatoria se cuenta desde esa fecha. Más sobre el ciclo de 5 años en [RPO: revisión periódica obligatoria](/blog/rpo-gas-revision-periodica-obligatoria-colombia).
+Guarda ambas copias: el siguiente ciclo de Revisión Periódica Obligatoria se cuenta desde esa fecha. Más sobre el ciclo de 5 años en [RPO: revisión periódica obligatoria](/blog/revision-periodica-gas-epm).
 
 ## ¿Cuánto tarda el proceso completo?
 

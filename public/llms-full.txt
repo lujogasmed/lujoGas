@@ -144,7 +144,7 @@ Landings:
 
 - /blog/seguridad-instalaciones-gas-medellin
 - /blog/certificacion-gas-icontec-medellin
-- /blog/instalacion-gas-residencial-comercial-medellin
+- /blog/instalacion-red-gas-domiciliaria
 - /blog/mantenimiento-redes-gas-medellin
 
 ---
@@ -157,13 +157,13 @@ Landings:
 4. /blog/tipos-tuberia-gas-cobre-cpvc-polietileno
 5. /blog/gas-natural-vs-glp-diferencias-costos-medellin
 6. /blog/que-es-certificacion-icontec-gas-obligatoria
-7. /blog/rpo-gas-revision-periodica-obligatoria-colombia
+7. /blog/revision-periodica-gas-epm
 8. /blog/cuanto-cuesta-certificacion-gas-medellin
 9. /blog/pasos-obtener-certificado-gas-diagnostico-final
 10. /blog/que-revisa-tecnico-certificado-inspeccion-gas
 11. /blog/certificacion-gas-para-arriendo-requisitos-medellin
 12. /blog/cuanto-cuesta-instalar-gas-casa-medellin
-13. /blog/instalacion-gas-apartamento-vs-casa-diferencias
+13. /blog/instalacion-red-gas-domiciliaria
 14. /blog/como-elegir-tecnico-gas-certificado-medellin
 15. /blog/instalacion-gas-para-restaurantes-requisitos-ntc
 16. /blog/instalacion-calentador-gas-tipos-precio
@@ -179,6 +179,7 @@ Landings:
 26. /blog/activar-gas-epm-vivienda-nueva-medellin
 27. /blog/factura-gas-epm-alta-causas-soluciones
 28. /blog/linea-matriz-gas-conjuntos-residenciales
+29. /blog/monoxido-carbono-calentador-gas
 
 ---
 

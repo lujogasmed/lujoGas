@@ -88,7 +88,7 @@ El valor exacto depende del estado de la red y del número de equipos a conectar
 
 ## Apartamento vs casa: diferencias en la activación
 
-En **apartamentos** de edificios nuevos, la red troncal es del edificio y tu certificación cubre la red interna desde tu medidor — el proceso suele ser más rápido. Esa red troncal es la línea matriz, y su certificación le corresponde a la constructora o a la administración: lo explicamos en [certificación de línea matriz de gas](/certificacion-linea-matriz-gas-medellin). En **casas** nuevas o independientes, a veces hay que gestionar también la acometida con EPM, lo que suma tiempo. El detalle está en nuestra comparativa de [instalación de gas en apartamento vs casa](/blog/instalacion-gas-apartamento-vs-casa-diferencias).
+En **apartamentos** de edificios nuevos, la red troncal es del edificio y tu certificación cubre la red interna desde tu medidor — el proceso suele ser más rápido. Esa red troncal es la línea matriz, y su certificación le corresponde a la constructora o a la administración: lo explicamos en [certificación de línea matriz de gas](/certificacion-linea-matriz-gas-medellin). En **casas** nuevas o independientes, a veces hay que gestionar también la acometida con EPM, lo que suma tiempo. El detalle está en nuestra comparativa de [instalación de gas en apartamento vs casa](/blog/instalacion-red-gas-domiciliaria).
 
 ## Deja el gas funcionando en una sola gestión
 

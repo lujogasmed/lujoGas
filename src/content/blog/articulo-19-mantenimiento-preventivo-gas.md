@@ -48,7 +48,7 @@ El **mantenimiento preventivo** es lo que evita llegar ahí. Esta guía explica 
 
 **El preventivo no reemplaza a la RPO.** Lo que hace es que, cuando llegue la RPO, se apruebe sin hallazgos y sin costo de corrección. Es la diferencia entre pagar $150.000 cada cinco años o pagar $200.000 más el reemplazo de lo que se deterioró sin que nadie lo mirara.
 
-Detalle de la obligación legal en [RPO: revisión periódica obligatoria](/blog/rpo-gas-revision-periodica-obligatoria-colombia).
+Detalle de la obligación legal en [RPO: revisión periódica obligatoria](/blog/revision-periodica-gas-epm).
 
 ## ¿Cada cuánto hacerlo?
 

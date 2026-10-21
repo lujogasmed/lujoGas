@@ -102,7 +102,7 @@ La regla general es simple: **todo lo que implique abrir la red requiere técnic
 | **Después de una remodelación** | Verificación de rejillas y recertificación si se movió tubería | Técnico |
 | **Ante cualquier señal de alerta** | Llamar de inmediato | Técnico o emergencia EPM |
 
-El alcance del mantenimiento anual está en [mantenimiento preventivo de gas: qué incluye](/blog/mantenimiento-preventivo-gas-cada-cuando), y la obligación legal de los 5 años en [RPO: revisión periódica obligatoria](/blog/rpo-gas-revision-periodica-obligatoria-colombia).
+El alcance del mantenimiento anual está en [mantenimiento preventivo de gas: qué incluye](/blog/mantenimiento-preventivo-gas-cada-cuando), y la obligación legal de los 5 años en [RPO: revisión periódica obligatoria](/blog/revision-periodica-gas-epm).
 
 ## Cuándo llamar sin esperar el calendario
 

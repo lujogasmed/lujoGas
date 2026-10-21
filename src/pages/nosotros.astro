@@ -51,7 +51,7 @@ const stats = [
 ];
 
 // ── Ficha de datos (bloque citable por buscadores e IA) ───────────────────
-const ficha = [
+const ficha: { k: string; v: string; href?: string }[] = [
   { k: 'Técnico responsable', v: TECNICO.nombre },
   { k: 'Norma que aplica', v: 'NTC 2505 — instalaciones de gas residenciales y comerciales' },
   { k: 'Trabaja en gas desde', v: `${TECNICO.inicioEnGas} · certificado desde ${TECNICO.anioCertificacion}` },
@@ -62,7 +62,7 @@ const ficha = [
   { k: 'Cobertura', v: 'Medellín, Envigado, Sabaneta, Itagüí, La Estrella, Bello y Copacabana' },
   { k: 'Horario', v: SITE.schedule },
   { k: 'Dirección', v: `${SITE.address}, ${SITE.city}, ${SITE.region}` },
-  { k: 'Teléfono / WhatsApp', v: telefonoVisible },
+  { k: 'Teléfono / WhatsApp', v: telefonoVisible, href: waVisita },
 ];
 
 // ── Verificación de cualquier técnico ─────────────────────────────────────
@@ -423,7 +423,23 @@ const linkClass = 'font-semibold text-tertiary underline underline-offset-2 hove
               ficha.map((f) => (
                 <div class="grid grid-cols-1 gap-1 px-5 py-4 sm:grid-cols-[200px_1fr] sm:gap-4 md:px-6">
                   <dt class="font-mono text-[12px] font-semibold uppercase tracking-[0.16em] text-tertiary">{f.k}</dt>
-                  <dd class="text-[15px] text-primary">{f.v}</dd>
+                  <dd class="text-[15px] text-primary">
+                    {f.href ? (
+                      <a
+                        href={f.href}
+                        target="_blank"
+                        rel="noopener"
+                        data-wa-source="nosotros_ficha"
+                        aria-label={`Escribir por WhatsApp al ${f.v}`}
+                        class="inline-flex min-h-[44px] items-center gap-2 font-semibold text-whatsapp-dark underline underline-offset-2 hover:text-tertiary"
+                      >
+                        <WhatsAppIcon size={18} />
+                        {f.v}
+                      </a>
+                    ) : (
+                      f.v
+                    )}
+                  </dd>
                 </div>
               ))
             }

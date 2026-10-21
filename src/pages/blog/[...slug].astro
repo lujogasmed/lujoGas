@@ -41,7 +41,7 @@ const related = allPosts
 const pillarSlugs: Record<number, string> = {
   1: '/blog/seguridad-instalaciones-gas-medellin',
   2: '/blog/certificacion-gas-icontec-medellin',
-  3: '/blog/instalacion-gas-residencial-comercial-medellin',
+  3: '/blog/instalacion-red-gas-domiciliaria',
   4: '/blog/mantenimiento-redes-gas-medellin',
 };
 const pillarNames: Record<number, string> = {
@@ -83,6 +83,10 @@ const articleSchema = {
   },
   mainEntityOfPage: canonicalUrl,
 };
+
+// FAQ visible: el schema FAQPage debe corresponder a contenido que el lector ve.
+// Si el cuerpo ya trae su sección de preguntas, no se duplica.
+const showFaqBlock = Boolean(data.faq?.length) && !/^## Preguntas frecuentes/m.test(post.body);
 
 const faqSchema = data.faq?.length
   ? {
@@ -152,8 +156,18 @@ const pageTitle =
           <span class="text-hero-text/50 text-sm">{data.readingTime} min de lectura</span>
           <span class="text-hero-text/50 text-sm">•</span>
           <span class="text-hero-text/50 text-sm">
-            {new Date(data.publishDate).toLocaleDateString('es-CO', { month: 'long', day: 'numeric', year: 'numeric' })}
+            <time datetime={data.publishDate.toISOString()}>
+              {new Date(data.publishDate).toLocaleDateString('es-CO', { month: 'long', day: 'numeric', year: 'numeric' })}
+            </time>
           </span>
+          {data.updatedDate && (
+            <span class="text-hero-text/50 text-sm">
+              · Actualizado{' '}
+              <time datetime={data.updatedDate.toISOString()}>
+                {data.updatedDate.toLocaleDateString('es-CO', { month: 'long', day: 'numeric', year: 'numeric' })}
+              </time>
+            </span>
+          )}
         </div>
 
         <h1 class="font-display text-4xl md:text-6xl lg:text-7xl text-background leading-[0.85] tracking-[-0.02em] uppercase max-w-4xl">
@@ -178,6 +192,25 @@ const pageTitle =
         <article class="prose-custom [&_table]:block [&_table]:max-w-full [&_table]:overflow-x-auto md:[&_table]:table">
           <Content />
         </article>
+
+        {showFaqBlock && (
+          <section class="mt-14" aria-labelledby="faq-articulo">
+            <h2 id="faq-articulo" class="font-display text-3xl md:text-4xl text-primary uppercase tracking-[-0.02em] mb-6">
+              Preguntas frecuentes
+            </h2>
+            <div class="flex flex-col gap-3">
+              {data.faq!.map((item) => (
+                <details class="group rounded-2xl border border-neutral/20 bg-surface">
+                  <summary class="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-semibold text-primary">
+                    <h3 class="text-[16px] leading-snug">{item.q}</h3>
+                    <svg class="flex-shrink-0 transition-transform duration-200 group-open:rotate-180" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+                  </summary>
+                  <p class="border-t border-neutral/10 px-5 pb-5 pt-4 text-[15px] leading-relaxed text-muted">{item.a}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
 
         <!-- Tags -->
         <div class="flex flex-wrap gap-2 mt-12 pt-8 border-t border-neutral/20">
