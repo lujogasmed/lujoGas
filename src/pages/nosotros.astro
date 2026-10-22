@@ -13,7 +13,9 @@ import { TECNICO, FOTO_CERTIFICADO } from '../data/tecnico';
 const PAGE_URL = 'https://lujogas.com.co/nosotros';
 const anios = new Date().getFullYear() - TECNICO.inicioEnGas;
 const telefonoVisible = SITE.phone.replace(/^\+57(\d{3})(\d{3})(\d{4})$/, '+57 $1 $2 $3');
-const fechaActualizado = new Date(`${TECNICO.actualizado}T12:00:00-05:00`).toLocaleDateString('es-CO', {
+// ProfilePage exige DateTime ISO 8601 con hora y zona; solo fecha da "dateModified no es válido" en GSC
+const actualizadoISO = `${TECNICO.actualizado}T12:00:00-05:00`;
+const fechaActualizado = new Date(actualizadoISO).toLocaleDateString('es-CO', {
   day: 'numeric',
   month: 'long',
   year: 'numeric',
@@ -274,7 +276,7 @@ const profileSchema = {
   url: PAGE_URL,
   name: 'Técnico certificado de gas en Medellín — Luis Guillermo Muñoz Vélez',
   inLanguage: 'es-CO',
-  dateModified: TECNICO.actualizado,
+  dateModified: actualizadoISO,
   about: { '@id': 'https://lujogas.com.co/#localbusiness' },
   mainEntity: personSchema,
 };
