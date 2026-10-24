@@ -100,12 +100,36 @@ const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://lujogas.
     />
 
     <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3W417FXZJX"></script>
-    <script>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${SITE.ga4Id}`}></script>
+    <script define:vars={{ ga4Id: SITE.ga4Id }}>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-3W417FXZJX');
+      gtag('config', ga4Id);
+
+      // Conversiones: clic en WhatsApp (whatsapp_click) y llamada (phone_click).
+      // Delegado en document para cubrir todos los CTAs, incluido el flotante React.
+      document.addEventListener('click', function (e) {
+        var link = e.target instanceof Element ? e.target.closest('a[href]') : null;
+        if (!link) return;
+        var href = link.getAttribute('href') || '';
+        var isWa = /wa\.me|api\.whatsapp\.com/.test(href);
+        var isTel = href.indexOf('tel:') === 0;
+        if (!isWa && !isTel) return;
+        var section = link.closest('[data-gtm-source]');
+        var source =
+          (section && section.getAttribute('data-gtm-source')) ||
+          (link.id === 'floatWp' && 'flotante') ||
+          (link.closest('header') && 'header') ||
+          (link.closest('footer') && 'footer') ||
+          ((section = link.closest('section[id]')) && section.id) ||
+          'contenido';
+        gtag('event', isWa ? 'whatsapp_click' : 'phone_click', {
+          link_source: source,
+          link_text: (link.textContent || link.getAttribute('aria-label') || '').trim().slice(0, 80),
+          page_path: location.pathname,
+        });
+      });
     </script>
   </head>
 
