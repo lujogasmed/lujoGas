@@ -53,6 +53,11 @@
       "source": "/blog/instalacion-gas-residencial-comercial-medellin",
       "destination": "/blog/instalacion-red-gas-domiciliaria",
       "permanent": true
+    },
+    {
+      "source": "/instalacion-gas-:zona(el-poblado|laureles|envigado|bello|itagui|sabaneta|robledo|la-estrella|copacabana|belen|medellin)&:rest(.*)",
+      "destination": "/instalacion-gas-:zona",
+      "permanent": true
     }
   ],
   "headers": [

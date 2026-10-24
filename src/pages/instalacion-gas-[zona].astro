@@ -34,10 +34,11 @@ const waText = encodeURIComponent(
 );
 const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`;
 
-// Title: ≤60 chars — keyword primero, diferenciador, marca
-const pageTitle = `Gas en ${zona.name} | Técnico Certificado NTC 2505 · LujoGas`;
+// Title: ≤60 chars — "instalación" primero (intención de contratar, no "gas {zona}" genérico)
+// + precio como diferenciador, mismo patrón que /instalacion-gas-medellin.
+const pageTitle = `Instalación de Gas en ${zona.name} desde $850.000 | NTC 2505`;
 // Meta description: 140-160 chars — keyword + diferenciador + CTA + teléfono
-const pageDesc = `Instalación de gas en ${zona.name} desde $850.000 y certificación desde $150.000. Técnico NTC 2505, certificado en 24–48 h. Escríbenos por WhatsApp.`;
+const pageDesc = `Técnico de gas certificado en ${zona.name}: instalación, certificado NTC 2505 desde $150.000 en 24–48 h y visita técnica de $50.000. Escríbenos por WhatsApp.`;
 const canonical = `https://lujogas.com.co/instalacion-gas-${zona.slug}`;
 
 // ── Schemas ─────────────────────────────────────────────────────────────────
